@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getAuth, provideAuth } from '@angular/fire/auth';
+import { HttpClientModule } from  '@angular/common/http';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,7 +28,7 @@ import { PasarelaPagoComponent } from './components/tienda/pasarela-pago/pasarel
 import { InfoProductoComponent } from './components/tienda/info-producto/info-producto.component';
 import { UsuarioInfoComponent } from './components/usuarios/usuario-info/usuario-info.component';
 import { BlogBrujaPageComponent } from './pages/blog/blog-bruja-page/blog-bruja-page.component';
-import { BlogPageComponent } from './components/blog/blog-page/blog-page.component';
+import { BlogPageComponent } from './pages/blog/blog-page/blog-page.component';
 import { EditarBrujaPageComponent } from './components/blog/editar-bruja-page/editar-bruja-page.component';
 import { NuevaBrujaPageComponent } from './components/blog/nueva-bruja-page/nueva-bruja-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
@@ -74,6 +76,7 @@ import { UsuarioInfoPageComponent } from './pages/usuarios/usuario-info-page/usu
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule,
     provideFirebaseApp(() => initializeApp({
       apiKey: "AIzaSyATu1q9xijreEeDRChL_u7mSDXibkuLHXc",
       authDomain: "midnight-apothecary.firebaseapp.com",
