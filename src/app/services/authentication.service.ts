@@ -2,6 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { Firestore, getFirestore, doc, setDoc, getDoc } from '@angular/fire/firestore';
 import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, getAuth } from '@angular/fire/auth';
 import { UserCredential } from '@firebase/auth';
+import { Carrito } from '../interfaces/carrito.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,7 @@ export class AuthenticationService {
       const db = getFirestore();
       const docRef = doc(db, "users", user.uid);
       const data = {
-        rol: "user",
+        isAdmin: false,
         nombre: nombre,
         apellido: apellido,
         telefono: "",
@@ -29,7 +30,7 @@ export class AuthenticationService {
         ciudad: "",
         provincia: "",
         codigoPostal: "",
-        carrito: [] as any
+        carrito: [] as Carrito[]
       };
 
       await setDoc(docRef, data);
