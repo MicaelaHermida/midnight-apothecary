@@ -1,1 +1,57 @@
-<p>nueva-bruja works!</p>
+<h1>Nueva Bruja</h1>
+<fieldset class="formulario">
+
+    <form class="sector" [formGroup]="formulario">
+        <div class="campo">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" formControlName="nombre">
+        </div>
+
+        <div>
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="apellido" formControlName="apellido">
+        </div>
+
+        <div>
+            <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+            <input type="text" id="fecha_nacimiento" formControlName="fecha_nacimiento">
+        </div>
+
+        <div>
+            <label for="fecha_defuncion">Fecha de Defunción:</label>
+            <input type="text" id="fecha_defuncion" formControlName="fecha_defuncion">
+        </div>
+
+        <div>
+            <label for="tipo_de_muerte">Tipo de Muerte:</label>
+            <input type="text" id="fecha_defuncion" formControlName="tipo_de_muerte">
+        </div>
+
+        <div>
+            <label for="lugar_de_nacimiento">Lugar de Nacimiento:</label>
+            <input type="text" id="lugar_de_nacimiento" formControlName="lugar_de_nacimiento">
+        </div>
+
+        <div>
+            <label for="lugar_de_ejecucion">Lugar de Ejecución:</label>
+            <input type="text" id="lugar_de_ejecucion" formControlName="lugar_de_ejecucion">
+        </div>
+
+        <div>
+            <label for="imagen">Imagen:</label>
+            <input type="image" id="imagen" formControlName="imagen">
+        </div>
+
+        <div>
+            <label for="historia">Historia:</label>
+            <textarea id="historia" cols="30" rows="10" formControlName="historia"></textarea>
+        </div>
+
+        <div>
+            <input type="submit" value="Crear Bruja" (click)="guardarBruja()">
+            <button [routerLink]="['/blog']">Cancelar</button>
+        </div>
+
+    </form>
+
+</fieldset>

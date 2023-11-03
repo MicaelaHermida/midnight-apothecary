@@ -1,1 +1,30 @@
-<p>listar-brujas works!</p>
+<h1>Brujas Historicas</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Fecha Nacimiento</th>
+            <th>Fecha Defunción</th>
+            <th>Tipo de Muerte</th>
+            <th>Lugar de Nacimiento</th>
+            <th>Lugar de Ejecución</th>
+        </tr>
+    </thead>
+
+    <tbody id="brujas">
+        <tr *ngFor="let bruja of listadoBrujas">
+            <td>{{bruja.nombre}}</td>
+            <td>{{bruja.apellido}}</td>
+            <td>{{bruja.fecha_nacimiento}}</td>
+            <td>{{bruja.fecha_defuncion}}</td>
+            <td>{{bruja.tipo_de_muerte}}</td>
+            <td>{{bruja.lugar_de_nacimiento}}</td>
+            <td>{{bruja.lugar_de_ejecucion}}</td>
+            <td><a [routerLink]="['/blog-bruja', bruja.id]">Ver Info</a></td>
+            <td><a [routerLink]="['/editar-bruja', bruja.id]">Editar</a></td>
+            <td><a (click)="eliminarBruja(bruja.id)">Eliminar</a></td>
+        </tr>
+    </tbody>
+</table>
