@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { getAuth, provideAuth } from '@angular/fire/auth';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -70,7 +73,17 @@ import { UsuarioInfoPageComponent } from './pages/usuarios/usuario-info-page/usu
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    provideFirebaseApp(() => initializeApp({
+      apiKey: "AIzaSyATu1q9xijreEeDRChL_u7mSDXibkuLHXc",
+      authDomain: "midnight-apothecary.firebaseapp.com",
+      projectId: "midnight-apothecary",
+      storageBucket: "midnight-apothecary.appspot.com",
+      messagingSenderId: "645627604949",
+      appId: "1:645627604949:web:2ed2e0e6a4522bf60c175c"
+    })),
+    provideFirestore(() => getFirestore()),
+    provideAuth(() => getAuth())
   ],
   providers: [],
   bootstrap: [AppComponent]
