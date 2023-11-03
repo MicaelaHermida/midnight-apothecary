@@ -12,7 +12,7 @@ export class AuthenticationService {
 
   constructor() { }
 
-  async register(email: string, password: string,): Promise<void> {
+  async register(email: string, password: string, nombre : string, apellido : string): Promise<void> {
 
     try {
       const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
@@ -21,14 +21,22 @@ export class AuthenticationService {
       const db = getFirestore();
       const docRef = doc(db, "users", user.uid);
       const data = {
-        role: "user",
+        rol: "user",
+        nombre: nombre,
+        apellido: apellido,
+        telefono: "",
+        direccion: "",
+        ciudad: "",
+        provincia: "",
+        codigoPostal: "",
+        carrito: [] as any
       };
 
       await setDoc(docRef, data);
 
     } catch (error) {
 
-      // manejar error
+      console.error(error);
     }
   }
 
@@ -71,7 +79,7 @@ export class AuthenticationService {
         const docData = docSnap.data();
 
         if (docData)
-          return docData['role'];
+          return docData['rol'];
       }
       catch (error) {
         console.log(error);
