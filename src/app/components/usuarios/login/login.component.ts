@@ -19,24 +19,15 @@ export class LoginComponent {
     })
   }
 
-  register(email: string, password: string) {
-    this.AuthencationService.register(email, password)
-  }
-
   login(email: string, password: string) {
-    this.AuthencationService.login(email, password)
+    this.AuthencationService.login(email, password);
   }
 
   iniciarSesion() {
     const email = this.form.value.email;
     const password = this.form.value.password;
-    this.login(email, password)
+    this.login(email, password);
   }
 
-  registrarse(){
-    const email = this.form.value.email;
-    const password = this.form.value.password;
-    this.register(email, password);
-  }
-
+ 
 }

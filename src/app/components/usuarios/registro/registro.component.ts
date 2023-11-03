@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class RegistroComponent {
 
+  
+  /*register(email: string, password: string) {
+    this.AuthencationService.register(email, password)
+  }
+  registrarse(){
+    const email = this.form.value.email;
+    const password = this.form.value.password;
+    this.register(email, password);
+  }*/
 }
