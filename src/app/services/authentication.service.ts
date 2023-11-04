@@ -1,7 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { Firestore, getFirestore, doc, setDoc, getDoc } from '@angular/fire/firestore';
-import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, getAuth } from '@angular/fire/auth';
-import { UserCredential } from '@firebase/auth';
+import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, setPersistence, browserLocalPersistence } from '@angular/fire/auth';
 import { Carrito } from '../interfaces/carrito.interface';
 
 @Injectable({
@@ -11,9 +10,10 @@ export class AuthenticationService {
   private firestore: Firestore = inject(Firestore);
   private auth: Auth = inject(Auth);
 
-  constructor() { }
+  constructor() {
+  }
 
-  async register(email: string, password: string, nombre : string, apellido : string): Promise<void> {
+  async register(email: string, password: string, nombre: string, apellido: string): Promise<void> {
 
     try {
       const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
@@ -22,7 +22,7 @@ export class AuthenticationService {
       const db = getFirestore();
       const docRef = doc(db, "users", user.uid);
       const data = {
-        isAdmin: false,
+        rol: "user",
         nombre: nombre,
         apellido: apellido,
         telefono: "",
@@ -41,12 +41,15 @@ export class AuthenticationService {
     }
   }
 
-  async login(email: string, password: string): Promise<void> {
+  async login(email: string, password: string): Promise<boolean> {
+    let result = false;
     try {
-      const userCredentials = await signInWithEmailAndPassword(this.auth, email, password);
+      await signInWithEmailAndPassword(this.auth, email, password);
+      result = true;
     } catch (error) {
       console.log(error);
     }
+    return result;
   }
 
   async getAllCurrentUserData() {
@@ -68,11 +71,13 @@ export class AuthenticationService {
     }
   }
 
-  async getCurrentUserRole(): Promise<any> {
-    const user = this.auth.currentUser;
+  async getCurrentUserRole(): Promise<string> {
+    let rol = "";
+    try {
 
-    if (user) {
-      try {
+      const user = this.auth.currentUser;
+
+      if (user) {
         const db = getFirestore();
         const docRef = doc(db, 'users', user.uid);
         const docSnap = await getDoc(docRef);
@@ -80,12 +85,36 @@ export class AuthenticationService {
         const docData = docSnap.data();
 
         if (docData)
-          return docData['rol'];
-      }
-      catch (error) {
-        console.log(error);
+          rol = docData['rol'];
       }
     }
-    return null;
+    catch (error) {
+      console.error(error);
+    }
+
+    return rol;
+  }
+
+
+  async logout() {
+    try {
+      await this.auth.signOut();
+      console.log("logout");
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+
+  async isUserLoggedIn(): Promise<boolean> {
+    if (this.auth.currentUser) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  async waitForFirebaseAuthentication():Promise<void>{
+    await this.auth.authStateReady();
   }
 }

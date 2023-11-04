@@ -1,7 +1,7 @@
 import { Carrito } from "./carrito.interface";
 
 export interface User{
-    isAdmin: boolean,
+    rol: string,
     nombre: string,
     apellido: string,
     telefono: string,

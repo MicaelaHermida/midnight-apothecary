@@ -3,8 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getAuth, provideAuth } from '@angular/fire/auth';
-import { HttpClientModule } from  '@angular/common/http';
-
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -88,7 +87,8 @@ import { UsuarioInfoPageComponent } from './pages/usuarios/usuario-info-page/usu
     provideFirestore(() => getFirestore()),
     provideAuth(() => getAuth())
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,9 +1,9 @@
-<form class="login-form" [formGroup]="form" (ngSubmit)="iniciarSesion()">
+<form class="login-form" [formGroup]="form" (ngSubmit)="iniciarSesion()" *ngIf="!isLogged && firebaseAuthStateReady">
     <div class="login-form-body">
         <label>Email:</label>
         <input type="email" formControlName="email">
         <label>Contraseña:</label>
         <input type="password" formControlName="password">
     </div>
-    <button class="login-button" type="submit">Ingresar</button>
+    <button class="login-button" twype="submit">Ingresar</button>
 </form>
