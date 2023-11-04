@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getAuth, provideAuth } from '@angular/fire/auth';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -36,7 +37,6 @@ import { EditarUsuarioPageComponent } from './pages/usuarios/editar-usuario-page
 import { LoginPageComponent } from './pages/usuarios/login-page/login-page.component';
 import { RegistroPageComponent } from './pages/usuarios/registro-page/registro-page.component';
 import { UsuarioInfoPageComponent } from './pages/usuarios/usuario-info-page/usuario-info-page.component';
-import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -75,7 +75,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule, 
+    HttpClientModule,
     provideFirebaseApp(() => initializeApp({
       apiKey: "AIzaSyATu1q9xijreEeDRChL_u7mSDXibkuLHXc",
       authDomain: "midnight-apothecary.firebaseapp.com",
@@ -87,7 +87,8 @@ import { HttpClientModule } from '@angular/common/http';
     provideFirestore(() => getFirestore()),
     provideAuth(() => getAuth())
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

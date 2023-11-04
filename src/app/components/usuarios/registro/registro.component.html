@@ -1,0 +1,16 @@
+<form class="login-form" [formGroup]="form" (ngSubmit)="registrarse()">
+    <div class="login-form-body">
+        <label>Nombre:</label>
+        <input type="text" formControlName="nombre">
+        <label>Apellido:</label>
+        <input type="text" formControlName="apellido">
+        <label>Email:</label>
+        <input type="email" formControlName="email">
+        <label>Contraseña:</label>
+        <input type="password" formControlName="password">
+    </div>
+    <div class="container-buttons">
+        <button class="login-button" type="submit">Registrarme</button>
+        <button class="login-button" (click)="cancelar()">Cancelar</button>
+    </div>
+</form>
