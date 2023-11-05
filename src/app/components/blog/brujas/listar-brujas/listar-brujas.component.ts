@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Bruja } from 'src/app/interfaces/brujas.interface';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { BrujasService } from 'src/app/services/brujas.service';
 
 @Component({
@@ -10,13 +11,23 @@ import { BrujasService } from 'src/app/services/brujas.service';
 export class ListarBrujasComponent implements OnInit{
 
   constructor(
-    private brujasService:BrujasService
+    private brujasService:BrujasService,
+    private authenticationService: AuthenticationService
   ){}
 
   listadoBrujas:Bruja[] = [];
+  isAdmin: boolean = false;
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    await this.authenticationService.waitForFirebaseAuthentication();
+    this.verificarUsuario();
     this.mostrarBrujas();
+  }
+
+  async verificarUsuario(){
+    const rol = await this.authenticationService.getCurrentUserRole();
+    if(rol === "admin"){
+      this.isAdmin = true;}
   }
 
   mostrarBrujas(){

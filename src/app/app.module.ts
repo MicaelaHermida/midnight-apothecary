@@ -10,11 +10,11 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/usuarios/login/login.component';
 import { RegistroComponent } from './components/usuarios/registro/registro.component';
 import { EditarUsuarioComponent } from './components/usuarios/editar-usuario/editar-usuario.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrujaInfoComponent } from './components/blog/bruja-info/bruja-info.component';
-import { EditarBrujaComponent } from './components/blog/editar-bruja/editar-bruja.component';
-import { ListarBrujasComponent } from './components/blog/listar-brujas/listar-brujas.component';
-import { NuevaBrujaComponent } from './components/blog/nueva-bruja/nueva-bruja.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BrujaInfoComponent } from './components/blog/brujas/bruja-info/bruja-info.component';
+import { EditarBrujaComponent } from './components/blog/brujas/editar-bruja/editar-bruja.component';
+import { ListarBrujasComponent } from './components/blog/brujas/listar-brujas/listar-brujas.component';
+import { NuevaBrujaComponent } from './components/blog/brujas/nueva-bruja/nueva-bruja.component';
 import { ListarComentariosComponent } from './components/blog/listar-comentarios/listar-comentarios.component';
 import { ContactoComponent } from './components/home/contacto/contacto.component';
 import { HeroComponent } from './components/home/hero/hero.component';
@@ -38,6 +38,7 @@ import { LoginPageComponent } from './pages/usuarios/login-page/login-page.compo
 import { RegistroPageComponent } from './pages/usuarios/registro-page/registro-page.component';
 import { UsuarioInfoPageComponent } from './pages/usuarios/usuario-info-page/usuario-info-page.component';
 import { ProductoInfoPageComponent } from './pages/tienda/producto-info-page/producto-info-page.component';
+import { NuevoComentarioComponent } from './components/blog/nuevo-comentario/nuevo-comentario.component';
 
 @NgModule({
   declarations: [
@@ -71,11 +72,11 @@ import { ProductoInfoPageComponent } from './pages/tienda/producto-info-page/pro
     LoginPageComponent,
     RegistroPageComponent,
     UsuarioInfoPageComponent,
-    ProductoInfoPageComponent
+    ProductoInfoPageComponent,
+    NuevoComentarioComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,

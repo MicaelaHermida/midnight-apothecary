@@ -117,4 +117,9 @@ export class AuthenticationService {
   async waitForFirebaseAuthentication():Promise<void>{
     await this.auth.authStateReady();
   }
+
+  async getCurrentUserId(): Promise<any> {
+    return this.auth.currentUser?.uid;
+  }
+
 }

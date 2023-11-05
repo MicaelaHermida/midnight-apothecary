@@ -23,8 +23,8 @@
             <td>{{bruja.lugar_de_nacimiento}}</td>
             <td>{{bruja.lugar_de_ejecucion}}</td>
             <td><a [routerLink]="['/blog-bruja', bruja.id]">Ver Info</a></td>
-            <td><a [routerLink]="['/editar-bruja', bruja.id]">Editar</a></td>
-            <td><a (click)="eliminarBruja(bruja.id)">Eliminar</a></td>
+            <td><a [routerLink]="['/editar-bruja', bruja.id]" *ngIf="isAdmin">Editar</a></td>
+            <td><a (click)="eliminarBruja(bruja.id)" *ngIf="isAdmin">Eliminar</a></td>
         </tr>
     </tbody>
 </table>

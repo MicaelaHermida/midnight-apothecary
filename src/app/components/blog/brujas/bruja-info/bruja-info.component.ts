@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Bruja } from 'src/app/interfaces/brujas.interface';
 import { BrujasService } from 'src/app/services/brujas.service';
+import { ComentariosService } from 'src/app/services/comentarios.service';
 
 @Component({
   selector: 'app-bruja-info',
@@ -10,11 +11,12 @@ import { BrujasService } from 'src/app/services/brujas.service';
 })
 export class BrujaInfoComponent implements OnInit {
 
-  bruja: Bruja | any;
-
+  bruja!: Bruja;
+  brujaCargada: boolean = false;
   constructor(
     private route: ActivatedRoute,
-    private brujasService: BrujasService
+    private brujasService: BrujasService,
+    private comentariosService: ComentariosService
   ) {  }
 
   ngOnInit(): void {
@@ -31,6 +33,8 @@ export class BrujaInfoComponent implements OnInit {
             console.log(bruja);
             if (bruja) {
                 this.bruja = bruja;
+                this.comentariosService.brujaId = this.bruja.id;
+                this.brujaCargada = true;
             }
           }
         })
@@ -39,9 +43,4 @@ export class BrujaInfoComponent implements OnInit {
       }
     })
   }
-
-
-
-
-
 }
