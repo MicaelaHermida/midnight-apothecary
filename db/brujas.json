@@ -13,30 +13,6 @@
       "historia": "Isobel Gowdie fue una mujer escocesa que fue juzgada por brujería en 1662. Su confesión detallada, aparentemente obtenida sin el uso de tortura, brinda una de las descripciones más detalladas del folclore de la brujería europea en las postrimerías de la época de la caza de brujas."
     },
     {
-      "id": 2,
-      "nombre": "Margaret",
-      "apellido": "Hamilton",
-      "fecha_nacimiento": "n/a",
-      "fecha_defuncion": "1692",
-      "tipo_de_muerte": "Ahorcada",
-      "lugar_de_nacimiento": "",
-      "lugar_de_ejecucióo": "Salem, Massachusetts, EE. UU.",
-      "imagen": "",
-      "historia": ""
-    },
-    {
-      "id": 3,
-      "nombre": "Ursula",
-      "apellido": "Kemp",
-      "fecha_nacimiento": "n/a",
-      "fecha_defuncion": "1582",
-      "tipo_de_muerte": "Ahorcada",
-      "lugar_de_nacimiento": "",
-      "lugar_de_ejecucion": "St. Osyth, Inglaterra",
-      "imagen": "",
-      "historia": ""
-    },
-    {
       "id": 4,
       "nombre": "Agnes",
       "apellido": "Sampson",

@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Comentario } from 'src/app/interfaces/comentarios.interface';
-import { BrujasService } from 'src/app/services/brujas.service';
 import { ComentariosService } from 'src/app/services/comentarios.service';
 
 @Component({
@@ -11,32 +9,36 @@ import { ComentariosService } from 'src/app/services/comentarios.service';
 })
 export class ListarComentariosComponent implements OnInit {
 
-  listadoComentarios: Comentario[] = [];
+  listadoComentarios: Map<string, Comentario> = new Map();
 
   constructor(
     private comentariosService: ComentariosService,
-    private router: Router,
   ) { }
 
-  ngOnInit(): void {
-
+  async ngOnInit(): Promise<void> {
+    await this.mostrarComentarios();
   }
 
-  mostrarComentarios() {
-    this.comentariosService.getComentarios()
-      .subscribe({
-        next: (comentario) =>{
-          this.listadoComentarios = comentario;
-        },
-        error: (e) =>{
-          console.log(e);
-        }
-      })
+  async mostrarComentarios(): Promise<Map<string, Comentario>>{
+    try {
+      this.listadoComentarios = await this.comentariosService.getComentariosBruja();
+    } catch (e) {
+      console.log(e);
+    }
+    return this.listadoComentarios;
+  }
+  
+  async eliminarComentario(id: string): Promise<void> {
+    console.log(id);
+    const ok = window.confirm(`¿Realmente querés eliminar el comentario de id: ${id}`);
+    if (!ok) return;
+
+    try{
+      this.comentariosService.deleteComentario(id);
+      await this.mostrarComentarios();
+    }catch{
+      console.log("No se pudo eliminar el comentario");
+    }
   }
 
-
-
-
-
-
-} 
+}

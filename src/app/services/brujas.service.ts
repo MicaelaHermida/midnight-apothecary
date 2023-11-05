@@ -12,8 +12,10 @@ export class BrujasService {
 
   url: string = 'http://localhost:4000/brujas_historicas';
 
-  constructor(private router: Router,
-    private http: HttpClient) { }
+  constructor(
+    private router: Router,
+    private http: HttpClient
+  ) { }
 
   //NUEVA
   postBruja(bruja: Bruja): Observable<Bruja> {
