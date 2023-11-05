@@ -43,8 +43,8 @@ export class PlantasService {
       map(response => response.data));
   }
 
-  getPlantDetails(id: string): Observable<PlantaInfo> {
-    return this.http.get<any>(this.urlDetails + id + "?" + this.key)
+  getPlantDetails(id: number): Observable<PlantaInfo> {
+    return this.http.get<PlantaInfo>(this.urlDetails + id + "?" + this.key)
       .pipe(
         catchError((error: any) => {
           console.error(error);

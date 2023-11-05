@@ -8,6 +8,8 @@ import { NuevaBrujaPageComponent } from './pages/blog/nueva-bruja-page/nueva-bru
 import { InfoProductoComponent } from './components/tienda/info-producto/info-producto.component';
 import { LoginPageComponent } from './pages/usuarios/login-page/login-page.component';
 import { RegistroPageComponent } from './pages/usuarios/registro-page/registro-page.component';
+import { TiendaPageComponent } from './pages/tienda/tienda-page/tienda-page.component';
+import { ProductoInfoPageComponent } from './pages/tienda/producto-info-page/producto-info-page.component';
 
 const routes: Routes = [
   {path: 'blog', component: BlogPageComponent},
@@ -17,6 +19,8 @@ const routes: Routes = [
   {path: 'home', component: HomePageComponent},
   {path: 'login', component: LoginPageComponent},
   {path: 'register', component: RegistroPageComponent},
+  {path: 'tienda', component: TiendaPageComponent},
+  {path: 'producto/:key', component: ProductoInfoPageComponent},
   {path: "**", redirectTo: 'home'}
 ];
 

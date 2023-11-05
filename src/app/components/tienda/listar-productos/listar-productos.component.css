@@ -1,0 +1,13 @@
+.img-producto{
+    width: 25%;
+}
+
+.contenedor-productos{
+    display: flex;
+    flex-direction: row;
+}
+
+.card{
+    width: 25%;
+    margin: 0;
+}

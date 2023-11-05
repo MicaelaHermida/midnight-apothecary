@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
@@ -8,7 +8,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.css']
 })
-export class RegistroComponent implements OnInit {
+export class RegistroComponent{
 
   isLogged: boolean = false;
   firebaseAuthStateReady: boolean = false;
@@ -24,17 +24,13 @@ export class RegistroComponent implements OnInit {
     })
   }
 
-  async ngOnInit(): Promise<void> {
-    await this.AuthencationService.waitForFirebaseAuthentication();
-    this.firebaseAuthStateReady = true;
-    this.isLogged = await this.AuthencationService.isUserLoggedIn();
-    if (this.isLogged) {
-      this.router.navigate(['/home']);
-    }
-  }
 
   cancelar(){
-    this.router.navigate(['/home']);
+    const ok = confirm("¿Está seguro que desea cancelar el registro?");
+    if(ok){
+      this.router.navigate(['/home']);
+    }
+    return;
   }
 
   register(email: string, password: string, nombre: string, apellido: string) {

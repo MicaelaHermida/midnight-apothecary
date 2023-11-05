@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/usuarios/login/login.component';
 import { RegistroComponent } from './components/usuarios/registro/registro.component';
 import { EditarUsuarioComponent } from './components/usuarios/editar-usuario/editar-usuario.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrujaInfoComponent } from './components/blog/bruja-info/bruja-info.component';
 import { EditarBrujaComponent } from './components/blog/editar-bruja/editar-bruja.component';
 import { ListarBrujasComponent } from './components/blog/listar-brujas/listar-brujas.component';
@@ -37,6 +37,7 @@ import { EditarUsuarioPageComponent } from './pages/usuarios/editar-usuario-page
 import { LoginPageComponent } from './pages/usuarios/login-page/login-page.component';
 import { RegistroPageComponent } from './pages/usuarios/registro-page/registro-page.component';
 import { UsuarioInfoPageComponent } from './pages/usuarios/usuario-info-page/usuario-info-page.component';
+import { ProductoInfoPageComponent } from './pages/tienda/producto-info-page/producto-info-page.component';
 
 @NgModule({
   declarations: [
@@ -69,10 +70,12 @@ import { UsuarioInfoPageComponent } from './pages/usuarios/usuario-info-page/usu
     EditarUsuarioPageComponent,
     LoginPageComponent,
     RegistroPageComponent,
-    UsuarioInfoPageComponent
+    UsuarioInfoPageComponent,
+    ProductoInfoPageComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,

@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { getAuth } from '@angular/fire/auth';
+import { Component} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
@@ -9,7 +8,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent{
 
   isLogged: boolean = false;
   firebaseAuthStateReady: boolean = false;
@@ -22,14 +21,6 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  async ngOnInit(): Promise<void> {
-    await this.AuthencationService.waitForFirebaseAuthentication();
-    this.firebaseAuthStateReady = true;
-    this.isLogged = await this.AuthencationService.isUserLoggedIn();
-    if (this.isLogged) {
-      this.router.navigate(['/home']);
-    }
-  }
 
   async login(email: string, password: string): Promise<boolean> {
     return await this.AuthencationService.login(email, password);
@@ -44,6 +35,8 @@ export class LoginComponent implements OnInit {
       await this.manejarInicioSesionPorRol(verif);
     } else {
       alert("Usuario o contraseña incorrectos");
+      this.form.reset();
+      return;
     }
   }
 
@@ -52,11 +45,8 @@ export class LoginComponent implements OnInit {
       console.log("Es admin");
       const user = await this.AuthencationService.getAllCurrentUserData();
       console.log(user);
-      this.router.navigate(['/home']);
+      
     }
-    else {
-      console.log("No es admin");
-      this.router.navigate(['/home']);
-    }
+    this.router.navigate(['/home']);
   }
 }

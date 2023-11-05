@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { User } from 'firebase/auth';
 import { PlantaInfo } from 'src/app/interfaces/planta-info.interface';
 import { Planta } from 'src/app/interfaces/planta.interface';
+import { Producto } from 'src/app/interfaces/producto.interface';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { PlantasService } from 'src/app/services/plantas.service';
+import { ProductosService } from 'src/app/services/productos.service';
 
 @Component({
   selector: 'app-home-page',
@@ -11,8 +14,17 @@ import { PlantasService } from 'src/app/services/plantas.service';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent {
+
+  form : FormGroup;
   isAdminRole: boolean = false;
-  constructor(private plantasService: PlantasService, private authencationService: AuthenticationService) {
+  constructor(private plantasService: PlantasService, private authencationService: AuthenticationService, private fb: FormBuilder, private productosService: ProductosService) {
+    this.form = this.fb.group({
+      id_planta: "",
+      nombre: "",
+      imagen: "",
+      precio: "",
+      stock: ""
+    });
   }
 
   async ngOnInit(): Promise<void> {
@@ -50,4 +62,10 @@ export class HomePageComponent {
     const user = await this.authencationService.getAllCurrentUserData();
     console.log(user);
   }
+
+  /*async agregarProducto(){
+    const producto : Producto = this.form.value;
+    await this.productosService.postProducto(producto);
+    console.log("Producto agregado");
+  }*/
 }

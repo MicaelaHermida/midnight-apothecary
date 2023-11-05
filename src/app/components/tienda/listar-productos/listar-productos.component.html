@@ -1,1 +1,34 @@
-<p>listar-productos works!</p>
+<form *ngFor="let entry of productos | keyvalue" (ngSubmit)="guardarProducto(entry.key, entry.value)" [formGroup]="form">
+    <img src="{{entry.value.imagen}}" class="img-producto">
+    <div *ngIf="!editModeMap.get(entry.key)">
+        <h3>{{entry.value.nombre}}</h3>
+        <p>${{entry.value.precio}}</p>
+        <p>stock: {{entry.value.stock}}</p>
+        <button *ngIf="!isAdminRole && isLogged">Agregar al carrito</button>
+        <button [routerLink]="['/producto', entry.key]">Ver detalles</button>
+    </div>
+    <div *ngIf="editModeMap.get(entry.key)">
+        <input formControlName="nombre" placeholder="{{entry.value.nombre}}" type="text">
+        <input formControlName="stock" placeholder="stock({{entry.value.stock}})" type="number">
+        <input formControlName="precio" placeholder="{{entry.value.precio}}" type="number">
+    </div>
+    <button *ngIf="isAdminRole && firebaseAuthenticationReady && !editModeMap.get(entry.key)" (click)="editarProducto(entry.key)">Editar</button>
+    <button *ngIf="isAdminRole && firebaseAuthenticationReady && editModeMap.get(entry.key)" type="submit">Guardar</button>
+    <button *ngIf="isAdminRole && firebaseAuthenticationReady" (click)="eliminarProducto(entry.key)">Eliminar</button>
+</form>
+
+<!--<div *ngFor="let entry of productos | keyvalue">
+    <div>
+        <img src="{{entry.value.imagen}}" class="img-producto">
+        <h3 *ngIf="!editModeMap.get(entry.key)">{{entry.value.nombre}}</h3>
+        <input *ngIf="editModeMap.get(entry.key)" [(ngModel)]="entry.value.nombre" placeholder="{{entry.value.nombre}}" type="text">
+        <p *ngIf="isAdminRole && firebaseAuthenticationReady && !editModeMap.get(entry.key)">stock: {{entry.value.stock}}</p>
+        <input *ngIf="editModeMap.get(entry.key)" [(ngModel)]="entry.value.stock" placeholder="stock({{entry.value.stock}})" type="number">
+        <p *ngIf="!editModeMap.get(entry.key)">${{entry.value.precio}}</p>
+        <input *ngIf="editModeMap.get(entry.key)" [(ngModel)]="entry.value.precio" placeholder="{{entry.value.precio}}" type="number">
+        <button *ngIf="!isAdminRole && isLogged">Agregar al carrito</button>
+        <button>Ver detalles</button>
+        <button *ngIf="isAdminRole && firebaseAuthenticationReady" (click)="editarProducto(entry.key)">{{editModeMap.get(entry.key) ? 'Guardar' : 'Editar'}}</button>
+        <button *ngIf="isAdminRole && firebaseAuthenticationReady" (click)="eliminarProducto(entry.key)">Eliminar</button>
+    </div>
+</div>-->
