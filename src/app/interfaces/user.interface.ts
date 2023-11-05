@@ -10,5 +10,5 @@ export interface User{
     provincia: string,
     codigoPostal: string,
     carrito: Carrito[],
-    id: number
+    id: string
 }

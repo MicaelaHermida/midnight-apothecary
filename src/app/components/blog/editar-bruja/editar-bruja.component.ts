@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Bruja } from 'src/app/interfaces/brujas.interface';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { BrujasService } from 'src/app/services/brujas.service';
 
 @Component({
@@ -33,10 +34,10 @@ export class EditarBrujaComponent implements OnInit {
     private formBuilder: FormBuilder
   ) { }
 
-
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.initForm();
   }
+
 
   initForm() {
     this.route.params.subscribe(params => {

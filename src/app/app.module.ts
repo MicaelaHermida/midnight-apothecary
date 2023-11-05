@@ -37,6 +37,7 @@ import { EditarUsuarioPageComponent } from './pages/usuarios/editar-usuario-page
 import { LoginPageComponent } from './pages/usuarios/login-page/login-page.component';
 import { RegistroPageComponent } from './pages/usuarios/registro-page/registro-page.component';
 import { UsuarioInfoPageComponent } from './pages/usuarios/usuario-info-page/usuario-info-page.component';
+import { NuevoComentarioComponent } from './components/blog/nuevo-comentario/nuevo-comentario.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { UsuarioInfoPageComponent } from './pages/usuarios/usuario-info-page/usu
     EditarUsuarioPageComponent,
     LoginPageComponent,
     RegistroPageComponent,
-    UsuarioInfoPageComponent
+    UsuarioInfoPageComponent,
+    NuevoComentarioComponent
   ],
   imports: [
     BrowserModule,

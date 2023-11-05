@@ -1,9 +1,14 @@
-<h1 >{{bruja.nombre}} {{bruja.apellido}}</h1>
+<main *ngIf="brujaCargada">
+    <img src="{{bruja.imagen}}" alt="Imagen de la bruja">
+    <h1 >{{bruja.nombre}} {{bruja.apellido}}</h1>
+    <p>Fecha de Nacimiento: {{bruja.fecha_nacimiento}}</p>
+    <p>Fecha de Defunción: {{bruja.fecha_defuncion}}</p>
+    <p>Tipo de Muerte: {{ bruja.tipo_de_muerte }}</p>
+    <p>Lugar de Nacimiento: {{ bruja.lugar_de_nacimiento }}</p>
+    <p>Lugar de Ejecución: {{ bruja.lugar_de_ejecucion }}</p>
+    
+    <p>Historia: {{ bruja.historia }}</p>
+    
+</main>
 
-<p>Fecha de Nacimiento: {{bruja.fecha_nacimiento}}</p>
-<p>Fecha de Defunción: {{bruja.fecha_defuncion}}</p>
-<p>Tipo de Muerte: {{ bruja.tipo_de_muerte }}</p>
-<p>Lugar de Nacimiento: {{ bruja.lugar_de_nacimiento }}</p>
-<p>Lugar de Ejecución: {{ bruja.lugar_de_Ejecucion }}</p>
-<img src="{{ bruja.imagen }}" alt="Imagen de la bruja">
-<p>Historia: {{ bruja.historia }}</p>
+
