@@ -11,6 +11,8 @@ import { BrujasService } from 'src/app/services/brujas.service';
 })
 export class NuevaBrujaComponent implements OnInit {
 
+  formulario!: FormGroup;
+
   constructor(
     private formBuilder: FormBuilder,
     private brujasService: BrujasService,
@@ -20,7 +22,7 @@ export class NuevaBrujaComponent implements OnInit {
   ngOnInit(): void {
     this.initForm();
   }
-  formulario!: FormGroup;
+
 
   initForm() {
     this.formulario = this.formBuilder.group({
@@ -36,7 +38,19 @@ export class NuevaBrujaComponent implements OnInit {
     });
   }
 
-  guardarBruja() {
+  async guardarBruja(){
+    if (this.formulario.invalid) return;
+
+    await this.brujasService.postBruja(this.formulario.value);
+
+    alert('Bruja agregada con éxito');
+    this.router.navigate(['/blog']);
+  }
+
+}
+
+
+/*   guardarBruja() {
     if (this.formulario.invalid) return;
 
     this.brujasService.postBruja(this.formulario.value)
@@ -50,10 +64,4 @@ export class NuevaBrujaComponent implements OnInit {
       }
     })
   }
-
-
-
-
-
-
-}
+ */
