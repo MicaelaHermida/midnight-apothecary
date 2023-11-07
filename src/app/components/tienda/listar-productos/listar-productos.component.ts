@@ -20,6 +20,11 @@ export class ListarProductosComponent implements OnInit {
   firebaseAuthenticationReady: boolean = false;
   carritoProductos: Carrito[] = [];
 
+  arrayPaginas: number[] = [];
+
+  paginaActual: number = 1;
+  productosPorPagina: number = 10;
+  totalProductos: number = 0;
 
   lastEditKey: string = "";
 
@@ -34,6 +39,8 @@ export class ListarProductosComponent implements OnInit {
   
 
   productos: Map<string, Producto> = new Map();
+  
+
   constructor(private productosService: ProductosService, private authenticationService: AuthenticationService, private fb: FormBuilder, private router: Router,
     private carrito: CarritoService) {
     this.form = this.fb.group({
@@ -48,6 +55,7 @@ export class ListarProductosComponent implements OnInit {
     this.firebaseAuthenticationReady = true;
     this.isLogged = this.authenticationService.isUserLoggedIn();
     this.isAdminRole = await this.authenticationService.getCurrentUserRole() === "admin";
+    this.actualizarPaginas();
     await this.mostrarProductos();
     this.carritoProductos = this.carrito.getCarrito();
   }
@@ -61,11 +69,35 @@ export class ListarProductosComponent implements OnInit {
   }
 
   async mostrarProductos() {
-    this.productos = await this.productosService.getProductos();
+    const start = (this.paginaActual- 1) * this.productosPorPagina;
+    const end = this.paginaActual * this.productosPorPagina;
+    const allProducts = await this.productosService.getProductos();
+    this.totalProductos = allProducts.size;
+    this.productos = new Map(Array.from(allProducts.entries()).slice(start, end));
     console.log(this.productos);
   }
 
+  actualizarPaginas() {
+    const cantidadPaginas = this.obtenerCantidadPaginas();
+    this.arrayPaginas = Array.from({ length: cantidadPaginas }, (_, index) => index + 1);
+  }
 
+  cambiarPagina(pagina: number) {
+    if (pagina < 1) {
+      pagina = 1;
+    }
+    const cantidadPaginas = this.obtenerCantidadPaginas();
+    if (pagina > cantidadPaginas) {
+      pagina = cantidadPaginas;
+    }
+    this.paginaActual = pagina;
+    this.mostrarProductos();
+  }
+
+
+  obtenerCantidadPaginas(): number {
+    return Math.ceil(this.totalProductos / this.productosPorPagina);
+  }
 
   /////////////////////ADMINISTRADOR////////////////////////
   async eliminarProducto(id: string) {

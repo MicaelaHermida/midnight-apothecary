@@ -18,7 +18,14 @@
     <button *ngIf="isAdminRole && firebaseAuthenticationReady && !editModeMap.get(entry.key)" (click)="editarProducto(entry.key)">Editar</button>
     <button *ngIf="isAdminRole && firebaseAuthenticationReady && editModeMap.get(entry.key)" type="submit">Guardar</button>
     <button *ngIf="isAdminRole && firebaseAuthenticationReady" (click)="eliminarProducto(entry.key)">Eliminar</button>
+    
 </form>
+<div class="pagination">
+    <button (click)="cambiarPagina(paginaActual - 1)" [disabled]="paginaActual === 1">Anterior</button>
+    <button *ngFor="let pageNumber of arrayPaginas" (click)="cambiarPagina(pageNumber)" [class.active]="pageNumber === paginaActual">{{pageNumber}}</button>
+    <button (click)="cambiarPagina(paginaActual + 1)" [disabled]="paginaActual === obtenerCantidadPaginas()">Siguiente</button>
+  </div>
+
 
 <!--<div *ngFor="let entry of productos | keyvalue">
     <div>
