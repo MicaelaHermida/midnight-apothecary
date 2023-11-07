@@ -12,17 +12,40 @@ import { ComentariosService } from 'src/app/services/comentarios.service';
 export class BrujaInfoComponent implements OnInit {
 
   bruja!: Bruja;
+  
   brujaCargada: boolean = false;
+
   constructor(
     private route: ActivatedRoute,
     private brujasService: BrujasService,
     private comentariosService: ComentariosService
   ) {  }
 
-  ngOnInit(): void {
-    this.initBio();
+  async ngOnInit(): Promise<void> {
+    await this.initBio();
   }
 
+  async initBio(){
+    this.route.params.subscribe(async params =>{
+      const brujaId= params['key'];
+      this.bruja = await this.brujasService.getBruja(brujaId);
+
+      if(this.bruja){
+        this.comentariosService.brujaId = brujaId;
+        this.brujaCargada = true;
+        console.log(this.bruja);
+      }else{
+        console.log("error al cargar el ID");
+      }
+
+    })
+  }
+
+
+
+}
+
+/* 
   initBio() {
     this.route.params.subscribe(params => {
       const brujaId = +params['id'];
@@ -42,5 +65,4 @@ export class BrujaInfoComponent implements OnInit {
         console.log("error al cargar el ID");
       }
     })
-  }
-}
+  }  */

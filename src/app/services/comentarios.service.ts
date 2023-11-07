@@ -11,7 +11,7 @@ import { deleteDoc, getDocs } from 'firebase/firestore';
 })
 export class ComentariosService {
 
-  public brujaId: number = 0;
+  public brujaId: string = "";
 
   constructor(
     private router: Router,

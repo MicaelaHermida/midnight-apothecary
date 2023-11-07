@@ -14,8 +14,8 @@ import { CarritoPageComponent } from './pages/tienda/carrito-page/carrito-page.c
 
 const routes: Routes = [
   {path: 'blog', component: BlogPageComponent},
-  {path: 'blog-bruja/:id', component: BlogBrujaPageComponent},
-  {path: 'editar-bruja/:id', component: EditarBrujaPageComponent},
+  {path: 'blog-bruja/:key', component: BlogBrujaPageComponent},
+  {path: 'editar-bruja/:key', component: EditarBrujaPageComponent},
   {path: 'nueva-bruja', component: NuevaBrujaPageComponent},
   {path: 'home', component: HomePageComponent},
   {path: 'login', component: LoginPageComponent},
