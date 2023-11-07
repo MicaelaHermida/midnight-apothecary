@@ -17,7 +17,7 @@ export class RegistroPageComponent implements OnInit{
     async ngOnInit(): Promise<void> {
       await this.authenticationService.waitForFirebaseAuthentication();
       this.firebaseAuthStateReady = true;
-      this.isLogged = await this.authenticationService.isUserLoggedIn();
+      this.isLogged = this.authenticationService.isUserLoggedIn();
       if (this.isLogged) {
         this.router.navigate(['/home']);
       }

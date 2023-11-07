@@ -4,7 +4,10 @@
         <h3>{{entry.value.nombre}}</h3>
         <p>${{entry.value.precio}}</p>
         <p>stock: {{entry.value.stock}}</p>
-        <button *ngIf="!isAdminRole && isLogged">Agregar al carrito</button>
+        <input *ngIf="!isAdminRole && isLogged && firebaseAuthenticationReady" type="number" placeholder="{{itemCarrito.cantidad}}">
+        <button *ngIf="!isAdminRole && isLogged && firebaseAuthenticationReady" (click)="aumentarCantidad(entry.key)">+</button>
+        <button *ngIf="!isAdminRole && isLogged && firebaseAuthenticationReady" (click)="disminuirCantidad(entry.key)">-</button>
+        <button *ngIf="!isAdminRole && isLogged && firebaseAuthenticationReady" (click)="agregarAlCarrito(entry.key)">Agregar al carrito</button>
         <button [routerLink]="['/producto', entry.key]">Ver detalles</button>
     </div>
     <div *ngIf="editModeMap.get(entry.key)">

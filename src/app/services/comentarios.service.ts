@@ -20,7 +20,7 @@ export class ComentariosService {
 
 
   //NUEVO
-  async postComentario(comentario: string, userId: number): Promise<void> {
+  async postComentario(comentario: string, userId: string): Promise<void> {
     try {
       const db = getFirestore();
       const comentariosCollection = collection(db, "comentarios");

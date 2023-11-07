@@ -29,6 +29,7 @@ export class HomePageComponent {
 
   async ngOnInit(): Promise<void> {
     console.log(this.authencationService.isUserLoggedIn());
+    const user = await this.authencationService.getAllCurrentUserData();
     this.isAdminRole = await this.authencationService.getCurrentUserRole() === "admin";
     /*this.plantasService.getEdiblePlantList().subscribe({
       next: (data: Planta[]) => console.log(data),
