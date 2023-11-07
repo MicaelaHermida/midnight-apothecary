@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Carrito } from 'src/app/interfaces/carrito.interface';
 import { ItemCarrito } from 'src/app/interfaces/itemCarrito.interface';
 import { AuthenticationService } from 'src/app/services/authentication.service';
@@ -24,7 +25,7 @@ export class CarritoComponent implements OnInit {
   isCompraPage: boolean = false;
 
 
-  constructor(private carritoService: CarritoService, private productosService: ProductosService, private authService: AuthenticationService) { }
+  constructor(private carritoService: CarritoService, private productosService: ProductosService, private authService: AuthenticationService, private router : Router ) { }
 
   async ngOnInit(): Promise<void> {
     await this.authService.waitForFirebaseAuthentication();
@@ -34,6 +35,7 @@ export class CarritoComponent implements OnInit {
     this.hasProductos = this.carritoService.carritoHasItems();
     this.isLogged = this.authService.isUserLoggedIn();
     await this.mostrarCarrito();
+    this.verificarUrl();
   }
 
   async cargarProductos():Promise<void>{
@@ -92,11 +94,9 @@ export class CarritoComponent implements OnInit {
   };
 
   verificarUrl(){
-    if(window.location.href.includes("compra")){
+    const currentURL = window.location.href;
+    if(currentURL.includes("compra")){
       this.isCompraPage = true;
-    }
-    else{
-      this.isCompraPage = false;
     }
   }
 }

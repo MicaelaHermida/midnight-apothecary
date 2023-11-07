@@ -26,7 +26,7 @@
             </tr>
         </tfoot>
     </table>
-    <button *nfIf="isCompraPage" [routerLink]="['/compra']">Realizar compra</button>
+    <button *ngIf="!isCompraPage" [routerLink]="['/compra']">Realizar compra</button>
 </div>
 
 <div *ngIf="isLogged && firebaseAuthenticationReady && !hasProductos">
