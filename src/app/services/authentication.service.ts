@@ -2,15 +2,15 @@ import { Injectable, inject } from '@angular/core';
 import { Firestore, getFirestore, doc, setDoc, getDoc } from '@angular/fire/firestore';
 import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, setPersistence, browserLocalPersistence } from '@angular/fire/auth';
 import { Carrito } from '../interfaces/carrito.interface';
+import { User } from '../interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
-  private firestore: Firestore = inject(Firestore);
-  private auth: Auth = inject(Auth);
 
-  constructor() {
+
+  constructor(private firestore: Firestore, private auth: Auth) {
   }
 
   async register(email: string, password: string, nombre: string, apellido: string): Promise<void> {
@@ -52,23 +52,35 @@ export class AuthenticationService {
     return result;
   }
 
-  async getAllCurrentUserData() {
-    const user = this.auth.currentUser;
+  async updateUserData(id: string, usuario: User): Promise<void> {
+    try{
+      const db = getFirestore();
+      const docRef = doc(db, "users", id);
+      await setDoc(docRef, usuario);
+    }catch(error){
+      console.error(error);
+    }
+  }
 
-    if (user) {
-      try {
+  async getAllCurrentUserData(): Promise<User> {
+    let userData: User = null as unknown as User;
+
+    try {
+      const user = this.auth.currentUser;
+      if (user) {
         const db = getFirestore();
         const docRef = doc(db, 'users', user.uid);
         const docSnap = await getDoc(docRef);
 
         const docData = docSnap.data();
         if (docData)
-          console.log(docData);
+          userData = docData as User;
       }
-      catch (error) {
-        console.log(error);
-      }
+    } catch (error) {
+      // TODO: manejar error.
+      console.log(error);
     }
+    return userData;
   }
 
   async getCurrentUserRole(): Promise<string> {
@@ -106,7 +118,7 @@ export class AuthenticationService {
   }
 
 
-  async isUserLoggedIn(): Promise<boolean> {
+  isUserLoggedIn(): boolean {
     if (this.auth.currentUser) {
       return true;
     } else {
@@ -114,12 +126,16 @@ export class AuthenticationService {
     }
   }
 
-  async waitForFirebaseAuthentication():Promise<void>{
+  async waitForFirebaseAuthentication(): Promise<void> {
     await this.auth.authStateReady();
   }
 
-  async getCurrentUserId(): Promise<any> {
-    return this.auth.currentUser?.uid;
+  getCurrentUserId(): string{
+    const user = this.auth.currentUser;
+    if(user){
+      return user.uid;
+    }
+    return "";
   }
 
 }

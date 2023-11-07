@@ -10,6 +10,7 @@ import { LoginPageComponent } from './pages/usuarios/login-page/login-page.compo
 import { RegistroPageComponent } from './pages/usuarios/registro-page/registro-page.component';
 import { TiendaPageComponent } from './pages/tienda/tienda-page/tienda-page.component';
 import { ProductoInfoPageComponent } from './pages/tienda/producto-info-page/producto-info-page.component';
+import { CompraPageComponent } from './pages/tienda/compra-page/compra-page.component';
 
 const routes: Routes = [
   {path: 'blog', component: BlogPageComponent},
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: 'register', component: RegistroPageComponent},
   {path: 'tienda', component: TiendaPageComponent},
   {path: 'producto/:key', component: ProductoInfoPageComponent},
+  {path: 'compra', component: CompraPageComponent},
   {path: "**", redirectTo: 'home'}
 ];
 

@@ -1,1 +1,25 @@
-<p>carrito works!</p>
+<h1 *ngIf="isLogged && firebaseAuthenticationReady">PRODUCTOS:</h1>
+<table *ngIf="isLogged && firebaseAuthenticationReady">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let producto of productos">
+            <td>{{producto.nombre}}</td>
+            <td>{{producto.precio}}</td>
+            <td>{{producto.cantidad}}</td>
+            <td>{{producto.subtotal}}</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3">Total</td>
+            <td>{{totalCarrito}}</td>
+        </tr>
+    </tfoot>
+</table>

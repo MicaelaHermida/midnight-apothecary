@@ -106,4 +106,45 @@ export class ProductosService {
       console.error(error);
     }
   }
+
+  async getPrecioProducto(idProducto: string): Promise<number>{
+    let precio = 0;
+    try{
+      const db = this.firestore;
+      const productsCollection = collection(db, 'products');
+      const productoDoc = doc(productsCollection, idProducto);
+      const productoSnapshot = await getDoc(productoDoc);
+      if(!productoSnapshot){
+        console.error('No existe el producto');
+        return 0;
+      }
+      const docData = productoSnapshot.data();
+      if(docData)
+        precio = docData['precio'];
+    }catch(error){
+      console.error(error);
+    }
+    return precio;
+  }
+
+  async getNombreProducto(idProducto: string) : Promise<string>{
+    let nombre = "";
+    try{
+      const db = this.firestore;
+      const productsCollection = collection(db, 'products');
+      const productoDoc = doc(productsCollection, idProducto);
+      const productoSnapshot = await getDoc(productoDoc);
+      if(!productoSnapshot){
+        console.error('No existe el producto');
+        return "";
+      }
+      const docData = productoSnapshot.data();
+      if(docData)
+        nombre = docData['nombre'];
+    }catch(error){
+      console.error(error);
+    }
+    return nombre;
+
+  }
 }
