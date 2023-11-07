@@ -28,12 +28,12 @@ export class NuevaBrujaComponent implements OnInit {
     this.formulario = this.formBuilder.group({
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],
-      fecha_nacimiento: ['', Validators.required],
-      fecha_defuncion: ['', Validators.required],
+      fecha_nacimiento: [''],
+      fecha_defuncion: [''],
       tipo_de_muerte: ['', Validators.required],
       lugar_de_nacimiento: ['', Validators.required],
       lugar_de_ejecucion: ['', Validators.required],
-      imagen: ['', Validators.required],
+      imagen: [''],
       historia: ['', Validators.required]
     });
   }
