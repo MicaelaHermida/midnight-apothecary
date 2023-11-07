@@ -1,1 +1,4 @@
-<app-carrito></app-carrito>
+<div *ngIf="hasProductos">
+    <app-carrito></app-carrito>
+    <app-pasarela-pago></app-pasarela-pago>
+</div>

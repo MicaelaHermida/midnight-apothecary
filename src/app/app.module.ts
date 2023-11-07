@@ -39,6 +39,7 @@ import { RegistroPageComponent } from './pages/usuarios/registro-page/registro-p
 import { UsuarioInfoPageComponent } from './pages/usuarios/usuario-info-page/usuario-info-page.component';
 import { ProductoInfoPageComponent } from './pages/tienda/producto-info-page/producto-info-page.component';
 import { NuevoComentarioComponent } from './components/blog/nuevo-comentario/nuevo-comentario.component';
+import { CarritoPageComponent } from './pages/tienda/carrito-page/carrito-page.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import { NuevoComentarioComponent } from './components/blog/nuevo-comentario/nue
     RegistroPageComponent,
     UsuarioInfoPageComponent,
     ProductoInfoPageComponent,
-    NuevoComentarioComponent
+    NuevoComentarioComponent,
+    CarritoPageComponent
   ],
   imports: [
     BrowserModule,

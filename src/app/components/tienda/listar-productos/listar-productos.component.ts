@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { last } from 'rxjs';
 import { Carrito } from 'src/app/interfaces/carrito.interface';
 import { Producto } from 'src/app/interfaces/producto.interface';
 import { AuthenticationService } from 'src/app/services/authentication.service';
@@ -18,6 +19,9 @@ export class ListarProductosComponent implements OnInit {
   isLogged: boolean = false;
   firebaseAuthenticationReady: boolean = false;
   carritoProductos: Carrito[] = [];
+
+
+  lastEditKey: string = "";
 
   itemCarrito: Carrito = {
     id_producto: "",
@@ -74,9 +78,11 @@ export class ListarProductosComponent implements OnInit {
   }
 
   editarProducto(id: string) {
+    this.editModeMap.set(this.lastEditKey, false);
     const currentEditMode = this.editModeMap.get(id);
     this.editModeMap.set(id, !currentEditMode);
     this.initForm(this.productos.get(id)!);
+    this.lastEditKey = id;
   }
 
   async guardarProducto(id: string, producto: Producto) {
