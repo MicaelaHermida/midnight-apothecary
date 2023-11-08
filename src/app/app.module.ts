@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/usuarios/login/login.component';
 import { RegistroComponent } from './components/usuarios/registro/registro.component';
 import { EditarUsuarioComponent } from './components/usuarios/editar-usuario/editar-usuario.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrujaInfoComponent } from './components/blog/brujas/bruja-info/bruja-info.component';
 import { EditarBrujaComponent } from './components/blog/brujas/editar-bruja/editar-bruja.component';
 import { ListarBrujasComponent } from './components/blog/brujas/listar-brujas/listar-brujas.component';
@@ -80,6 +80,7 @@ import { CarritoPageComponent } from './pages/tienda/carrito-page/carrito-page.c
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     provideFirebaseApp(() => initializeApp({

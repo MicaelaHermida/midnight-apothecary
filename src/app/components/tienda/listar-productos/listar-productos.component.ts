@@ -18,16 +18,26 @@ export class ListarProductosComponent implements OnInit {
   isAdminRole: boolean = false;
   isLogged: boolean = false;
   firebaseAuthenticationReady: boolean = false;
-  carritoProductos: Carrito[] = [];
 
+  ////filtrado
+  arrayOrdenamiento: string[] = ['nombre', 'precio', 'stock'];
+  ordenSeleccionado: string = '';
+  arrayFiltrado: string[] = ['hasta $1000', '$1000-$3000', '$3000-$5000', '$5000-$7000', 'más de $7000', 'todos'];
+  filtroSeleccionado: string = '';
+  busqueda: string = '';
+  busquedaFinalizada: boolean = false;
+  ////paginacion
   arrayPaginas: number[] = [];
-
   paginaActual: number = 1;
   productosPorPagina: number = 10;
   totalProductos: number = 0;
 
-  lastEditKey: string = "";
+  ////edicion de productos por admin
+  editModeMap: Map<number, boolean> = new Map();
+  lastEditKey: number = -1;
 
+  ////cliente
+  carritoProductos: Carrito[] = [];
   itemCarrito: Carrito = {
     id_producto: "",
     cantidad: 0
@@ -35,11 +45,11 @@ export class ListarProductosComponent implements OnInit {
 
   form: FormGroup;
 
-  editModeMap: Map<string, boolean> = new Map();
-  
+  allProducts: Map<string, Producto> = new Map();
+  filtradoReady: boolean = false;
 
-  productos: Map<string, Producto> = new Map();
-  
+  productosPagina: Producto[] = [];
+  arrayProductos: Producto[] = [];
 
   constructor(private productosService: ProductosService, private authenticationService: AuthenticationService, private fb: FormBuilder, private router: Router,
     private carrito: CarritoService) {
@@ -55,9 +65,14 @@ export class ListarProductosComponent implements OnInit {
     this.firebaseAuthenticationReady = true;
     this.isLogged = this.authenticationService.isUserLoggedIn();
     this.isAdminRole = await this.authenticationService.getCurrentUserRole() === "admin";
+    this.allProducts = await this.productosService.getProductos();
+    this.ordenarArrayProductos();
     this.actualizarPaginas();
-    await this.mostrarProductos();
+    this.mostrarArrayProductos();
     this.carritoProductos = this.carrito.getCarrito();
+    this.ordenSeleccionado = 'nombre';
+    this.onOrderChangeEvent();
+    this.filtroSeleccionado = 'todos';
   }
 
   initForm(producto: Producto) {
@@ -68,58 +83,127 @@ export class ListarProductosComponent implements OnInit {
     });
   }
 
-  async mostrarProductos() {
-    const start = (this.paginaActual- 1) * this.productosPorPagina;
+  async onFilterChangeEvent(): Promise<void> {
+    this.filtradoReady = false;
+    await this.filtrarProductos();
+    this.ordenarArrayProductos();
+    this.actualizarPaginas();
+    this.mostrarArrayProductos();
+  }
+
+  async filtrarProductos() {
+    this.allProducts = new Map();
+    if (this.filtroSeleccionado === 'hasta $1000') {
+      this.allProducts = await this.productosService.getProductosDentroDeRango(0, 1000);
+    }
+    else if (this.filtroSeleccionado === '$1000-$3000') {
+      this.allProducts = await this.productosService.getProductosDentroDeRango(1000, 3000);
+    }
+    else if (this.filtroSeleccionado === '$3000-$5000') {
+      this.allProducts = await this.productosService.getProductosDentroDeRango(3000, 5000);
+    }
+    else if (this.filtroSeleccionado === '$5000-$7000') {
+      this.allProducts = await this.productosService.getProductosDentroDeRango(5000, 7000);
+    }
+    else if (this.filtroSeleccionado === 'más de $7000') {
+      this.allProducts = await this.productosService.getProductosDentroDeRango(7000, 100000);
+    }
+    else {
+      this.allProducts = await this.productosService.getProductos();
+    }
+  }
+  onOrderChangeEvent() {
+    this.filtradoReady = false;
+    this.ordenarArrayProductos();
+    // Optional: Refrescar el paginado.
+    this.mostrarArrayProductos();
+  }
+
+  mostrarArrayProductos() {
+    const start = (this.paginaActual - 1) * this.productosPorPagina;
     const end = this.paginaActual * this.productosPorPagina;
-    const allProducts = await this.productosService.getProductos();
-    this.totalProductos = allProducts.size;
-    this.productos = new Map(Array.from(allProducts.entries()).slice(start, end));
-    console.log(this.productos);
+    this.totalProductos = this.arrayProductos.length;
+    this.productosPagina = this.arrayProductos.slice(start, end);
+    this.filtradoReady = true;
+
+  }
+  ordenarArrayProductos() {
+    this.arrayProductos = Array.from(this.allProducts.values());
+    if (this.ordenSeleccionado === 'nombre') {
+      this.arrayProductos.sort((a, b) => a.nombre.localeCompare(b.nombre));
+    }
+    else if (this.ordenSeleccionado === 'precio') {
+      this.arrayProductos.sort((a, b) => a.precio - b.precio);
+    }
+    else if (this.ordenSeleccionado === 'stock') {
+      this.arrayProductos.sort((a, b) => a.stock - b.stock);
+    }
   }
 
+  async buscarProductoPorNombre() {
+    this.busquedaFinalizada = false;
+    this.allProducts = new Map();
+    this.allProducts = await this.productosService.getProductosPorNombre(this.busqueda);
+    console.log(this.allProducts);
+    this.ordenarArrayProductos();
+    this.actualizarPaginas();
+    this.mostrarArrayProductos();
+    this.busquedaFinalizada = true;
+    
+  }
+  ////////////////////////PAGINADO///////////////////////
   actualizarPaginas() {
+    this.arrayPaginas = [];
     const cantidadPaginas = this.obtenerCantidadPaginas();
-    this.arrayPaginas = Array.from({ length: cantidadPaginas }, (_, index) => index + 1);
+    console.log(cantidadPaginas)
+    for (let i = 0; i < cantidadPaginas; i++) {
+      this.arrayPaginas.push(i + 1);
+    }
+    console.log(this.arrayPaginas.length)
   }
 
-  cambiarPagina(pagina: number) {
+  async cambiarPagina(pagina: number): Promise<void> {
     if (pagina < 1) {
       pagina = 1;
     }
     const cantidadPaginas = this.obtenerCantidadPaginas();
+    console.log(cantidadPaginas);
     if (pagina > cantidadPaginas) {
       pagina = cantidadPaginas;
     }
     this.paginaActual = pagina;
-    this.mostrarProductos();
+    this.mostrarArrayProductos();
   }
 
 
   obtenerCantidadPaginas(): number {
-    return Math.ceil(this.totalProductos / this.productosPorPagina);
+    return Math.ceil(this.allProducts.size / this.productosPorPagina);
   }
 
   /////////////////////ADMINISTRADOR////////////////////////
-  async eliminarProducto(id: string) {
+  async eliminarProducto(id_planta: number) {
+    const id_producto = this.verificarIdProducto(id_planta);
     const ok = confirm("¿Está seguro que desea eliminar el producto?");
     if (!ok) {
       return;
     }
-    await this.productosService.deleteProducto(id);
-    await this.mostrarProductos();
+    await this.productosService.deleteProducto(id_producto);
+    this.ordenarArrayProductos();
   }
 
-  editarProducto(id: string) {
+  editarProducto(id_planta: number) {
+    const id_producto = this.verificarIdProducto(Number(id_planta));
     this.editModeMap.set(this.lastEditKey, false);
-    const currentEditMode = this.editModeMap.get(id);
-    this.editModeMap.set(id, !currentEditMode);
-    this.initForm(this.productos.get(id)!);
-    this.lastEditKey = id;
+    const currentEditMode = this.editModeMap.get(id_planta);
+    this.editModeMap.set(id_planta, !currentEditMode);
+    this.initForm(this.allProducts.get(id_producto)!);
+    this.lastEditKey = id_planta;
   }
 
-  async guardarProducto(id: string, producto: Producto) {
+  async guardarProducto(producto: Producto) {
     ///quiero asegurarme de que el modo editar este activado
-    const currentEditMode = this.editModeMap.get(id);
+    const id_producto = this.verificarIdProducto(producto.id_planta);
+    const currentEditMode = this.editModeMap.get(producto.id_planta);
     if (!currentEditMode) {
       return;
     }
@@ -132,20 +216,21 @@ export class ListarProductosComponent implements OnInit {
     if (this.form.controls['stock'].valid) {
       producto.stock = this.form.value.stock;
     }
-    await this.productosService.putProducto(id, producto);
-    this.editModeMap.set(id, false);
-    this.mostrarProductos();
+    await this.productosService.putProducto(id_producto, producto);
+    this.editModeMap.set(producto.id_planta, false);
+    this.ordenarArrayProductos();
   }
 
   /////////////////////CLIENTE////////////////////////
 
-  async agregarAlCarrito(id: string) {
-    this.editModeMap.set(id, false);
-    if(this.itemCarrito.cantidad <= 0){
+  async agregarAlCarrito(id_planta: number) {
+    const id_producto = this.verificarIdProducto(id_planta);
+    this.editModeMap.set(id_planta, false);
+    if (this.itemCarrito.cantidad <= 0) {
       alert("Debe ingresar una cantidad válida");
       return;
     }
-    this.itemCarrito.id_producto = id;
+    this.itemCarrito.id_producto = id_producto;
     await this.carrito.actualizarCarrito(this.itemCarrito);
     this.carritoProductos = this.carrito.getCarrito();
     alert("Producto agregado al carrito");
@@ -155,21 +240,32 @@ export class ListarProductosComponent implements OnInit {
     }
   }
 
+  verificarIdProducto(id_planta: number): string {
+    let id_producto: string = '';
+    for (let entry of this.allProducts.entries()) {
+      if (entry[1].id_planta === id_planta) {
+        id_producto = entry[0];
+        break;
+      }
+    }
+    return id_producto;
+  }
 
-  async aumentarCantidad(id: string) {
-    this.editModeMap.set(id, false);
-    const producto = await this.productosService.getProducto(id);
-    if(producto.stock < this.itemCarrito.cantidad){
+  async aumentarCantidad(id_planta: number) {
+    const id_producto = this.verificarIdProducto(id_planta);
+    this.editModeMap.set(id_planta, false);
+    const producto = await this.productosService.getProducto(id_producto);
+    if (producto.stock < this.itemCarrito.cantidad) {
       alert("No hay suficiente stock");
       return;
     }
-    else{
+    else {
       this.itemCarrito.cantidad++;
     }
   }
 
-  disminuirCantidad(id: string) {
-    this.editModeMap.set(id, false);
+  disminuirCantidad(id_planta: number) {
+    this.editModeMap.set(id_planta, false);
     if (this.itemCarrito.cantidad > 0) {
       this.itemCarrito.cantidad--;
     }
