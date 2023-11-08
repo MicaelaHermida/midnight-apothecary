@@ -38,7 +38,7 @@ import { RegistroPageComponent } from './pages/usuarios/registro-page/registro-p
 import { UsuarioInfoPageComponent } from './pages/usuarios/usuario-info-page/usuario-info-page.component';
 import { ProductoInfoPageComponent } from './pages/tienda/producto-info-page/producto-info-page.component';
 import { NuevoComentarioComponent } from './components/blog/comentarios/nuevo-comentario/nuevo-comentario.component';
-import { HeaderComponent } from './components/home/header/header.component';
+import { HeaderComponent } from './components/shared/header/header.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +73,7 @@ import { HeaderComponent } from './components/home/header/header.component';
     UsuarioInfoPageComponent,
     ProductoInfoPageComponent,
     NuevoComentarioComponent,
-    HeaderComponent
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
