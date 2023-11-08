@@ -1,16 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
-html{
+@import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Merriweather&family=Philosopher&family=Quicksand:wght@300;400;500&family=Raleway:wght@200&family=Reenie+Beanie&display=swap');
+
+html {
     box-sizing: border-box;
     font-size: 62.5%;
 }
 
-*, *:before, *:after{
+*,
+*:before,
+*:after {
     box-sizing: inherit;
 }
 
-body{
-    font-family: 'Roboto', sans-serif;
+body {
     font-size: 1.6rem;
     margin: 0;
     padding: 0;
+    background-image: url(../src/assets/img/fondo.jpg);
+    background-size: cover;
 }
+
+hr {
+    border: .15rem solid #b39fb6;
+    margin: 0;
+}
+
+h1 {
+    font-family: 'Reenie Beanie', cursive;
+    font-size: 7rem;
+    margin: 0;
+}
+

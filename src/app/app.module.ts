@@ -17,7 +17,6 @@ import { ListarBrujasComponent } from './components/blog/brujas/listar-brujas/li
 import { NuevaBrujaComponent } from './components/blog/brujas/nueva-bruja/nueva-bruja.component';
 import { ListarComentariosComponent } from './components/blog/comentarios/listar-comentarios/listar-comentarios.component';
 import { ContactoComponent } from './components/home/contacto/contacto.component';
-import { HeroComponent } from './components/home/hero/hero.component';
 import { NosotrasComponent } from './components/home/nosotras/nosotras.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
@@ -39,6 +38,7 @@ import { RegistroPageComponent } from './pages/usuarios/registro-page/registro-p
 import { UsuarioInfoPageComponent } from './pages/usuarios/usuario-info-page/usuario-info-page.component';
 import { ProductoInfoPageComponent } from './pages/tienda/producto-info-page/producto-info-page.component';
 import { NuevoComentarioComponent } from './components/blog/comentarios/nuevo-comentario/nuevo-comentario.component';
+import { HeaderComponent } from './components/home/header/header.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +52,6 @@ import { NuevoComentarioComponent } from './components/blog/comentarios/nuevo-co
     NuevaBrujaComponent,
     ListarComentariosComponent,
     ContactoComponent,
-    HeroComponent,
     NosotrasComponent,
     FooterComponent,
     NavbarComponent,
@@ -73,7 +72,8 @@ import { NuevoComentarioComponent } from './components/blog/comentarios/nuevo-co
     RegistroPageComponent,
     UsuarioInfoPageComponent,
     ProductoInfoPageComponent,
-    NuevoComentarioComponent
+    NuevoComentarioComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

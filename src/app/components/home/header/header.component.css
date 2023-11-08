@@ -1,0 +1,9 @@
+.header{
+    background-image: url(../../../../assets/img/header.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    margin: 0;
+    padding: 3rem;
+    text-align: center;
+}
