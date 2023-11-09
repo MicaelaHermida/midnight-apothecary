@@ -38,7 +38,7 @@
 
 .navbar-links a{
     color:#b39fb6;
-    font-size: 1.6rem;
+    font-size: 2rem;
     font-family: 'Quicksand', sans-serif;
     text-decoration: none;
     text-align: center;
@@ -47,4 +47,8 @@
     padding: 0.5rem;
     width: 50%;
     cursor: pointer;
+}
+
+.navbar-links a:hover{
+    color: #e6e6e6;
 }

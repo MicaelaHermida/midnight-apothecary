@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
-import { AuthenticationService } from 'src/app/services/authentication.service';
+import { ActivatedRoute, NavigationEnd, NavigationStart, Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -12,6 +11,8 @@ export class HeaderComponent implements OnInit {
   isHome: boolean = false;
   isTienda: boolean = false;
   isBlog: boolean = false;
+  isNuevaBruja: boolean = false;
+  isBruja: boolean = false;
   isPerfil: boolean = false;
   isCarrito: boolean = false;
   isCompra: boolean = false;
@@ -23,7 +24,6 @@ export class HeaderComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private authenticationService: AuthenticationService
   ) { }
 
 
@@ -36,6 +36,8 @@ export class HeaderComponent implements OnInit {
           this.isHome = true;
           this.isTienda = false;
           this.isBlog = false;
+          this.isNuevaBruja = false;
+          this.isBruja = false;
           this.isPerfil = false;
           this.isCarrito = false;
           this.isCompra = false;
@@ -43,13 +45,35 @@ export class HeaderComponent implements OnInit {
           this.isHome = false;
           this.isTienda = true;
           this.isBlog = false;
+          this.isNuevaBruja = false;
+          this.isBruja = false;
           this.isPerfil = false;
           this.isCarrito = false;
           this.isCompra = false;
-        } else if (val.url.includes("blog")) {
+        } else if (val.url.match("blog")) {
           this.isHome = false;
           this.isTienda = false;
           this.isBlog = true;
+          this.isNuevaBruja = false;
+          this.isBruja = false;
+          this.isPerfil = false;
+          this.isCarrito = false;
+          this.isCompra = false;
+        } else if (val.url.includes("nueva-bruja")) {
+          this.isHome = false;
+          this.isTienda = false;
+          this.isBlog = false;
+          this.isNuevaBruja = true;
+          this.isBruja = false;
+          this.isPerfil = false;
+          this.isCarrito = false;
+          this.isCompra = false;
+        } else if (val.url.match("blog-bruja") || val.url.includes("editar-bruja")) { //solucionar el de blog-bruja...
+          this.isHome = false;
+          this.isTienda = false;
+          this.isBlog = false;
+          this.isNuevaBruja = false;
+          this.isBruja = true;
           this.isPerfil = false;
           this.isCarrito = false;
           this.isCompra = false;
@@ -57,6 +81,8 @@ export class HeaderComponent implements OnInit {
           this.isHome = false;
           this.isTienda = false;
           this.isBlog = false;
+          this.isNuevaBruja = false;
+          this.isBruja = false;
           this.isPerfil = true;
           this.isCarrito = false;
           this.isCompra = false;
@@ -64,19 +90,25 @@ export class HeaderComponent implements OnInit {
           this.isHome = false;
           this.isTienda = false;
           this.isBlog = false;
+          this.isNuevaBruja = false;
+          this.isBruja = false;
           this.isPerfil = false;
           this.isCarrito = true;
           this.isCompra = false;
-        } else if(val.url.includes("compra")){
+        } else if (val.url.includes("compra")) {
           this.isHome = false;
           this.isTienda = false;
           this.isBlog = false;
+          this.isNuevaBruja = false;
+          this.isBruja = false;
           this.isPerfil = false;
           this.isCarrito = false;
           this.isCompra = true;
         }
       }
     });
+
+
   }
 
 
