@@ -42,6 +42,7 @@ export class ListarProductosComponent implements OnInit {
     id_producto: "",
     cantidad: 0
   }
+  cantidadItems: number = 0;
 
   form: FormGroup;
 
@@ -269,6 +270,11 @@ export class ListarProductosComponent implements OnInit {
     if (this.itemCarrito.cantidad > 0) {
       this.itemCarrito.cantidad--;
     }
+  }
+
+  verDetalleProducto(id_planta : number){
+    const id_producto = this.verificarIdProducto(id_planta);
+    this.router.navigate(['/producto', id_producto]);
   }
 
 }

@@ -1,0 +1,29 @@
+.img-producto{
+    width: 80%;
+    border-radius: 9px;
+}
+
+.contenedor{
+    display: flex;
+    justify-content: row;
+    width: 80%;
+    margin: auto;
+}
+
+.imagen-titulo{
+    text-align: center;
+    margin-left: 5rem;
+}
+
+.detalles-producto{
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    margin: auto;
+    margin-top: 6.5rem;
+    flex-wrap: wrap;
+}
+
+.detalles-producto div{
+    width: 50%;
+}

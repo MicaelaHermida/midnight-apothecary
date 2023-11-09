@@ -2,7 +2,7 @@ export interface PlantaInfo{
     scientific_name: string[],
     cycle: string,
     watering: string,
-    sunlight:String[],
+    sunlight:string[],
     type: string,
     flowers: boolean,
     fruits: boolean,

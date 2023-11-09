@@ -1,20 +1,27 @@
-<div>
-    <h1>{{producto!.nombre}}</h1>
-    <img src="{{producto.imagen}}" class="img-producto">
-    <p>precio: ${{producto.precio}}</p>
-    <p>stock: {{producto.stock}}</p>
-    <p>Nombre cientifico: {{plantaInfo.scientific_name}}</p>
-    <p>Ciclo: {{plantaInfo.cycle}}</p>
-    <p>Riego: {{plantaInfo.watering}}</p>
-    <p>Requiere luz: {{plantaInfo.sunlight}}</p>
-    <p>Tipo: {{plantaInfo.type}}</p>
-    <p>Flores: {{plantaInfo.flowers}}</p>
-    <p>Frutos: {{plantaInfo.fruits}}</p>
-    <p>Medicinal: {{plantaInfo.medicinal}}</p>
-    <p>Venenoso para humanos: {{plantaInfo.poisonous_to_humans}}</p>
-    <p>Venenoso para mascotas: {{plantaInfo.poisonous_to_pets}}</p>
-    <p>Indoor: {{plantaInfo.indoor}}</p>
-    <p>Nivel de cuidado: {{plantaInfo.care_level}}</p>
-    <p>Descripcion: {{plantaInfo.description}}</p>
+<div class="contenedor">
+    <div class="imagen-titulo">
+        <h1>{{producto!.nombre}}</h1>
+        <img src="{{producto.imagen}}" class="img-producto">
+    </div>
+    <div class="detalles-producto">
+        <div>
+            <p><b>Precio:</b> ${{producto.precio}}</p>
+            <p><b>Stock:</b> {{producto.stock}}</p>
+            <p><b>Nombre cientifico:</b> {{plantaInfo.scientific_name}}</p>
+            <p><b>Ciclo:</b> {{plantaInfo.cycle}}</p>
+            <p><b>Riego:</b> {{plantaInfo.watering}}</p>
+            <p><b>Requiere luz:</b> {{plantaInfo.sunlight}}</p>
+            <p><b>Tipo:</b> {{plantaInfo.type}}</p>
+        </div>
+        <div>
+            <p><b>Flores:</b> {{plantaInfo.flowers}}</p>
+            <p><b>Frutos:</b> {{plantaInfo.fruits}}</p>
+            <p><b>Medicinal:</b> {{plantaInfo.medicinal}}</p>
+            <p><b>Venenoso para humanos:</b> {{plantaInfo.poisonous_to_humans}}</p>
+            <p><b>Venenoso para mascotas:</b> {{plantaInfo.poisonous_to_pets}}</p>
+            <p><b>Indoor:</b> {{plantaInfo.indoor}}</p>
+            <p><b>Nivel de cuidado:</b> {{plantaInfo.care_level}}</p>
+        </div>
+        <p><b>Descripcion:</b> {{plantaInfo.description}}</p>
+    </div>
 </div>
-
