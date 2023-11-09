@@ -6,9 +6,10 @@ export interface User{
     apellido: string,
     telefono: string,
     direccion: string,
+    depto: string,
     ciudad: string,
     provincia: string,
     codigoPostal: string,
     carrito: Carrito[],
-    id: string
+    dni: string
 }

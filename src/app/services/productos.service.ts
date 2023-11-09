@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { Producto } from '../interfaces/producto.interface';
-import { Firestore, addDoc, collection, deleteDoc, doc, getDoc, setDoc, getDocs } from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, deleteDoc, doc, getDoc, setDoc, getDocs, query, orderBy, limit, where, startAt, endAt} from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +29,7 @@ export class ProductosService {
   }
 
 
-  async getProductos():Promise<Map<string,Producto>>{
+  async getProductos(filtro: string = ''):Promise<Map<string,Producto>>{
     try{
       const mapa: Map<string, Producto> = new Map() ;
       const db = this.firestore;
@@ -45,6 +45,55 @@ export class ProductosService {
     }
     return new Map();
   }
+
+  async getProductosDentroDeRango(min: number, max: number): Promise<Map<string, Producto>>{
+    try{
+      const mapa: Map<string, Producto> = new Map() ;
+      const db = this.firestore;
+      const productsCollection = collection(db, 'products');
+      const q = query(productsCollection, where('precio', '>=', min), where('precio', '<=', max));
+      const productsSnapshot = await getDocs(q);
+      productsSnapshot.docs.forEach(doc => {
+        const producto = doc.data() as Producto;
+        mapa.set(doc.id, producto);
+      });
+      return mapa;
+    }catch(error){
+      console.error(error);
+    }
+    return new Map();
+  }
+
+  async getProductosPorNombre(nombre: string): Promise<Map<string, Producto>>{
+    try {
+      nombre = nombre.toLowerCase();
+      const mapa: Map<string, Producto> = new Map();
+      const db = this.firestore;
+      const productsCollection = collection(db, 'products');
+      const productsSnapshot = await getDocs(productsCollection);
+      if(nombre === ''){
+        productsSnapshot.docs.forEach(doc => {
+          const producto = doc.data() as Producto;
+          mapa.set(doc.id, producto);
+        });
+      }
+      else{
+        productsSnapshot.docs.forEach(doc => {
+          const producto = doc.data() as Producto;
+          const productoToLower = producto.nombre.toLowerCase();
+          if(productoToLower.includes(nombre)){
+            mapa.set(doc.id, producto);
+          }
+        });
+      }
+  
+      return mapa;
+    } catch (error) {
+      console.error(error);
+    }
+    return new Map();
+  }
+
 
   async deleteProducto(id: string):Promise<void>{
     try{
@@ -147,4 +196,6 @@ export class ProductosService {
     return nombre;
 
   }
+
+
 }

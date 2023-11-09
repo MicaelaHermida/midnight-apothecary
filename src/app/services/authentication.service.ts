@@ -9,7 +9,6 @@ import { User } from '../interfaces/user.interface';
 })
 export class AuthenticationService {
 
-
   constructor(private firestore: Firestore, private auth: Auth) {
   }
 
@@ -27,9 +26,11 @@ export class AuthenticationService {
         apellido: apellido,
         telefono: "",
         direccion: "",
+        depto: "",
         ciudad: "",
         provincia: "",
         codigoPostal: "",
+        dni: "",
         carrito: [] as Carrito[]
       };
 
@@ -40,6 +41,7 @@ export class AuthenticationService {
       console.error(error);
     }
   }
+
 
   async login(email: string, password: string): Promise<boolean> {
     let result = false;
@@ -82,6 +84,7 @@ export class AuthenticationService {
     }
     return userData;
   }
+
 
   async getCurrentUserRole(): Promise<string> {
     let rol = "";

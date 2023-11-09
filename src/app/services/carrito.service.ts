@@ -14,7 +14,7 @@ export class CarritoService {
 
   constructor(private authService: AuthenticationService) { }
 
-  async getCarritoFromUsuario() : Promise<void>{
+  async getCarritoFromUsuario(): Promise<void> {
     try {
       const user = await this.authService.getAllCurrentUserData();
       this.carrito = user.carrito;
@@ -27,40 +27,46 @@ export class CarritoService {
     return this.carrito;
   }
 
-  async actualizarCarrito(carrito: Carrito) : Promise<void>{
+  async actualizarCarrito(carrito: Carrito): Promise<void> {
     try {
       const user = await this.authService.getAllCurrentUserData();
-      user.carrito.push(carrito);
+      const productoEnCarrito = user.carrito.find((item) => item.id_producto === carrito.id_producto);
+
+      if (productoEnCarrito) {
+        // Si el producto ya está en el carrito, suma la cantidad
+        productoEnCarrito.cantidad += carrito.cantidad;
+      } else {
+        // Si el producto no se encuentra en el carrito, lo agrega
+        user.carrito.push(carrito);
+      }
       const id = this.authService.getCurrentUserId();
       await this.authService.updateUserData(id, user);
+      this.carrito = user.carrito;
     } catch (error) {
       console.error(error);
     }
   }
 
-  async deleteProductoCarrito(idProducto: string, cantidad: number) : Promise<void>{
+  async deleteProductoCarrito(idProducto: string, cantidad: number): Promise<void> {
     try {
       const user = await this.authService.getAllCurrentUserData();
       if (user) {
-        let i = 0;
-        let encontrado = false;
-        while (i < user.carrito.length && !encontrado) {
-          if (user.carrito[i].id_producto === idProducto) {
-            encontrado = true;
-            if(user.carrito[i].cantidad >= cantidad){
-              user.carrito[i].cantidad -= cantidad;
-            }else{
-              user.carrito[i].cantidad = 0;
-            }
-            if (user.carrito[i].cantidad <= 0) {
-              user.carrito.splice(i, 1);
-            }
+        const index = user.carrito.findIndex((item) => item.id_producto === idProducto);
+
+        if (index !== -1) {
+          if (user.carrito[index].cantidad >= cantidad) {
+            user.carrito[index].cantidad -= cantidad;
+          } else {
+            user.carrito[index].cantidad = 0;
           }
-          i++;
-        }
-        if(encontrado){
+
+          if (user.carrito[index].cantidad <= 0) {
+            user.carrito.splice(index, 1);
+          }
+
           const id = this.authService.getCurrentUserId();
           await this.authService.updateUserData(id, user);
+          this.carrito = user.carrito;
         }
       }
     } catch (error) {
@@ -81,4 +87,7 @@ export class CarritoService {
     }
   }
 
+  carritoHasItems(): boolean {
+    return this.carrito.length > 0;
+  }
 }
