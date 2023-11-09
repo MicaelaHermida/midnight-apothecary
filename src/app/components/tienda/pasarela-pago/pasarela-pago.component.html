@@ -1,1 +1,53 @@
-<p>pasarela-pago works!</p>
+<button [routerLink]="['/tienda']">volver a la tienda</button>
+<div *ngIf="isLogged && firebaseAuthenticationReady">
+    <fieldset class="form-pago">
+        <legend>Datos de facturacion</legend>
+        <form [formGroup]="formularioUsuario" (ngSubmit)="actualizarDatosUsuario()">
+            <label>Nombre/s:</label>
+            <p *ngIf="!editMode" >{{usuarioLogueado.nombre}}</p>
+            <input *ngIf="editMode" formControlName="nombre">
+            <label>Apellido/s:</label>
+            <p *ngIf="!editMode">{{usuarioLogueado.apellido}}</p>
+            <input *ngIf="editMode" formControlName="apellido">
+            <label>Telefono:</label>
+            <p *ngIf="!editMode">{{usuarioLogueado.telefono}}</p>
+            <input *ngIf="editMode" formControlName="telefono">
+            <label>Provincia:</label>
+            <p *ngIf="!editMode">{{usuarioLogueado.provincia}}</p>
+            <input *ngIf="editMode" formControlName="provincia">
+            <label>Ciudad:</label>
+            <p *ngIf="!editMode">{{usuarioLogueado.ciudad}}</p>
+            <input *ngIf="editMode" formControlName="ciudad">
+            <label>Direccion:</label>
+            <p *ngIf="!editMode">{{usuarioLogueado.direccion}}</p>
+            <input *ngIf="editMode" formControlName="direccion">
+            <label>Piso/Depto:</label>
+            <p *ngIf="!editMode">{{usuarioLogueado.depto}}</p>
+            <input *ngIf="editMode" formControlName="depto"  type="text">
+            <label>Codigo Postal:</label>
+            <p *ngIf="!editMode">{{usuarioLogueado.codigoPostal}}</p>
+            <input *ngIf="editMode" formControlName="codigoPostal">
+            <label>DNI:</label>
+            <p *ngIf="!editMode">{{usuarioLogueado.dni}}</p>
+            <input *ngIf="editMode" formControlName="dni">
+            <button *ngIf="editMode" type="submit">Guardar</button>
+            <button type="button" *ngIf="!editMode" (click)="activarEditMode()">Editar</button>
+        </form>
+    </fieldset>
+    <fieldset class="form-pago">
+        <legend>Datos de pago:</legend>
+        <form [formGroup]="formularioPago" (ngSubmit)="realizarCompra()">
+            <label>Nombre del titular</label>
+            <input>
+            <label>Numero de tarjeta</label>
+            <input>
+            <label>Fecha de caducidad</label>
+            <input>
+            <label>Codigo de seguridad</label>
+            <input>
+            <label>DNI del pagador</label>
+            <input>
+            <button type="submit">Pagar</button>
+        </form>
+    </fieldset>
+</div>
