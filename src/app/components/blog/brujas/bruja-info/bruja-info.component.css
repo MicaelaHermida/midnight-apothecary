@@ -9,7 +9,7 @@
     margin: auto;
 }
 
-.contenedor-bruja-info h2 {
+.contenedor-bruja-info h2{
     font-family: 'Quicksand', serif;
     text-decoration: underline;
     font-size: 3rem;
@@ -19,8 +19,18 @@
     text-align: center;
     margin: 1rem;
     padding: .5rem;
-
 }
+
+.contenedor-bruja-info h3{
+    font-family: 'Quicksand', serif;
+    text-decoration: underline;
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: #2a2030;
+    line-height: 1.5rem;
+    text-align: center;
+}
+
 
 .contenedor-bruja-info div {
     background-color: #b39fb6af;
