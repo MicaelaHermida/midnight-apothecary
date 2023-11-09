@@ -1,0 +1,10 @@
+.bruja-info{
+    width: 70%;
+    background-color: #b39fb6af;
+    padding: .5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+}
+

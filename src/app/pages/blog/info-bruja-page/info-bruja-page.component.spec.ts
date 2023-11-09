@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { InfoBrujaPageComponent } from './info-bruja-page.component';
 
-describe('BlogBrujaPageComponent', () => {
+describe('InfoBrujaPageComponent', () => {
   let component: InfoBrujaPageComponent;
   let fixture: ComponentFixture<InfoBrujaPageComponent>;
 
