@@ -1,7 +1,8 @@
 <header>
-    <h1 *ngIf="isHome && !isBlog && !isPerfil && !isCarrito && !isTienda ">Midnight Apothecary</h1>
-    <h1 *ngIf="isTienda && !isHome && !isBlog && !isPerfil && !isCarrito">Tienda</h1>
-    <h1 *ngIf="isBlog && !isHome && !isPerfil && !isCarrito && !isTienda">Brujas Históricas</h1>
-    <h1 *ngIf="isPerfil && !isHome && !isBlog && !isCarrito && !isTienda ">Perfil</h1>
-    <h1 *ngIf="isCarrito && !isHome && !isTienda && !isBlog && !isPerfil">Carrito</h1>
+    <h1 *ngIf="isHome"><span class="mayus">M</span>idnight <span class="mayus">A</span>pothecary</h1>
+    <h1 *ngIf="isTienda"><span class="mayus">T</span>ienda</h1>
+    <h1 *ngIf="isBlog"><span class="mayus">B</span>rujas <span class="mayus">H</span>istóricas</h1>
+    <h1 *ngIf="isPerfil"><span class="mayus">P</span>erfil</h1>
+    <h1 *ngIf="isCarrito"><span class="mayus">C</span>arrito</h1>
+    <h1 *ngIf="isCompra"><span class="mayus">C</span>ompra</h1>
 </header>

@@ -51,7 +51,7 @@ button{
 }
 
 header{
-    background-image: url(../../../../assets/img/header.jpg);
+    background-image: url(../src/assets/img/header.jpg);
     background-size: cover;
     background-position: center;
     height: 100%;
@@ -59,3 +59,8 @@ header{
     padding: 3rem;
     text-align: center;
 }
+
+.mayus{
+    font-size: 8.5rem;
+}
+
