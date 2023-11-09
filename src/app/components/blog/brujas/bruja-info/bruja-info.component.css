@@ -1,15 +1,50 @@
 /*BRUJA INFO*/
-img {
+.contenedor-bruja-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: .5rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5rem;
+    margin: auto;
+}
+
+.contenedor-bruja-info h2 {
+    font-family: 'Quicksand', serif;
+    text-decoration: underline;
+    font-size: 3rem;
+    font-weight: 400;
+    color: #2a2030;
+    line-height: 1.5rem;
+    text-align: center;
+    margin: 1rem;
+    padding: .5rem;
+
+}
+
+.contenedor-bruja-info div {
+    background-color: #b39fb6af;
+/*     border-radius: 5rem; */
+    height: 100%;
+    padding: .5rem;
+}
+
+.contenedor-bruja-info .imagen-bruja {
     background-color: #2a2030d3;
-    width: 50%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+/*     border-radius: 5rem; */
 }
 
-.imagen-bruja {
-    width: 40%;
-    padding: 1rem;
+.contenedor-bruja-info .imagen-bruja img {
+    width: 100%;
+ /*    border-radius: 5rem; */
 }
 
-.bruja-info div{
+.bruja-info div {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,11 +55,12 @@ img {
 
 p {
     font-family: 'Merriweater', serif;
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 400;
     color: #2a2030;
-    line-height: 1.5rem;
-    text-align: center;
+    line-height: 2rem;
+    text-align: left;
+    
     margin: 1rem;
     padding: .5rem;
 }
