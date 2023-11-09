@@ -50,5 +50,6 @@
 }
 
 .navbar-links a:hover{
-    color: #e6e6e6;
+    color: #6b5973;
+    font-weight: 600;
 }

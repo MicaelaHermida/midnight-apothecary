@@ -21,7 +21,7 @@
                 <td class="texto">{{bruja.value.tipo_de_muerte}}</td>
                 <td class="texto">{{bruja.value.lugar_de_nacimiento}}</td>
                 <td class="texto">{{bruja.value.lugar_de_ejecucion}}</td>
-                <td><a class="boton" [routerLink]="['/blog-bruja', bruja.key]">Ver Info</a></td>
+                <td><a class="boton" [routerLink]="['/info-bruja', bruja.key]">Ver Info</a></td>
                 <td><a class="boton" [routerLink]="['/editar-bruja', bruja.key]" *ngIf="isAdmin">Editar</a></td>
                 <td><a class="boton" (click)="eliminarBruja(bruja.key)" *ngIf="isAdmin">Eliminar</a></td>
             </tr>

@@ -25,7 +25,7 @@ import { ListarProductosComponent } from './components/tienda/listar-productos/l
 import { PasarelaPagoComponent } from './components/tienda/pasarela-pago/pasarela-pago.component';
 import { InfoProductoComponent } from './components/tienda/info-producto/info-producto.component';
 import { UsuarioInfoComponent } from './components/usuarios/usuario-info/usuario-info.component';
-import { BlogBrujaPageComponent } from './pages/blog/blog-bruja-page/blog-bruja-page.component';
+import { InfoBrujaPageComponent } from './pages/blog/info-bruja-page/info-bruja-page.component';
 import { BlogPageComponent } from './pages/blog/blog-page/blog-page.component';
 import { EditarBrujaPageComponent } from './pages/blog/editar-bruja-page/editar-bruja-page.component';
 import { NuevaBrujaPageComponent } from './pages/blog/nueva-bruja-page/nueva-bruja-page.component';
@@ -61,7 +61,7 @@ import { CarritoPageComponent } from './pages/tienda/carrito-page/carrito-page.c
     PasarelaPagoComponent,
     InfoProductoComponent,
     UsuarioInfoComponent,
-    BlogBrujaPageComponent,
+    InfoBrujaPageComponent,
     BlogPageComponent,
     EditarBrujaPageComponent,
     NuevaBrujaPageComponent,

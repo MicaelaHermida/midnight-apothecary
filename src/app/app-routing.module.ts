@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { BlogPageComponent } from './pages/blog/blog-page/blog-page.component';
-import { BlogBrujaPageComponent } from './pages/blog/blog-bruja-page/blog-bruja-page.component';
+import { InfoBrujaPageComponent } from './pages/blog/info-bruja-page/info-bruja-page.component';
 import { EditarBrujaPageComponent } from './pages/blog/editar-bruja-page/editar-bruja-page.component';
 import { NuevaBrujaPageComponent } from './pages/blog/nueva-bruja-page/nueva-bruja-page.component';
 import { LoginPageComponent } from './pages/usuarios/login-page/login-page.component';
@@ -14,7 +14,7 @@ import { CarritoPageComponent } from './pages/tienda/carrito-page/carrito-page.c
 
 const routes: Routes = [
   {path: 'blog', component: BlogPageComponent},
-  {path: 'blog-bruja/:key', component: BlogBrujaPageComponent},
+  {path: 'info-bruja/:key', component: InfoBrujaPageComponent},
   {path: 'editar-bruja/:key', component: EditarBrujaPageComponent},
   {path: 'nueva-bruja', component: NuevaBrujaPageComponent},
   {path: 'home', component: HomePageComponent},

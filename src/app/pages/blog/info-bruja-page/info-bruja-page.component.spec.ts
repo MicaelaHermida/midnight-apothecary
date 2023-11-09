@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BlogBrujaPageComponent } from './blog-bruja-page.component';
+import { InfoBrujaPageComponent } from './info-bruja-page.component';
 
 describe('BlogBrujaPageComponent', () => {
-  let component: BlogBrujaPageComponent;
-  let fixture: ComponentFixture<BlogBrujaPageComponent>;
+  let component: InfoBrujaPageComponent;
+  let fixture: ComponentFixture<InfoBrujaPageComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [BlogBrujaPageComponent]
+      declarations: [InfoBrujaPageComponent]
     });
-    fixture = TestBed.createComponent(BlogBrujaPageComponent);
+    fixture = TestBed.createComponent(InfoBrujaPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -50,7 +50,7 @@ export class HeaderComponent implements OnInit {
           this.isPerfil = false;
           this.isCarrito = false;
           this.isCompra = false;
-        } else if (val.url.match("blog")) {
+        } else if (val.url.includes("blog")) {
           this.isHome = false;
           this.isTienda = false;
           this.isBlog = true;
@@ -68,7 +68,7 @@ export class HeaderComponent implements OnInit {
           this.isPerfil = false;
           this.isCarrito = false;
           this.isCompra = false;
-        } else if (val.url.match("blog-bruja") || val.url.includes("editar-bruja")) { //solucionar el de blog-bruja...
+        } else if (val.url.includes("info-bruja") || val.url.includes("editar-bruja")) { //solucionar el de blog-bruja...
           this.isHome = false;
           this.isTienda = false;
           this.isBlog = false;

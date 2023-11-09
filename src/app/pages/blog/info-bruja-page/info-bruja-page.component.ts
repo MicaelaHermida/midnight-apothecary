@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
-  selector: 'app-blog-bruja-page',
-  templateUrl: './blog-bruja-page.component.html',
-  styleUrls: ['./blog-bruja-page.component.css']
+  selector: 'app-info-bruja-page',
+  templateUrl: './info-bruja-page.component.html',
+  styleUrls: ['./info-bruja-page.component.css']
 })
-export class BlogBrujaPageComponent implements OnInit{
+export class InfoBrujaPageComponent implements OnInit{
   
   isAdmin: Boolean = false;
   isLogged: Boolean = false;
