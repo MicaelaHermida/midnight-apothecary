@@ -1,0 +1,9 @@
+ .comentario{
+    width: 50%;
+    background-color: #b39fb6af;
+    margin: auto;
+}
+
+.comentario p{
+    padding: .5rem;
+}

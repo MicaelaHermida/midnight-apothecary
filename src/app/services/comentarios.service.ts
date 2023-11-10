@@ -98,7 +98,7 @@ export class ComentariosService {
   }
 
   //EDITAR - B
-  async putComentario(id: string, comentario: string): Promise<void> {
+  async putComentario(id: string, comentario: Comentario): Promise<void> {
     try {
       const comentarioDoc = doc(this.comentariosCollection, id);
       const comentarioSnapshot = await getDoc(comentarioDoc);
@@ -106,7 +106,10 @@ export class ComentariosService {
       if (!comentarioSnapshot.exists()) throw new Error("No se encontró el comentario");
 
       const data = {
-        comentario: comentario
+        userId: comentario.userId,
+        brujaId: comentario.brujaId,
+        fecha: comentario.fecha,
+        comentario: comentario.comentario
       }
       await setDoc(comentarioDoc, data);
       console.log("Comentario actualizado");
@@ -115,6 +118,26 @@ export class ComentariosService {
     }
   }
 
+/*   async postComentario(comentario: string, userId: string): Promise<void> {
+    try {
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = String(now.getMonth() + 1).padStart(2, '0'); // +1 porque los meses empiezan en 0
+      const day = String(now.getDate()).padStart(2, '0');
+      const formattedFecha = `${year}/${month}/${day}`;
+
+      const data = {
+        userId: userId,
+        brujaId: this.brujaId,
+        comentario: comentario,
+        fecha: formattedFecha
+      };
+
+      await addDoc(this.comentariosCollection, data);
+    } catch (error) {
+      console.error(error); //agregar alerts
+    }
+  } */
 
 }
 
