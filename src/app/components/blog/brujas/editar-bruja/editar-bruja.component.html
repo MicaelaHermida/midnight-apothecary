@@ -1,5 +1,5 @@
-<h1>Editar Bruja</h1>
-<fieldset class="formulario">
+
+<fieldset class="formulario-bruja">
 
     <form class="sector" [formGroup]="formulario">
         <div class="campo">
@@ -7,47 +7,47 @@
             <input type="text" id="editNombre" formControlName="editNombre">
         </div>
 
-        <div>
+        <div class="campo">
             <label for="editApellido">Apellido:</label>
             <input type="text" id="editApellido" formControlName="editApellido">
         </div>
 
-        <div>
+        <div class="campo">
             <label for="editFechaNac">Fecha de Nacimiento:</label>
             <input type="text" id="editFechaNac" formControlName="editFechaNac">
         </div>
 
-        <div>
+        <div class="campo">
             <label for="editFechaDef">Fecha de Defunción:</label>
             <input type="text" id="editFechaDef" formControlName="editFechaDef">
         </div>
 
-        <div>
+        <div class="campo">
             <label for="editTipoMuerte">Tipo de Muerte:</label>
             <input type="text" id="editTipoMuerte" formControlName="editTipoMuerte">
         </div>
 
-        <div>
+        <div class="campo">
             <label for="editLugarNac">Lugar de Nacimiento:</label>
             <input type="text" id="editLugarNac" formControlName="editLugarNac">
         </div>
 
-        <div>
+        <div class="campo">
             <label for="editLugarEjec">Lugar de Ejecución:</label>
             <input type="text" id="editLugarEjec" formControlName="editLugarEjec">
         </div>
 
-        <div>
-            <label for="editImagen">Imagen:</label>
+        <div class="campo">
+            <label for="editImagen">Imagen(url):</label>
             <input type="url" id="editImagen" formControlName="editImagen">
         </div>
 
-        <div>
+        <div class="campo">
             <label for="editHistoria">Historia:</label>
             <textarea id="editHistoria" cols="30" rows="10" formControlName="editHistoria"></textarea>
         </div>
 
-        <div>
+        <div class="campo">
             <button type="submit" (click)="editarBruja()">Actualizar</button>
             <button [routerLink]="['/blog']">Cancelar</button> 
         </div>
