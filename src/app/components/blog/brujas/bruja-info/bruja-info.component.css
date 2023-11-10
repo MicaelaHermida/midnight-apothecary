@@ -34,7 +34,7 @@
 
 .contenedor-bruja-info div {
     background-color: #b39fb6af;
-/*     border-radius: 5rem; */
+    border-radius: 1rem;
     height: 100%;
     padding: .5rem;
 }
@@ -46,12 +46,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-/*     border-radius: 5rem; */
+    border-radius: 1rem;
 }
 
 .contenedor-bruja-info .imagen-bruja img {
     width: 100%;
- /*    border-radius: 5rem; */
+    border-radius: 1rem;
 }
 
 .bruja-info div {

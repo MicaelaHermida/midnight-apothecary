@@ -80,12 +80,12 @@ export class ListarComentariosComponent implements OnInit {
 
   async guardarComentario(id: string): Promise<void> {
     const currentEditMode = this.editModeMap.get(id);
-    let comentario: string = '';
+    let comentario: Comentario = await this.comentariosService.getComentario(id);
 
     if (!currentEditMode) return;
 
     if (this.formulario.controls['editComentario'].valid) {
-      comentario = this.formulario.value.editComentario;
+      comentario.comentario = this.formulario.value.editComentario;
     }
 
     await this.comentariosService.putComentario(id, comentario);
