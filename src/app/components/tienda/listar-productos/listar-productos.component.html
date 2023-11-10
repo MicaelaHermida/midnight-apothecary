@@ -1,5 +1,6 @@
 <div class="contenedor-principal" *ngIf="filtradoReady">
     <div class="filtro">
+        <!--////////////////FILTRADO///////////////////-->
         <div class="opciones-filtrado">
             <div *ngIf="isLogged && firebaseAuthenticationReady">
                 <p>Ordenar por:</p>
@@ -14,12 +15,16 @@
                 </select>
             </div>
         </div>
-        <div>
-            <p>Buscar</p>
-            <input type="text" [(ngModel)]="busqueda">
-            <button type="button" (click)="buscarProductoPorNombre()">🔎</button>
+        <!--////////////////BUSQUEDA///////////////////-->
+        <div class="contenedor-busqueda">
+            <p>Buscar:</p>
+            <div>
+                <input type="text" [(ngModel)]="busqueda" class="busqueda">
+                <button type="button" (click)="buscarProductoPorNombre()">🔎</button>
+            </div>
         </div>
     </div>
+    <!--////////////////PAGINACION///////////////////-->
     <div class="pagination">
         <button (click)="cambiarPagina(paginaActual - 1)" [disabled]="paginaActual === 1">Anterior</button>
         <button *ngFor="let pageNumber of arrayPaginas" (click)="cambiarPagina(pageNumber)"
@@ -29,6 +34,7 @@
     </div>
     <div class="contenedor-productos">
         <p *ngIf="allProducts.size <1 && busquedaFinalizada">Ups... no se ha encontrado el producto</p>
+            <!--////////////////LISTADO PRODUCTOS///////////////////-->
         <form *ngFor="let producto of productosPagina" (ngSubmit)="guardarProducto(producto)" [formGroup]="form"
             class="card">
             <div (click)="verDetalleProducto(producto.id_planta)" class="info-producto">
@@ -39,6 +45,7 @@
                     <p>stock: {{producto.stock}}</p>
                 </div>
             </div>
+            <!--////////////////OPCIONES USUARIO-CLIENTE///////////////////-->
             <div class="opciones-compra">
                 <button *ngIf="!isAdminRole && isLogged && firebaseAuthenticationReady"
                     (click)="disminuirCantidad(producto.id_planta)">-</button>
@@ -49,17 +56,21 @@
                 <button *ngIf="!isAdminRole && isLogged && firebaseAuthenticationReady"
                     (click)="agregarAlCarrito(producto.id_planta)">Agregar al carrito</button>
             </div>
+            <!--////////////////MODO EDICION - ADMIN///////////////////-->
             <div *ngIf="editModeMap.get(producto.id_planta)" class="edit-mode">
                 <input formControlName="nombre" placeholder="{{producto.nombre}}" type="text">
                 <input formControlName="precio" placeholder="{{producto.precio}}" type="number">
                 <input formControlName="stock" placeholder="stock({{producto.stock}})" type="number">
             </div>
+            <!--////////////////BOTONES ADMIN///////////////////-->
             <div class="botones-admin">
                 <button *ngIf="isAdminRole && firebaseAuthenticationReady && !editModeMap.get(producto.id_planta)"
                     (click)="editarProducto(producto.id_planta)">Editar</button>
                 <button *ngIf="isAdminRole && firebaseAuthenticationReady && editModeMap.get(producto.id_planta)"
+                    (click)="cancelarEdicion()">Cancelar</button>
+                <button *ngIf="isAdminRole && firebaseAuthenticationReady && editModeMap.get(producto.id_planta)"
                     type="submit">Guardar</button>
-                <button *ngIf="isAdminRole && firebaseAuthenticationReady"
+                <button *ngIf="isAdminRole && firebaseAuthenticationReady && !editModeMap.get(producto.id_planta)"
                     (click)="eliminarProducto(producto.id_planta)">Eliminar</button>
             </div>
         </form>

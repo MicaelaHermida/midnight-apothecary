@@ -222,6 +222,10 @@ export class ListarProductosComponent implements OnInit {
     this.ordenarArrayProductos();
   }
 
+
+  cancelarEdicion(){
+    this.editModeMap.set(this.lastEditKey, false);
+  }
   /////////////////////CLIENTE////////////////////////
 
   async agregarAlCarrito(id_planta: number) {
