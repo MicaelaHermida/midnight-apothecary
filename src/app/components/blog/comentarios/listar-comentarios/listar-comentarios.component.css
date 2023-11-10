@@ -1,7 +1,9 @@
-.contenedor-comentarios{
-    margin-bottom: 2rem;
+ .comentario{
+    width: 50%;
+    background-color: #b39fb6af;
+    margin: auto;
 }
 
-form{
-    margin-top: 2rem;
+.comentario p{
+    padding: .5rem;
 }

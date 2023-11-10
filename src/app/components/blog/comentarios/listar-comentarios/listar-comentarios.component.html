@@ -1,13 +1,15 @@
-<form class="contenedor-comentarios" *ngFor="let comentario of listadoComentarios | keyvalue">
+<form *ngFor="let comentario of listadoComentarios | keyvalue" >
     <div *ngIf="!editModeMap.get(comentario.key)">
-        <h3>{{comentario.value['fecha']}}</h3>
+        <div  class="comentario">
+            <h3>{{comentario.value['fecha']}}</h3>
         <p>{{comentario.value.userId}}</p>
         <p>{{comentario.value.comentario}}</p>
         <button type="button" class="boton" *ngIf="esUsuario(comentario.value.userId) && firebaseAuthenticationReady" (click)="editarComentario(comentario.key)">Modificar</button>
         <button type="button" class="boton" *ngIf="(isAdmin || esUsuario(comentario.value.userId)) && firebaseAuthenticationReady" (click)="eliminarComentario(comentario.key)">Eliminar</button> 
+        </div>
     </div>
     <div [formGroup]="formulario" *ngIf="editModeMap.get(comentario.key)">
-        <textarea class="comentario" cols="30" rows="10" formControlName="editComentario" placeholder="{{comentario.value.comentario}}"></textarea>
+        <textarea cols="30" rows="10" formControlName="editComentario" placeholder="{{comentario.value.comentario}}"></textarea>
         <button (click)="guardarComentario(comentario.key)">Guardar</button>
     </div>
 
