@@ -1,23 +1,27 @@
 .img-producto {
     width: 100%;
     border-radius: 9px;
+    opacity: 0.8;
 }
 
 .contenedor-principal {
     display: flex;
     flex-direction: column;
     margin-bottom: 5rem; /**/
+    background-image: url('../../../../assets/img/fondo-tienda.jpg');
+    background-size: cover;
+    background-repeat: repeat;
 }
 
 .card {
     min-width: 1%;
     max-width: 20%;
     margin: 0;
-    padding: 2rem;
     border: 1px solid #ccc;
     flex: 1 0 calc(20% - 1rem);
     margin: .5rem;
     border-radius: 9px;
+    background-color:  #b39fb6af;
 
 }
 

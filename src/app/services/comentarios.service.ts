@@ -1,35 +1,31 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { Comentario } from '../interfaces/comentarios.interface';
-import { Firestore, addDoc, doc, getFirestore, setDoc, collection, getDoc } from '@angular/fire/firestore';
-import { AuthenticationService } from './authentication.service';
-import { deleteDoc, getDocs } from 'firebase/firestore';
+import { Firestore, addDoc, doc, getFirestore, setDoc, collection, getDoc, deleteDoc, getDocs } from '@angular/fire/firestore';
+
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class ComentariosService {
 
   public brujaId: string = "";
+  comentariosCollection = collection(this.firestore, "comentarios");
 
   constructor(
-    private router: Router,
-    private http: HttpClient,
+    private firestore: Firestore
   ) { }
 
 
   //NUEVO
   async postComentario(comentario: string, userId: string): Promise<void> {
     try {
-      const db = getFirestore();
-      const comentariosCollection = collection(db, "comentarios");
       const now = new Date();
       const year = now.getFullYear();
       const month = String(now.getMonth() + 1).padStart(2, '0'); // +1 porque los meses empiezan en 0
       const day = String(now.getDate()).padStart(2, '0');
-
       const formattedFecha = `${year}/${month}/${day}`;
+
       const data = {
         userId: userId,
         brujaId: this.brujaId,
@@ -37,7 +33,7 @@ export class ComentariosService {
         fecha: formattedFecha
       };
 
-      await addDoc(comentariosCollection, data);
+      await addDoc(this.comentariosCollection, data);
     } catch (error) {
       console.error(error); //agregar alerts
     }
@@ -45,19 +41,19 @@ export class ComentariosService {
 
 
   //LISTAR
-  async getComentariosBruja(): Promise<Map<string, Comentario>>{//muestra los comentarios
+  async getComentariosBruja(): Promise<Map<string, Comentario>> {//muestra los comentarios
     try {
-      const mapa: Map <string, Comentario> = new Map();
+      const mapa: Map<string, Comentario> = new Map();
+      const comentariosSnapshot = await getDocs(this.comentariosCollection);//obtiene los comentarios
 
-      const db = getFirestore();//obtiene la base de datos
-      const comentariosCollection = collection(db, "comentarios");//obtiene la colección de comentarios
-      const comentariosSnapshot = await getDocs(comentariosCollection);//obtiene los comentarios
-      comentariosSnapshot.docs.forEach(doc => {
+      comentariosSnapshot.forEach(doc => {
         const comentario = doc.data() as Comentario;
-        mapa.set(doc.id, comentario);
+        if (comentario.brujaId === this.brujaId) {
+          mapa.set(doc.id, comentario);
+        }
       })
-      
-      return mapa; 
+
+      return mapa;
     } catch (error) {
       console.error(error);
       return new Map();
@@ -67,33 +63,62 @@ export class ComentariosService {
   //ELIMINAR 
   async deleteComentario(id: string): Promise<void> {
     try {
-      const db = getFirestore();
-      const comentariosCollection = collection(db, "comentarios");
-      const comentarioDoc = doc(comentariosCollection, id);
+      console.log(id);
+      const comentarioDoc = doc(this.comentariosCollection, id);
       const comentarioSnapshot = await getDoc(comentarioDoc);
-      if (!comentarioSnapshot.exists()) throw new Error("No se encontró el comentario");
+
+      if (!comentarioSnapshot.exists()) {
+        console.error('No existe el comentario');
+        return;
+      }
+
       await deleteDoc(comentarioDoc);
     } catch (error) {
       console.error(error);
     }
   }
 
+  //EDITAR - A
+  async getComentario(id: string): Promise<Comentario> {
+    try {
+      const comentarioDoc = doc(this.comentariosCollection, id);
+      const comentarioSnapshot = await getDoc(comentarioDoc);
+
+      if (!comentarioSnapshot.exists()) {
+        console.error('No existe el comentario');
+        return null as unknown as Comentario;
+      }
+
+      const comentario = comentarioSnapshot.data() as Comentario;
+      return comentario;
+    } catch (error) {
+      console.log(error);
+      return null as unknown as Comentario;
+    }
+  }
+
+  //EDITAR - B
+  async putComentario(id: string, comentario: string): Promise<void> {
+    try {
+      const comentarioDoc = doc(this.comentariosCollection, id);
+      const comentarioSnapshot = await getDoc(comentarioDoc);
+
+      if (!comentarioSnapshot.exists()) throw new Error("No se encontró el comentario");
+
+      const data = {
+        comentario: comentario
+      }
+      await setDoc(comentarioDoc, data);
+      console.log("Comentario actualizado");
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
 
 }
 
-//EDITAR
-/* async getComentario(id: String): Promise<Comentario> {
-  try{
-    const db = getFirestore();
-    const comentariosCollection = collection(db, "comentarios");
-    const comentariosList = comentariosSnapshot.docs.map(doc => doc.data() as Comentario);
-    const comentario = comentariosList.find(comentario => comentario.id === id);
-    if (!comentario) throw new Error("No se encontró el comentario");
 
-  }
-} */
-
-    
 
 
 

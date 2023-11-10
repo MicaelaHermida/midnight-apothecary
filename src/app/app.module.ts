@@ -15,9 +15,8 @@ import { BrujaInfoComponent } from './components/blog/brujas/bruja-info/bruja-in
 import { EditarBrujaComponent } from './components/blog/brujas/editar-bruja/editar-bruja.component';
 import { ListarBrujasComponent } from './components/blog/brujas/listar-brujas/listar-brujas.component';
 import { NuevaBrujaComponent } from './components/blog/brujas/nueva-bruja/nueva-bruja.component';
-import { ListarComentariosComponent } from './components/blog/listar-comentarios/listar-comentarios.component';
+import { ListarComentariosComponent } from './components/blog/comentarios/listar-comentarios/listar-comentarios.component';
 import { ContactoComponent } from './components/home/contacto/contacto.component';
-import { HeroComponent } from './components/home/hero/hero.component';
 import { NosotrasComponent } from './components/home/nosotras/nosotras.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
@@ -26,7 +25,7 @@ import { ListarProductosComponent } from './components/tienda/listar-productos/l
 import { PasarelaPagoComponent } from './components/tienda/pasarela-pago/pasarela-pago.component';
 import { InfoProductoComponent } from './components/tienda/info-producto/info-producto.component';
 import { UsuarioInfoComponent } from './components/usuarios/usuario-info/usuario-info.component';
-import { BlogBrujaPageComponent } from './pages/blog/blog-bruja-page/blog-bruja-page.component';
+import { InfoBrujaPageComponent } from './pages/blog/info-bruja-page/info-bruja-page.component';
 import { BlogPageComponent } from './pages/blog/blog-page/blog-page.component';
 import { EditarBrujaPageComponent } from './pages/blog/editar-bruja-page/editar-bruja-page.component';
 import { NuevaBrujaPageComponent } from './pages/blog/nueva-bruja-page/nueva-bruja-page.component';
@@ -38,7 +37,8 @@ import { LoginPageComponent } from './pages/usuarios/login-page/login-page.compo
 import { RegistroPageComponent } from './pages/usuarios/registro-page/registro-page.component';
 import { UsuarioInfoPageComponent } from './pages/usuarios/usuario-info-page/usuario-info-page.component';
 import { ProductoInfoPageComponent } from './pages/tienda/producto-info-page/producto-info-page.component';
-import { NuevoComentarioComponent } from './components/blog/nuevo-comentario/nuevo-comentario.component';
+import { NuevoComentarioComponent } from './components/blog/comentarios/nuevo-comentario/nuevo-comentario.component';
+import { HeaderComponent } from './components/shared/header/header.component';
 import { CarritoPageComponent } from './pages/tienda/carrito-page/carrito-page.component';
 
 @NgModule({
@@ -53,7 +53,6 @@ import { CarritoPageComponent } from './pages/tienda/carrito-page/carrito-page.c
     NuevaBrujaComponent,
     ListarComentariosComponent,
     ContactoComponent,
-    HeroComponent,
     NosotrasComponent,
     FooterComponent,
     NavbarComponent,
@@ -62,7 +61,7 @@ import { CarritoPageComponent } from './pages/tienda/carrito-page/carrito-page.c
     PasarelaPagoComponent,
     InfoProductoComponent,
     UsuarioInfoComponent,
-    BlogBrujaPageComponent,
+    InfoBrujaPageComponent,
     BlogPageComponent,
     EditarBrujaPageComponent,
     NuevaBrujaPageComponent,
@@ -75,6 +74,7 @@ import { CarritoPageComponent } from './pages/tienda/carrito-page/carrito-page.c
     UsuarioInfoPageComponent,
     ProductoInfoPageComponent,
     NuevoComentarioComponent,
+    HeaderComponent,
     CarritoPageComponent
   ],
   imports: [

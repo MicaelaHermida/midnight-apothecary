@@ -27,11 +27,12 @@ export class NuevoComentarioComponent implements OnInit {
     await this.authenticationService.waitForFirebaseAuthentication();
   }
 
-  async guardarComentario(){
-    const userId = await this.authenticationService.getCurrentUserId();//obtiene el id del usuario
+  guardarComentario(){
+    const userId = this.authenticationService.getCurrentUserId();//obtiene el id del usuario
     const comentario = this.formulario.controls['comentario'].value;//obtiene el comentario
     this.comentariosService.postComentario(comentario, userId);//guarda el comentario en la base de datos
-    await this.router.navigate(['/blog-bruja', this.comentariosService.brujaId]);//redirige a la página de la bruja
+    console.log('comentario guardado');
+    location.reload();
   }
 
 

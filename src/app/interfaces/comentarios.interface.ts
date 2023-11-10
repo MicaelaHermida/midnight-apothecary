@@ -1,7 +1,7 @@
 export interface Comentario{
     id: string,
     userId: string, 
-    brujaId: number, 
+    brujaId: string, 
     fecha: Date,
     comentario: String
 }

@@ -1,20 +1,85 @@
 /* You can add global styles to this file, and also import other style files */
-html{
+@import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Merriweather&family=Philosopher&family=Quicksand:wght@300;400;500&family=Raleway:wght@200&family=Reenie+Beanie&display=swap');
+
+html {
     box-sizing: border-box;
     font-size: 62.5%;
 }
 
-*, *:before, *:after{
+*,
+*:before,
+*:after {
     box-sizing: inherit;
 }
 
-body{
-    font-family: 'Roboto', sans-serif;
+body {
     font-size: 1.6rem;
     margin: 0;
     padding: 0;
+    background-image: url(../src/assets/img/fondo.jpg);
+    background-size: cover;
+    background-repeat: repeat;
 }
 
 button{
     cursor: pointer;
 }
+    
+
+
+hr {
+    border: .15rem solid #b39fb6;
+    margin: 0;
+}
+
+h1 {
+    font-family: 'Reenie Beanie', cursive;
+    font-size: 7rem;
+    margin: 0;
+}
+
+button{
+    font-family: 'Quicksand', medium;
+    font-size: 1.6rem;
+    font-weight: 400;
+    
+    color: #b39fb6;
+    background-color: #2a2030d3;
+    
+    line-height: 1.5rem;
+    border: none;
+    border-radius: 1rem;
+
+    margin: 1rem;
+    padding: .5rem;
+
+    cursor: pointer;
+}
+
+header{
+    background-image: url(../src/assets/img/header.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    margin: 0;
+    padding: 3rem;
+    text-align: center;
+}
+
+.mayus{
+    font-size: 8.5rem;
+}
+
+/*BLOG BRUJAS*/
+
+.page-blog{
+    min-height: 100vh;
+    background-image: url(../src/assets/img/fondo-blog.jpg);
+    background-size: cover;
+    background-repeat: repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+

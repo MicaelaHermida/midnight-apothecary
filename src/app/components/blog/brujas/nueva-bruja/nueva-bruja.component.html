@@ -1,7 +1,7 @@
 <h1>Nueva Bruja</h1>
 <fieldset class="formulario">
 
-    <form class="sector" [formGroup]="formulario">
+    <form class="sector" [formGroup]="formulario" (ngSubmit)="guardarBruja()">
         <div class="campo">
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" formControlName="nombre">
@@ -48,7 +48,7 @@
         </div>
 
         <div>
-            <input type="submit" value="Crear Bruja" (click)="guardarBruja()">
+            <button type="submit">Guardar</button>
             <button [routerLink]="['/blog']">Cancelar</button>
         </div>
 

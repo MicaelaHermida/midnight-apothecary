@@ -1,5 +1,5 @@
+<hr>
 <div class="navbar">
-    <p>Midnight Apothecary</p>
     <div class="navbar-links">
         <a [routerLink]="['/home']">Home</a>
         <a *ngIf="!isLogged && firebaseAuthenticationReady" [routerLink]="['/login']">Iniciar Sesion</a>
@@ -10,3 +10,4 @@
         <a *ngIf="isLogged && firebaseAuthenticationReady" (click)="cerrarSesion()">Cerrar Sesion</a>
     </div>
 </div>
+<hr>
