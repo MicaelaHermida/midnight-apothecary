@@ -10,6 +10,8 @@ import { BrujasService } from 'src/app/services/brujas.service';
 export class HeaderComponent implements OnInit {
 
   isHome: boolean = false;
+  isLogin: boolean = false;
+  isRegister: boolean = false;
   isTienda: boolean = false;
   isBlog: boolean = false;
   isNuevaBruja: boolean = false;
@@ -44,6 +46,8 @@ export class HeaderComponent implements OnInit {
         this.falsearPaginas();
         
         if(this.router.url.includes("home")) this.isHome = true;
+        else if(this.router.url.includes("login")) this.isLogin = true;
+        else if(this.router.url.includes("register")) this.isRegister = true;
         else if(this.router.url.includes("tienda")) this.isTienda = true;
         else if(this.router.url.includes("carrito")) this.isCarrito = true;
         else if(this.router.url.includes("compra")) this.isCompra = true;
@@ -99,6 +103,8 @@ export class HeaderComponent implements OnInit {
 
   falsearPaginas(){
     this.isHome = false;
+    this.isLogin = false;
+    this.isRegister = false;
     this.isTienda = false;
     this.isCarrito = false;
     this.isCompra = false;
