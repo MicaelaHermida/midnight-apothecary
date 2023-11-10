@@ -3,3 +3,13 @@
     margin: 2rem auto;
 }
 
+.sector-comentarios{
+    width: 70%;
+    margin: 2rem auto;
+    text-align: center;
+}
+
+.sector-comentarios hr{
+    width: 100%;
+    margin: 2rem auto;
+}
