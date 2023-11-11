@@ -6,7 +6,7 @@
         <a *ngIf="!isLogged && firebaseAuthenticationReady" [routerLink]="['/register']">Registrarse</a>
         <a [routerLink]="['/tienda']">Tienda</a>
         <a [routerLink]="['/blog']">Blog</a>
-        <a *ngIf="isLogged && firebaseAuthenticationReady" [routerLink]="['/carrito']">Carrito</a>
+        <a *ngIf="isLogged && firebaseAuthenticationReady && !isAdminRole" [routerLink]="['/carrito']">Carrito</a>
         <a *ngIf="isLogged && firebaseAuthenticationReady" (click)="cerrarSesion()">Cerrar Sesion</a>
     </div>
 </div>

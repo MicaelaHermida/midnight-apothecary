@@ -2,13 +2,13 @@
     <div class="filtro">
         <!--////////////////FILTRADO///////////////////-->
         <div class="opciones-filtrado">
-            <div *ngIf="isLogged && firebaseAuthenticationReady">
+            <div *ngIf="firebaseAuthenticationReady">
                 <p>Ordenar por:</p>
                 <select [(ngModel)]="ordenSeleccionado" (change)="onOrderChangeEvent()">
                     <option *ngFor="let orden of arrayOrdenamiento" [value]="orden">{{orden}}</option>
                 </select>
             </div>
-            <div *ngIf="isLogged && firebaseAuthenticationReady">
+            <div *ngIf="firebaseAuthenticationReady">
                 <p>Filtrar por rango de precio:</p>
                 <select [(ngModel)]="filtroSeleccionado" (change)="onFilterChangeEvent()">
                     <option *ngFor="let filtro of arrayFiltrado" [value]="filtro">{{filtro}}</option>
@@ -41,20 +41,20 @@
                 <img src="{{producto.imagen}}" class="img-producto">
                 <div *ngIf="!editModeMap.get(producto.id_planta) && firebaseAuthenticationReady">
                     <h3 class="nombre-producto">{{producto.nombre}}</h3>
-                    <p>${{producto.precio}}</p>
-                    <p>stock: {{producto.stock}}</p>
+                    <p class="precio-producto">${{producto.precio}}</p>
+                    <p *ngIf="isAdminRole">stock: {{producto.stock}}</p>
                 </div>
             </div>
             <!--////////////////OPCIONES USUARIO-CLIENTE///////////////////-->
             <div class="opciones-compra">
+                <!-- <button *ngIf="!isAdminRole && isLogged && firebaseAuthenticationReady"
+                    (click)="disminuirCantidad(producto.id_planta)">-</button> -->
+                <!-- <input *ngIf="!isAdminRole && isLogged && firebaseAuthenticationReady" type="number"
+                    value="0"> -->
+                <!-- <button *ngIf="!isAdminRole && isLogged && firebaseAuthenticationReady"
+                    (click)="aumentarCantidad(producto.id_planta)">+</button> -->
                 <button *ngIf="!isAdminRole && isLogged && firebaseAuthenticationReady"
-                    (click)="disminuirCantidad(producto.id_planta)">-</button>
-                <input *ngIf="!isAdminRole && isLogged && firebaseAuthenticationReady" type="number"
-                    placeholder="{{itemCarrito.cantidad}}">
-                <button *ngIf="!isAdminRole && isLogged && firebaseAuthenticationReady"
-                    (click)="aumentarCantidad(producto.id_planta)">+</button>
-                <button *ngIf="!isAdminRole && isLogged && firebaseAuthenticationReady"
-                    (click)="agregarAlCarrito(producto.id_planta)">Agregar al carrito</button>
+                    (click)="verDetalleProducto(producto.id_planta)">Comprar</button>
             </div>
             <!--////////////////MODO EDICION - ADMIN///////////////////-->
             <div *ngIf="editModeMap.get(producto.id_planta)" class="edit-mode">

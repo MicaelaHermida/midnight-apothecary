@@ -67,7 +67,7 @@
     width: 100%;
     background-color: #b39fb6af;
     padding: .5rem;
-    border-radius: 9px;
+    border-radius: 30px;
 }
 
 .opciones-filtrado select:hover{
@@ -94,6 +94,7 @@
 
 .contenedor-busqueda button{
     background-color: #2a2030d3;
+    border-radius: 30px;
 }
 .contenedor-busqueda button:hover{
     background-color: #2a2030;
@@ -101,7 +102,7 @@
 .busqueda{
     background-color: #b39fb6af;
     padding: .5rem;
-    border-radius: 9px;
+    border-radius: 30px;
     outline: none;
     border: none;
 }
@@ -121,10 +122,12 @@
     margin: 0 .5rem;
     padding: 1rem;
     background-color: #2a2030d3;
+    border-radius: 30px;
 }
 
 .pagination button:hover{
     background-color: #2a2030;
+    color: #b39fb6;
     transform: translateY(-2px);
 }
 
@@ -143,10 +146,11 @@
     padding: 1rem;
     width: 9rem;
     background-color: #2a2030d3;
+    border-radius: 30px;
 }
 
 .botones-admin button:hover{
-    background-color: #2a2030;
+    background-color: #c7b7ca;
 }
 .edit-mode{
     display: flex;
@@ -157,6 +161,10 @@
 
 .info-producto{
     cursor: pointer;
+}
+
+.info-producto .precio-producto{
+    font-size: x-large;
 }
 
 /*.info-producto h3{
@@ -192,17 +200,23 @@
     outline: none;
 }
 
-.opciones-compra input {
-    width: 15%;
-}
-
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  appearance: none;
+.opciones-compra { 
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 ::placeholder{
     color: #000000;
 }
 
+.opciones-compra button{
+    border-radius: 30px;
+    padding: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+button:hover{
+    background-color: #c7b7ca;
+}

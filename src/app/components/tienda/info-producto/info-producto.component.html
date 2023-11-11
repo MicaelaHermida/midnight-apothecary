@@ -1,4 +1,4 @@
-<div class="contenedor">
+<div class="contenedor" *ngIf="firebaseAuthenticationReady">
     <div class="imagen-titulo">
         <h1>{{producto!.nombre}}</h1>
         <img src="{{producto.imagen}}" class="img-producto">
@@ -23,5 +23,13 @@
             <p><b>Nivel de cuidado:</b> {{plantaInfo.care_level}}</p>
         </div>
         <p><b>Descripcion:</b> {{plantaInfo.description}}</p>
+        <div class="contenedor-buttons" *ngIf="!isAdminRole && isLogged">
+            <div class="cantidad-producto">
+                <button (click)="disminuir()">-</button>
+                <input type="number" [(ngModel)]="cantidadItems">
+                <button (click)="aumentar()">+</button>
+            </div>
+            <button (click)="agregarAlCarrito()" class="agregar-carr-button">Agregar al carrito</button>
+        </div>
     </div>
 </div>

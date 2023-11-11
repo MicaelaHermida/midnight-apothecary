@@ -228,22 +228,7 @@ export class ListarProductosComponent implements OnInit {
   }
   /////////////////////CLIENTE////////////////////////
 
-  async agregarAlCarrito(id_planta: number) {
-    const id_producto = this.verificarIdProducto(id_planta);
-    this.editModeMap.set(id_planta, false);
-    if (this.itemCarrito.cantidad <= 0) {
-      alert("Debe ingresar una cantidad válida");
-      return;
-    }
-    this.itemCarrito.id_producto = id_producto;
-    await this.carrito.actualizarCarrito(this.itemCarrito);
-    this.carritoProductos = this.carrito.getCarrito();
-    alert("Producto agregado al carrito");
-    this.itemCarrito = {
-      id_producto: "",
-      cantidad: 0
-    }
-  }
+  
 
   verificarIdProducto(id_planta: number): string {
     let id_producto: string = '';
@@ -256,25 +241,7 @@ export class ListarProductosComponent implements OnInit {
     return id_producto;
   }
 
-  async aumentarCantidad(id_planta: number) {
-    const id_producto = this.verificarIdProducto(id_planta);
-    this.editModeMap.set(id_planta, false);
-    const producto = await this.productosService.getProducto(id_producto);
-    if (producto.stock < this.itemCarrito.cantidad) {
-      alert("No hay suficiente stock");
-      return;
-    }
-    else {
-      this.itemCarrito.cantidad++;
-    }
-  }
-
-  disminuirCantidad(id_planta: number) {
-    this.editModeMap.set(id_planta, false);
-    if (this.itemCarrito.cantidad > 0) {
-      this.itemCarrito.cantidad--;
-    }
-  }
+  
 
   verDetalleProducto(id_planta : number){
     const id_producto = this.verificarIdProducto(id_planta);
