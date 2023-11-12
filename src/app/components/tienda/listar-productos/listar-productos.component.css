@@ -220,3 +220,13 @@
 button:hover{
     background-color: #c7b7ca;
 }
+
+.button-compra{
+    background-color: #b39fb600;
+    color: #2a2030;
+    border: 1px solid #2a2030d3;
+}
+
+.button-compra:hover{
+    font-weight: bold;
+}

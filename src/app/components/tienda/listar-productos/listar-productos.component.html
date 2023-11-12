@@ -54,7 +54,7 @@
                 <!-- <button *ngIf="!isAdminRole && isLogged && firebaseAuthenticationReady"
                     (click)="aumentarCantidad(producto.id_planta)">+</button> -->
                 <button *ngIf="!isAdminRole && isLogged && firebaseAuthenticationReady"
-                    (click)="verDetalleProducto(producto.id_planta)">Comprar</button>
+                    (click)="verDetalleProducto(producto.id_planta)" class="button-compra">Comprar</button>
             </div>
             <!--////////////////MODO EDICION - ADMIN///////////////////-->
             <div *ngIf="editModeMap.get(producto.id_planta)" class="edit-mode">

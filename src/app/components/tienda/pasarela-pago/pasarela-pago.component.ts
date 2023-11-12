@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Compra } from 'src/app/interfaces/compra.interface';
+import { ItemCarrito } from 'src/app/interfaces/itemCarrito.interface';
 import { User } from 'src/app/interfaces/user.interface';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { CarritoService } from 'src/app/services/carrito.service';
+import { ComprasService } from 'src/app/services/compras.service';
+import { ProductosService } from 'src/app/services/productos.service';
 
 @Component({
   selector: 'app-pasarela-pago',
@@ -19,6 +23,9 @@ export class PasarelaPagoComponent implements OnInit{
 
   editMode: boolean = false;
   userId!: string;
+
+  productos : ItemCarrito [] = [];
+
 
   formularioUsuario : FormGroup = this.fb.group({
     nombre: '',
@@ -38,7 +45,8 @@ export class PasarelaPagoComponent implements OnInit{
     dniTitular: ''
   });
 
-  constructor(private fb: FormBuilder, private authService: AuthenticationService, private router : Router, private carritoService: CarritoService) { }
+  constructor(private fb: FormBuilder, private authService: AuthenticationService, private router : Router, private carritoService: CarritoService,
+    private compraService: ComprasService, private productoService: ProductosService) { }
 
   async ngOnInit(): Promise<void> {
     await this.authService.waitForFirebaseAuthentication();
@@ -46,7 +54,7 @@ export class PasarelaPagoComponent implements OnInit{
     this.isLogged = this.authService.isUserLoggedIn();
     this.usuarioLogueado = await this.authService.getAllCurrentUserData();
     this.userId = this.authService.getCurrentUserId();
-    
+    await this.obtenerProductos();
     this.initFormUsuario();
     if(!this.verificarCamposUsuario()){
       this.editMode = true;
@@ -115,9 +123,40 @@ export class PasarelaPagoComponent implements OnInit{
   async realizarCompra(): Promise<void>{
     const ok = confirm("¿Está seguro que desea realizar la compra?");
     if(this.comprobarDatosTarjeta() && ok){
+      const compra : Compra = {
+        userId: this.userId,
+        fecha: '',
+        items: this.productos,
+        total: this.obtenerTotal(),
+        estado: "pendiente"
+      }
+      await this.compraService.postCompra(compra);
+      console.log(await this.compraService.getComprasPorUsuario(this.userId));
       alert("Compra realizada con éxito!");
       await this.carritoService.deleteCarrito();
       this.router.navigate(['/home']);
     }
   }; //TODO
+
+  async obtenerProductos() : Promise<void>{
+    await this.carritoService.getCarritoFromUsuario();
+    const carrito = this.carritoService.getCarrito();
+    for (let item of carrito) {
+      const id_producto = item.id_producto;
+      const cantidad = item.cantidad;
+      const precio = await this.productoService.getPrecioProducto(id_producto);
+      const nombre = await this.productoService.getNombreProducto(id_producto);
+      const subtotal = cantidad * precio;
+      this.productos.push({ id_producto, nombre, precio, cantidad, subtotal });
+    }
+  }
+
+  obtenerTotal(): number {
+    let total = 0;
+    for (let producto of this.productos) {
+      total += producto.subtotal;
+    }
+    return total;
+  }
+  
 }

@@ -71,6 +71,7 @@ export class InfoProductoComponent implements OnInit{
       }
       await this.carrito.actualizarCarrito(carrito);
       alert("Producto agregado al carrito!");
+      this.cantidadItems = 1;
     }
 
     /*async agregarAlCarrito(id_planta: number) {
