@@ -9,7 +9,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/usuarios/login/login.component';
 import { RegistroComponent } from './components/usuarios/registro/registro.component';
-import { EditarUsuarioComponent } from './components/usuarios/editar-usuario/editar-usuario.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrujaInfoComponent } from './components/blog/brujas/bruja-info/bruja-info.component';
 import { EditarBrujaComponent } from './components/blog/brujas/editar-bruja/editar-bruja.component';
@@ -32,7 +31,6 @@ import { NuevaBrujaPageComponent } from './pages/blog/nueva-bruja-page/nueva-bru
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { CompraPageComponent } from './pages/tienda/compra-page/compra-page.component';
 import { TiendaPageComponent } from './pages/tienda/tienda-page/tienda-page.component';
-import { EditarUsuarioPageComponent } from './pages/usuarios/editar-usuario-page/editar-usuario-page.component';
 import { LoginPageComponent } from './pages/usuarios/login-page/login-page.component';
 import { RegistroPageComponent } from './pages/usuarios/registro-page/registro-page.component';
 import { UsuarioInfoPageComponent } from './pages/usuarios/usuario-info-page/usuario-info-page.component';
@@ -41,13 +39,13 @@ import { NuevoComentarioComponent } from './components/blog/comentarios/nuevo-co
 import { HeaderComponent } from './components/shared/header/header.component';
 import { CarritoPageComponent } from './pages/tienda/carrito-page/carrito-page.component';
 import { ListarComprasComponent } from './components/usuarios/listar-compras/listar-compras.component';
+import { ListarComprasPageComponent } from './pages/usuarios/listar-compras-page/listar-compras-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegistroComponent,
-    EditarUsuarioComponent,
     BrujaInfoComponent,
     EditarBrujaComponent,
     ListarBrujasComponent,
@@ -69,7 +67,6 @@ import { ListarComprasComponent } from './components/usuarios/listar-compras/lis
     HomePageComponent,
     CompraPageComponent,
     TiendaPageComponent,
-    EditarUsuarioPageComponent,
     LoginPageComponent,
     RegistroPageComponent,
     UsuarioInfoPageComponent,
@@ -77,7 +74,8 @@ import { ListarComprasComponent } from './components/usuarios/listar-compras/lis
     NuevoComentarioComponent,
     HeaderComponent,
     CarritoPageComponent,
-    ListarComprasComponent
+    ListarComprasComponent,
+    ListarComprasPageComponent
   ],
   imports: [
     BrowserModule,

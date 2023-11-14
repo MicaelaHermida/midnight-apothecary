@@ -1,6 +1,12 @@
+<div *ngIf="isAdminRole && firebaseAuthenticationReady">
+    <div>
+        <p>Buscar usuario por email:</p>
+        <input type="email" [(ngModel)]="emailBuscado">
+        <button (click)="buscarPorEmail()">Buscar</button>
+    </div>
+</div>
 <div *ngIf="firebaseAuthenticationReady && isLogged" class="contenedor">
     <div>
-        <h1>Compras</h1>
         <div *ngFor="let compra of compras" class="compra">
             <div class="info-compra">
                 <p>{{compra.fecha}}</p>
@@ -18,7 +24,7 @@
                 <p>Estado: {{compra.estado}}</p>
             </div>
             <div *ngIf="isAdminRole">
-                <button class="finalizar-button" (click)="finalizarEstadoCompra(compra.idDoc!)">Finalizar</button>
+                <button class="finalizar-button" (click)="finalizarEstadoCompra(compra.idDoc!)" *ngIf="compra.estado !== 'finalizada'">Finalizar</button>
             </div>
         </div>
     </div>

@@ -19,6 +19,8 @@ export class ListarComprasComponent implements OnInit{
   isAdminRole: boolean = false;
   firebaseAuthenticationReady: boolean = false;
 
+  emailBuscado: string = "";
+
   constructor(private compraService: ComprasService, private authService: AuthenticationService){}
 
   async ngOnInit(): Promise<void> {
@@ -26,11 +28,22 @@ export class ListarComprasComponent implements OnInit{
     this.firebaseAuthenticationReady = true;
     this.isLogged = this.authService.isUserLoggedIn();
     this.isAdminRole = await this.authService.getCurrentUserRole() === 'admin';
-    await this.listarCompras();
+    if(!this.isAdminRole){
+      this.listarCompras(this.authService.getCurrentUserId());
+    }
   }
 
-  async listarCompras(){
-    this.compras = await this.compraService.getComprasPorUsuario(this.authService.getCurrentUserId());
+  async listarCompras(id: string){
+    this.compras = await this.compraService.getComprasPorUsuario(id);
+    this.ordenarComprasPorFecha();
+  }
+
+  ordenarComprasPorFecha(){
+    this.compras.sort((a,b) => {
+      let dateA = new Date(a.fecha);
+      let dateB = new Date(b.fecha);
+      return dateB.getTime() - dateA.getTime();
+    });
   }
 
   async finalizarEstadoCompra(id:string){
@@ -40,6 +53,16 @@ export class ListarComprasComponent implements OnInit{
     }
     await this.compraService.cambiarEstadoCompra(id, "finalizada");
     alert("Compra finalizada");
-    window.location.reload();
+    this.compras = await this.compraService.getComprasPorEmail(this.emailBuscado);
   }
+
+
+  async buscarPorEmail():Promise<void>{
+    if(this.emailBuscado === ""){
+      alert("Ingrese un email");
+      return;
+    }
+    this.compras = await this.compraService.getComprasPorEmail(this.emailBuscado);
+    this.ordenarComprasPorFecha();
+  };
 }
