@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./hero.component.css']
 })
 export class HeroComponent implements OnInit {
-  imagenes: string[] = ['/assets/img/home/hero.jpg', '/assets/img/home/hero0.jpg', '/assets/img/home/hero1.jpg', '/assets/img/home/hero2.jpg', '/assets/img/home/hero3.jpg', '/assets/img/home/hero4.jpg',
+  imagenes: string[] = ['/assets/img/home/hero.jpg', '/assets/img/home/hero1.jpg', '/assets/img/home/hero2.jpg', '/assets/img/home/hero3.jpg', '/assets/img/home/hero4.jpg',
     '/assets/img/home/hero5.jpg', '/assets/img/home/hero6.jpg', '/assets/img/home/hero7.jpg', '/assets/img/home/hero8.jpg', '/assets/img/home/hero9.jpg'];
   dots: number[] = [];
   currentSlide = 0;
