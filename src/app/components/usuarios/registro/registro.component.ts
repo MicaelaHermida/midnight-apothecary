@@ -32,11 +32,11 @@ export class RegistroComponent {
     return;
   }
 
-  register(email: string, password: string, nombre: string, apellido: string) {
-    this.AuthencationService.register(email, password, nombre, apellido);
+  async register(email: string, password: string, nombre: string, apellido: string):Promise<void>{
+    await this.AuthencationService.register(email, password, nombre, apellido);
   }
 
-  registrarse() {
+  async registrarse(): Promise<void>{
     if (!this.form.valid) {
       alert("Rellene todos los campos correctamente");
       return;
@@ -45,7 +45,7 @@ export class RegistroComponent {
     const password = this.form.value.password;
     const nombre = this.form.value.nombre;
     const apellido = this.form.value.apellido;
-    this.register(email, password, nombre, apellido);
+    await this.register(email, password, nombre, apellido);
     this.router.navigate(['/home']);
   }
 
