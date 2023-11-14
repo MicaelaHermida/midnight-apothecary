@@ -1,0 +1,103 @@
+.footer{
+    background-image: url(../../../../assets/img/footer.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 2rem 0;
+}
+
+.footer p{
+    font-family: 'Merriweather', serif;
+    font-size: 1.6rem;
+    color: #b39fb6;
+    text-align: center;
+}
+
+.contenedor-footer{
+    background-color: #2a2030d3;    
+    display: flex;
+    justify-content: space-around;
+    margin: 0 2rem;
+
+}
+
+.seccion-footer{
+    max-width: 30rem;
+
+}
+
+.seccion-footer h3{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 2rem;
+    color: #b39fb6;
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+
+.seccion-footer h2{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.6rem;
+    color: #b39fb6;
+    font-weight: 400;
+}
+
+.seccion-footer ul{
+    list-style: none;
+    padding: 0;
+}
+
+.seccion-footer li{
+    margin-bottom: .5rem;
+}
+
+
+.seccion-footer a{
+    color: #b39fb6;
+    font-family: 'Merriweather', serif;
+    font-size: 1.6rem;
+    text-decoration: none;
+}
+
+.seccion-footer a:hover{
+    font-weight: bold;
+}
+
+.seccion-footer form{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.5rem;
+    align-items: center;    
+}
+
+.seccion-footer input{
+    padding: .5rem;
+    margin-bottom: 1rem;
+    background-color: #ffffff00;
+    font-family: 'Merriweather', serif;
+    color: #b39fb6;
+    border: 1px solid #b39fb6;
+    border-radius: 1rem;
+}
+
+.seccion-footer input::placeholder{
+    color: #b39fb6;
+}
+
+.seccion-footer button{
+    margin-left: 0;
+    padding: 1rem;
+    background-color: #b39fb6af;
+    color: #2a2030;
+}
+
+.seccion-footer button:hover{
+    background-color: #2a2030d3;
+    color: #b39fb6;
+}
+
+.copi-footer{
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 0;
+}
+
