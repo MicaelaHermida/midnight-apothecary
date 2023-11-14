@@ -35,7 +35,7 @@ hr {
 h1 {
     font-family: 'Reenie Beanie', cursive;
     font-size: 7rem;
-    margin: 0;
+    margin: auto;
 }
 
 button{
@@ -65,9 +65,8 @@ header{
     background-image: url(../src/assets/img/header.jpg);
     background-size: cover;
     background-position: center;
-    height: 100%;
-    margin: 0;
-    padding: 3rem;
+    height: 10rem;
+    margin: auto;
     text-align: center;
 }
 
