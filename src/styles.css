@@ -35,19 +35,22 @@ hr {
 h1 {
     font-family: 'Reenie Beanie', cursive;
     font-size: 7rem;
-    margin: 0;
+    margin: auto;
 }
 
 button{
     font-family: 'Quicksand', medium;
     font-size: 1.6rem;
     font-weight: 400;
+
+    margin: auto;
     
     color: #b39fb6;
     background-color: #2a2030d3;
     
     line-height: 1.5rem;
     border: none;
+    border-radius: 1rem;
 
     margin: 1rem;
     padding: .5rem;
@@ -65,9 +68,8 @@ header{
     background-image: url(../src/assets/img/header.jpg);
     background-size: cover;
     background-position: center;
-    height: 100%;
-    margin: 0;
-    padding: 3rem;
+    height: 10rem;
+    margin: auto;
     text-align: center;
 }
 
