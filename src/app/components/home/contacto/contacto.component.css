@@ -15,19 +15,33 @@
     text-decoration: underline;
     font-size: 3rem;
     font-weight: 400;
-    color: #b39fb6;
+    color: #2a2030;
     line-height: 1.5rem;
     text-align: center;
     margin: 1rem;
     padding: .5rem;
 }
 
-.texto-contacto {
+.contenedor-contacto div{
     background-color: #b39fb6af;
-    color: #2a2030;
     border-radius: 1rem;
     height: 100%;
     padding: .5rem;
+}
+
+.contenedor-contacto .imagen-contacto {
+    background-color: #2a2030d3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+}
+
+.contenedor-contacto .imagen-contacto img{
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+    object-fit: cover;
 }
 
 .contenedor-contacto p{
@@ -36,33 +50,32 @@
 }
 
 .formulario-contacto {
-    background-color: #2a2030d3;
+    background-color: #b39fb600;
     border-radius: 1rem;
 }
 
 .formulario-contacto .campo {
     display: flex;
     flex-direction: column;
+    background-color: #b39fb600;
     margin: 1rem;
 }
 
 .campo label {
     font-family: 'Quicksand', sans-serif;
     font-size: 2rem;
-    font-weight: 400;
-    color: #b39fb6;
+    color: #2a2030;
     line-height: 2rem;
     text-align: left;
-    margin-left: 1rem;
-    padding: .5rem;
+    margin-left: 1%;
 }
 
 .campo input {
-    margin: 1rem;
+    margin: 1%;
     padding: .5rem;
     border-radius: 1rem;
     border: .1rem solid black;
-    background-color: #b39fb6af;
+    background-color: #c7b7ca;
     font-family: 'Merriweather', serif;
     font-size: 1.6rem;
     color: #2a2030;
@@ -70,11 +83,11 @@
 
 .campo textarea{
     width: auto;
-    margin: 1rem;
+    margin: 1%;
     padding: .5rem;
     border-radius: 1rem;
     border: 1px solid black;
-    background-color: #b39fb6af;
+    background-color: #c7b7ca;
     font-family: 'Merriweather', serif;
 }
 
