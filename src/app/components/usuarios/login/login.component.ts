@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
@@ -8,8 +8,8 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent{
-
+export class LoginComponent {
+  isCorrect: boolean = true;
   isLogged: boolean = false;
   firebaseAuthStateReady: boolean = false;
   form: FormGroup;
@@ -23,6 +23,12 @@ export class LoginComponent{
 
 
   async login(email: string, password: string): Promise<boolean> {
+    this.form.get('email')?.valueChanges.subscribe((value: any) => {
+      this.isCorrect = true;
+    });
+    this.form.get('password')?.valueChanges.subscribe((value: any) => {
+      this.isCorrect = true;
+    });
     return await this.AuthencationService.login(email, password);
   }
 
@@ -45,8 +51,17 @@ export class LoginComponent{
       console.log("Es admin");
       const user = await this.AuthencationService.getAllCurrentUserData();
       console.log(user);
-      
+
     }
     this.router.navigate(['/home']);
   }
+
+  validate(field: string, error: string): boolean {
+    const isInvalid = this.form.controls[field].hasError(error) &&
+      (this.form.controls[field].touched || this.form.controls[field].dirty);
+
+      
+    return isInvalid;
+  }
+
 }

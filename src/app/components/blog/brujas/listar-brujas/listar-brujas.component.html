@@ -1,29 +1,31 @@
-<table class="tabla-brujas">
-    <thead>
-        <tr>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Fecha Nacimiento</th>
-            <th>Fecha Defunción</th>
-            <th>Tipo de Muerte</th>
-            <th>Lugar de Nacimiento</th>
-            <th>Lugar de Ejecución</th>
-        </tr>
-    </thead>
+<div class="listar-brujas">
+    <table class="tabla-brujas">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Fecha Nacimiento</th>
+                <th>Fecha Defunción</th>
+                <th>Tipo de Muerte</th>
+                <th>Lugar de Nacimiento</th>
+                <th>Lugar de Ejecución</th>
+            </tr>
+        </thead>
 
-    <tbody>
-        <tr *ngFor="let bruja of listadoBrujas | keyvalue">
-            <td class="texto">{{bruja.value.nombre}}</td>
-            <td class="texto">{{bruja.value.apellido}}</td>
-            <td class="texto">{{bruja.value.fecha_nacimiento}}</td>
-            <td class="texto">{{bruja.value.fecha_defuncion}}</td>
-            <td class="texto">{{bruja.value.tipo_de_muerte}}</td>
-            <td class="texto">{{bruja.value.lugar_de_nacimiento}}</td>
-            <td class="texto">{{bruja.value.lugar_de_ejecucion}}</td>
-            <td><a class="boton" [routerLink]="['/info-bruja', bruja.key]">Ver Info</a></td>
-            <td><a class="boton" [routerLink]="['/editar-bruja', bruja.key]" *ngIf="isAdmin">Editar</a></td>
-            <td><a class="boton" (click)="eliminarBruja(bruja.key)" *ngIf="isAdmin">Eliminar</a></td>
-        </tr>
-    </tbody>
-    <a class="boton" id="agregar" [routerLink]="['/nueva-bruja']" *ngIf="isAdmin">Agregar</a>
-</table>
+        <tbody>
+            <tr *ngFor="let bruja of listadoBrujas | keyvalue">
+                <td class="texto">{{bruja.value.nombre}}</td>
+                <td class="texto">{{bruja.value.apellido}}</td>
+                <td class="texto">{{bruja.value.fecha_nacimiento}}</td>
+                <td class="texto">{{bruja.value.fecha_defuncion}}</td>
+                <td class="texto">{{bruja.value.tipo_de_muerte}}</td>
+                <td class="texto">{{bruja.value.lugar_de_nacimiento}}</td>
+                <td class="texto">{{bruja.value.lugar_de_ejecucion}}</td>
+                <td><a class="boton" [routerLink]="['/info-bruja', bruja.key]">Ver Info</a></td>
+                <td><a class="boton" [routerLink]="['/editar-bruja', bruja.key]" *ngIf="isAdmin">Editar</a></td>
+                <td><a class="boton" (click)="eliminarBruja(bruja.key)" *ngIf="isAdmin">Eliminar</a></td>
+            </tr>
+        </tbody>
+        <a class="boton" id="agregar" [routerLink]="['/nueva-bruja']" *ngIf="isAdmin">Agregar</a>
+    </table>
+</div>

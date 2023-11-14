@@ -1,12 +1,19 @@
+.page-login{
+    background-image: url(../../../../assets/img/fondo.jpg);
+    background-size: cover;
+    background-repeat: repeat;
+    min-height: 38.7vh; 
+    margin: 5rem auto;
+}
+
 .login-form{
-    width: 30%;
-    background-color: #2a2030d3;
+    width: 40%;
+    background-color: #b39fb6af;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    margin: auto;
-    border-radius: 5px;
-    margin-top: 1%;
+    margin: 2rem auto;
+    border-radius: 1rem;
 }
 
 .login-form-body{
@@ -18,26 +25,49 @@
 
 .login-form-body label{
     margin-left: 2%;
-    color: #b39fb6;
+    color: #2a2030;
     font-family: 'Quicksand', medium;
     font-size: 2rem;
     padding: 1%;
 }
+
 .login-form-body input{
-    margin: 10px;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid black;
-    background-color: #b39fb6af;
+    margin: auto;
+    width: 95%;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 1px solid 2a2030;
+    background-color: #c7b7ca;
     font-family: 'Merriweather', serif;
 }
 
 
 .login-button{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.6rem;
+    color:#2a2030;
     width: 30%;
-    margin: auto;
-    margin-bottom: 2%;
-    border-radius: 5px;
-    padding: 10px;
-    border: 1px solid black;
+    margin: 2% auto;
+    border-radius: 5rem;
+    padding: 1rem;
+    background-color: #b39fb600;
+    border: 1px solid #2a2030;
+}
+
+.login-button:hover{
+    font-weight: bold;
+}
+
+.login-form-body input.invalid{
+    border: 2px solid #a10202;
+
+}
+
+.form-error{
+    margin-top: 0;
+    margin-left: 2%;
+    font-family: 'Merriweather', serif;
+    font-size: 1.3rem;
+    color: #a10202;
+    padding: 1%;
 }

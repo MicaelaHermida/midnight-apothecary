@@ -4,6 +4,8 @@
     background-size: cover;
     background-position: center;
     padding: 2rem 0;
+    width: 100%;
+    bottom: 0;
 }
 
 .footer p{
@@ -23,7 +25,6 @@
 
 .seccion-footer{
     max-width: 30rem;
-
 }
 
 .seccion-footer h3{

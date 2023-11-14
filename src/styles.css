@@ -19,6 +19,14 @@ body {
     background-image: url(../src/assets/img/fondo.jpg);
     background-size: cover;
     background-repeat: repeat;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main{
+    flex: 1;
+    margin-bottom: 30rem;
 }
 
 button{
@@ -99,7 +107,7 @@ textarea:focus{
 /*BLOG BRUJAS*/
 
 .page-blog{
-    min-height: 100vh;
+    min-height: 100%;
     background-image: url(../src/assets/img/fondo-blog.jpg);
     background-size: cover;
     background-repeat: repeat;
