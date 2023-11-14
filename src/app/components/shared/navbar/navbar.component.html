@@ -11,9 +11,9 @@
             <div class="dropdown-content">
                 <a *ngIf="!isLogged && firebaseAuthenticationReady" [routerLink]="['/login']">Login</a>
                 <a *ngIf="!isLogged && firebaseAuthenticationReady" [routerLink]="['/register']">Registrarse</a>
-                <a *ngIf="isLogged && firebaseAuthenticationReady" [routerLink]="['/mi-perfil']">Mi Perfil</a>
-                <a *ngIf="(isLogged && firebaseAuthenticationReady) && !isAdminRole" [routerLink]="['/mis-compras']">Mis Compras</a>
-                <a *ngIf="isAdminRole && firebaseAuthenticationReady" [routerLink]="['/ver-compras']">Ver Compras</a>
+                <a *ngIf="isLogged && firebaseAuthenticationReady" [routerLink]="['/usuario']">Mi Perfil</a>
+                <a *ngIf="(isLogged && firebaseAuthenticationReady) && !isAdminRole" [routerLink]="['/compras']">Mis Compras</a>
+                <a *ngIf="isAdminRole && firebaseAuthenticationReady" [routerLink]="['/compras']">Ver Compras</a>
                 <hr>
                 <a *ngIf="isLogged && firebaseAuthenticationReady" (click)="cerrarSesion()">Cerrar Sesion</a>
 
