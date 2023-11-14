@@ -1,9 +1,21 @@
 .hero{
     position: relative;
     width: 100%;
-    height: 80vh;
-    background-image: url(../../../assets/img/hero2.jpg);
+    height: 75vh;
+    background-image: url(../../../assets/img/home/hero.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover; 
 }
+
+.page-home{
+    background-image: url(../../../assets/img/fondo.jpg);
+    background-size: cover;
+    background-repeat: repeat;
+}
+
+/* .sector-nosotras{
+    width: 60%;
+    margin: 2rem auto;
+    text-align: center;
+} */
