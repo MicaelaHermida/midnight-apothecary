@@ -11,6 +11,8 @@ import { TiendaPageComponent } from './pages/tienda/tienda-page/tienda-page.comp
 import { ProductoInfoPageComponent } from './pages/tienda/producto-info-page/producto-info-page.component';
 import { CompraPageComponent } from './pages/tienda/compra-page/compra-page.component';
 import { CarritoPageComponent } from './pages/tienda/carrito-page/carrito-page.component';
+import { UsuarioInfoPageComponent } from './pages/usuarios/usuario-info-page/usuario-info-page.component';
+import { EditarUsuarioPageComponent } from './pages/usuarios/editar-usuario-page/editar-usuario-page.component';
 
 const routes: Routes = [
   {path: 'blog', component: BlogPageComponent},
@@ -24,6 +26,8 @@ const routes: Routes = [
   {path: 'producto/:key', component: ProductoInfoPageComponent},
   {path: 'carrito', component: CarritoPageComponent},
   {path: 'compra', component: CompraPageComponent},
+  {path: 'usuario', component: UsuarioInfoPageComponent},
+  {path: 'editar-usuario', component: EditarUsuarioPageComponent},
   {path: "**", redirectTo: 'home'}
 ];
 

@@ -1,0 +1,25 @@
+<div *ngIf="firebaseAuthenticationReady && isLogged" class="contenedor">
+    <div>
+        <h1>Compras</h1>
+        <div *ngFor="let compra of compras" class="compra">
+            <div class="info-compra">
+                <p>{{compra.fecha}}</p>
+                <p>compra: {{compra.idDoc}}</p>
+            </div>
+            <div class="items" *ngFor="let producto of compra.items">
+                <p>{{producto.nombre}}</p>
+                <div class="cantidad">
+                    <p> x </p>
+                    <p>{{producto.cantidad}}</p>
+                </div>
+            </div>
+            <div class="pie-compra">
+                <p>Total: <b class="total">${{compra.total}}</b></p>
+                <p>Estado: {{compra.estado}}</p>
+            </div>
+            <div *ngIf="isAdminRole">
+                <button class="finalizar-button" (click)="finalizarEstadoCompra(compra.idDoc!)">Finalizar</button>
+            </div>
+        </div>
+    </div>
+</div>

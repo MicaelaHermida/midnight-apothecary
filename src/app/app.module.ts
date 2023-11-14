@@ -40,6 +40,7 @@ import { ProductoInfoPageComponent } from './pages/tienda/producto-info-page/pro
 import { NuevoComentarioComponent } from './components/blog/comentarios/nuevo-comentario/nuevo-comentario.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { CarritoPageComponent } from './pages/tienda/carrito-page/carrito-page.component';
+import { ListarComprasComponent } from './components/usuarios/listar-compras/listar-compras.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import { CarritoPageComponent } from './pages/tienda/carrito-page/carrito-page.c
     ProductoInfoPageComponent,
     NuevoComentarioComponent,
     HeaderComponent,
-    CarritoPageComponent
+    CarritoPageComponent,
+    ListarComprasComponent
   ],
   imports: [
     BrowserModule,

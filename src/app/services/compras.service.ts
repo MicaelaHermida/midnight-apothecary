@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, addDoc, collection, getDocs } from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, doc, getDoc, getDocs, setDoc } from '@angular/fire/firestore';
 import { Compra } from '../interfaces/compra.interface';
 
 @Injectable({
@@ -47,6 +47,22 @@ export class ComprasService {
       console.error(error);
       return [] as Compra[];
     }
+  }
+
+  async cambiarEstadoCompra(id: string, estado: string): Promise<boolean>{
+    try{
+      const comprasCollection = collection(this.firestore, "compras");
+      const compra = doc(comprasCollection, id);
+      const compraSnapshot = await getDoc(compra);
+      if(compraSnapshot.exists()){
+        await setDoc(compra, {estado: estado}, {merge: true});
+        return true;
+      }
+    }catch(error){
+      console.error(error);
+      alert('Hubo un error al intentar acceder al documento');
+    }
+    return false;
   }
 }
 

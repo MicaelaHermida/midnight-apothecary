@@ -1,0 +1,54 @@
+.contenedor{
+    width: 25%;
+    margin: auto;
+}
+
+.contenedor h1{
+    text-align: center;
+}
+
+.contenedor .compra{
+    width: 100%;
+    background-color: #b39fb6af;
+    margin: auto;
+    padding: 1rem;
+    margin-bottom: .5rem;
+    border-radius: 9px;
+}
+
+.info-compra{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.items{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 80%;
+    margin: auto;
+}
+
+.cantidad{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.pie-compra{
+    width: 90%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    margin: auto;
+}
+
+.pie-compra p{
+    text-align: start;
+}
+
+.total{
+    font-size: large;
+    font-weight: 300;
+}
