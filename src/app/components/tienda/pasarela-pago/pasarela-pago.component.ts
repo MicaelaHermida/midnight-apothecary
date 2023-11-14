@@ -34,6 +34,7 @@ export class PasarelaPagoComponent implements OnInit{
     provincia: '',
     ciudad: '',
     direccion: '',
+    depto: '',
     codigoPostal: '',
     dni: ''
   });
@@ -77,7 +78,9 @@ export class PasarelaPagoComponent implements OnInit{
   }
 
   verificarCamposUsuario(){
-    if(this.usuarioLogueado.ciudad === ''){
+    if(this.usuarioLogueado.ciudad === '' || this.usuarioLogueado.codigoPostal === '' || this.usuarioLogueado.direccion === '' 
+    || this.usuarioLogueado.dni === '' || this.usuarioLogueado.nombre === '' || this.usuarioLogueado.apellido === '' 
+    || this.usuarioLogueado.provincia === '' || this.usuarioLogueado.telefono === ''){
       return false;
     }
     else{
@@ -90,7 +93,7 @@ export class PasarelaPagoComponent implements OnInit{
     this.editMode = true;
   }
 
-  actualizarDatosUsuario(){
+  async actualizarDatosUsuario() : Promise<void>{
     if(this.formularioUsuario.valid){
       this.usuarioLogueado.nombre = this.formularioUsuario.value.nombre;
       this.usuarioLogueado.apellido = this.formularioUsuario.value.apellido;
@@ -101,14 +104,13 @@ export class PasarelaPagoComponent implements OnInit{
       this.usuarioLogueado.depto = this.formularioUsuario.value.depto;
       this.usuarioLogueado.codigoPostal = this.formularioUsuario.value.codigoPostal;
       this.usuarioLogueado.dni = this.formularioUsuario.value.dni;
-      this.authService.updateUserData(this.userId, this.usuarioLogueado);
+      await this.authService.updateUserData(this.userId, this.usuarioLogueado);
       this.editMode = false;
-
     }
     else{
       alert("Datos incorrectos o incompletos");
     }
-  }; //TODO
+  }; 
 
   comprobarDatosTarjeta(): boolean{
     if(!this.formularioPago.valid){
@@ -136,7 +138,7 @@ export class PasarelaPagoComponent implements OnInit{
       await this.carritoService.deleteCarrito();
       this.router.navigate(['/home']);
     }
-  }; //TODO
+  }; 
 
   async obtenerProductos() : Promise<void>{
     await this.carritoService.getCarritoFromUsuario();

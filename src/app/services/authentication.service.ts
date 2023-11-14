@@ -1,8 +1,9 @@
 import { Injectable, inject } from '@angular/core';
-import { Firestore, getFirestore, doc, setDoc, getDoc } from '@angular/fire/firestore';
+import { Firestore, getFirestore, doc, setDoc, getDoc, collection } from '@angular/fire/firestore';
 import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, setPersistence, browserLocalPersistence } from '@angular/fire/auth';
 import { Carrito } from '../interfaces/carrito.interface';
 import { User } from '../interfaces/user.interface';
+import { getDocs } from 'firebase/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -31,13 +32,14 @@ export class AuthenticationService {
         provincia: "",
         codigoPostal: "",
         dni: "",
-        carrito: [] as Carrito[]
+        carrito: [] as Carrito[],
+        email: email
       };
 
       await setDoc(docRef, data);
 
     } catch (error) {
-
+      alert('Error, email en uso');
       console.error(error);
     }
   }
@@ -139,6 +141,28 @@ export class AuthenticationService {
       return user.uid;
     }
     return "";
+  }
+
+  async getUserIdByEmail(email: string): Promise<string> {
+    let id = "";
+    try{
+      const userCollection = collection(this.firestore, "users");
+      const usuarios = await getDocs(userCollection);
+      //quiero buscar por email, y que si el email coincide, retorne el id;
+
+      usuarios.forEach(doc => {
+        const usuario = doc.data();
+        console.log(usuario['email']);
+        if(usuario['email'] === email){
+          console.log("match")
+          id = doc.id;
+          console.log(id);
+        }
+      });
+    }catch(error){
+      console.error(error);
+    }
+    return id;
   }
 
 }
