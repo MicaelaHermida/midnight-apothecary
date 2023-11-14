@@ -2,18 +2,23 @@
     <form class="login-form" [formGroup]="form" (ngSubmit)="registrarse()">
         <div class="login-form-body">
             <label>Nombre:</label>
-            <input type="text" formControlName="nombre">
+            <input type="text" formControlName="nombre" [class.invalid]="validate('nombre', 'required')">
+            <span class="form-error" *ngIf="validate('nombre', 'required')">Campo obligatorio.</span>
 
             <label>Apellido:</label>
-            <input type="text" formControlName="apellido">
+            <input type="text" formControlName="apellido" [class.invalid]="validate('apellido', 'required')">
+            <span class="form-error" *ngIf="validate('apellido', 'required')">Campo obligatorio.</span>
 
             <label>Email:</label>
-            <input type="email" formControlName="email">
+            <input type="email" formControlName="email" [class.invalid]="validate('email', 'required') || validate('email', 'email')">
+            <span class="form-error" *ngIf="validate('email', 'required')">Campo obligatorio.</span>
+            <span class="form-error" *ngIf="validate('email', 'email')">Formato inválido.</span>
 
             <label>Contraseña:</label>
-            <input type="password" formControlName="password">
+            <input type="password" formControlName="password" [class.invalid]="validate('password', 'required')">
+            <span class="form-error" *ngIf="validate('password', 'required')">Campo obligatorio.</span>
         </div>
-        
+
         <div class="container-buttons">
             <button class="login-button" type="submit">Registrarme</button>
             <button class="login-button" (click)="cancelar()">Cancelar</button>

@@ -160,3 +160,71 @@ textarea:focus{
     border-radius: 1rem;
     background-color: #b39fb6af;
 }
+
+/*USUARIOS LOGIN Y REGISTRO FORMS*/
+
+.login-form{
+    width: 40%;
+    background-color: #b39fb6af;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    margin: 2rem auto;
+    border-radius: 1rem;
+}
+
+.login-form-body{
+    padding: 1%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form-body label{
+    margin-left: 2%;
+    color: #2a2030;
+    font-family: 'Quicksand', medium;
+    font-size: 2rem;
+    padding: 1%;
+}
+
+.login-form-body input{
+    margin: auto;
+    width: 95%;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 1px solid 2a2030;
+    background-color: #c7b7ca;
+    font-family: 'Merriweather', serif;
+}
+
+
+.login-button{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.6rem;
+    color:#2a2030;
+    width: 30%;
+    margin: 2% auto;
+    border-radius: 5rem;
+    padding: 1rem;
+    background-color: #b39fb600;
+    border: 1px solid #2a2030;
+}
+
+.login-button:hover{
+    font-weight: bold;
+}
+
+.login-form-body input.invalid{
+    border: 2px solid #a10202;
+
+}
+
+.form-error{
+    margin-top: 0;
+    margin-left: 2%;
+    font-family: 'Merriweather', serif;
+    font-size: 1.3rem;
+    color: #a10202;
+    padding: 1%;
+}

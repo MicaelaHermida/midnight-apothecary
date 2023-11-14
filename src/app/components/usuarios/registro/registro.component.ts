@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
@@ -8,7 +8,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.css']
 })
-export class RegistroComponent{
+export class RegistroComponent {
 
   isLogged: boolean = false;
   firebaseAuthStateReady: boolean = false;
@@ -17,17 +17,16 @@ export class RegistroComponent{
 
   constructor(private fb: FormBuilder, private AuthencationService: AuthenticationService, private router: Router) {
     this.form = this.fb.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required],
-      nombre: ['', Validators.required],
-      apellido: ['', Validators.required]
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      nombre: ['', [Validators.required, Validators.maxLength(30)]],
+      apellido: ['', [Validators.required, Validators.maxLength(30)]]
     })
   }
 
-
-  cancelar(){
+  cancelar() {
     const ok = confirm("¿Está seguro que desea cancelar el registro?");
-    if(ok){
+    if (ok) {
       this.router.navigate(['/home']);
     }
     return;
@@ -36,6 +35,7 @@ export class RegistroComponent{
   register(email: string, password: string, nombre: string, apellido: string) {
     this.AuthencationService.register(email, password, nombre, apellido);
   }
+
   registrarse() {
     if (!this.form.valid) {
       alert("Rellene todos los campos correctamente");
@@ -48,4 +48,12 @@ export class RegistroComponent{
     this.register(email, password, nombre, apellido);
     this.router.navigate(['/home']);
   }
+
+  validate(field: string, error: string): boolean {
+    const isInvalid = this.form.controls[field].hasError(error) &&
+      (this.form.controls[field].touched || this.form.controls[field].dirty);
+
+    return isInvalid;
+  }
+
 }
