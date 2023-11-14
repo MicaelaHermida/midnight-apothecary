@@ -102,3 +102,22 @@
     margin-bottom: 0;
 }
 
+.footer-icon i{
+    color: #b39fb6af;
+    font-size: 3rem;
+    margin: 0 1rem;
+}
+
+.footer-icon i:hover{
+    color: #c7b7ca;
+}
+
+.seccion-footer .suscribirse{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.seccion-footer .suscribirse input{
+    width: 80%;
+}
