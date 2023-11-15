@@ -1,32 +1,33 @@
-.footer{
+.footer {
     background-image: url(../../../../assets/img/footer.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     width: 100%;
     padding: 2rem 0;
-    bottom: 0;
 }
 
-.footer p{
+
+
+.footer p {
     font-family: 'Merriweather', serif;
     font-size: 1.6rem;
     color: #b39fb6;
     text-align: center;
 }
 
-.contenedor-footer{
-    background-color: #2a2030d3;    
+.contenedor-footer {
+    background-color: #2a2030d3;
     display: flex;
     justify-content: space-around;
     margin: 0 2rem;
 }
 
-.seccion-footer{
+.seccion-footer {
     max-width: 30rem;
 }
 
-.seccion-footer h3{
+.seccion-footer h3 {
     font-family: 'Quicksand', sans-serif;
     font-size: 2rem;
     color: #b39fb6;
@@ -34,42 +35,42 @@
     margin-bottom: 1rem;
 }
 
-.seccion-footer h2{
+.seccion-footer h2 {
     font-family: 'Quicksand', sans-serif;
     font-size: 1.6rem;
     color: #b39fb6;
     font-weight: 400;
 }
 
-.seccion-footer ul{
+.seccion-footer ul {
     list-style: none;
     padding: 0;
 }
 
-.seccion-footer li{
+.seccion-footer li {
     margin-bottom: .5rem;
 }
 
 
-.seccion-footer a{
+.seccion-footer a {
     color: #b39fb6;
     font-family: 'Merriweather', serif;
     font-size: 1.6rem;
     text-decoration: none;
 }
 
-.seccion-footer a:hover{
+.seccion-footer a:hover {
     font-weight: bold;
 }
 
-.seccion-footer form{
+.seccion-footer form {
     display: flex;
     flex-direction: column;
     margin-top: 1.5rem;
-    align-items: center;    
+    align-items: center;
 }
 
-.seccion-footer input{
+.seccion-footer input {
     padding: .5rem;
     margin-bottom: 1rem;
     background-color: #ffffff00;
@@ -79,44 +80,44 @@
     border-radius: 1rem;
 }
 
-.seccion-footer input::placeholder{
+.seccion-footer input::placeholder {
     color: #b39fb6;
 }
 
-.seccion-footer button{
+.seccion-footer button {
     margin-left: 0;
     padding: 1rem;
     background-color: #b39fb6af;
     color: #2a2030;
 }
 
-.seccion-footer button:hover{
+.seccion-footer button:hover {
     background-color: #2a2030d3;
     color: #b39fb6;
 }
 
-.copi-footer{
+.copi-footer {
     text-align: center;
     margin-top: 2rem;
     margin-bottom: 0;
 }
 
-.footer-icon i{
+.footer-icon i {
     color: #b39fb6af;
     font-size: 3rem;
     margin: 0 1rem;
 }
 
-.footer-icon i:hover{
+.footer-icon i:hover {
     color: #c7b7ca;
 }
 
-.seccion-footer .suscribirse{
+.seccion-footer .suscribirse {
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
 
-.seccion-footer .suscribirse input{
+.seccion-footer .suscribirse input {
     width: 80%;
 }

@@ -109,6 +109,10 @@ textarea:focus{
 
 /*PAGES*/
 
+.page{
+    min-height: 53.6vh;
+}
+
 .page-user{
     background-color: #876a89;
     background-image: url(../src/assets/img/dibujos-user.jpg);
@@ -128,6 +132,13 @@ textarea:focus{
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+/*FOOTER FIXED*/
+.footer.fixed{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
 }
 
 /*FORMULARIO-BRUJAS (NUEVA Y EDITAR)*/
