@@ -11,10 +11,7 @@
 .contenedor-principal {
     display: flex;
     flex-direction: column;
-    margin-bottom: 5rem; /**/
-    background-image: url('../../../../assets/img/fondo-tienda.jpg');
-    background-size: cover;
-    background-repeat: repeat;
+    margin-bottom: 5rem; 
 }
 
 .card {
