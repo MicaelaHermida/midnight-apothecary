@@ -1,34 +1,6 @@
-.contenedor{
-    background-color: #b39fb6af;
-    display: flex;
-    width: 50%;
-    margin: auto;
-}
-
-.datos-usuario{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-left: 4.5rem;
-}
 
 form{
     width: 100%;
-}
-
-.datos-personales{
-    min-width: 50%;
-}
-
-.datos-personales div{
-    width: 80%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding-left: 1rem;
-    padding-right: 1rem;
 }
 
 .buttons{
@@ -39,14 +11,4 @@ form{
 
 .buttons button{
     width: 20%;
-}
-
-.datos-personales div input{
-    width: 100%;
-    border: none;
-    background-color: #b39fb600;
-    border-bottom: 1px solid #2a2030;
-    height: 3rem;
-    margin: 1rem;
-    text-align: end;
 }
