@@ -3,5 +3,6 @@ export interface Comentario{
     userId: string, 
     brujaId: string, 
     fecha: Date,
-    comentario: String
+    comentario: String,
+    nombreUsuario: String
 }

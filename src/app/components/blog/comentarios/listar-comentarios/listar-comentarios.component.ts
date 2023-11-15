@@ -48,6 +48,9 @@ export class ListarComentariosComponent implements OnInit {
 
   async mostrarComentarios(): Promise<void> {
     this.listadoComentarios = await this.comentariosService.getComentariosBruja();
+    for(let entry of this.listadoComentarios.entries()){
+      entry[1].nombreUsuario = await this.authenticationService.getUserNameById(entry[1].userId);
+    }
   }
 
   esUsuario(id: string): Boolean {

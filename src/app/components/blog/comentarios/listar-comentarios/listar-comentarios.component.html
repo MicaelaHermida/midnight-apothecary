@@ -2,7 +2,7 @@
     <div *ngIf="!editModeMap.get(comentario.key)">
         <div  class="comentario">
             <h3>{{comentario.value['fecha']}}</h3>
-        <p>{{comentario.value.userId}}</p>
+        <p>{{comentario.value.nombreUsuario}}</p>
         <p>{{comentario.value.comentario}}</p>
         <button type="button" class="boton" *ngIf="esUsuario(comentario.value.userId) && firebaseAuthenticationReady" (click)="editarComentario(comentario.key)">Modificar</button>
         <button type="button" class="boton" *ngIf="(isAdmin || esUsuario(comentario.value.userId)) && firebaseAuthenticationReady" (click)="eliminarComentario(comentario.key)">Eliminar</button> 

@@ -165,4 +165,20 @@ export class AuthenticationService {
     return id;
   }
 
+  async getUserNameById(id:string): Promise<string>{
+    let nombreCompleto = "";
+    try{
+      const db = getFirestore();
+      const docRef = doc(db, "users", id);
+      const docSnap = await getDoc(docRef);
+      const docData = docSnap.data();
+      if(docData){
+        nombreCompleto = docData['nombre'] + " " + docData['apellido'];
+      }
+    }catch(error){
+      console.error(error);
+
+    }
+    return nombreCompleto;
+  }
 }
