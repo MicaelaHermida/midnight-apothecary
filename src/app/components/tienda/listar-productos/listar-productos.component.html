@@ -21,7 +21,9 @@
                 <p>BUSCAR:</p>
                 <div>
                     <input type="text" [(ngModel)]="busqueda" class="busqueda" placeholder="Producto...">
-                    <button type="button" (click)="buscarProductoPorNombre()">🔎</button>
+                    <a class="busqueda-icon" (click)="buscarProductoPorNombre()">
+                        <i class="fi fi-rs-search"></i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -80,3 +82,4 @@
 
 
 </div>
+

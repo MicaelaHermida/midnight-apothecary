@@ -3,7 +3,7 @@
     border-radius: 9px;
 }
 
-.contenedor{
+/* .contenedor{
     display: flex;
     justify-content: row;
     width: 80%;
@@ -12,19 +12,19 @@
     padding-top: 3rem;
     padding-bottom: 6rem;
     margin-top: 3rem;
-}
+} 
 
 .imagen-titulo{
     text-align: center;
     margin-left: 5rem;
 }
+*/
+
 
 .detalles-producto{
     display: flex;
     flex-direction: row;
-    width: 50%;
-    margin: auto;
-    margin-top: 6.5rem;
+    margin-left: 1rem;
     flex-wrap: wrap;
 }
 
@@ -73,6 +73,20 @@ button{
     padding: 1rem;
 }
 
-.agregar-carr-button{
-    height: 100%;
+.botoncito{
+    width: 5rem;
+    height: 5rem;
+    border-radius: 5rem;
+    padding: .5rem;
+}
+
+#agregar-carr-button{
+    width: 60%;
+    line-height: 1.5rem;
+    margin: 0 2rem;
+}
+
+.subtitulo{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.8rem;
 }

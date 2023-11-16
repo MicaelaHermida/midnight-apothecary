@@ -57,9 +57,9 @@
                     </div>
 
                     <div class="container-buttons">
-                        <button class="boton-claro" *ngIf="editMode && !isAdminRole" (click)="cancelarCambios()">Cancelar</button>
-                        <button class="boton-claro" *ngIf="editMode && !isAdminRole" type="submit">Guardar</button>
-                        <button class="boton-claro"  type="button" *ngIf="!editMode && !isAdminRole" (click)="activarEditMode()">Editar</button>
+                        <button class="boton-claro" *ngIf="editMode" (click)="cancelarCambios()">Cancelar</button>
+                        <button class="boton-claro" *ngIf="editMode" type="submit">Guardar</button>
+                        <button class="boton-claro"  type="button" *ngIf="!editMode" (click)="activarEditMode()">Editar</button>
                     </div>
                 </div>
                 

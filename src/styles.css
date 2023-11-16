@@ -3,6 +3,7 @@
 @import url('https://cdn-uicons.flaticon.com/2.0.0/uicons-brands/css/uicons-brands.css');
 @import url('https://cdn-uicons.flaticon.com/2.0.0/uicons-regular-straight/css/uicons-regular-straight.css');
 @import url('https://cdn-uicons.flaticon.com/2.0.0/uicons-solid-rounded/css/uicons-solid-rounded.css');
+@import url('https://cdn-uicons.flaticon.com/2.0.0/uicons-regular-straight/css/uicons-regular-straight.css');
 
 html {
     box-sizing: border-box;
@@ -152,7 +153,7 @@ textarea:focus{
 
 /*PERFILES, BIOS, INFOS*/
 .contenedor{
-    width: 70%;
+    width: 60%;
     height: 50%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -172,6 +173,16 @@ textarea:focus{
     text-decoration: underline;
     top: 0;
     margin: 1rem;
+    padding: .5rem;
+}
+
+.contenedor h3{
+    font-family: 'Quicksand', serif;
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 2rem;
+    text-align: center;
+    margin: 2rem;
     padding: .5rem;
 }
 
@@ -365,7 +376,18 @@ textarea:focus{
     font-weight: bold;
 }
 
-/*ERROR VALIDACIONES*/
+/*ICONOS*/
+.busqueda-icon i{
+    color: #b39fb6af;
+    font-size: 2rem;
+    margin: 0 1rem;
+}
+
+.busqueda-icon i:hover{
+    color: #c7b7ca;
+}
+
+/*SPANS!*/
 
 
 .formulario input.invalid{
