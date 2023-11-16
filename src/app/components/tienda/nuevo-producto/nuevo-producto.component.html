@@ -1,0 +1,30 @@
+<div class="contenedor-nuevo-producto" *ngIf="isAdminRole && firebaseAuthenticationReady">
+    <form [formGroup]="form" (ngSubmit)="agregarProducto()" class="formulario">
+        <div class="campos">
+            <div>
+                <label>Nombre:</label>
+                <input type="text" formControlName="nombre">
+            </div>
+            <div>
+                <label>Imagen:</label>
+                <input type="text" formControlName="imagen">
+            </div>
+            <div>
+                <label>Precio:</label>
+                <input type="text" formControlName="precio">
+            </div>
+            <div>
+                <label>Stock:</label>
+                <input type="text" formControlName="stock">
+            </div>
+            <div>
+                <label>Id Planta:</label>
+                <input type="number" formControlName="id_planta">
+            </div>
+            <div class="div-buttons">
+                <button type="button" (click)="cancelar()">Cancelar</button>
+                <button type="submit">Aceptar</button>
+            </div>
+        </div>
+    </form>
+</div>

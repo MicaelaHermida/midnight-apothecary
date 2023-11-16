@@ -39,6 +39,8 @@ import { CarritoPageComponent } from './pages/tienda/carrito-page/carrito-page.c
 import { ListarComprasComponent } from './components/usuarios/listar-compras/listar-compras.component';
 import { ListarComprasPageComponent } from './pages/usuarios/listar-compras-page/listar-compras-page.component';
 import { HeroComponent } from './components/home/hero/hero.component';
+import { NuevoProductoComponent } from './components/tienda/nuevo-producto/nuevo-producto.component';
+import { NuevoProductoPageComponent } from './pages/tienda/nuevo-producto-page/nuevo-producto-page.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +75,9 @@ import { HeroComponent } from './components/home/hero/hero.component';
     CarritoPageComponent,
     ListarComprasComponent,
     ListarComprasPageComponent,
-    HeroComponent
+    HeroComponent,
+    NuevoProductoComponent,
+    NuevoProductoPageComponent
   ],
   imports: [
     BrowserModule,

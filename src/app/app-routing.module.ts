@@ -12,6 +12,7 @@ import { CompraPageComponent } from './pages/tienda/compra-page/compra-page.comp
 import { CarritoPageComponent } from './pages/tienda/carrito-page/carrito-page.component';
 import { UsuarioInfoPageComponent } from './pages/usuarios/usuario-info-page/usuario-info-page.component';
 import { ListarComprasPageComponent } from './pages/usuarios/listar-compras-page/listar-compras-page.component';
+import { NuevoProductoPageComponent } from './pages/tienda/nuevo-producto-page/nuevo-producto-page.component';
 
 const routes: Routes = [
   {path: 'blog', component: BlogPageComponent},
@@ -26,6 +27,7 @@ const routes: Routes = [
   {path: 'compra', component: CompraPageComponent},
   {path: 'usuario', component: UsuarioInfoPageComponent},
   {path: 'compras', component: ListarComprasPageComponent},
+  {path: 'nuevo-producto', component: NuevoProductoPageComponent},
   {path: "**", redirectTo: 'home'}
 ];
 

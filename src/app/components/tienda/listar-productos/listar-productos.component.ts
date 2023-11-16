@@ -146,7 +146,7 @@ export class ListarProductosComponent implements OnInit {
     }
   }
 
-  async buscarProductoPorNombre() {
+  async buscarProductoPorNombre() : Promise<void> {
     this.busquedaFinalizada = false;
     this.allProducts = new Map();
     this.allProducts = await this.productosService.getProductosPorNombre(this.busqueda);
@@ -187,14 +187,16 @@ export class ListarProductosComponent implements OnInit {
   }
 
   /////////////////////ADMINISTRADOR////////////////////////
-  async eliminarProducto(id_planta: number) {
+  async eliminarProducto(id_planta: number) : Promise<void>{
     const id_producto = this.verificarIdProducto(id_planta);
     const ok = confirm("¿Está seguro que desea eliminar el producto?");
     if (!ok) {
       return;
     }
+    this.allProducts.delete(id_producto);
     await this.productosService.deleteProducto(id_producto);
     this.ordenarArrayProductos();
+    this.mostrarArrayProductos();
   }
 
   editarProducto(id_planta: number) {
@@ -206,7 +208,7 @@ export class ListarProductosComponent implements OnInit {
     this.lastEditKey = id_planta;
   }
 
-  async guardarProducto(producto: Producto) {
+  async guardarProducto(producto: Producto):Promise<void> {
     ///quiero asegurarme de que el modo editar este activado
     const id_producto = this.verificarIdProducto(producto.id_planta);
     const currentEditMode = this.editModeMap.get(producto.id_planta);
