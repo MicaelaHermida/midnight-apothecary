@@ -58,7 +58,7 @@
         </form>
     </div>
     <div class="form-pago">
-        <form [formGroup]="formularioPago" (ngSubmit)="realizarCompra()" class="campos">
+        <form [formGroup]="formularioPago" (ngSubmit)="realizarCompra()" class="formulario campos">
             <h2>Datos de pago:</h2>
             <div>
                 <label>Nombre del titular</label>
@@ -71,8 +71,8 @@
                 <input type="number">
                 <label>DNI del pagador</label>
                 <input type="text">
-                <button type="submit">Pagar</button>
             </div>
+            <button type="submit" class="button-pago">Pagar</button>
         </form>
     </div>
 </div>

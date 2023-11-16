@@ -1,14 +1,14 @@
-.contenedor{
-    width: 25%;
+.contenedor-listado{
+    width: 30%;
     margin: auto;
     margin-top: 3rem;
 }
 
-.contenedor h1{
+.contenedor-listado h1{
     text-align: center;
 }
 
-.contenedor .compra{
+.contenedor-listado .compra{
     width: 100%;
     background-color: #b39fb6af;
     margin: auto;
@@ -52,4 +52,71 @@
 .total{
     font-size: large;
     font-weight: 300;
+}
+
+.fondo-filtrado{
+    background-image: url(../../../../assets/img/guarda-tienda.jpg);
+    width: 100%;
+    display: flex;
+}
+
+.busqueda{
+    width: 25%;
+    margin-left: 15%;
+    background-color: #2a2030d3;
+    opacity: 0.9;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: .5rem;
+    padding-left: 2rem;
+}
+
+.busqueda p{
+    padding: 0;
+    margin: 0;
+    margin-bottom: 2%;
+    color: #b39fb6;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 2rem;
+}
+
+.busqueda input{
+    outline: none;
+    cursor: pointer;
+    width: 60%;
+    background-color: #b39fb600;
+    border-radius: 10px;
+    height: 3rem;
+    color: #b39fb6;
+    border: 1px solid #b39fb6af;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    padding: .5rem;
+}
+
+.busqueda input::placeholder{
+    color: #b39fb669;
+}
+
+.busqueda input::content{
+    font-size: medium;
+}
+
+.busqueda input:focus::placeholder{
+    color: #b39fb600;
+}
+
+.busqueda input:hover{
+   border: 1.5px solid #b39fb6;
+   box-shadow: #fffeff71 0px 0px 1.5px 0px;
+}
+
+.contenedor-admin-button{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.finalizar-button{
+    width: 30%;
 }
