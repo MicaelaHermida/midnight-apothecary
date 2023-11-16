@@ -359,6 +359,24 @@ textarea:focus{
     font-weight: bold;
 }
 
+.boton-transp{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+    color:#b39fb6;
+    width: 30%;
+    margin: 2% auto;
+    border-radius: 5rem;
+    padding: 1rem;
+    background-color: #2a203000;
+    border: .1rem solid #b39fb6;
+}
+
+.boton-transp:hover{
+    background-color: #2a2030;
+    color:#b39fb6;
+    font-weight: bold;
+}
 
 .boton-oscuro{
     font-family: 'Quicksand', sans-serif;
@@ -375,6 +393,8 @@ textarea:focus{
 .boton-oscuro:hover{
     font-weight: bold;
 }
+
+
 
 /*ICONOS*/
 .busqueda-icon i{

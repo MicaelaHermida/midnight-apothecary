@@ -1,6 +1,6 @@
-<form [formGroup]="formulario" (submit)="guardarComentario()">
-    <textarea formControlName="comentario" cols="30" rows="10"></textarea>
-    <div>
-        <button type="submit">Enviar</button>
-    </div>
+<form class="filtro" [formGroup]="formulario" (submit)="guardarComentario()">
+    <h3>¿Qué te parece?</h3>
+    <textarea formControlName="comentario" placeholder="Deja tu comentario..."></textarea>
+    <button class="boton-transp" id="boton-comentario" type="submit">Enviar</button>
+
 </form>
