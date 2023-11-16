@@ -54,6 +54,7 @@ export class InfoProductoComponent implements OnInit{
         this.cantidadItems ++;
       }else{
         alert("No hay suficiente stock");
+        return;
       }
     }
 
