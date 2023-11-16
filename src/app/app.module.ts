@@ -11,7 +11,6 @@ import { LoginComponent } from './components/usuarios/login/login.component';
 import { RegistroComponent } from './components/usuarios/registro/registro.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrujaInfoComponent } from './components/blog/brujas/bruja-info/bruja-info.component';
-import { EditarBrujaComponent } from './components/blog/brujas/editar-bruja/editar-bruja.component';
 import { ListarBrujasComponent } from './components/blog/brujas/listar-brujas/listar-brujas.component';
 import { NuevaBrujaComponent } from './components/blog/brujas/nueva-bruja/nueva-bruja.component';
 import { ListarComentariosComponent } from './components/blog/comentarios/listar-comentarios/listar-comentarios.component';
@@ -26,7 +25,6 @@ import { InfoProductoComponent } from './components/tienda/info-producto/info-pr
 import { UsuarioInfoComponent } from './components/usuarios/usuario-info/usuario-info.component';
 import { InfoBrujaPageComponent } from './pages/blog/info-bruja-page/info-bruja-page.component';
 import { BlogPageComponent } from './pages/blog/blog-page/blog-page.component';
-import { EditarBrujaPageComponent } from './pages/blog/editar-bruja-page/editar-bruja-page.component';
 import { NuevaBrujaPageComponent } from './pages/blog/nueva-bruja-page/nueva-bruja-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { CompraPageComponent } from './pages/tienda/compra-page/compra-page.component';
@@ -48,7 +46,6 @@ import { HeroComponent } from './components/home/hero/hero.component';
     LoginComponent,
     RegistroComponent,
     BrujaInfoComponent,
-    EditarBrujaComponent,
     ListarBrujasComponent,
     NuevaBrujaComponent,
     ListarComentariosComponent,
@@ -63,7 +60,6 @@ import { HeroComponent } from './components/home/hero/hero.component';
     UsuarioInfoComponent,
     InfoBrujaPageComponent,
     BlogPageComponent,
-    EditarBrujaPageComponent,
     NuevaBrujaPageComponent,
     HomePageComponent,
     CompraPageComponent,

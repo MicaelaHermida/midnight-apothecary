@@ -53,7 +53,6 @@ export class HeaderComponent implements OnInit {
         else if(this.router.url.includes("compra")) this.isCompra = true;
         else if(this.router.url.includes("blog")) this.isBlog = true;
         else if(this.router.url.includes("nueva-bruja")) this.isNuevaBruja = true;  
-        else if(this.router.url.includes("editar-bruja")) this.isEditarBruja = true;
         else if(this.router.url.includes("info-bruja")){
           this.isBruja = true;
           this.traerBruja(this.brujaId);
