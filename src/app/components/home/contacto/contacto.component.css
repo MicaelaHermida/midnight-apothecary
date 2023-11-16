@@ -1,37 +1,3 @@
-/* 
-.formulario-contacto {
-    border-radius: 1rem;
-}
-
-.formulario-contacto .campo {
-    display: flex;
-    flex-direction: column;
-    background-color: #b39fb600;
-    margin: 1rem;
-}
-
-.campo label {
-    font-family: 'Quicksand', sans-serif;
-    font-size: 2rem;
-    color: #2a2030;
-    line-height: 2rem;
-    text-align: left;
-    margin-left: 1%;
-}
-
-.campo input {
-    margin: 1%;
-    padding: .5rem;
-    border-radius: 1rem;
-    border: .1rem solid black;
-    background-color: #c7b7ca;
-    font-family: 'Merriweather', serif;
-    font-size: 1.6rem;
-    color: #2a2030;
-}
- */
-
-
 
 .boton-contacto{
     border-radius: 30px;

@@ -1,5 +1,82 @@
-<div class="contenedor-bruja-info" *ngIf="brujaCargada">
-    <div>
+<div class="contenedor" *ngIf="brujaCargada">
+    <div class="imagen">
+        <img src="{{bruja.imagen}}" alt="Imagen de la bruja">
+    </div>
+
+    <div class="info">
+        <h2>Biografía</h2>
+
+        <form>
+            <div class="datos">
+                <div>
+                    <label>Nombre:</label>
+                    <p>{{bruja.nombre}}</p>
+                    <input *ngIf="editMode" formControlName="editNombre">
+                </div>
+
+                <div>
+                    <label>Apellido:</label>
+                    <p>{{bruja.apellido}}</p>
+                    <input *ngIf="editMode" formControlName="editApellido">
+                </div>
+
+                <div>
+                    <label>Nacimiento:</label>
+                    <p>{{bruja.fecha_nacimiento}}</p>
+                    <input *ngIf="editMode" formControlName="editFechaNac">
+                </div>
+
+                <div>
+                    <label>Defunción:</label>
+                    <p>{{bruja.fecha_defuncion}}</p>
+                    <input *ngIf="editMode" formControlName="editFechaDef">
+                </div>
+
+                <div>
+                    <label>Lugar de Nacimiento:</label>
+                    <p>{{bruja.lugar_de_nacimiento}}</p>
+                    <input *ngIf="editMode" formControlName="editLugarNac">
+                </div>
+
+                <div>
+                    <label>Lugar de Ejecución:</label>
+                    <p>{{bruja.lugar_de_ejecucion}}</p>
+                    <input *ngIf="editMode" formControlName="editLugarEjec">
+                </div>
+
+                <div>
+                    <label>Tipo de Muerte:</label>
+                    <p>{{bruja.tipo_de_muerte}}</p>
+                    <input *ngIf="editMode" formControlName="editTipoMuerte">
+                </div>
+
+                <div>
+                    <label>Historia:</label>
+                    <p>{{bruja.historia}}</p>
+                    <input *ngIf="editMode" formControlName="editHistoria">
+                </div>
+
+                <div class="buttons">
+                    <button *ngIf="editMode && !isAdminRole" (click)="cancelarCambios()">Cancelar</button>
+                    <button *ngIf="editMode && !isAdminRole" type="submit">Guardar</button>
+                    <button type="button" *ngIf="!editMode && !isAdminRole" (click)="activarEditMode()">Editar</button>
+                </div>
+
+            </div>
+        </form>
+
+    </div>
+    
+</div>
+
+
+
+<!-- <div class="contenedor" *ngIf="brujaCargada">
+    <div class="imagen">
+        <img src="{{bruja.imagen}}" alt="Imagen de la bruja">
+    </div>
+
+    <div class="info">
         <h2>Biografía</h2>
         <p><span class="subtitulo">Nombre: </span>{{bruja.nombre}}</p>
         <p><span class="subtitulo">Apellido: </span>{{bruja.apellido}}</p>
@@ -12,8 +89,5 @@
         <h3>Historia</h3>
         <p>{{ bruja.historia }}</p>
     </div>
-
-    <div class="imagen-bruja">
-        <img src="{{bruja.imagen}}" alt="Imagen de la bruja">
-    </div>
-</div>
+    
+</div> -->

@@ -164,6 +164,7 @@ textarea:focus{
     line-height: 2rem;
     text-align: center;
     text-decoration: underline;
+    top: 0;
     margin: 1rem;
     padding: .5rem;
 }
