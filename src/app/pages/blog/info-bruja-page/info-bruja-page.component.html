@@ -1,13 +1,10 @@
 <div class="page-blog">
     <app-bruja-info class="page"></app-bruja-info>
 
-    <app-nuevo-comentario class="nuevo-comentario" *ngIf="(isAdmin || isLogged) && firebaseAuthenticationReady"></app-nuevo-comentario>
+    <app-nuevo-comentario class="nuevo-comentario"
+        *ngIf="(isAdmin || isLogged) && firebaseAuthenticationReady"></app-nuevo-comentario>
 
-    <div class="sector-comentarios">
-        <h2>Comentarios</h2>
-        <hr>
-        <app-listar-comentarios class="contenedor-comentarios"></app-listar-comentarios>
-    </div>
+    <app-listar-comentarios></app-listar-comentarios>
 </div>
 
 <app-footer></app-footer>

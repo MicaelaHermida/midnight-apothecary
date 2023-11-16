@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Bruja } from 'src/app/interfaces/brujas.interface';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { BrujasService } from 'src/app/services/brujas.service';
@@ -34,7 +34,6 @@ export class BrujaInfoComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
     private brujasService: BrujasService,
     private comentariosService: ComentariosService,
     private formBuilder: FormBuilder,

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { Comentario } from 'src/app/interfaces/comentarios.interface';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { ComentariosService } from 'src/app/services/comentarios.service';
@@ -10,13 +9,14 @@ import { ComentariosService } from 'src/app/services/comentarios.service';
   templateUrl: './listar-comentarios.component.html',
   styleUrls: ['./listar-comentarios.component.css']
 })
+
 export class ListarComentariosComponent implements OnInit {
 
   listadoComentarios: Map<string, Comentario> = new Map();
 
-  isAdmin: Boolean = false;
-  isLogged: Boolean = false;
-  firebaseAuthenticationReady: Boolean = false;
+  isAdmin: boolean = false;
+  isLogged: boolean = false;
+  firebaseAuthenticationReady: boolean = false;
   currentMapEditIndex: string = "";
 
   formulario: FormGroup = this.formBuilder.group({
@@ -29,7 +29,6 @@ export class ListarComentariosComponent implements OnInit {
     private comentariosService: ComentariosService,
     private authenticationService: AuthenticationService,
     private formBuilder: FormBuilder,
-    private router: Router
   ) { }
 
   async ngOnInit(): Promise<void> {
@@ -48,12 +47,13 @@ export class ListarComentariosComponent implements OnInit {
 
   async mostrarComentarios(): Promise<void> {
     this.listadoComentarios = await this.comentariosService.getComentariosBruja();
-    for(let entry of this.listadoComentarios.entries()){
+    for (let entry of this.listadoComentarios.entries()) {
       entry[1].nombreUsuario = await this.authenticationService.getUserNameById(entry[1].userId);
+      this.editModeMap.set(entry[0], false);
     }
   }
 
-  esUsuario(id: string): Boolean {
+  esUsuario(id: string): boolean {
     if (this.authenticationService.getCurrentUserId() === id) {
       return true;
     }
@@ -75,10 +75,12 @@ export class ListarComentariosComponent implements OnInit {
   //USER DEL COMENTARIO
   editarComentario(id: string): void {
     this.cerrarTextAreaComentario();
-    this.currentMapEditIndex = id;
+    this.editModeMap.set(id, true);
+    this.initForm(this.listadoComentarios.get(id)!);
+    /* this.currentMapEditIndex = id;
     const currentEditMode = this.editModeMap.get(id);
     this.editModeMap.set(id, !currentEditMode);
-    this.initForm(this.listadoComentarios.get(id)!);
+    this.initForm(this.listadoComentarios.get(id)!); */
   }
 
   async guardarComentario(id: string): Promise<void> {
@@ -89,15 +91,19 @@ export class ListarComentariosComponent implements OnInit {
 
     if (this.formulario.controls['editComentario'].valid) {
       comentario.comentario = this.formulario.value.editComentario;
+      await this.comentariosService.putComentario(id, comentario);
+      this.editModeMap.set(id, false);
+      await this.mostrarComentarios();
     }
 
-    await this.comentariosService.putComentario(id, comentario);
-    this.editModeMap.set(id, false);
-    await this.mostrarComentarios();
   }
 
   cerrarTextAreaComentario() {
     this.editModeMap.set(this.currentMapEditIndex, false);
+  }
+
+  cancelarCambios(id: string): void{
+    this.editModeMap.set(id, false);
   }
 
 

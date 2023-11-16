@@ -1,16 +1,72 @@
-<form *ngFor="let comentario of listadoComentarios | keyvalue" >
-    <div *ngIf="!editModeMap.get(comentario.key)">
-        <div  class="comentario">
-            <h3>{{comentario.value['fecha']}}</h3>
-        <p>{{comentario.value.nombreUsuario}}</p>
-        <p>{{comentario.value.comentario}}</p>
-        <button type="button" class="boton" *ngIf="esUsuario(comentario.value.userId) && firebaseAuthenticationReady" (click)="editarComentario(comentario.key)">Modificar</button>
-        <button type="button" class="boton" *ngIf="(isAdmin || esUsuario(comentario.value.userId)) && firebaseAuthenticationReady" (click)="eliminarComentario(comentario.key)">Eliminar</button> 
-        </div>
-    </div>
-    <div [formGroup]="formulario" *ngIf="editModeMap.get(comentario.key)">
-        <textarea cols="30" rows="10" formControlName="editComentario" placeholder="{{comentario.value.comentario}}"></textarea>
-        <button (click)="guardarComentario(comentario.key)">Guardar</button>
-    </div>
+<div class="contenedor-comentarios">
+    <h2>Comentarios</h2>
 
-</form>
+    <form *ngFor="let comentario of listadoComentarios | keyvalue" [formGroup]="formulario">
+        <div class="comentario">
+
+            <div class="comentario-encabezado">
+                <p>{{comentario.value.nombreUsuario}}</p>
+                <p>{{comentario.value['fecha']}}</p>
+            </div>
+            <hr>
+            <div class="comentario-cuerpo">
+                <p *ngIf="!editModeMap.get(comentario.key)">{{comentario.value.comentario}}</p>
+                <textarea *ngIf="editModeMap.get(comentario.key)"
+                    formControlName="editComentario">{{comentario.value.comentario}}</textarea>
+            </div>
+
+            <div class="container-buttons">
+                <button type="button" class="boton-claro"
+                    *ngIf="esUsuario(comentario.value.userId) && firebaseAuthenticationReady && !editModeMap.get(comentario.key)"
+                    (click)="editarComentario(comentario.key)">Editar</button>
+
+                <button type="button" class="boton-claro"
+                    *ngIf="(isAdmin || esUsuario(comentario.value.userId)) && firebaseAuthenticationReady && !editModeMap.get(comentario.key)"
+                    (click)="eliminarComentario(comentario.key)">Eliminar</button>
+            </div>
+
+            <div class="container-buttons" *ngIf="editModeMap.get(comentario.key)">
+                <button class="boton-claro" (click)="guardarComentario(comentario.key)">Guardar</button>
+                <button class="boton-claro" (click)="cancelarCambios(comentario.key)">Cancelar</button>
+            </div>
+
+        </div>
+
+    </form>
+</div>
+
+<!-- <div class="contenedor-comentarios">
+    <h2>Comentarios</h2>
+
+    <form *ngFor="let comentario of listadoComentarios | keyvalue">
+        <div *ngIf="!editModeMap.get(comentario.key)" class="comentario">
+
+            <div class="comentario-encabezado">
+                <p>{{comentario.value.nombreUsuario}}</p>
+                <p>{{comentario.value['fecha']}}</p>
+            </div>
+            <hr>
+            <div class="comentario-cuerpo">
+                <p>{{comentario.value.comentario}}</p>
+            </div>
+
+            <div class="container-buttons">
+                <button type="button" class="boton-claro"
+                    *ngIf="esUsuario(comentario.value.userId) && firebaseAuthenticationReady"
+                    (click)="editarComentario(comentario.key)">Modificar</button>
+                <button type="button" class="boton-claro"
+                    *ngIf="(isAdmin || esUsuario(comentario.value.userId)) && firebaseAuthenticationReady"
+                    (click)="eliminarComentario(comentario.key)">Eliminar</button>
+            </div>
+
+        </div>
+
+        <div [formGroup]="formulario" *ngIf="editModeMap.get(comentario.key)">
+            <textarea cols="30" rows="10" formControlName="editComentario"
+                placeholder="{{comentario.value.comentario}}"></textarea>
+            <button class="boton-claro" (click)="guardarComentario(comentario.key)">Guardar</button>
+            <button class="boton-claro" (click)="cancelarCambios()">Cancelar</button>
+        </div>
+
+    </form>
+</div> -->
