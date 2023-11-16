@@ -152,7 +152,7 @@ textarea:focus{
 
 /*PERFILES, BIOS, INFOS*/
 .contenedor{
-    width: 50%;
+    width: 70%;
     height: 50%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -161,7 +161,6 @@ textarea:focus{
     justify-content: center;
     border-radius: 5rem;
     margin: auto;
-/*     border: .5rem double #2a2030; */
 }
 
 .contenedor h2{
@@ -180,6 +179,7 @@ textarea:focus{
     border-radius: 1rem;
     height: 100%;
     padding: .5rem;
+
 }
 
 .contenedor p{
@@ -208,10 +208,9 @@ textarea:focus{
 }
 
 /*datos*/
-.contenedor .info{
+.contenedor div.info{
     background-color: #b39fb6af;
     height: 100%;
-    width: 100%;
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
@@ -232,7 +231,6 @@ textarea:focus{
 .datos div input{
     font-family: 'Merriweater', serif;
     font-size: 1.8rem;
-    width: 50%;
     border: none;
     background-color: #b39fb600;
     border-bottom: 1px solid #2a2030;
@@ -240,6 +238,21 @@ textarea:focus{
     height: 3rem;
     margin: 1rem;
     text-align: end;
+}
+
+.datos div textarea{
+    width: 95%;
+    height: 6rem;
+    margin: auto;
+    margin-bottom: 1rem;
+    padding: .5rem;
+    border: none;
+    border-radius: 1rem;
+    border: 1px solid #2a2030;
+    outline: none;
+    background-color: #c7b7ca00;
+    font-family: 'Merriweather', serif;
+    font-size: 1.6rem;
 }
 
 /*TODOS LOS FORMULARIOS*/
@@ -250,7 +263,6 @@ textarea:focus{
     border-radius: 1rem;
     margin: auto;
 }
-
 
 .formulario{
     width: 80%;
@@ -277,13 +289,14 @@ textarea:focus{
     margin-left: 2%;
     color: #2a2030;
     font-family: 'Quicksand', medium;
-    font-size: 2.5rem;
+    font-weight: 500;
+    font-size: 2rem;
     padding: 1%;
  }
 
  .campos div input{
     font-family: 'Merriweather', serif;
-    font-size: 1.8rem;
+    font-size: 1.7rem;
     width: 95%;
     margin: auto;
     padding: 1%;
@@ -308,9 +321,20 @@ textarea:focus{
 }
 
 
-.login-button{
+/*BOTONES*/
+
+.container-buttons{
+    margin: 2rem auto;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.boton-claro{
     font-family: 'Quicksand', sans-serif;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
+    font-weight: 400;
     color:#2a2030;
     width: 30%;
     margin: 2% auto;
@@ -320,7 +344,24 @@ textarea:focus{
     border: 1px solid #2a2030;
 }
 
-.login-button:hover{
+.boton-claro:hover{
+    font-weight: bold;
+}
+
+
+.boton-oscuro{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.6rem;
+    color:#b39fb6;
+    width: 30%;
+    margin: 2% auto;
+    border-radius: 5rem;
+    padding: 1rem;
+    background-color: #2a2030d3;
+    border: 1px solid #b39fb6;
+}
+
+.boton-oscuro:hover{
     font-weight: bold;
 }
 
@@ -374,92 +415,5 @@ textarea:focus{
 
 
 
-
-
-
-
-
-/*FORMULARIO-BRUJAS (NUEVA Y EDITAR)*/
-/*
-.formulario-bruja{
-    width: 40%;
-    font-size: 1.6rem;
-    background-color: #2a2030d3;
-    margin: 2rem auto;
-}
-
-.formulario-bruja .campo{
-    padding: .5rem;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-}
-
-.formulario-bruja .campo label{
-    margin: 1rem;
-    color: #b39fb6;
-    font-family: 'Quicksand', medium;
-    font-size: 2rem;
-    font-weight: 400;
-}
-
-.formulario-bruja .campo input{
-    width: 100%;
-    padding: .5rem;
-    border: #b39fb6 1px solid;
-    border-radius: 1rem;
-    background-color: #b39fb6af;
-    color:#2a2030;
-    font-family: 'Merriweather', serif;
-    font-size: 1.6rem;
-}
-
-.formulario-bruja .campo textarea{
-    width: 100%;
-    height: 10rem;
-    margin-top: 1rem;
-    padding: .5rem;
-    border: #b39fb6 1px solid;
-    border-radius: 1rem;
-    background-color: #b39fb6af;
-}
-
-/*USUARIOS LOGIN Y REGISTRO FORMS*/
-/*
-.login-form{
-    width: 40%;
-    background-color: #b39fb6af;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    margin: 2rem auto;
-    border-radius: 1rem;
-}
-
-.login-form-body{
-    padding: 1%;
-    height: 80%;
-    display: flex;
-    flex-direction: column;
-}
-
-.login-form-body label{
-    margin-left: 2%;
-    color: #2a2030;
-    font-family: 'Quicksand', medium;
-    font-size: 2rem;
-    padding: 1%;
-}
-
-.login-form-body input{
-    margin: auto;
-    width: 95%;
-    padding: 1rem;
-    border-radius: 1rem;
-    border: 1px solid 2a2030;
-    background-color: #c7b7ca;
-    font-family: 'Merriweather', serif;
-}
-*/
 
 

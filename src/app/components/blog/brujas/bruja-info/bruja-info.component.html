@@ -5,89 +5,67 @@
 
     <div class="info">
         <h2>Biografía</h2>
-
-        <form>
+        <form [formGroup]="formulario" (ngSubmit)="actualizarBruja()">
             <div class="datos">
                 <div>
                     <label>Nombre:</label>
-                    <p>{{bruja.nombre}}</p>
+                    <p *ngIf="!editMode">{{bruja.nombre}}</p>
                     <input *ngIf="editMode" formControlName="editNombre">
                 </div>
 
                 <div>
                     <label>Apellido:</label>
-                    <p>{{bruja.apellido}}</p>
+                    <p *ngIf="!editMode">{{bruja.apellido}}</p>
                     <input *ngIf="editMode" formControlName="editApellido">
                 </div>
 
                 <div>
                     <label>Nacimiento:</label>
-                    <p>{{bruja.fecha_nacimiento}}</p>
+                    <p *ngIf="!editMode">{{bruja.fecha_nacimiento}}</p>
                     <input *ngIf="editMode" formControlName="editFechaNac">
                 </div>
 
                 <div>
                     <label>Defunción:</label>
-                    <p>{{bruja.fecha_defuncion}}</p>
+                    <p *ngIf="!editMode">{{bruja.fecha_defuncion}}</p>
                     <input *ngIf="editMode" formControlName="editFechaDef">
                 </div>
 
                 <div>
                     <label>Lugar de Nacimiento:</label>
-                    <p>{{bruja.lugar_de_nacimiento}}</p>
+                    <p *ngIf="!editMode">{{bruja.lugar_de_nacimiento}}</p>
                     <input *ngIf="editMode" formControlName="editLugarNac">
                 </div>
 
                 <div>
                     <label>Lugar de Ejecución:</label>
-                    <p>{{bruja.lugar_de_ejecucion}}</p>
+                    <p *ngIf="!editMode">{{bruja.lugar_de_ejecucion}}</p>
                     <input *ngIf="editMode" formControlName="editLugarEjec">
                 </div>
 
                 <div>
                     <label>Tipo de Muerte:</label>
-                    <p>{{bruja.tipo_de_muerte}}</p>
+                    <p *ngIf="!editMode">{{bruja.tipo_de_muerte}}</p>
                     <input *ngIf="editMode" formControlName="editTipoMuerte">
                 </div>
 
                 <div>
                     <label>Historia:</label>
-                    <p>{{bruja.historia}}</p>
-                    <input *ngIf="editMode" formControlName="editHistoria">
                 </div>
 
-                <div class="buttons">
-                    <button *ngIf="editMode && isAdminRole" (click)="cancelarCambios()">Cancelar</button>
-                    <button *ngIf="editMode && isAdminRole" type="submit">Guardar</button>
-                    <button type="button" *ngIf="!editMode && isAdminRole" (click)="activarEditMode()">Editar</button>
+                <div>
+                    <p *ngIf="!editMode">{{bruja.historia}}</p>
+                    <textarea id="historia" required *ngIf="editMode" formControlName="editHistoria"></textarea>
+                </div>
+
+                <div class="container-buttons">
+                    <button class="boton-claro" *ngIf="editMode && isAdminRole"
+                        (click)="cancelarCambios()">Cancelar</button>
+                    <button class="boton-claro" *ngIf="editMode && isAdminRole" type="submit">Guardar</button>
+                    <button class="boton-claro" type="button" *ngIf="!editMode && isAdminRole"
+                        (click)="activarEditMode()">Editar</button>
                 </div>
 
             </div>
         </form>
-
     </div>
-    
-</div>
-
-
-
-<!-- <div class="contenedor" *ngIf="brujaCargada">
-    <div class="imagen">
-        <img src="{{bruja.imagen}}" alt="Imagen de la bruja">
-    </div>
-
-    <div class="info">
-        <h2>Biografía</h2>
-        <p><span class="subtitulo">Nombre: </span>{{bruja.nombre}}</p>
-        <p><span class="subtitulo">Apellido: </span>{{bruja.apellido}}</p>
-        <p><span class="subtitulo">Nacimiento: </span>{{bruja.fecha_nacimiento}}</p>
-        <p><span class="subtitulo">Defunción: </span>{{bruja.fecha_defuncion}}</p>
-        <p><span class="subtitulo">Tipo de Muerte: </span>{{ bruja.tipo_de_muerte }}</p>
-        <p><span class="subtitulo">Lugar de Nacimiento: </span>{{ bruja.lugar_de_nacimiento }}</p>
-        <p><span class="subtitulo">Lugar de Ejecución: </span>{{ bruja.lugar_de_ejecucion }}</p>
-
-        <h3>Historia</h3>
-        <p>{{ bruja.historia }}</p>
-    </div>
-    
-</div> -->

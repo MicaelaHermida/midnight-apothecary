@@ -56,10 +56,10 @@
                         <input *ngIf="editMode" formControlName="codigoPostal">
                     </div>
 
-                    <div class="buttons">
-                        <button *ngIf="editMode && !isAdminRole" (click)="cancelarCambios()">Cancelar</button>
-                        <button *ngIf="editMode && !isAdminRole" type="submit">Guardar</button>
-                        <button type="button" *ngIf="!editMode && !isAdminRole" (click)="activarEditMode()">Editar</button>
+                    <div class="container-buttons">
+                        <button class="boton-claro" *ngIf="editMode && !isAdminRole" (click)="cancelarCambios()">Cancelar</button>
+                        <button class="boton-claro" *ngIf="editMode && !isAdminRole" type="submit">Guardar</button>
+                        <button class="boton-claro"  type="button" *ngIf="!editMode && !isAdminRole" (click)="activarEditMode()">Editar</button>
                     </div>
                 </div>
                 

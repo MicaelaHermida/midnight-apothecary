@@ -1,4 +1,4 @@
-/*BRUJA INFO*/
+/*BRUJA INFO*//* 
 .contenedor-bruja-info {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -77,4 +77,4 @@ p {
 
 .subtitulo {
     font-weight: bold;
-}
+} */

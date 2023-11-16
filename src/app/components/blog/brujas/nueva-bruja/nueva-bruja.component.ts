@@ -26,15 +26,15 @@ export class NuevaBrujaComponent implements OnInit {
 
   initForm() {
     this.formulario = this.formBuilder.group({
-      nombre: ['', Validators.required],
-      apellido: ['', Validators.required],
+      nombre: ['', [Validators.required, Validators.maxLength(30)]],
+      apellido: ['', [Validators.required, Validators.maxLength(30)]],
       fecha_nacimiento: [''],
       fecha_defuncion: [''],
-      tipo_de_muerte: ['', Validators.required],
-      lugar_de_nacimiento: ['', Validators.required],
-      lugar_de_ejecucion: ['', Validators.required],
+      tipo_de_muerte: ['', [Validators.required, Validators.maxLength(30)]],
+      lugar_de_nacimiento: ['', [Validators.required, Validators.maxLength(30)]],
+      lugar_de_ejecucion: ['', [Validators.required, Validators.maxLength(30)]],
       imagen: [''],
-      historia: ['', Validators.required]
+      historia: ['']
     });
   }
 
@@ -45,6 +45,13 @@ export class NuevaBrujaComponent implements OnInit {
 
     alert('Bruja agregada con éxito');
     this.router.navigate(['/blog']);
+  }
+
+  validate(field: string, error: string): boolean {
+    const isInvalid = this.formulario.controls[field].hasError(error) &&
+      (this.formulario.controls[field].touched || this.formulario.controls[field].dirty);
+
+    return isInvalid;
   }
 
 }

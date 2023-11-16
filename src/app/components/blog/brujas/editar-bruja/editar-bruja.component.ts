@@ -12,6 +12,10 @@ import { BrujasService } from 'src/app/services/brujas.service';
 })
 export class EditarBrujaComponent implements OnInit {
 
+  ngOnInit(): void {
+    
+  }
+/* 
   bruja!: Bruja;
 
   brujaId: string = "";
@@ -88,7 +92,7 @@ export class EditarBrujaComponent implements OnInit {
     this.router.navigate(['/blog']);
 
   }
-
+ */
 }
 
 
