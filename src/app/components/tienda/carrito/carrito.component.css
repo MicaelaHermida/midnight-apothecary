@@ -45,6 +45,10 @@ h2{
     text-align: center;
 }
 
+.contenedor-carrito table tbody tr{
+    height: 4rem;
+}
+
 .contenedor-carrito .foot-table{
     margin: auto;
     border: 1px solid #2a2030d3;
@@ -110,4 +114,9 @@ td button:hover{
 .sin-carrito button:hover{
     border: 1px solid #2a2030;
     font-weight: bold;
+}
+
+.compra-page{
+    width: 100%;
+    margin-top: 2rem;
 }

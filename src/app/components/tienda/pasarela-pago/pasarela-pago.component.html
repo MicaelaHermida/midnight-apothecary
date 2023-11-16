@@ -1,53 +1,78 @@
-<button [routerLink]="['/tienda']">volver a la tienda</button>
-<div *ngIf="isLogged && firebaseAuthenticationReady">
-    <fieldset class="form-pago">
-        <legend>Datos de facturacion</legend>
-        <form [formGroup]="formularioUsuario" (ngSubmit)="actualizarDatosUsuario()">
-            <label>Nombre/s:</label>
-            <p *ngIf="!editMode" >{{usuarioLogueado.nombre}}</p>
-            <input *ngIf="editMode" formControlName="nombre">
-            <label>Apellido/s:</label>
-            <p *ngIf="!editMode">{{usuarioLogueado.apellido}}</p>
-            <input *ngIf="editMode" formControlName="apellido">
-            <label>Telefono:</label>
-            <p *ngIf="!editMode">{{usuarioLogueado.telefono}}</p>
-            <input *ngIf="editMode" formControlName="telefono">
-            <label>Provincia:</label>
-            <p *ngIf="!editMode">{{usuarioLogueado.provincia}}</p>
-            <input *ngIf="editMode" formControlName="provincia">
-            <label>Ciudad:</label>
-            <p *ngIf="!editMode">{{usuarioLogueado.ciudad}}</p>
-            <input *ngIf="editMode" formControlName="ciudad">
-            <label>Direccion:</label>
-            <p *ngIf="!editMode">{{usuarioLogueado.direccion}}</p>
-            <input *ngIf="editMode" formControlName="direccion">
-            <label>Piso/Depto:</label>
-            <p *ngIf="!editMode">{{usuarioLogueado.depto}}</p>
-            <input *ngIf="editMode" formControlName="depto"  type="text">
-            <label>Codigo Postal:</label>
-            <p *ngIf="!editMode">{{usuarioLogueado.codigoPostal}}</p>
-            <input *ngIf="editMode" formControlName="codigoPostal">
-            <label>DNI:</label>
-            <p *ngIf="!editMode">{{usuarioLogueado.dni}}</p>
-            <input *ngIf="editMode" formControlName="dni">
-            <button *ngIf="editMode" type="submit">Guardar</button>
-            <button type="button" *ngIf="!editMode" (click)="activarEditMode()">Editar</button>
+<div *ngIf="isLogged && firebaseAuthenticationReady" class="info-usuario">
+    <div class="form-pago">
+        <form [formGroup]="formularioUsuario" (ngSubmit)="actualizarDatosUsuario()" class="formulario">
+            <h2>Datos de facturacion:</h2>
+            <div class="informacion">
+                <div>
+                    <label>Nombre/s:</label>
+                    <p *ngIf="!editMode">{{usuarioLogueado.nombre}}</p>
+                    <input *ngIf="editMode" formControlName="nombre" value="usuarioLogueado.nombre">
+                </div>
+                <div>
+                    <label>Apellido/s:</label>
+                    <p *ngIf="!editMode">{{usuarioLogueado.apellido}}</p>
+                    <input *ngIf="editMode" formControlName="apellido" value="usuarioLogueado.apellido">
+                </div>
+                <div>
+                    <label>Telefono:</label>
+                    <p *ngIf="!editMode">{{usuarioLogueado.telefono}}</p>
+                    <input *ngIf="editMode" formControlName="telefono" value="usuarioLogueado.telefono">
+                </div>
+                <div>
+                    <label>Provincia:</label>
+                    <p *ngIf="!editMode">{{usuarioLogueado.provincia}}</p>
+                    <input *ngIf="editMode" formControlName="provincia" value="usuarioLogueado.provincia">
+                </div>
+                <div>
+                    <label>Ciudad:</label>
+                    <p *ngIf="!editMode">{{usuarioLogueado.ciudad}}</p>
+                    <input *ngIf="editMode" formControlName="ciudad" value="usuarioLogueado.ciudad">
+                </div>
+                <div>
+                    <label>Direccion:</label>
+                    <p *ngIf="!editMode">{{usuarioLogueado.direccion}}</p>
+                    <input *ngIf="editMode" formControlName="direccion" value="usuarioLogueado.direccion">
+                </div>
+                <div>
+                    <label>Piso/Depto:</label>
+                    <p *ngIf="!editMode">{{usuarioLogueado.depto}}</p>
+                    <input *ngIf="editMode" formControlName="depto" type="text" value="usuarioLogueado.depto">
+                </div>
+                <div>
+                    <label>Codigo Postal:</label>
+                    <p *ngIf="!editMode">{{usuarioLogueado.codigoPostal}}</p>
+                    <input *ngIf="editMode" formControlName="codigoPostal" value="usuarioLogueado.codigoPostal">
+                </div>
+                <div>
+                    <label>DNI:</label>
+                    <p *ngIf="!editMode">{{usuarioLogueado.dni}}</p>
+                    <input *ngIf="editMode" formControlName="dni" value="usuarioLogueado.dni">
+                </div>
+                <div class="edit-buttons">
+                    <button *ngIf="editMode" type="submit">Cancelar</button>
+                    <button *ngIf="editMode" type="submit">Guardar</button>
+                </div>
+                <button type="button" *ngIf="!editMode" (click)="activarEditMode()">Editar</button>
+            </div>
+
         </form>
-    </fieldset>
-    <fieldset class="form-pago">
-        <legend>Datos de pago:</legend>
-        <form [formGroup]="formularioPago" (ngSubmit)="realizarCompra()">
-            <label>Nombre del titular</label>
-            <input>
-            <label>Numero de tarjeta</label>
-            <input>
-            <label>Fecha de caducidad</label>
-            <input>
-            <label>Codigo de seguridad</label>
-            <input>
-            <label>DNI del pagador</label>
-            <input>
-            <button type="submit">Pagar</button>
+    </div>
+    <div class="form-pago">
+        <form [formGroup]="formularioPago" (ngSubmit)="realizarCompra()" class="campos">
+            <h2>Datos de pago:</h2>
+            <div>
+                <label>Nombre del titular</label>
+                <input type="text">
+                <label>Numero de tarjeta</label>
+                <input type="number">
+                <label>Fecha de caducidad</label>
+                <input type="text">
+                <label>Codigo de seguridad</label>
+                <input type="number">
+                <label>DNI del pagador</label>
+                <input type="text">
+                <button type="submit">Pagar</button>
+            </div>
         </form>
-    </fieldset>
+    </div>
 </div>

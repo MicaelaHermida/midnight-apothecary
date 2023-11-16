@@ -1,4 +1,4 @@
-<div class="page">
+<div class="page" [class.compra-page]="isCompraPage">
     <div *ngIf="isLogged && firebaseAuthenticationReady && hasProductos" class="contenedor-carrito">
         <h2>PRODUCTOS:</h2>
         <table *ngIf="isLogged && firebaseAuthenticationReady">
@@ -8,7 +8,7 @@
                     <th>Precio</th>
                     <th>Cantidad</th>
                     <th>Subtotal</th>
-                    <th>Añadir</th>
+                    <th *ngIf="!isCompraPage">Añadir</th>
                 </tr>
             </thead>
             <tbody>
@@ -17,9 +17,9 @@
                     <td>{{producto.precio}}</td>
                     <td>{{producto.cantidad}}</td>
                     <td>${{producto.subtotal}}</td>
-                    <td>
-                        <button (click)="eliminarProducto(producto.id_producto)">-</button>
-                        <button (click)="agregarProducto(producto.id_producto)">+</button>
+                    <td *ngIf="!isCompraPage">
+                        <button  (click)="eliminarProducto(producto.id_producto)">-</button>
+                        <button  (click)="agregarProducto(producto.id_producto)">+</button>
                     </td>
                 </tr>
             </tbody>
@@ -29,6 +29,7 @@
             <p class="total"><b>$ {{totalCarrito}}</b></p>
         </div>
         <button *ngIf="!isCompraPage" [routerLink]="['/compra']" class="button-comprar">REALIZAR COMPRA</button>
+        <button *ngIf="isCompraPage" [routerLink]="['/tienda']" class="button-comprar">volver a la tienda</button>
     </div>
     
     <div *ngIf="isLogged && firebaseAuthenticationReady && !hasProductos" class="sin-carrito">

@@ -1,5 +1,7 @@
-<div *ngIf="hasProductos" class="page-tienda">
-    <app-carrito></app-carrito>
-    <app-pasarela-pago></app-pasarela-pago>
+<div *ngIf="hasProductos" >
+    <div class="page-tienda">
+        <app-carrito class="carrito"></app-carrito>
+        <app-pasarela-pago class="info-pago"></app-pasarela-pago>
+    </div>
 </div>
 <app-footer></app-footer>

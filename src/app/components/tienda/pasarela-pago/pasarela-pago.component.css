@@ -1,11 +1,64 @@
 .form-pago{
-    width: 50%;
-    padding: 2rem;
+    margin-right: 2rem;
 }
 
 .form-pago form{
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 100%;
+    background-color: #b39fb6af;
+    padding: 2rem;
+}
+
+.informacion{
+    width: 60%;
     margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-pago .informacion div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.form-pago .informacion div input{
+    font-family: 'Merriweater', serif;
+    font-size: 1.8rem;
+    width: 50%;
+    border: none;
+    background-color: #b39fb600;
+    border-bottom: 1px solid #2a2030;
+    outline: none;
+    height: 3rem;
+    margin: 1rem;
+    text-align: end;
+}
+
+h2{
+    font-family: 'Quicksand', serif;
+    font-size: 3rem;
+    font-weight: 400;
+    line-height: 2rem;
+    text-align: center;
+    text-decoration: underline;
+    top: 0;
+    margin: 1rem;
+    padding: .5rem;
+}
+
+button{
+    width: 50%;
+    margin: auto;
+    margin-top: 1rem;
+}
+
+.edit-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
