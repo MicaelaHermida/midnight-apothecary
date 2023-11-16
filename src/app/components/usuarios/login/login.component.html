@@ -1,4 +1,24 @@
-<div class="page-login">
+<div class="contenedor-formulario">
+    <form class="formulario" [formGroup]="form" (ngSubmit)="iniciarSesion()">
+        <div class="campos">
+            <div>
+                <label>Correo electrónico</label>
+                <input type="email" formControlName="email" [class.invalid]="validate('email', 'required')">
+                <span class="form-error" *ngIf="validate('email', 'required')">Campo obligatorio.</span>
+                <span class="form-error" *ngIf="validate('email', 'email')">Formato inválido.</span>
+            </div>
+
+            <div>
+                <label>Contraseña</label>
+                <input type="password" formControlName="password" [class.invalid]="validate('password', 'required')">
+                <span class="form-error" *ngIf="validate('password', 'required')">Campo obligatorio.</span>
+            </div>
+        </div>
+        <button class="login-button" type="submit">Ingresar</button>
+    </form>
+</div>
+
+<!-- <div class="page">
     <form class="login-form" [formGroup]="form" (ngSubmit)="iniciarSesion()">
         <div class="login-form-body">
             <label>Correo electrónico</label>
@@ -12,4 +32,4 @@
         </div>
         <button class="login-button" type="submit">Ingresar</button>
     </form>
-</div>
+</div> -->

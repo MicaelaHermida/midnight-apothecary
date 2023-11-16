@@ -9,7 +9,7 @@
         <div class="dropdown">
             <button class="dropbtn"><i class="fi fi-sr-hat-witch"></i></button>
             <div class="dropdown-content">
-                <a *ngIf="!isLogged && firebaseAuthenticationReady" [routerLink]="['/login']">Login</a>
+                <a *ngIf="!isLogged && firebaseAuthenticationReady" [routerLink]="['/login']">Ingresar</a>
                 <a *ngIf="!isLogged && firebaseAuthenticationReady" [routerLink]="['/register']">Registrarse</a>
                 <a *ngIf="isLogged && firebaseAuthenticationReady" [routerLink]="['/usuario']">Mi Perfil</a>
                 <a *ngIf="(isLogged && firebaseAuthenticationReady) && !isAdminRole" [routerLink]="['/compras']">Mis Compras</a>

@@ -105,6 +105,7 @@ textarea:focus{
 /*PAGES*/
 
 .page{
+    width: 100%;
     min-height: 55vh;
     margin: 2rem auto;
 }
@@ -119,12 +120,18 @@ textarea:focus{
     background-color: #876a89;
     background-image: url(../src/assets/img/dibujos-user.jpg);
     background-blend-mode: multiply;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .page-tienda{
     background-color: #876a89;
     background-image: url(../src/assets/img/dibujos-tienda.jpg);
     background-blend-mode: multiply;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .page-blog{
@@ -236,14 +243,27 @@ textarea:focus{
 }
 
 /*TODOS LOS FORMULARIOS*/
+.contenedor-formulario{
+    background-color: #b39fb6af;
+    width: 50%;
+    align-items: center;
+    border-radius: 1rem;
+    margin: auto;
+}
+
 
 .formulario{
-    width: 100%;
+    width: 80%;
     display: flex;
     flex-direction: column;
     overflow: hidden;
     margin: 2rem auto;
     border-radius: 1rem;
+ }
+
+ .formulario .campos{
+    margin: 2rem;
+    padding: 1%;
  }
 
  .formulario .campos div{
@@ -257,7 +277,7 @@ textarea:focus{
     margin-left: 2%;
     color: #2a2030;
     font-family: 'Quicksand', medium;
-    font-size: 2rem;
+    font-size: 2.5rem;
     padding: 1%;
  }
 
@@ -287,6 +307,39 @@ textarea:focus{
     font-family: 'Merriweather', serif;
 }
 
+
+.login-button{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.6rem;
+    color:#2a2030;
+    width: 30%;
+    margin: 2% auto;
+    border-radius: 5rem;
+    padding: 1rem;
+    background-color: #b39fb600;
+    border: 1px solid #2a2030;
+}
+
+.login-button:hover{
+    font-weight: bold;
+}
+
+/*ERROR VALIDACIONES*/
+
+
+.formulario input.invalid{
+    border-bottom: 2px solid #a10202;
+
+}
+
+.form-error{
+    margin-top: 0;
+    margin-left: 2%;
+    font-family: 'Merriweather', serif;
+    font-size: 1.2rem;
+    color: #a10202;
+    padding: 1%;
+}
 
 
 
@@ -408,36 +461,5 @@ textarea:focus{
     font-family: 'Merriweather', serif;
 }
 */
-
-.login-button{
-    font-family: 'Quicksand', sans-serif;
-    font-size: 1.6rem;
-    color:#2a2030;
-    width: 30%;
-    margin: 2% auto;
-    border-radius: 5rem;
-    padding: 1rem;
-    background-color: #b39fb600;
-    border: 1px solid #2a2030;
-}
-
-.login-button:hover{
-    font-weight: bold;
-}
-
-
-.login-form-body input.invalid{
-    border: 2px solid #a10202;
-
-}
-
-.form-error{
-    margin-top: 0;
-    margin-left: 2%;
-    font-family: 'Merriweather', serif;
-    font-size: 1.3rem;
-    color: #a10202;
-    padding: 1%;
-}
 
 
