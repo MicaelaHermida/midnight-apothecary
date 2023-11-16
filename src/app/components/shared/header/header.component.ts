@@ -13,6 +13,7 @@ export class HeaderComponent implements OnInit {
   isLogin: boolean = false;
   isRegister: boolean = false;
   isTienda: boolean = false;
+  isProducto: boolean = false;
   isBlog: boolean = false;
   isNuevaBruja: boolean = false;
   isBruja: boolean = false;
@@ -20,6 +21,7 @@ export class HeaderComponent implements OnInit {
   isPerfil: boolean = false;
   isCarrito: boolean = false;
   isCompra: boolean = false;
+  isCompras: boolean = false;
 
   brujaId: string = "";
   brujaNombre: String = "";
@@ -46,10 +48,13 @@ export class HeaderComponent implements OnInit {
         this.falsearPaginas();
         
         if(this.router.url.includes("home")) this.isHome = true;
+        else if(this.router.url.includes("usuario")) this.isPerfil = true;
         else if(this.router.url.includes("login")) this.isLogin = true;
         else if(this.router.url.includes("register")) this.isRegister = true;
         else if(this.router.url.includes("tienda")) this.isTienda = true;
+        else if(this.router.url.includes("producto")) this.isProducto = true; 
         else if(this.router.url.includes("carrito")) this.isCarrito = true;
+        else if(this.router.url.includes("compras")) this.isCompras = true; //compras (plural
         else if(this.router.url.includes("compra")) this.isCompra = true;
         else if(this.router.url.includes("blog")) this.isBlog = true;
         else if(this.router.url.includes("nueva-bruja")) this.isNuevaBruja = true;  
@@ -105,8 +110,10 @@ export class HeaderComponent implements OnInit {
     this.isLogin = false;
     this.isRegister = false;
     this.isTienda = false;
+    this.isProducto = false;
     this.isCarrito = false;
     this.isCompra = false;
+    this.isCompras = false;
     this.isBlog = false;
     this.isBruja = false;
     this.isNuevaBruja = false;  
