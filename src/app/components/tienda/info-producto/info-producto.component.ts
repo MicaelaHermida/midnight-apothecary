@@ -50,7 +50,11 @@ export class InfoProductoComponent implements OnInit{
     }
 
     aumentar(){
-      this.cantidadItems ++;
+      if(this.producto.stock > this.cantidadItems){
+        this.cantidadItems ++;
+      }else{
+        alert("No hay suficiente stock");
+      }
     }
 
     disminuir(){
