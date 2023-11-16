@@ -1,36 +1,38 @@
-<div *ngIf="isLogged && firebaseAuthenticationReady && hasProductos">
-    <h1>PRODUCTOS:</h1>
-    <table *ngIf="isLogged && firebaseAuthenticationReady">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Precio</th>
-                <th>Cantidad</th>
-                <th>Subtotal</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let producto of productos">
-                <td>{{producto.nombre}}</td>
-                <td>{{producto.precio}}</td>
-                <td>{{producto.cantidad}}</td>
-                <td>{{producto.subtotal}}</td>
-                <td><button (click)="eliminarProducto(producto.id_producto)">-</button></td>
-                <td><button (click)="agregarProducto(producto.id_producto)">+</button></td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr>
-                <td colspan="3">Total</td>
-                <td>{{totalCarrito}}</td>
-            </tr>
-        </tfoot>
-    </table>
-    <button *ngIf="!isCompraPage" [routerLink]="['/compra']">Realizar compra</button>
-</div>
-
-<div *ngIf="isLogged && firebaseAuthenticationReady && !hasProductos">
-    <h1>No tienes productos en el carrito</h1>
-    <p>Ve a la tienda para seleccionar los productos!</p>
-    <button [routerLink]="['/tienda']">Ir a la tienda</button>
+<div class="page">
+    <div *ngIf="isLogged && firebaseAuthenticationReady && hasProductos">
+        <h1>PRODUCTOS:</h1>
+        <table *ngIf="isLogged && firebaseAuthenticationReady">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let producto of productos">
+                    <td>{{producto.nombre}}</td>
+                    <td>{{producto.precio}}</td>
+                    <td>{{producto.cantidad}}</td>
+                    <td>{{producto.subtotal}}</td>
+                    <td><button (click)="eliminarProducto(producto.id_producto)">-</button></td>
+                    <td><button (click)="agregarProducto(producto.id_producto)">+</button></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3">Total</td>
+                    <td>{{totalCarrito}}</td>
+                </tr>
+            </tfoot>
+        </table>
+        <button *ngIf="!isCompraPage" [routerLink]="['/compra']">Realizar compra</button>
+    </div>
+    
+    <div *ngIf="isLogged && firebaseAuthenticationReady && !hasProductos">
+        <h1>No tienes productos en el carrito</h1>
+        <p>Ve a la tienda para seleccionar los productos!</p>
+        <button [routerLink]="['/tienda']">Ir a la tienda</button>
+    </div>
 </div>

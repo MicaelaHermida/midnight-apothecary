@@ -1,60 +1,136 @@
-<div *ngIf="isLogged && firebaseAuthenticationReady" class="contenedor">
-    <form [formGroup]="formularioUsuario" (ngSubmit)="actualizarDatosUsuario()">
-        <div class="datos-usuario">
-            <div class="datos-personales">
-                <div>
-                    <label>Nombre/s:</label>
-                    <p *ngIf="!editMode">{{usuarioLogueado.nombre}}</p>
-                    <input *ngIf="editMode" formControlName="nombre">
-                </div>
-                <div>
-                    <label>Apellido/s:</label>
-                    <p *ngIf="!editMode">{{usuarioLogueado.apellido}}</p>
-                    <input *ngIf="editMode" formControlName="apellido">
-                </div>
-                <div>
-                    <label>Telefono:</label>
-                    <p *ngIf="!editMode">{{usuarioLogueado.telefono}}</p>
-                    <input *ngIf="editMode" formControlName="telefono">
-                </div>
-                <div>
-                    <label>DNI:</label>
-                    <p *ngIf="!editMode">{{usuarioLogueado.dni}}</p>
-                    <input *ngIf="editMode" formControlName="dni">
-                </div>
-            </div>
-            <div class="datos-personales">
-                <div>
-                    <label>Provincia:</label>
-                    <p *ngIf="!editMode">{{usuarioLogueado.provincia}}</p>
-                    <input *ngIf="editMode" formControlName="provincia">
-                </div>
-                <div>
-                    <label>Ciudad:</label>
-                    <p *ngIf="!editMode">{{usuarioLogueado.ciudad}}</p>
-                    <input *ngIf="editMode" formControlName="ciudad">
-                </div>
-                <div>
-                    <label>Direccion:</label>
-                    <p *ngIf="!editMode">{{usuarioLogueado.direccion}}</p>
-                    <input *ngIf="editMode" formControlName="direccion">
-                </div>
-                <div>
-                    <label>Piso/Depto:</label>
-                    <p *ngIf="!editMode">{{usuarioLogueado.depto}}</p>
-                    <input *ngIf="editMode" formControlName="depto" type="text">
-                </div>
-                <div>
-                    <label>Codigo Postal:</label>
-                    <p *ngIf="!editMode">{{usuarioLogueado.codigoPostal}}</p>
-                    <input *ngIf="editMode" formControlName="codigoPostal">
-                </div>
-            </div>
+<div class="page">
+    <div *ngIf="isLogged && firebaseAuthenticationReady" class="contenedor">
+
+        <div class="imagen">
+            <img src="../../../../assets/img/usuario.jpg" alt="usuario">
         </div>
-        <div class="buttons">
-            <button *ngIf="editMode && !isAdminRole" (click)="cancelarCambios()">Cancelar</button>
-            <button *ngIf="editMode && !isAdminRole" type="submit">Guardar</button>
-            <button type="button" *ngIf="!editMode && !isAdminRole" (click)="activarEditMode()">Editar</button>
+
+        <div class="info">
+            <h2>Mis Datos</h2>
+
+            <form [formGroup]="formularioUsuario" (ngSubmit)="actualizarDatosUsuario()">
+                <div class="datos">
+                    <div>
+                        <label>Nombre/s:</label>
+                        <p *ngIf="!editMode">{{usuarioLogueado.nombre}}</p>
+                        <input *ngIf="editMode" formControlName="nombre">
+                    </div>
+                    <div>
+                        <label>Apellido/s:</label>
+                        <p *ngIf="!editMode">{{usuarioLogueado.apellido}}</p>
+                        <input *ngIf="editMode" formControlName="apellido">
+                    </div>
+                    <div>
+                        <label>Telefono:</label>
+                        <p *ngIf="!editMode">{{usuarioLogueado.telefono}}</p>
+                        <input *ngIf="editMode" formControlName="telefono">
+                    </div>
+                    <div>
+                        <label>DNI:</label>
+                        <p *ngIf="!editMode">{{usuarioLogueado.dni}}</p>
+                        <input *ngIf="editMode" formControlName="dni">
+                    </div>
+                    <div>
+                        <label>Provincia:</label>
+                        <p *ngIf="!editMode">{{usuarioLogueado.provincia}}</p>
+                        <input *ngIf="editMode" formControlName="provincia">
+                    </div>
+                    <div>
+                        <label>Ciudad:</label>
+                        <p *ngIf="!editMode">{{usuarioLogueado.ciudad}}</p>
+                        <input *ngIf="editMode" formControlName="ciudad">
+                    </div>
+                    <div>
+                        <label>Direccion:</label>
+                        <p *ngIf="!editMode">{{usuarioLogueado.direccion}}</p>
+                        <input *ngIf="editMode" formControlName="direccion">
+                    </div>
+                    <div>
+                        <label>Piso/Depto:</label>
+                        <p *ngIf="!editMode">{{usuarioLogueado.depto}}</p>
+                        <input *ngIf="editMode" formControlName="depto" type="text">
+                    </div>
+                    <div>
+                        <label>Codigo Postal:</label>
+                        <p *ngIf="!editMode">{{usuarioLogueado.codigoPostal}}</p>
+                        <input *ngIf="editMode" formControlName="codigoPostal">
+                    </div>
+
+                    <div class="buttons">
+                        <button *ngIf="editMode && !isAdminRole" (click)="cancelarCambios()">Cancelar</button>
+                        <button *ngIf="editMode && !isAdminRole" type="submit">Guardar</button>
+                        <button type="button" *ngIf="!editMode && !isAdminRole" (click)="activarEditMode()">Editar</button>
+                    </div>
+                </div>
+                
+            </form>
+
         </div>
-    </form>
+    </div>
 </div>
+
+
+
+<!-- <div class="page">
+    <div *ngIf="isLogged && firebaseAuthenticationReady" class="contenedor">
+        <form [formGroup]="formularioUsuario" (ngSubmit)="actualizarDatosUsuario()">
+            <div class="datos-usuario">
+                <div class="datos-personales">
+                    <div>
+                        <label>Nombre/s:</label>
+                        <p *ngIf="!editMode">{{usuarioLogueado.nombre}}</p>
+                        <input *ngIf="editMode" formControlName="nombre">
+                    </div>
+                    <div>
+                        <label>Apellido/s:</label>
+                        <p *ngIf="!editMode">{{usuarioLogueado.apellido}}</p>
+                        <input *ngIf="editMode" formControlName="apellido">
+                    </div>
+                    <div>
+                        <label>Telefono:</label>
+                        <p *ngIf="!editMode">{{usuarioLogueado.telefono}}</p>
+                        <input *ngIf="editMode" formControlName="telefono">
+                    </div>
+                    <div>
+                        <label>DNI:</label>
+                        <p *ngIf="!editMode">{{usuarioLogueado.dni}}</p>
+                        <input *ngIf="editMode" formControlName="dni">
+                    </div>
+                </div>
+                <div class="datos-personales">
+                    <div>
+                        <label>Provincia:</label>
+                        <p *ngIf="!editMode">{{usuarioLogueado.provincia}}</p>
+                        <input *ngIf="editMode" formControlName="provincia">
+                    </div>
+                    <div>
+                        <label>Ciudad:</label>
+                        <p *ngIf="!editMode">{{usuarioLogueado.ciudad}}</p>
+                        <input *ngIf="editMode" formControlName="ciudad">
+                    </div>
+                    <div>
+                        <label>Direccion:</label>
+                        <p *ngIf="!editMode">{{usuarioLogueado.direccion}}</p>
+                        <input *ngIf="editMode" formControlName="direccion">
+                    </div>
+                    <div>
+                        <label>Piso/Depto:</label>
+                        <p *ngIf="!editMode">{{usuarioLogueado.depto}}</p>
+                        <input *ngIf="editMode" formControlName="depto" type="text">
+                    </div>
+                    <div>
+                        <label>Codigo Postal:</label>
+                        <p *ngIf="!editMode">{{usuarioLogueado.codigoPostal}}</p>
+                        <input *ngIf="editMode" formControlName="codigoPostal">
+                    </div>
+                </div>
+            </div>
+            <div class="buttons">
+                <button *ngIf="editMode && !isAdminRole" (click)="cancelarCambios()">Cancelar</button>
+                <button *ngIf="editMode && !isAdminRole" type="submit">Guardar</button>
+                <button type="button" *ngIf="!editMode && !isAdminRole" (click)="activarEditMode()">Editar</button>
+            </div>
+        </form>
+    </div>
+</div>
+  -->
