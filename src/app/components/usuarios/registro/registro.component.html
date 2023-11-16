@@ -1,22 +1,35 @@
-<div class="page-registro">
-    <form class="login-form" [formGroup]="form" (ngSubmit)="registrarse()">
-        <div class="login-form-body">
-            <label>Nombre:</label>
-            <input type="text" formControlName="nombre" [class.invalid]="validate('nombre', 'required')">
-            <span class="form-error" *ngIf="validate('nombre', 'required')">Campo obligatorio.</span>
+<div class="contenedor-formulario">
+    <form class="formulario" [formGroup]="form" (ngSubmit)="registrarse()">
+        <div class="campos">
+            <div>
+                <label>Nombre:</label>
+                <input type="text" formControlName="nombre" [class.invalid]="validate('nombre', 'required')">
+                <span class="form-error" *ngIf="validate('nombre', 'required')">Campo obligatorio.</span>
+                <span class="form-error" *ngIf="validate('nombre', 'maxLength')">Máximo 30 de carácteres.</span>
+            </div>
 
-            <label>Apellido:</label>
-            <input type="text" formControlName="apellido" [class.invalid]="validate('apellido', 'required')">
-            <span class="form-error" *ngIf="validate('apellido', 'required')">Campo obligatorio.</span>
+            <div>
+                <label>Apellido:</label>
+                <input type="text" formControlName="apellido" [class.invalid]="validate('apellido', 'required')">
+                <span class="form-error" *ngIf="validate('apellido', 'required')">Campo obligatorio.</span>
+                <span class="form-error" *ngIf="validate('apellido', 'maxLength')">Máximo 30 de carácteres.</span>
+            </div>
 
-            <label>Email:</label>
-            <input type="email" formControlName="email" [class.invalid]="validate('email', 'required') || validate('email', 'email')">
-            <span class="form-error" *ngIf="validate('email', 'required')">Campo obligatorio.</span>
-            <span class="form-error" *ngIf="validate('email', 'email')">Formato inválido.</span>
+            <div>
+                <label>Email:</label>
+                <input type="email" formControlName="email"
+                    [class.invalid]="validate('email', 'required') || validate('email', 'email')">
+                <span class="form-error" *ngIf="validate('email', 'required')">Campo obligatorio.</span>
+                <span class="form-error" *ngIf="validate('email', 'email')">Formato inválido.</span>
+            </div>
 
-            <label>Contraseña:</label>
-            <input type="password" formControlName="password" [class.invalid]="validate('password', 'required')">
-            <span class="form-error" *ngIf="validate('password', 'required')">Campo obligatorio.</span>
+            <div>
+                <label>Contraseña:</label>
+                <input type="password" formControlName="password" [class.invalid]="validate('password', 'required')">
+                <span class="form-error" *ngIf="validate('password', 'required')">Campo obligatorio.</span>
+                <span class="form-error" *ngIf="validate('password', 'minlength')">Mínimo 6 caracteres</span>
+            </div>
+
         </div>
 
         <div class="container-buttons">
