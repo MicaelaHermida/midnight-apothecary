@@ -61,6 +61,7 @@ h2{
 .contenedor-carrito .foot-table p{
     width: 100%;
     text-align: start;
+    margin-left: 1rem;
 }
 .contenedor-carrito .foot-table .total{
     text-align: end;

@@ -12,6 +12,7 @@ export class PlantasService {
   private urlList = "https://perenual.com/api/species-list?";
   private urlDetails = "https://perenual.com/api/species/details/";
   private key = "key=sk-zolU65401db307c4f2770";
+  private key2= "key=sk-SFvT655688b8a1d7f2991";
 
   constructor(private http: HttpClient) { }
 
@@ -44,7 +45,7 @@ export class PlantasService {
   }
 
   getPlantDetails(id: number): Observable<PlantaInfo> {
-    return this.http.get<PlantaInfo>(this.urlDetails + id + "?" + this.key)
+    return this.http.get<PlantaInfo>(this.urlDetails + id + "?" + this.key2)
       .pipe(
         catchError((error: any) => {
           console.error(error);

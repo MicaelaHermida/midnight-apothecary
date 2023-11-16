@@ -121,6 +121,11 @@ export class ListarProductosComponent implements OnInit {
   }
 
   mostrarArrayProductos() {
+    for(let entry of this.allProducts.entries()){
+      if(entry[1].stock <= 0 && !this.isAdminRole){
+        this.allProducts.delete(entry[0]);
+      }
+    }
     const start = (this.paginaActual - 1) * this.productosPorPagina;
     const end = this.paginaActual * this.productosPorPagina;
     this.totalProductos = this.arrayProductos.length;

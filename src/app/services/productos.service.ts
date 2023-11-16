@@ -197,5 +197,24 @@ export class ProductosService {
 
   }
 
-
+  async updateStock(idProducto: string, cantidad : number) : Promise <void>{
+    try{
+      const db = this.firestore;
+      const productsCollection = collection(db, 'products');
+      const productoDoc = doc(productsCollection, idProducto);
+      const productoSnapshot = await getDoc(productoDoc);
+      if(!productoSnapshot){
+        console.error('No existe el producto');
+        return;
+      }
+      const docData = productoSnapshot.data();
+      if(docData){
+        const stock : number= docData['stock'];
+        const nuevoStock = stock - cantidad;
+        await setDoc(productoDoc, {stock: nuevoStock}, {merge: true});
+      }
+    }catch(error){
+      console.error(error);
+    }
+  }
 }

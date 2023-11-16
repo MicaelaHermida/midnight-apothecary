@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Carrito } from 'src/app/interfaces/carrito.interface';
 import { PlantaInfo } from 'src/app/interfaces/planta-info.interface';
 import { Producto } from 'src/app/interfaces/producto.interface';
@@ -26,7 +26,8 @@ export class InfoProductoComponent implements OnInit{
     productoID: string = "";
   
     constructor(private activatedRoute: ActivatedRoute, private productosService: ProductosService, 
-      private plantasService: PlantasService, private carrito: CarritoService, private authService: AuthenticationService){ }
+      private plantasService: PlantasService, private carrito: CarritoService, private authService: AuthenticationService,
+      private router: Router){ }
 
     async ngOnInit(): Promise<void> {
       await this.authService.waitForFirebaseAuthentication();
@@ -70,13 +71,28 @@ export class InfoProductoComponent implements OnInit{
         alert("Debe ingresar una cantidad válida");
         return;
       }
+      if(this.cantidadItems > this.producto.stock){
+        alert("No hay suficiente stock");
+        return;
+      }
       const carrito: Carrito = {
         id_producto: this.productoID,
         cantidad: this.cantidadItems
       }
+      //quiero corroborar que en el carrito no haya una cantidad mayor o igual al stock del producto
+      const carritoActual = this.carrito.getCarrito();
+      for(let item of carritoActual){
+        if(item.id_producto === this.productoID){
+          if(item.cantidad + this.cantidadItems > this.producto.stock){
+            alert(`El producto se encuentra en tu carrito y no hay suficiente stock`);
+            return;
+          }
+        }
+      }
       await this.carrito.actualizarCarrito(carrito);
       alert("Producto agregado al carrito!");
       this.cantidadItems = 1;
+      this.router.navigate(['/tienda']);
     }
 
     /*async agregarAlCarrito(id_planta: number) {
