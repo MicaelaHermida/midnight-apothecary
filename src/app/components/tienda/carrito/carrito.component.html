@@ -1,6 +1,6 @@
 <div class="page">
-    <div *ngIf="isLogged && firebaseAuthenticationReady && hasProductos">
-        <h1>PRODUCTOS:</h1>
+    <div *ngIf="isLogged && firebaseAuthenticationReady && hasProductos" class="contenedor-carrito">
+        <h2>PRODUCTOS:</h2>
         <table *ngIf="isLogged && firebaseAuthenticationReady">
             <thead>
                 <tr>
@@ -8,6 +8,7 @@
                     <th>Precio</th>
                     <th>Cantidad</th>
                     <th>Subtotal</th>
+                    <th>Añadir</th>
                 </tr>
             </thead>
             <tbody>
@@ -15,23 +16,23 @@
                     <td>{{producto.nombre}}</td>
                     <td>{{producto.precio}}</td>
                     <td>{{producto.cantidad}}</td>
-                    <td>{{producto.subtotal}}</td>
-                    <td><button (click)="eliminarProducto(producto.id_producto)">-</button></td>
-                    <td><button (click)="agregarProducto(producto.id_producto)">+</button></td>
+                    <td>${{producto.subtotal}}</td>
+                    <td>
+                        <button (click)="eliminarProducto(producto.id_producto)">-</button>
+                        <button (click)="agregarProducto(producto.id_producto)">+</button>
+                    </td>
                 </tr>
             </tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="3">Total</td>
-                    <td>{{totalCarrito}}</td>
-                </tr>
-            </tfoot>
         </table>
-        <button *ngIf="!isCompraPage" [routerLink]="['/compra']">Realizar compra</button>
+        <div class="foot-table">
+            <p>TOTAL:</p>
+            <p class="total"><b>$ {{totalCarrito}}</b></p>
+        </div>
+        <button *ngIf="!isCompraPage" [routerLink]="['/compra']" class="button-comprar">REALIZAR COMPRA</button>
     </div>
     
-    <div *ngIf="isLogged && firebaseAuthenticationReady && !hasProductos">
-        <h1>No tienes productos en el carrito</h1>
+    <div *ngIf="isLogged && firebaseAuthenticationReady && !hasProductos" class="sin-carrito">
+        <h2>No tienes productos en el carrito</h2>
         <p>Ve a la tienda para seleccionar los productos!</p>
         <button [routerLink]="['/tienda']">Ir a la tienda</button>
     </div>

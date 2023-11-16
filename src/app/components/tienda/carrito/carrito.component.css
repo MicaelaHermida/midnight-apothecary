@@ -1,0 +1,113 @@
+.page{
+    background-color: #b39fb6af;
+    width: 40%;
+    margin: auto;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.contenedor-carrito{
+    width: 95%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+h2{
+    font-family: 'Quicksand', serif;
+    font-size: 3rem;
+    font-weight: 400;
+    line-height: 2rem;
+    text-align: center;
+    text-decoration: underline;
+    top: 0;
+    margin: 1rem;
+    padding: .5rem;
+}
+.contenedor-carrito table{
+    width: 95%;
+    border-collapse: collapse;
+    border: 1px solid #2a2030d3;
+    margin: auto;
+}
+
+.contenedor-carrito table thead{
+    border: 1px solid #2a2030;
+    height: 5rem;
+    font-family: 'Quicksand', sans-serif;
+    background-color: #2a2030d3;
+    color: #b39fb6;
+}
+
+.contenedor-carrito table tbody{
+    text-align: center;
+}
+
+.contenedor-carrito .foot-table{
+    margin: auto;
+    border: 1px solid #2a2030d3;
+    border-top: 0px;
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+}
+
+.contenedor-carrito .foot-table p{
+    width: 100%;
+    text-align: start;
+}
+.contenedor-carrito .foot-table .total{
+    text-align: end;
+    padding-right: 1rem;
+}
+
+td button{
+    border-radius: 100%;
+    background-color: #2a203000;
+    border: 1px solid #2a2030;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 2rem;
+    text-align: center;
+    color: #2a2030;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+}
+
+td button:hover{
+    box-shadow: #2a2030 0px 0px 1.5px 0px;
+    font-weight: bold;
+}
+
+.button-comprar{
+    width: 95%;
+    margin: auto;
+    height: 6rem;
+    border-radius: 0px;
+}
+
+.button-comprar:hover{
+    border: 1px solid #2a2030;
+    border-top: none;
+    font-weight: bold;
+}
+
+.sin-carrito{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 2rem;
+    text-align: center;
+    color: #2a2030;
+    margin: auto;
+    padding: 1rem;
+}
+
+.sin-carrito button{
+    padding: 1rem;
+}
+
+.sin-carrito button:hover{
+    border: 1px solid #2a2030;
+    font-weight: bold;
+}
