@@ -57,9 +57,9 @@
                 </div>
 
                 <div class="buttons">
-                    <button *ngIf="editMode && !isAdminRole" (click)="cancelarCambios()">Cancelar</button>
-                    <button *ngIf="editMode && !isAdminRole" type="submit">Guardar</button>
-                    <button type="button" *ngIf="!editMode && !isAdminRole" (click)="activarEditMode()">Editar</button>
+                    <button *ngIf="editMode && isAdminRole" (click)="cancelarCambios()">Cancelar</button>
+                    <button *ngIf="editMode && isAdminRole" type="submit">Guardar</button>
+                    <button type="button" *ngIf="!editMode && isAdminRole" (click)="activarEditMode()">Editar</button>
                 </div>
 
             </div>
