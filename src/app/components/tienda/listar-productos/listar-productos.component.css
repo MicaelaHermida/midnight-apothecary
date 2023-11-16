@@ -14,11 +14,15 @@
     margin-bottom: 5rem; 
 }
 
+.fondo-filtrado{
+    background-image: url(../../../../assets/img/guarda-tienda.jpg);
+    width: 100%;
+}
 .card {
     min-width: 1%;
-    max-width: 20%;
+    max-width: 25%;
     margin: 0;
-    flex: 1 0 calc(20% - 1rem);
+    flex: 1 0 calc(25% - 1rem);
     margin: .5rem;
     border-radius: 9px;
     background-color:  #b39fb6af;
@@ -38,7 +42,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 80%;
+    width: 60%;
     margin: auto;
 }
 
@@ -47,65 +51,130 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 4rem;
-    width: 80%;
+    background-color: #2a2030d3;
+    width: 60%;
+    opacity: 0.9;
+    min-height: 10px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 
 .opciones-filtrado {
-    width: 25%;
+    width: 35%;
+    height: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    max-height: 9%;
+    margin-left: 2rem;
+    margin-right:2rem;
+}
+
+.opciones-filtrado div{
+    padding: 1.5rem;
 }
 
 .opciones-filtrado select{
     cursor: pointer;
     width: 100%;
-    background-color: #b39fb6af;
-    padding: .5rem;
-    border-radius: 30px;
+    background-color: #b39fb600;
+    border-radius: 10px;
+    height: 3rem;
+    color: #b39fb6;
+    border: 1px solid #b39fb6af;
 }
 
 .opciones-filtrado select:hover{
-    background-color: #b39fb6;
+   border: 1.5px solid #b39fb6;
+   box-shadow: #fffeff71 0px 0px 1.5px 0px;
 }
 
+.opciones-filtrado select option::content:hover{
+    background-color: #2a2030;
+    color: #b39fb6;
+}
 .opciones-filtrado select:focus{
     outline: none;
 }
 
+.opciones-filtrado select::content{
+    font-size: medium;
+
+}
+.opciones-filtrado select option{
+    font-size: medium;
+    background-color: #2a2030;
+}
+
 .opciones-filtrado p{
     padding: 0;
-    margin-bottom: 1.5rem;
+    margin: 0;
+    color: #b39fb6;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 2rem;
 }
 
 .contenedor-busqueda{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    width: 30%;
 }
 .contenedor-busqueda p{
     padding: 0;
-    margin-bottom: .5rem;
+    margin: 0;
+    color: #b39fb6;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 2rem;
 }
 
 .contenedor-busqueda button{
-    background-color: #2a2030d3;
-    border-radius: 30px;
+    background-color: #2a203000;
+    border-radius: 10px;
+    border: 1px solid #b39fb6af;
+    margin: 0;
+    margin-left: 1rem;
 }
 .contenedor-busqueda button:hover{
-    background-color: #2a2030;
+    border: 1.5px solid #b39fb6;
+    box-shadow: #fffeff71 0px 0px 1.5px 0px;
 }
+
 .busqueda{
-    background-color: #b39fb6af;
-    padding: .5rem;
-    border-radius: 30px;
     outline: none;
-    border: none;
+    cursor: pointer;
+    width: 80%;
+    background-color: #b39fb600;
+    border-radius: 10px;
+    height: 3rem;
+    color: #b39fb6;
+    border: 1px solid #b39fb6af;
+    margin: 0;
+    padding: .5rem;
+}
+
+.busqueda::placeholder{
+    color: #b39fb669;
+}
+
+.busqueda::content{
+    font-size: medium;
+}
+
+.busqueda:focus::placeholder{
+    color: #b39fb600;
 }
 
 .busqueda:hover{
-    background-color: #b39fb6;
+   border: 1.5px solid #b39fb6;
+   box-shadow: #fffeff71 0px 0px 1.5px 0px;
+}
+
+.contenedor-busqueda div{
+    display: flex;
+    flex-direction: row;
+
 }
 
 .pagination {
@@ -113,6 +182,8 @@
     display: flex;
     width: 50%;
     justify-content: center;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
 }
 
 .pagination button{

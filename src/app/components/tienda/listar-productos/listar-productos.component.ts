@@ -29,7 +29,7 @@ export class ListarProductosComponent implements OnInit {
   ////paginacion
   arrayPaginas: number[] = [];
   paginaActual: number = 1;
-  productosPorPagina: number = 10;
+  productosPorPagina: number = 8;
   totalProductos: number = 0;
 
   ////edicion de productos por admin

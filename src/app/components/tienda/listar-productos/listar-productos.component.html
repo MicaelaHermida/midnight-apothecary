@@ -1,26 +1,28 @@
 <div class="contenedor-principal" *ngIf="filtradoReady">
-    <div class="filtro">
-        <!--////////////////FILTRADO///////////////////-->
-        <div class="opciones-filtrado">
-            <div *ngIf="firebaseAuthenticationReady">
-                <p>Ordenar por:</p>
-                <select [(ngModel)]="ordenSeleccionado" (change)="onOrderChangeEvent()">
-                    <option *ngFor="let orden of arrayOrdenamiento" [value]="orden">{{orden}}</option>
-                </select>
+    <div class="fondo-filtrado">
+        <div class="filtro">
+            <!--////////////////FILTRADO///////////////////-->
+            <div class="opciones-filtrado">
+                <div *ngIf="firebaseAuthenticationReady">
+                    <p>ORDENAR:</p>
+                    <select [(ngModel)]="ordenSeleccionado" (change)="onOrderChangeEvent()">
+                        <option *ngFor="let orden of arrayOrdenamiento" [value]="orden">{{orden}}</option>
+                    </select>
+                </div>
+                <div *ngIf="firebaseAuthenticationReady">
+                    <p>FILTRAR POR PRECIO:</p>
+                    <select [(ngModel)]="filtroSeleccionado" (change)="onFilterChangeEvent()">
+                        <option *ngFor="let filtro of arrayFiltrado" [value]="filtro">{{filtro}}</option>
+                    </select>
+                </div>
             </div>
-            <div *ngIf="firebaseAuthenticationReady">
-                <p>Filtrar por rango de precio:</p>
-                <select [(ngModel)]="filtroSeleccionado" (change)="onFilterChangeEvent()">
-                    <option *ngFor="let filtro of arrayFiltrado" [value]="filtro">{{filtro}}</option>
-                </select>
-            </div>
-        </div>
-        <!--////////////////BUSQUEDA///////////////////-->
-        <div class="contenedor-busqueda">
-            <p>Buscar:</p>
-            <div>
-                <input type="text" [(ngModel)]="busqueda" class="busqueda">
-                <button type="button" (click)="buscarProductoPorNombre()">🔎</button>
+            <!--////////////////BUSQUEDA///////////////////-->
+            <div class="contenedor-busqueda">
+                <p>BUSCAR:</p>
+                <div>
+                    <input type="text" [(ngModel)]="busqueda" class="busqueda" placeholder="Producto...">
+                    <button type="button" (click)="buscarProductoPorNombre()">🔎</button>
+                </div>
             </div>
         </div>
     </div>
@@ -34,7 +36,7 @@
     </div>
     <div class="contenedor-productos">
         <p *ngIf="allProducts.size <1 && busquedaFinalizada">Ups... no se ha encontrado el producto</p>
-            <!--////////////////LISTADO PRODUCTOS///////////////////-->
+        <!--////////////////LISTADO PRODUCTOS///////////////////-->
         <form *ngFor="let producto of productosPagina" (ngSubmit)="guardarProducto(producto)" [formGroup]="form"
             class="card">
             <div (click)="verDetalleProducto(producto.id_planta)" class="info-producto">
