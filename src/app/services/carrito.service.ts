@@ -47,7 +47,7 @@ export class CarritoService {
     }
   }
 
-  async deleteProductoCarrito(idProducto: string, cantidad: number): Promise<void> {
+  async deleteProductoCarrito(idProducto: string, cantidad: number): Promise<boolean> {
     try {
       const user = await this.authService.getAllCurrentUserData();
       if (user) {
@@ -67,14 +67,16 @@ export class CarritoService {
           const id = this.authService.getCurrentUserId();
           await this.authService.updateUserData(id, user);
           this.carrito = user.carrito;
+          return true;
         }
       }
     } catch (error) {
       console.error(error);
     }
+    return false;
   }
 
-  async deleteCarrito() {
+  async deleteCarrito():Promise<void> {
     try {
       const user = await this.authService.getAllCurrentUserData();
       if (user) {
