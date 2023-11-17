@@ -276,7 +276,7 @@
 }
 
 ::placeholder{
-    color: #000000;
+    color: #00000083;
 }
 
 .opciones-compra button{
@@ -298,4 +298,15 @@ button:hover{
 
 .button-compra:hover{
     font-weight: bold;
+}
+
+.form-error{
+    font-size: x-small;
+    margin: -10%;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

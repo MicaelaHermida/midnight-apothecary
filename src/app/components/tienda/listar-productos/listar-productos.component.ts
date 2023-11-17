@@ -79,7 +79,7 @@ export class ListarProductosComponent implements OnInit {
   initForm(producto: Producto) {
     this.form = this.fb.group({
       nombre: [producto.nombre, [Validators.required, Validators.minLength(3)]],
-      precio: [producto.precio, [Validators.required, Validators.min(0)]],
+      precio: [producto.precio, [Validators.required, Validators.min(1)]],
       stock: [producto.stock, [Validators.required, Validators.min(0)]]
     });
   }
@@ -255,4 +255,13 @@ export class ListarProductosComponent implements OnInit {
     this.router.navigate(['/producto', id_producto]);
   }
 
+
+  ///val
+
+  validate(field: string, error: string): boolean {
+    const isInvalid = this.form.controls[field].hasError(error) &&
+      (this.form.controls[field].touched || this.form.controls[field].dirty);
+
+    return isInvalid;
+  }
 }

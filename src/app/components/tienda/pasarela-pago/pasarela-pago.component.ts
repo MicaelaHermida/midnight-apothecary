@@ -40,10 +40,11 @@ export class PasarelaPagoComponent implements OnInit{
   });
 
   formularioPago: FormGroup = this.fb.group({
-    titular: '',
-    numeroTarjeta: '',
-    fechaCaducidad: '',
-    dniTitular: ''
+    titular: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*')]],
+    numeroTarjeta: ['', [Validators.required, Validators.minLength(16), Validators.maxLength(16), Validators.pattern('[0-9]*')]],
+    fechaCaducidad: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5), Validators.pattern('[0-9/]*')]],
+    cvv: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(4), Validators.pattern('[0-9]*')]],
+    dniTitular: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(8), Validators.pattern('[0-9]*')]]
   });
 
   constructor(private fb: FormBuilder, private authService: AuthenticationService, private router : Router, private carritoService: CarritoService,
@@ -75,6 +76,13 @@ export class PasarelaPagoComponent implements OnInit{
       codigoPostal: [this.usuarioLogueado.codigoPostal,[Validators.required, Validators.minLength(4)]],
       dni: [this.usuarioLogueado.dni,[Validators.required, Validators.minLength(9)]]
     });
+  }
+
+  validate(field: string, error: string): boolean {
+    const isInvalid = this.formularioPago.controls[field].hasError(error) &&
+      (this.formularioPago.controls[field].touched || this.formularioPago.controls[field].dirty);
+
+    return isInvalid;
   }
 
   verificarCamposUsuario(){
