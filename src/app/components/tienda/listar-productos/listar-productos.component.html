@@ -62,9 +62,21 @@
             </div>
             <!--////////////////MODO EDICION - ADMIN///////////////////-->
             <div *ngIf="editModeMap.get(producto.id_planta)" class="edit-mode">
-                <input formControlName="nombre" placeholder="{{producto.nombre}}" type="text">
-                <input formControlName="precio" placeholder="{{producto.precio}}" type="number">
-                <input formControlName="stock" placeholder="stock({{producto.stock}})" type="number">
+                <div>
+                    <input formControlName="nombre" placeholder="{{producto.nombre}}" type="text">
+                    <span class="form-error" *ngIf="validate('nombre','required')">Campo requerido</span>
+                    <span class="form-error" *ngIf="validate('nombre','minlength')">+3 caracteres</span>
+                </div>
+                <div>
+                    <input formControlName="precio" placeholder="{{producto.precio}}" type="number">
+                    <span class="form-error" *ngIf="validate('precio','required')">Campo requerido</span>
+                    <span class="form-error" *ngIf="validate('precio','min')">Minimo $1</span>
+                </div>
+                <div>
+                    <input formControlName="stock" placeholder="stock({{producto.stock}})" type="number">
+                    <span class="form-error" *ngIf="validate('stock','required')">Campo requerido</span>
+                    <span class="form-error" *ngIf="validate('stock','min')">Minimo 0</span>
+                </div>
             </div>
             <!--////////////////BOTONES ADMIN///////////////////-->
             <div class="botones-admin">
@@ -82,4 +94,3 @@
 
 
 </div>
-
