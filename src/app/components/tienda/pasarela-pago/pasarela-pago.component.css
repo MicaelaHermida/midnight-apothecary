@@ -68,3 +68,7 @@ button{
     width: 30%;
     margin-top: 1rem;
 }
+
+.form-error{
+    margin: -15%;
+}
