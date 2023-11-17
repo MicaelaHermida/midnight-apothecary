@@ -13,7 +13,7 @@ export class AuthenticationService {
   constructor(private firestore: Firestore, private auth: Auth) {
   }
 
-  async register(email: string, password: string, nombre: string, apellido: string): Promise<void> {
+  async register(email: string, password: string, nombre: string, apellido: string): Promise<boolean> {
 
     try {
       const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
@@ -37,10 +37,12 @@ export class AuthenticationService {
       };
 
       await setDoc(docRef, data);
+      return true;
 
     } catch (error) {
       alert('Error, email en uso');
       console.error(error);
+      return false;
     }
   }
 

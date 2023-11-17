@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { reauthenticateWithCredential } from '@angular/fire/auth';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
@@ -33,7 +34,13 @@ export class RegistroComponent {
   }
 
   async register(email: string, password: string, nombre: string, apellido: string):Promise<void>{
-    await this.AuthencationService.register(email, password, nombre, apellido);
+    const rta = await this.AuthencationService.register(email, password, nombre, apellido);
+    if(rta){
+      this.router.navigate(['/home']);
+    }
+    else{
+      return;
+    }
   }
 
   async registrarse(): Promise<void>{
@@ -46,7 +53,6 @@ export class RegistroComponent {
     const nombre = this.form.value.nombre;
     const apellido = this.form.value.apellido;
     await this.register(email, password, nombre, apellido);
-    this.router.navigate(['/home']);
   }
 
   validate(field: string, error: string): boolean {
