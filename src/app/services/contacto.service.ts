@@ -9,13 +9,14 @@ import { Contacto } from '../interfaces/contacto.interface';
 
 export class ContactoService {
 
-  private url = 'http://localhost:4000'
+  url = 'http://localhost:4000/consultas'
 
   constructor(
     private http: HttpClient
   ) { }
 
   guardarContacto(contacto: Contacto): Observable<Contacto> {
+    console.log(contacto);
     return this.http.post<Contacto>(
       this.url, 
       contacto,

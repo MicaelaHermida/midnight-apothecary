@@ -11,7 +11,6 @@ import { ContactoService } from 'src/app/services/contacto.service';
 export class ContactoComponent {
 
   formulario: FormGroup;
-  contacto!: Contacto;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -25,17 +24,23 @@ export class ContactoComponent {
     });
   }
 
-  enviarContacto(): void {
-    this.contacto = this.formulario.value;
-    console.log(this.contacto);
-    this.contactoService.guardarContacto(this.contacto)
-      .subscribe(
-        () => {
-          alert('Consulta enviada con éxito');
-          this.formulario.reset();
-        },
-        () => alert('Error al enviar la consulta')
-      )
+  enviarContacto() {
+    if (this.formulario.invalid) return;
+
+    const contacto = this.formulario.value;
+
+    console.log(contacto);
+    this.contactoService.guardarContacto(contacto)
+    .subscribe({
+      next: () => {
+        alert('Consulta enviada con éxito');
+        this.formulario.reset();
+      },
+      error: (e) =>{
+        console.log(e);
+        alert('Error al enviar la consulta');
+      }
+    }); 
   }
 
   validate(field: string, error: string): boolean {

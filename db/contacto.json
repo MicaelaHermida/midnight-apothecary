@@ -1,0 +1,18 @@
+{
+  "consultas": [
+    {
+      "id": 1,
+      "nombre": "Juan",
+      "email": "juang@gmail.com",
+      "asunto": "Consulta",
+      "mensaje": "Hola, quisiera saber si tienen stock de tal producto"
+    },
+    {
+      "nombre": "lalag",
+      "email": "lala@g.com",
+      "asunto": "",
+      "mensaje": "llalala",
+      "id": 2
+    }
+  ]
+}
