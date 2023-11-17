@@ -5,25 +5,38 @@
 
     <div class="info">
         <h2>Contacto</h2>
-        <form class="formulario">           
+        <form class="formulario" [formGroup]="formulario" (ngSubmit)="enviarContacto()">           
             <div class="campos">
                 <div>
                     <label for="nombre">Nombre:</label>
-                    <input type="text" id="nombre" required>
+                    <input type="text" formControlName="nombre" [class.invalid]="validate('nombre', 'required') || validate('nombre', 'maxLength')">
+                    <span class="form-error" *ngIf="validate('nombre', 'required')">Campo obligatorio.</span>
+                    <span class="form-error" *ngIf="validate('nombre', 'maxLength')">Máximo 30 caracteres.</span>
+                  
                 </div>
         
                 <div>
                     <label for="email">Email:</label>
-                    <input type="text" id="email" required>
+                    <input type="text" formControlName="email" [class.invalid]="validate('email', 'required') || validate('email', 'email')">
+                    <span class="form-error" *ngIf="validate('email', 'required')">Campo obligatorio.</span>
+                    <span class="form-error" *ngIf="validate('email', 'email')">Formato inválido.</span>
+                </div>
+
+                <div>
+                    <label for="asunto">Asunto:</label>
+                    <input type="text" formControlName="asunto" [class.invalid]="validate('asunto', 'maxLength')">
+                    <span class="form-error" *ngIf="validate('asunto', 'maxLength')">Máximo 30 caracteres.</span>
                 </div>
         
                 <div>
                     <label for="mensaje">Mensaje:</label>
-                    <textarea id="mensaje" required></textarea>
+                    <textarea formControlName="mensaje" [class.invalid]="validate('mensaje', 'required') || validate('mensaje', 'maxLength')"></textarea>
+                    <span class="form-error" *ngIf="validate('mensaje', 'required')">Campo obligatorio.</span>
+                    <span class="form-error" *ngIf="validate('mensaje', 'maxLength')">Máximo 150 caracteres.</span>
                 </div>
             </div> 
             
-            <button class="boton-claro">Enviar</button>
+            <button class="boton-claro" type="submit">Enviar</button>
         </form>
     </div>
 

@@ -45,13 +45,13 @@ export class UsuarioInfoComponent {
     this.formularioUsuario = this.fb.group({
       nombre: [this.usuarioLogueado.nombre, [Validators.required, Validators.minLength(3)]],
       apellido: [this.usuarioLogueado.apellido, [Validators.required, Validators.minLength(3)]],
-      telefono: [this.usuarioLogueado.telefono, [Validators.required, Validators.minLength(9)]],
-      provincia: [this.usuarioLogueado.provincia, [Validators.required, Validators.minLength(3)]],
-      ciudad: [this.usuarioLogueado.ciudad, [Validators.required, Validators.minLength(3)]],
-      direccion: [this.usuarioLogueado.direccion,[Validators.required, Validators.minLength(5)]],
+      telefono: [this.usuarioLogueado.telefono, Validators.minLength(9)],
+      provincia: [this.usuarioLogueado.provincia, Validators.minLength(3)],
+      ciudad: [this.usuarioLogueado.ciudad, Validators.minLength(3)],
+      direccion: [this.usuarioLogueado.direccion, Validators.minLength(5)],
       depto: [this.usuarioLogueado.depto],
-      codigoPostal: [this.usuarioLogueado.codigoPostal,[Validators.required, Validators.minLength(4)]],
-      dni: [this.usuarioLogueado.dni,[Validators.required, Validators.minLength(9)]]
+      codigoPostal: [this.usuarioLogueado.codigoPostal, Validators.minLength(4)],
+      dni: [this.usuarioLogueado.dni, Validators.maxLength(9)]
     });
   }
 
@@ -81,5 +81,14 @@ export class UsuarioInfoComponent {
   cancelarCambios(){
     this.editMode = false;
     return;
+  }
+
+
+  validate(field: string, error: string): boolean {
+    const isInvalid = this.formularioUsuario.controls[field].hasError(error) &&
+      (this.formularioUsuario.controls[field].touched || this.formularioUsuario.controls[field].dirty);
+
+      
+    return isInvalid;
   }
 }

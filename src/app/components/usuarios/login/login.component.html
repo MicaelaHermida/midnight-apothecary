@@ -3,15 +3,16 @@
         <div class="campos">
             <div>
                 <label>Correo electrónico</label>
-                <input type="email" formControlName="email" [class.invalid]="validate('email', 'required')">
+                <input type="email" formControlName="email" [class.invalid]="validate('email', 'required') || validate('email', 'email')">
                 <span class="form-error" *ngIf="validate('email', 'required')">Campo obligatorio.</span>
                 <span class="form-error" *ngIf="validate('email', 'email')">Formato inválido.</span>
             </div>
 
             <div>
                 <label>Contraseña</label>
-                <input type="password" formControlName="password" [class.invalid]="validate('password', 'required')">
+                <input type="password" formControlName="password" [class.invalid]="validate('password', 'required') || validate('password', 'minLength')">
                 <span class="form-error" *ngIf="validate('password', 'required')">Campo obligatorio.</span>
+                <span class="form-error" *ngIf="validate('password', 'minLength')">Mínimo 6 carácteres.</span>
             </div>
         </div>
         <button class="boton-claro" type="submit">Ingresar</button>

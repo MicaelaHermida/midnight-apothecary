@@ -13,37 +13,52 @@
                     <div>
                         <label>Nombre/s:</label>
                         <p *ngIf="!editMode">{{usuarioLogueado.nombre}}</p>
-                        <input *ngIf="editMode" formControlName="nombre">
+                        <input *ngIf="editMode" formControlName="nombre"
+                            [class.invalid]="validate('nombre', 'required') || validate('nombre', 'minLength')">
+                        <span class="form-error" *ngIf="validate('nombre', 'required')">Campo obligatorio.</span>
+                        <span class="form-error" *ngIf="validate('nombre', 'minLength')">Mínimo 3 carácteres.</span>
                     </div>
                     <div>
                         <label>Apellido/s:</label>
                         <p *ngIf="!editMode">{{usuarioLogueado.apellido}}</p>
-                        <input *ngIf="editMode" formControlName="apellido">
+                        <input *ngIf="editMode" formControlName="apellido"
+                            [class.invalid]="validate('apellido', 'required') || validate('apellido', 'minLength')">
+                        <span class="form-error" *ngIf="validate('apellido', 'required')">Campo obligatorio.</span>
+                        <span class="form-error" *ngIf="validate('apellido', 'minLength')">Mínimo 3 carácteres.</span>
                     </div>
                     <div>
                         <label>Telefono:</label>
                         <p *ngIf="!editMode">{{usuarioLogueado.telefono}}</p>
-                        <input *ngIf="editMode" formControlName="telefono">
+                        <input *ngIf="editMode" formControlName="telefono"
+                            [class.invalid]="validate('telefono', 'minLength')">
+                        <span class="form-error" *ngIf="validate('telefono', 'minLength')">Mínimo 9 carácteres.</span>
                     </div>
                     <div>
                         <label>DNI:</label>
                         <p *ngIf="!editMode">{{usuarioLogueado.dni}}</p>
-                        <input *ngIf="editMode" formControlName="dni">
+                        <input *ngIf="editMode" formControlName="dni" [class.invalid]="validate('dni', 'maxLength')">
+                        <span class="form-error" *ngIf="validate('dni', 'maxLength')">Máximo 9 carácteres.</span>
                     </div>
                     <div>
                         <label>Provincia:</label>
                         <p *ngIf="!editMode">{{usuarioLogueado.provincia}}</p>
-                        <input *ngIf="editMode" formControlName="provincia">
+                        <input *ngIf="editMode" formControlName="provincia"
+                            [class.invalid]="validate('provincia', 'minLength')">
+                        <span class="form-error" *ngIf="validate('provincia', 'minLength')">Mínimo 3 carácteres.</span>
                     </div>
                     <div>
                         <label>Ciudad:</label>
                         <p *ngIf="!editMode">{{usuarioLogueado.ciudad}}</p>
-                        <input *ngIf="editMode" formControlName="ciudad">
+                        <input *ngIf="editMode" formControlName="ciudad"
+                            [class.invalid]="validate('ciudad', 'minLength')">
+                        <span class="form-error" *ngIf="validate('ciudad', 'minLength')">Mínimo 3 carácteres.</span>
                     </div>
                     <div>
                         <label>Direccion:</label>
                         <p *ngIf="!editMode">{{usuarioLogueado.direccion}}</p>
-                        <input *ngIf="editMode" formControlName="direccion">
+                        <input *ngIf="editMode" formControlName="direccion"
+                            [class.invalid]="validate('direccion', 'minLength')">
+                        <span class="form-error" *ngIf="validate('direccion', 'minLength')">Mínimo 5 carácteres.</span>
                     </div>
                     <div>
                         <label>Piso/Depto:</label>
@@ -53,16 +68,19 @@
                     <div>
                         <label>Codigo Postal:</label>
                         <p *ngIf="!editMode">{{usuarioLogueado.codigoPostal}}</p>
-                        <input *ngIf="editMode" formControlName="codigoPostal">
+                        <input *ngIf="editMode" formControlName="codigoPostal"
+                            [class.invalid]="validate('codigoPostal', 'minLength')">
+                        <span class="form-error" *ngIf="validate('codigoPostal', 'minLength')">Mínimo 4 carácteres.</span>
                     </div>
 
                     <div class="container-buttons">
                         <button class="boton-claro" *ngIf="editMode" (click)="cancelarCambios()">Cancelar</button>
                         <button class="boton-claro" *ngIf="editMode" type="submit">Guardar</button>
-                        <button class="boton-claro"  type="button" *ngIf="!editMode" (click)="activarEditMode()">Editar</button>
+                        <button class="boton-claro" type="button" *ngIf="!editMode"
+                            (click)="activarEditMode()">Editar</button>
                     </div>
                 </div>
-                
+
             </form>
 
         </div>

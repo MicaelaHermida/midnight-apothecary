@@ -38,9 +38,11 @@
             <h2>A NUESTRAS</h2>
             <h2>NOVEDADES ♥</h2>
 
-            <form class="suscribirse">
-                <input type="email" placeholder="Email">
-                <a class="footer-icon"><i class="fi fi-rs-paper-plane"></i></a>
+            <form class="suscribirse" [formGroup]="formulario">
+                <input type="email" placeholder="Email" formControlName="email">
+                <a class="footer-icon" (click)="suscribirse()">
+                    <i class="fi fi-rs-paper-plane"></i>
+                </a>
             </form>
         </div>
 

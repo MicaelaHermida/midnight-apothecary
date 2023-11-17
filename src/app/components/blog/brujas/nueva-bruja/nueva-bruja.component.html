@@ -3,16 +3,18 @@
         <div class="campos">
             <div>
                 <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" formControlName="nombre">
+                <input type="text" id="nombre" formControlName="nombre"
+                    [class.invalid]="validate('nombre', 'required') || validate('nombre', 'maxLength')">
                 <span class="form-error" *ngIf="validate('nombre', 'required')">Campo obligatorio.</span>
-                <span class="form-error" *ngIf="validate('nombre', 'maxLength')">Máximo 30 de carácteres.</span>
+                <span class="form-error" *ngIf="validate('nombre', 'maxLength')">Máximo 30 carácteres.</span>
             </div>
 
             <div>
                 <label for="apellido">Apellido:</label>
-                <input type="text" id="apellido" formControlName="apellido">
+                <input type="text" id="apellido" formControlName="apellido"
+                    [class.invalid]="validate('apellido', 'required') || validate('apellido', 'maxLength')">
                 <span class="form-error" *ngIf="validate('apellido', 'required')">Campo obligatorio.</span>
-                <span class="form-error" *ngIf="validate('apellido', 'maxLength')">Máximo 30 de carácteres.</span>
+                <span class="form-error" *ngIf="validate('apellido', 'maxLength')">Máximo 30 carácteres.</span>
             </div>
 
             <div>
@@ -27,23 +29,26 @@
 
             <div>
                 <label for="tipo_de_muerte">Tipo de Muerte:</label>
-                <input type="text" id="tipo_de_muerte" formControlName="tipo_de_muerte">
+                <input type="text" id="tipo_de_muerte" formControlName="tipo_de_muerte"
+                    [class.invalid]="validate('tipo_de_muerte', 'required') || validate('tipo_de_muerte', 'maxLength')">
                 <span class="form-error" *ngIf="validate('tipo_de_muerte', 'required')">Campo obligatorio.</span>
-                <span class="form-error" *ngIf="validate('nombre', 'maxLength')">Máximo 30 de carácteres.</span>
+                <span class="form-error" *ngIf="validate('nombre', 'maxLength')">Máximo 30 carácteres.</span>
             </div>
 
             <div>
                 <label for="lugar_de_nacimiento">Lugar de Nacimiento:</label>
-                <input type="text" id="lugar_de_nacimiento" formControlName="lugar_de_nacimiento">
+                <input type="text" id="lugar_de_nacimiento" formControlName="lugar_de_nacimiento"
+                    [class.invalid]="validate('lugar_de_nacimiento', 'required') || validate('lugar_de_nacimiento', 'maxLength')">
                 <span class="form-error" *ngIf="validate('lugar_de_nacimiento', 'required')">Campo obligatorio.</span>
-                <span class="form-error" *ngIf="validate('lugar_de_nacimiento', 'maxLength')">Máximo 30 de carácteres.</span>
+                <span class="form-error" *ngIf="validate('lugar_de_nacimiento', 'maxLength')">Máximo 30 carácteres.</span>
             </div>
 
             <div>
                 <label for="lugar_de_ejecucion">Lugar de Ejecución:</label>
-                <input type="text" id="lugar_de_ejecucion" formControlName="lugar_de_ejecucion">
+                <input type="text" id="lugar_de_ejecucion" formControlName="lugar_de_ejecucion"
+                    [class.invalid]="validate('lugar_de_ejecucion', 'required') || validate('lugar_de_ejecucion', 'maxLength')">
                 <span class="form-error" *ngIf="validate('lugar_de_ejecucion', 'required')">Campo obligatorio.</span>
-                <span class="form-error" *ngIf="validate('lugar_de_ejecucion', 'maxLength')">Máximo 30 de carácteres.</span>
+                <span class="form-error" *ngIf="validate('lugar_de_ejecucion', 'maxLength')">Máximo 30carácteres.</span>
             </div>
 
             <div>
@@ -53,7 +58,7 @@
 
             <div>
                 <label for="historia">Historia:</label>
-                <textarea id="historia" cols="30" rows="10" formControlName="historia"></textarea>
+                <textarea id="historia" formControlName="historia"></textarea>
             </div>
         </div>
 

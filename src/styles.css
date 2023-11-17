@@ -412,7 +412,10 @@ textarea:focus{
 
 .formulario input.invalid{
     border-bottom: 2px solid #a10202;
+}
 
+.formulario textarea.invalid{
+    border: 2px solid #a10202;
 }
 
 .form-error{
