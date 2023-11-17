@@ -14,6 +14,7 @@
                 <a *ngIf="isLogged && firebaseAuthenticationReady" [routerLink]="['/usuario']">Mi Perfil</a>
                 <a *ngIf="(isLogged && firebaseAuthenticationReady) && !isAdminRole" [routerLink]="['/compras']">Mis Compras</a>
                 <a *ngIf="isAdminRole && firebaseAuthenticationReady" [routerLink]="['/compras']">Ver Compras</a>
+                <a *ngIf="isAdminRole && firebaseAuthenticationReady" [routerLink]="['/nuevo-producto']">Nuevo producto</a>
                 <hr>
                 <a *ngIf="isLogged && firebaseAuthenticationReady" (click)="cerrarSesion()">Cerrar Sesion</a>
 
