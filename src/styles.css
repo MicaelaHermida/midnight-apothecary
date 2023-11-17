@@ -315,6 +315,7 @@ textarea:focus{
     outline: none;
     border-bottom: .1rem solid #2a2030;
     background-color: #b39fb600;
+    margin-bottom: 2rem; /*para los span*/
  }
 
  .campos div textarea{

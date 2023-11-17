@@ -49,10 +49,10 @@
                     <input *ngIf="editMode" formControlName="dni" value="usuarioLogueado.dni">
                 </div>
                 <div class="edit-buttons">
-                    <button *ngIf="editMode" type="submit">Cancelar</button>
-                    <button *ngIf="editMode" type="submit">Guardar</button>
+                    <button *ngIf="editMode" type="submit" class="boton-oscuro">Cancelar</button>
+                    <button *ngIf="editMode" type="submit" class="boton-oscuro">Guardar</button>
                 </div>
-                <button type="button" *ngIf="!editMode" (click)="activarEditMode()">Editar</button>
+                <button type="button" *ngIf="!editMode" (click)="activarEditMode()" class="boton-oscuro">Editar</button>
             </div>
 
         </form>
@@ -61,18 +61,47 @@
         <form [formGroup]="formularioPago" (ngSubmit)="realizarCompra()" class="formulario campos">
             <h2>Datos de pago:</h2>
             <div>
-                <label>Nombre del titular</label>
-                <input type="text">
-                <label>Numero de tarjeta</label>
-                <input type="number">
-                <label>Fecha de caducidad</label>
-                <input type="text">
-                <label>Codigo de seguridad</label>
-                <input type="number">
-                <label>DNI del pagador</label>
-                <input type="text">
+                <div>
+                    <label>Nombre del titular</label>
+                    <input type="text" formControlName="titular">
+                    <span class="form-error" *ngIf="validate('titular', 'required')">Campo requerido</span>
+                    <span class="form-error"
+                        *ngIf="validate('titular', 'minlength') && !validate('titular', 'pattern')">Minimo 6
+                        caracteres</span>
+                    <span class="form-error" *ngIf="validate('titular', 'maxlength')">Maximo 30 caracteres</span>
+                    <span class="form-error" *ngIf="validate('titular', 'pattern')">Caracteres invalidos</span>
+                </div>
+                <div>
+                    <label>Numero de tarjeta</label>
+                    <input type="text" formControlName="numeroTarjeta">
+                    <span class="form-error" *ngIf="validate('numeroTarjeta', 'required')">Campo requerido</span>
+                    <span class="form-error" *ngIf="!validate('numeroTarjeta', 'pattern') && (validate('numeroTarjeta', 'minlength') || validate('numeroTarjeta', 'maxlength'))">16 caracteres</span>
+                    <span class="form-error" *ngIf="validate('numeroTarjeta', 'pattern')">Caracteres invalidos</span>
+                </div>
+                <div>
+                    <label>Fecha de caducidad (mm/aa)</label>
+                    <input type="text" formControlName="fechaCaducidad">
+                    <span class="form-error" *ngIf="validate('fechaCaducidad', 'required')">Campo requerido</span>
+                    <span class="form-error" *ngIf="!validate('fechaCaducidad', 'pattern') && (validate('fechaCaducidad', 'minlength') || validate('fechaCaducidad', 'maxlength'))">Fecha invalida</span>
+                    <span class="form-error" *ngIf="validate('fechaCaducidad', 'pattern')">Formato invalido</span>
+                </div>
+                <div>
+                    <label>Codigo de seguridad</label>
+                    <input type="text" formControlName="cvv">
+                    <span class="form-error" *ngIf="validate('cvv','required')">Campo requerido</span>
+                    <span class="form-error" *ngIf="validate('cvv','minlength') && !validate('cvv','pattern')">Minimo 3 caracteres</span>
+                    <span class="form-error" *ngIf="validate('cvv','maxlength') && !validate('cvv','pattern')">Maximo 4 caracteres</span>
+                    <span class="form-error" *ngIf="validate('cvv','pattern')">Formato invalido</span>
+                </div>
+                <div>
+                    <label>DNI del pagador</label>
+                    <input type="text" formControlName="dniTitular">
+                    <span class="form-error" *ngIf="validate('dniTitular','required')">Campo requerido</span>
+                    <span class="form-error" *ngIf="!validate('dniTitular', 'pattern') && (validate('dniTitular','minlength') || validate('dniTitular','maxlength'))">9 caracteres</span>
+                    <span class="form-error" *ngIf="validate('dniTitular','pattern')">Formato invalido</span>
+                </div>
             </div>
-            <button type="submit" class="button-pago">Pagar</button>
+            <button type="submit" class="boton-oscuro">Pagar</button>
         </form>
     </div>
 </div>
