@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Producto } from 'src/app/interfaces/producto.interface';
 import { AuthenticationService } from 'src/app/services/authentication.service';
@@ -20,11 +20,11 @@ export class NuevoProductoComponent implements OnInit{
   constructor(private fb : FormBuilder, private router : Router, private productoService: ProductosService,
     private authService: AuthenticationService) {
     this.form = this.fb.group({
-      nombre: "",
-      imagen: "",
-      precio: 0,
-      stock: 0,
-      id_planta: 0
+      nombre: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z ]*')]],
+      imagen: ['',[Validators.required, Validators.pattern('https?://.+')]],
+      precio: [0, [Validators.required, Validators.min(1)]],
+      stock: [0, [Validators.required, Validators.min(0)]],
+      id_planta: [0,[Validators.required]]
     });
    }
 
@@ -58,5 +58,14 @@ export class NuevoProductoComponent implements OnInit{
 
   cancelar(){
     this.router.navigate(['/admin/listar-productos']);
+  }
+
+  ///val
+
+  validate(field: string, error: string): boolean {
+    const isInvalid = this.form.controls[field].hasError(error) &&
+      (this.form.controls[field].touched || this.form.controls[field].dirty);
+
+    return isInvalid;
   }
 }

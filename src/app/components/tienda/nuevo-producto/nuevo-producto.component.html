@@ -4,26 +4,38 @@
             <div>
                 <label>Nombre:</label>
                 <input type="text" formControlName="nombre">
+                <span class="form-error" *ngIf="validate('nombre','required')">Campo requerido</span>
+                <span class="form-error" *ngIf="validate('nombre','minlength') && !validate('nombre', 'pattern')">Minimo 3 caracteres</span>
+                <span class="form-error" *ngIf="validate('nombre', 'pattern')">Formato invalido</span>
             </div>
             <div>
                 <label>Imagen:</label>
                 <input type="text" formControlName="imagen">
+                <span class="form-error" *ngIf="validate('imagen','required')">Campo requerido</span>
+                <span class="form-error" *ngIf="validate('imagen', 'pattern')">Formato invalido</span>
             </div>
             <div>
                 <label>Precio:</label>
                 <input type="text" formControlName="precio">
+                <span class="form-error" *ngIf="validate('precio','required')">Campo requerido</span>
+                <span class="form-error" *ngIf="validate('precio', 'min')">Minimo $1</span>
+                <span class="form-error" *ngIf="validate('precio', 'pattern')">Formato invalido</span>
             </div>
             <div>
                 <label>Stock:</label>
                 <input type="text" formControlName="stock">
+                <span class="form-error" *ngIf="validate('stock','required')">Campo requerido</span>
+                <span class="form-error" *ngIf="validate('stock', 'min')">Minimo 0</span>
+                <span class="form-error" *ngIf="validate('stock', 'pattern')">Formato invalido</span>
             </div>
             <div>
                 <label>Id Planta:</label>
                 <input type="number" formControlName="id_planta">
+                <span class="form-error" *ngIf="validate('id_planta','required')">Campo requerido</span>
             </div>
             <div class="div-buttons">
-                <button type="button" (click)="cancelar()">Cancelar</button>
-                <button type="submit">Aceptar</button>
+                <button class="boton-oscuro" type="button" (click)="cancelar()">Cancelar</button>
+                <button class="boton-oscuro" type="submit">Aceptar</button>
             </div>
         </div>
     </form>
