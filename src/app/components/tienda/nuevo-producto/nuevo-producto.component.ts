@@ -16,6 +16,9 @@ export class NuevoProductoComponent implements OnInit{
   isLogged: boolean = false;
   isAdminRole: boolean = false;
 
+  nombreProductoExists :boolean = false;
+  idPlantaExists : boolean = false;
+
   form : FormGroup;
   constructor(private fb : FormBuilder, private router : Router, private productoService: ProductosService,
     private authService: AuthenticationService) {
@@ -33,13 +36,21 @@ export class NuevoProductoComponent implements OnInit{
     this.firebaseAuthenticationReady = true;
     this.isLogged = await this.authService.isUserLoggedIn();
     this.isAdminRole = await this.authService.getCurrentUserRole() === 'admin';
+    this.form.get('nombre')?.valueChanges.subscribe(nuevoNombre => {
+      this.nombreProductoExists = false;
+    });
+    this.form.get('id_planta')?.valueChanges.subscribe(nuevoId => {
+      this.idPlantaExists = false;
+    });
     if(!this.isAdminRole){
       this.router.navigate(['/home']);
     }
   }
 
   async agregarProducto(){
-    if(this.form.valid){
+    await this.verificarNombre();
+    await this.verificarIdPlanta();
+    if(this.form.valid && !this.nombreProductoExists && !this.idPlantaExists){
       const producto: Producto = {
         nombre: this.form.value.nombre,
         imagen: this.form.value.imagen,
@@ -49,8 +60,9 @@ export class NuevoProductoComponent implements OnInit{
       }
       await this.productoService.postProducto(producto);
       this.router.navigate(['/admin/listar-productos']);
-    }else{
-      alert("Complete todos los campos");
+    }
+    else{
+      alert("Complete los campos correctamente");
       return;
     }
   }
@@ -68,4 +80,14 @@ export class NuevoProductoComponent implements OnInit{
 
     return isInvalid;
   }
+
+  async verificarNombre(){
+    this.nombreProductoExists = await this.productoService.productoNombreExists(this.form.controls['nombre'].value);
+  }
+
+  async verificarIdPlanta(){
+    this.idPlantaExists = await this.productoService.plantaIdExists(this.form.controls['id_planta'].value);
+  }
+
+
 }
