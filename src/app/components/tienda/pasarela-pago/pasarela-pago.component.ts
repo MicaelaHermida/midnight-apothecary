@@ -74,7 +74,7 @@ export class PasarelaPagoComponent implements OnInit{
       direccion: [this.usuarioLogueado.direccion,[Validators.required, Validators.minLength(5)]],
       depto: [this.usuarioLogueado.depto],
       codigoPostal: [this.usuarioLogueado.codigoPostal,[Validators.required, Validators.minLength(4)]],
-      dni: [this.usuarioLogueado.dni,[Validators.required, Validators.minLength(9)]]
+      dni: [this.usuarioLogueado.dni,[Validators.required, Validators.minLength(8)]]
     });
   }
 
@@ -169,6 +169,11 @@ export class PasarelaPagoComponent implements OnInit{
       total += producto.subtotal;
     }
     return total;
+  }
+
+  cancelarEdicion(){
+    this.editMode = false;
+    return;
   }
   
 }

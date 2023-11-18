@@ -49,7 +49,7 @@
                     <input *ngIf="editMode" formControlName="dni" value="usuarioLogueado.dni">
                 </div>
                 <div class="edit-buttons">
-                    <button *ngIf="editMode" type="submit" class="boton-oscuro">Cancelar</button>
+                    <button *ngIf="editMode" (click)="cancelarEdicion()" class="boton-oscuro">Cancelar</button>
                     <button *ngIf="editMode" type="submit" class="boton-oscuro">Guardar</button>
                 </div>
                 <button type="button" *ngIf="!editMode" (click)="activarEditMode()" class="boton-oscuro">Editar</button>
