@@ -72,3 +72,8 @@ button{
 .form-error{
     margin: -15%;
 }
+
+.informacion .form-error{
+    position: absolute;
+    left: 60%;
+}
