@@ -1,4 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+/* ------------------------[ VARIABLES ]------------------------*/
+
+:root{
+    /*FONTS*/
+    /*Family*/
+    --base-font: 'Merriweater', serif;
+    --subtitle-font: 'Quicksand', sans-serif;
+    --title-font: 'Reenie Beanie', cursive;
+
+    /*Size*/
+    --base-font-size: 1.8rem;
+    --subtitle-font-size: 2rem;
+    --title-font-size: 7rem;
+
+    /**/
+
+}
+
+
+/* ------------------------[ GENERALES ]------------------------*/
 @import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Merriweather&family=Philosopher&family=Quicksand:wght@300;400;500&family=Raleway:wght@200&family=Reenie+Beanie&display=swap');
 @import url('https://cdn-uicons.flaticon.com/2.0.0/uicons-brands/css/uicons-brands.css');
 @import url('https://cdn-uicons.flaticon.com/2.0.0/uicons-regular-straight/css/uicons-regular-straight.css');
