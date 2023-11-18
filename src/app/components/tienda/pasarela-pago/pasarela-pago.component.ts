@@ -66,25 +66,30 @@ export class PasarelaPagoComponent implements OnInit{
 
   initFormUsuario(){
     this.formularioUsuario = this.fb.group({
-      nombre: [this.usuarioLogueado.nombre, [Validators.required, Validators.minLength(3)]],
-      apellido: [this.usuarioLogueado.apellido, [Validators.required, Validators.minLength(3)]],
-      telefono: [this.usuarioLogueado.telefono, [Validators.required, Validators.minLength(9)]],
-      provincia: [this.usuarioLogueado.provincia, [Validators.required, Validators.minLength(3)]],
-      ciudad: [this.usuarioLogueado.ciudad, [Validators.required, Validators.minLength(3)]],
-      direccion: [this.usuarioLogueado.direccion,[Validators.required, Validators.minLength(5)]],
+      nombre: [this.usuarioLogueado.nombre, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*')]],
+      apellido: [this.usuarioLogueado.apellido, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*')]],
+      telefono: [this.usuarioLogueado.telefono, [Validators.required, Validators.minLength(8), Validators.maxLength(15), Validators.pattern('[0-9]*')]],
+      provincia: [this.usuarioLogueado.provincia, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*')]],
+      ciudad: [this.usuarioLogueado.ciudad, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*')]],
+      direccion: [this.usuarioLogueado.direccion,[Validators.required, Validators.minLength(5), Validators.maxLength(30)]],
       depto: [this.usuarioLogueado.depto],
       codigoPostal: [this.usuarioLogueado.codigoPostal,[Validators.required, Validators.minLength(4)]],
-      dni: [this.usuarioLogueado.dni,[Validators.required, Validators.minLength(8)]]
+      dni: [this.usuarioLogueado.dni,[Validators.required, Validators.minLength(8), Validators.maxLength(8), Validators.pattern('[0-9]*')]]
     });
   }
 
-  validate(field: string, error: string): boolean {
+  validatePago(field: string, error: string): boolean {
     const isInvalid = this.formularioPago.controls[field].hasError(error) &&
       (this.formularioPago.controls[field].touched || this.formularioPago.controls[field].dirty);
 
     return isInvalid;
   }
 
+  validateUsuario(field: string, error: string): boolean {
+    const isInvalid = this.formularioUsuario.controls[field].hasError(error) &&
+      (this.formularioUsuario.controls[field].touched || this.formularioUsuario.controls[field].dirty);
+    return isInvalid;
+  }
   verificarCamposUsuario(){
     if(this.usuarioLogueado.ciudad === '' || this.usuarioLogueado.codigoPostal === '' || this.usuarioLogueado.direccion === '' 
     || this.usuarioLogueado.dni === '' || this.usuarioLogueado.nombre === '' || this.usuarioLogueado.apellido === '' 
@@ -123,6 +128,10 @@ export class PasarelaPagoComponent implements OnInit{
   comprobarDatosTarjeta(): boolean{
     if(!this.formularioPago.valid){
       alert("Datos incorrectos o incompletos");
+      return false;
+    }
+    else if(!this.formularioUsuario.valid){
+      alert('Debe completar los datos de facturación');
       return false;
     }
     else{
@@ -173,6 +182,7 @@ export class PasarelaPagoComponent implements OnInit{
 
   cancelarEdicion(){
     this.editMode = false;
+    this.initFormUsuario();
     return;
   }
   

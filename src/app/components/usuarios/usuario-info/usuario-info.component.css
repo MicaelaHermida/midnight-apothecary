@@ -12,3 +12,8 @@ form{
 .buttons button{
     width: 20%;
 }
+
+.form-error{
+    position: absolute;
+    left: 57%;
+}
