@@ -4,9 +4,9 @@
         <div class="seccion-footer">
             <h3>NAVEGACIÓN</h3>
             <ul>
-                <li><a [routerLink]="['/home']">Home</a></li>
-                <li><a [routerLink]="['/tienda']">Tienda</a></li>
-                <li><a [routerLink]="['/blog']">Blog</a></li>
+                <li><a (click)="onLinkClick('home')">Home</a></li>
+                <li><a (click)="onLinkClick('tienda')">Tienda</a></li>
+                <li><a (click)="onLinkClick('blog')">Blog</a></li>
             </ul>
         </div>
 
