@@ -14,5 +14,19 @@
       "mensaje": "llalala",
       "id": 2
     }
+  ],
+  "suscriptos": [
+    {
+      "id": 1,
+      "email": "exaple@gmail.com"
+    },
+    {
+      "email": "asf@gmail.com",
+      "id": 2
+    },
+    {
+      "email": "chichi@gmail.com",
+      "id": 3
+    }
   ]
 }
