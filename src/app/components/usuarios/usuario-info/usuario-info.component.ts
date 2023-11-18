@@ -43,8 +43,8 @@ export class UsuarioInfoComponent {
 
   initForm(){
     this.formularioUsuario = this.fb.group({
-      nombre: [this.usuarioLogueado.nombre, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*')]],
-      apellido: [this.usuarioLogueado.apellido, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*')]],
+      nombre: [this.usuarioLogueado.nombre, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern("[a-zA-Z' ]*")]],
+      apellido: [this.usuarioLogueado.apellido, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern("[a-zA-Z' ]*")]],
       telefono: [this.usuarioLogueado.telefono, [Validators.required, Validators.minLength(8), Validators.maxLength(15), Validators.pattern('[0-9]*')]],
       provincia: [this.usuarioLogueado.provincia, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*')]],
       ciudad: [this.usuarioLogueado.ciudad, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*')]],

@@ -4,8 +4,9 @@
             <div>
                 <label>Nombre:</label>
                 <input type="text" formControlName="nombre">
-                <span class="form-error" *ngIf="validate('nombre','required')">Campo requerido</span>
-                <span class="form-error" *ngIf="validate('nombre','minlength') && !validate('nombre', 'pattern')">Minimo 3 caracteres</span>
+                <span class="form-error" *ngIf="validate('nombre','required') ">Campo requerido</span>
+                <span class="form-error" *ngIf="nombreProductoExists">Ya existe el producto</span>
+                <span class="form-error" *ngIf="validate('nombre','minlength') && !validate('nombre', 'pattern') && !nombreProductoExists">Minimo 3 caracteres</span>
                 <span class="form-error" *ngIf="validate('nombre', 'pattern')">Formato invalido</span>
             </div>
             <div>
@@ -32,6 +33,7 @@
                 <label>Id Planta:</label>
                 <input type="number" formControlName="id_planta">
                 <span class="form-error" *ngIf="validate('id_planta','required')">Campo requerido</span>
+                <span class="form-error" *ngIf="idPlantaExists">Id en uso</span>
             </div>
             <div class="div-buttons">
                 <button class="boton-oscuro" type="button" (click)="cancelar()">Cancelar</button>

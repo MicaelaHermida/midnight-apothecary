@@ -15,3 +15,8 @@
 .div-buttons button{
     width: 30%;
 }
+
+.form-error{
+    position: absolute;
+    left: 63%;
+}

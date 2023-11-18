@@ -217,4 +217,41 @@ export class ProductosService {
       console.error(error);
     }
   }
+
+  async productoNombreExists(nombre: string): Promise<boolean>{
+    try{
+      const db = this.firestore;
+      const productsCollection = collection(db, 'products');
+      const q = query(productsCollection, where('nombre', '==', nombre));
+      const productsSnapshot = await getDocs(q);
+      for(let doc of productsSnapshot.docs){
+        console.log(doc.data());
+      }
+      if(productsSnapshot.docs.length > 0){
+        console.log(productsSnapshot.docs.length);
+        return true;
+      }
+    }catch(error){
+      console.error(error);
+    }
+    return false;
+  }
+
+  async plantaIdExists(id: number): Promise<boolean>{
+    try{
+      const db = this.firestore;
+      const productsCollection = collection(db, 'products');
+      const q = query(productsCollection, where('id_planta', '==', id));
+      const productsSnapshot = await getDocs(q);
+      if(productsSnapshot.docs.length > 0){
+        return true;
+      }
+      else{
+        return false;
+      }
+    }catch(error){
+      console.error(error);
+    }
+    return false;
+  }
 }

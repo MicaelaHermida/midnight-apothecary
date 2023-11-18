@@ -40,7 +40,7 @@ export class PasarelaPagoComponent implements OnInit{
   });
 
   formularioPago: FormGroup = this.fb.group({
-    titular: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*')]],
+    titular: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(30), Validators.pattern("[a-zA-Z' ]*")]],
     numeroTarjeta: ['', [Validators.required, Validators.minLength(16), Validators.maxLength(16), Validators.pattern('[0-9]*')]],
     fechaCaducidad: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5), Validators.pattern('[0-9/]*')]],
     cvv: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(4), Validators.pattern('[0-9]*')]],
@@ -66,8 +66,8 @@ export class PasarelaPagoComponent implements OnInit{
 
   initFormUsuario(){
     this.formularioUsuario = this.fb.group({
-      nombre: [this.usuarioLogueado.nombre, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*')]],
-      apellido: [this.usuarioLogueado.apellido, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*')]],
+      nombre: [this.usuarioLogueado.nombre, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern("[a-zA-Z' ]*")]],
+      apellido: [this.usuarioLogueado.apellido, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern("[a-zA-Z' ]*")]],
       telefono: [this.usuarioLogueado.telefono, [Validators.required, Validators.minLength(8), Validators.maxLength(15), Validators.pattern('[0-9]*')]],
       provincia: [this.usuarioLogueado.provincia, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*')]],
       ciudad: [this.usuarioLogueado.ciudad, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*')]],
