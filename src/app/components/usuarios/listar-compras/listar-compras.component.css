@@ -120,3 +120,11 @@
 .finalizar-button{
     width: 30%;
 }
+
+.error-resultado-busqueda{
+    color: #2a2030;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 1rem;
+}
