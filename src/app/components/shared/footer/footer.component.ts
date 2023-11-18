@@ -30,11 +30,11 @@ export class FooterComponent {
     const suscripcion = this.formulario.value;
 
     this.suscripcionService.postSuscripcion(suscripcion).subscribe({
-      next: () => {
+      next: (suscripcion:any) => {
         this.formulario.reset();
         alert('¡Gracias por suscribirte! ♥');
       },
-      error: (e) => {
+      error: (e:any) => {
         console.log(e);
         alert('Email inválido. Intente nuevamente.');
       }
