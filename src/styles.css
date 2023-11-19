@@ -1,18 +1,28 @@
 /* ------------------------[ VARIABLES ]------------------------*/
 
-:root{
+:root {
     /*FONTS*/
     /*Family*/
     --base-font: 'Merriweater', serif;
-    --subtitle-font: 'Quicksand', sans-serif;
-    --title-font: 'Reenie Beanie', cursive;
+    --subtitulo-font: 'Quicksand', sans-serif;
+    --titulo-font: 'Reenie Beanie', cursive;
 
     /*Size*/
-    --base-font-size: 1.8rem;
-    --subtitle-font-size: 2rem;
-    --title-font-size: 7rem;
+    --font-small: 1.6rem;
+    --font-medium: 1.8rem;
+    --font-large: 2rem;
+    --font-extra: 2.8rem;
 
-    /**/
+    /*Color*/
+    --text-dark: #2a2030;
+    --text-light: #e8d5eb;
+    --back-light: #b39fb6;
+    --back-medium: #876a89;
+    --back-dark: #1b151f;
+    --back-trans: #00000000;
+    --back-light-trans: #b39fb6d8;
+    --back-dark-trans: #2a2030d3;
+
 
 }
 
@@ -35,219 +45,174 @@ html {
     box-sizing: inherit;
 }
 
-body{
+body {
     font-size: 1.6rem;
     margin: 0;
-    padding: 0;
+    background-color: var(--back-medium);
     background-image: url(../src/assets/img/fondo.jpg);
-    background-size: cover;
-    background-repeat: repeat;
+    background-blend-mode: multiply;
+    background-size: contain;
+    background-repeat: repeat-y;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
-main{
-    flex: 1;
-    margin-bottom: 30rem;
-}
-
-button{
-    cursor: pointer;
-}
-    
-
-
 hr {
     border: .15rem solid #b39fb6;
-    margin: 0rem;
+    margin: 0;
 }
 
 h1 {
-    font-family: 'Reenie Beanie', cursive;
+    font-family: var(--titulo-font);
     font-size: 7rem;
+    color: black;
     margin: auto;
 }
 
-button{
-    font-family: 'Quicksand', medium;
-    font-size: 1.6rem;
+h2 {
+    font-family: var(--subtitulo-font);
+    font-size: var(--font-extra);
     font-weight: 400;
-
-    margin: auto;
-    
-    color: #b39fb6;
-    background-color: #2a2030d3;
-    
-    line-height: 1.5rem;
-    border: none;
-    border-radius: 1rem;
-
+    text-align: center;
+    text-decoration: underline;
+    top: 0;
     margin: 1rem;
-    padding: .5rem;
-
-    cursor: pointer;
 }
 
-button:hover{
-    /*font-weight: bold;*/
-    color: #2a2030d3;
-    background-color: #b39fb6af;
-}
-
-header{
-    background-image: url(../src/assets/img/header.jpg);
-    background-size: cover;
-    background-position: center;
-    height: 10rem;
-    margin: auto;
+h3 {
+    font-family: var(--subtitulo-font);
+    font-size: var(--font-large);
+    font-weight: 400;
+    line-height: 2rem;
     text-align: center;
 }
 
-.mayus{
-    font-size: 8.5rem;
-}
-
-textarea{
-    color:#2a2030;
-    font-family: "Merriweather", serif;
-    font-size: 1.6rem;
+button {
+    font-family: var(--subtitulo-font);
+    font-size: var(--font-medium);
+    font-weight: 400;
     line-height: 1.5rem;
-    background-color: #2a203000;
-    border: .1rem solid #2a2030;
-} 
+    border: none;
+    margin: 1rem;
+    padding: .5rem;
+    cursor: pointer;
+}
 
-textarea:focus{
-    outline: 2px solid #2a2030d3;
+a {
+    cursor: pointer;
+}
+
+textarea {
+    font-family: var(--base-font);
+    font-size: var(--font-medium);
+    line-height: 1.5rem;
+    background-color: var(--back-trans);
+    border: .1rem solid;
+}
+
+textarea:focus {
+    outline: .2px solid;
 }
 
 
-/*PAGES*/
+/* ------------------------[ PAGES ]------------------------*/
 
-.page{
+.page {
     width: 100%;
     min-height: 55vh;
     margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.page-home{
-    background-image: url(../src/assets/img/fondo.jpg);
-    background-size:contain;
-    background-repeat: repeat;
-}
 
-.page-user{
-    background-color: #876a89;
+.page-user {
+    background-color: var(--back-medium);
     background-image: url(../src/assets/img/dibujos-user.jpg);
     background-blend-mode: multiply;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
-.page-tienda{
-    background-color: #876a89;
+.page-tienda {
+    background-color: var(--back-medium);
     background-image: url(../src/assets/img/dibujos-tienda.jpg);
     background-blend-mode: multiply;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
-.page-blog{
-    background-color: #876a89;
+.page-blog {
+    background-color: var(--back-medium);
     background-image: url(../src/assets/img/dibujos-blog.jpg);
     background-blend-mode: multiply;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
-/*FOOTER FIXED*/
-.footer.fixed{
+/* ------------------------[ FOOTER PARA PAGS CORTAS ]------------------------*/
+.footer.fixed {
     width: 100%;
     position: absolute;
     bottom: 0;
 }
 
-/*PERFILES, BIOS, INFOS*/
-.contenedor{
-    width: 60%;
-    height: 50%;
+/* ------------------------[ PERFILES - BIOGRAFIAS - INFO ]------------------------*/
+.contenedor {
+    width: 55%;
+    height: 70%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: .5rem;
     align-items: center;
     justify-content: center;
     border-radius: 5rem;
-    margin: auto;
+    margin: 2rem auto;
+    padding: 1rem;
 }
 
-.contenedor h2{
-    font-family: 'Quicksand', serif;
-    font-size: 3rem;
-    font-weight: 400;
-    line-height: 2rem;
-    text-align: center;
-    text-decoration: underline;
-    top: 0;
-    margin: 1rem;
-    padding: .5rem;
-}
-
-.contenedor h3{
-    font-family: 'Quicksand', serif;
-    font-size: 2rem;
-    font-weight: 400;
-    line-height: 2rem;
-    text-align: center;
-    margin: 2rem;
-    padding: .5rem;
-}
-
-.contenedor div{
+.contenedor div {
     border-radius: 1rem;
+    padding: .5rem;
     height: 100%;
-    padding: .5rem;
-
 }
 
-.contenedor p{
-    font-family: 'Merriweater', serif;
-    font-size: 1.8rem;
+.contenedor p {
+    font-family: var(--base-font);
+    font-size: var(--font-large);
     font-weight: 400;
-    color: #2a2030;
-    line-height: 2rem;
+    color: var(--text-dark);
+    line-height: 1.8rem;
     text-align: left;
-    padding: .5rem;
 }
 
-.contenedor .imagen{
-    background-color: #2a2030d3;
+.contenedor label{
+    font-family: var(--subtitulo-font);
+    font-size: var(--font-large);
+    font-weight: 400;
+    color: var(--text-dark);
+}
+
+/*datos*/
+.contenedor .imagen {
+    background-color: var(--back-dark-trans);
     display: flex;
     align-items: center;
-    justify-content: center;
-    border-radius: 1rem;
 }
 
-.contenedor .imagen img{
+.contenedor .imagen img {
     width: 100%;
     height: 100%;
     border-radius: 1rem;
     object-fit: cover;
 }
 
-/*datos*/
-.contenedor div.info{
-    background-color: #b39fb6af;
+.contenedor div.info {
+    background-color: var(--back-light-trans);
     height: 100%;
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
-    justify-content: center; 
+    justify-content: center;
 }
 
-.contenedor .datos div{
+.contenedor .datos div {
     max-height: 4.5rem;
     font-family: 'Quicksand', sans-serif;
     display: flex;
@@ -258,7 +223,7 @@ textarea:focus{
     padding-right: 1rem;
 }
 
-.datos div input{
+.datos div input {
     font-family: 'Merriweater', serif;
     font-size: 1.8rem;
     border: none;
@@ -270,7 +235,7 @@ textarea:focus{
     text-align: end;
 }
 
-.datos div textarea{
+.datos div textarea {
     width: 95%;
     height: 6rem;
     margin: auto;
@@ -286,7 +251,7 @@ textarea:focus{
 }
 
 /*TODOS LOS FORMULARIOS*/
-.contenedor-formulario{
+.contenedor-formulario {
     background-color: #b39fb6af;
     width: 50%;
     align-items: center;
@@ -294,37 +259,37 @@ textarea:focus{
     margin: auto;
 }
 
-.formulario{
+.formulario {
     width: 80%;
     display: flex;
     flex-direction: column;
     overflow: hidden;
     margin: 2rem auto;
     border-radius: 1rem;
- }
+}
 
- .formulario .campos{
+.formulario .campos {
     margin: 2rem;
     padding: 1%;
- }
+}
 
- .formulario .campos div{
+.formulario .campos div {
     height: auto;
     display: flex;
     flex-direction: column;
     padding: 1%;
- }
+}
 
- .campos div label{
+.campos div label {
     margin-left: 2%;
     color: #2a2030;
     font-family: 'Quicksand', medium;
     font-weight: 500;
     font-size: 2rem;
     padding: 1%;
- }
+}
 
- .campos div input{
+.campos div input {
     font-family: 'Merriweather', serif;
     font-size: 1.7rem;
     width: 95%;
@@ -334,10 +299,11 @@ textarea:focus{
     outline: none;
     border-bottom: .1rem solid #2a2030;
     background-color: #b39fb600;
-    margin-bottom: 2rem; /*para los span*/
- }
+    margin-bottom: 2rem;
+    /*para los span*/
+}
 
- .campos div textarea{
+.campos div textarea {
     width: 95%;
     height: 10rem;
     margin: auto;
@@ -354,7 +320,7 @@ textarea:focus{
 
 /*BOTONES*/
 
-.container-buttons{
+.container-buttons {
     margin: 2rem auto;
     width: 100%;
     display: flex;
@@ -362,11 +328,11 @@ textarea:focus{
     justify-content: center;
 }
 
-.boton-claro{
+.boton-claro {
     font-family: 'Quicksand', sans-serif;
     font-size: 1.8rem;
     font-weight: 400;
-    color:#2a2030;
+    color: #2a2030;
     width: 30%;
     margin: 2% auto;
     border-radius: 5rem;
@@ -375,15 +341,15 @@ textarea:focus{
     border: 1px solid #2a2030;
 }
 
-.boton-claro:hover{
+.boton-claro:hover {
     font-weight: bold;
 }
 
-.boton-transp{
+.boton-transp {
     font-family: 'Quicksand', sans-serif;
     font-size: 1.8rem;
     font-weight: 400;
-    color:#b39fb6;
+    color: #b39fb6;
     width: 30%;
     margin: 2% auto;
     border-radius: 5rem;
@@ -392,16 +358,16 @@ textarea:focus{
     border: .1rem solid #b39fb6;
 }
 
-.boton-transp:hover{
+.boton-transp:hover {
     background-color: #2a2030;
-    color:#b39fb6;
+    color: #b39fb6;
     font-weight: bold;
 }
 
-.boton-oscuro{
+.boton-oscuro {
     font-family: 'Quicksand', sans-serif;
     font-size: 1.6rem;
-    color:#b39fb6;
+    color: #b39fb6;
     width: 30%;
     margin: 2% auto;
     border-radius: 5rem;
@@ -410,35 +376,35 @@ textarea:focus{
     border: 1px solid #b39fb6;
 }
 
-.boton-oscuro:hover{
+.boton-oscuro:hover {
     font-weight: bold;
 }
 
 
 
 /*ICONOS*/
-.busqueda-icon i{
+.busqueda-icon i {
     color: #b39fb6af;
     font-size: 2rem;
     margin: 0 1rem;
 }
 
-.busqueda-icon i:hover{
+.busqueda-icon i:hover {
     color: #c7b7ca;
 }
 
 /*SPANS!*/
 
 
-.formulario input.invalid{
+.formulario input.invalid {
     border-bottom: 2px solid #a10202;
 }
 
-.formulario textarea.invalid{
+.formulario textarea.invalid {
     border: 2px solid #a10202;
 }
 
-.form-error{
+.form-error {
     margin-top: 0;
     margin-left: 2%;
     font-family: 'Merriweather', serif;
@@ -446,39 +412,3 @@ textarea:focus{
     color: #a10202;
     padding: 1%;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

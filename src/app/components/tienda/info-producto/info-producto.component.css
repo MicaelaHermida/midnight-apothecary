@@ -3,24 +3,6 @@
     border-radius: 9px;
 }
 
-/* .contenedor{
-    display: flex;
-    justify-content: row;
-    width: 80%;
-    margin: auto;
-    background-color: #b39fb6af;
-    padding-top: 3rem;
-    padding-bottom: 6rem;
-    margin-top: 3rem;
-} 
-
-.imagen-titulo{
-    text-align: center;
-    margin-left: 5rem;
-}
-*/
-
-
 .detalles-producto{
     display: flex;
     flex-direction: row;

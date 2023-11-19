@@ -1,0 +1,12 @@
+header{
+    background-image: url(../../../../assets/img/header.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 10rem;
+    margin: auto;
+    text-align: center;
+}
+
+.mayus{
+    font-size: 8.5rem;
+}
