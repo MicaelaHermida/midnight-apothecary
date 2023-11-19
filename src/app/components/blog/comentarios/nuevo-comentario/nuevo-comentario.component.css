@@ -1,5 +1,5 @@
 
-.filtro{
+.nuevo-comentario{
     background-color: #2a2030d3;
     display: flex;
     flex-direction: column;
@@ -8,30 +8,28 @@
     align-items: center;
 }
 
-.filtro textarea{   
-    width: 50rem;
+.nuevo-comentario textarea{   
+    max-width: 50vh;
+    width: 50%;
     height: 13rem;
-    font-family: 'Merriweater', serif;
-    font-size: 1.8rem;
-    color: #b39fb6;
-    background-color: #2a203000;
-    border: .1rem solid #b39fb6;
-    border-radius: 1rem;
+    color: var(--text-light);
+    background-color: var(--back-trans);
+    border-color: var(--text-light);
 }
 
-.filtro textarea::placeholder{
+.nuevo-comentario textarea::placeholder{
     padding: .5rem;
     font-family: 'Merriweater', serif;
     font-size: 1.8rem;
     color: #b39fb6;
 }
 
-.filtro textarea:focus{
+.nuevo-comentario textarea:focus{
     border: .2rem solid #b39fb6;
     color: #b39fb6;
 }
 
-.filtro h3{
+.nuevo-comentario h3{
     margin-top: 1rem;
     margin-bottom: 2rem;
     padding: 0;

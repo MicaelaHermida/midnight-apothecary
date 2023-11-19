@@ -1,5 +1,5 @@
-<div class="contenedor-nuevo-producto" *ngIf="isAdminRole && firebaseAuthenticationReady">
-    <form [formGroup]="form" (ngSubmit)="agregarProducto()" class="formulario">
+<div class="contenedor-formulario" *ngIf="isAdminRole && firebaseAuthenticationReady">
+    <form class="formulario" [formGroup]="form" (ngSubmit)="agregarProducto()" >
         <div class="campos">
             <div>
                 <label>Nombre:</label>
@@ -35,9 +35,9 @@
                 <span class="form-error" *ngIf="validate('id_planta','required')">Campo requerido</span>
                 <span class="form-error" *ngIf="idPlantaExists">Id en uso</span>
             </div>
-            <div class="div-buttons">
-                <button class="boton-oscuro" type="button" (click)="cancelar()">Cancelar</button>
-                <button class="boton-oscuro" type="submit">Aceptar</button>
+            <div class="container-buttons">
+                <button class="boton-claro" type="submit">Aceptar</button>
+                <button class="boton-claro" type="button" (click)="cancelar()">Cancelar</button>
             </div>
         </div>
     </form>

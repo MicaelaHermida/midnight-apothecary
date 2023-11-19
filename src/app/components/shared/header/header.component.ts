@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit {
   isRegister: boolean = false;
   isTienda: boolean = false;
   isProducto: boolean = false;
+  isNuevoProducto: boolean = false;
   isBlog: boolean = false;
   isNuevaBruja: boolean = false;
   isBruja: boolean = false;
@@ -52,9 +53,10 @@ export class HeaderComponent implements OnInit {
         else if(this.router.url.includes("login")) this.isLogin = true;
         else if(this.router.url.includes("register")) this.isRegister = true;
         else if(this.router.url.includes("tienda")) this.isTienda = true;
+        else if(this.router.url.includes("nuevo-producto")) this.isNuevoProducto = true;
         else if(this.router.url.includes("producto")) this.isProducto = true; 
         else if(this.router.url.includes("carrito")) this.isCarrito = true;
-        else if(this.router.url.includes("compras")) this.isCompras = true; //compras (plural
+        else if(this.router.url.includes("compras")) this.isCompras = true; 
         else if(this.router.url.includes("compra")) this.isCompra = true;
         else if(this.router.url.includes("blog")) this.isBlog = true;
         else if(this.router.url.includes("nueva-bruja")) this.isNuevaBruja = true;  
@@ -111,6 +113,7 @@ export class HeaderComponent implements OnInit {
     this.isRegister = false;
     this.isTienda = false;
     this.isProducto = false;
+    this.isNuevoProducto = false;
     this.isCarrito = false;
     this.isCompra = false;
     this.isCompras = false;

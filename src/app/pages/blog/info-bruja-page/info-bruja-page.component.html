@@ -1,7 +1,7 @@
-<div class="page-blog">
+<div class="fondo-blog page">
     <app-bruja-info></app-bruja-info>
 
-    <app-nuevo-comentario class="nuevo-comentario"
+    <app-nuevo-comentario class="fondo-comentario"
         *ngIf="(isAdmin || isLogged) && firebaseAuthenticationReady"></app-nuevo-comentario>
 
     <app-listar-comentarios></app-listar-comentarios>

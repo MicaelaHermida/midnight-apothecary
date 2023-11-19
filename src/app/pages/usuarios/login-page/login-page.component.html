@@ -1,7 +1,3 @@
-<div class="page-user">
-    <app-login *ngIf="!isLogged && firebaseAuthStateReady" class="page"></app-login>
-</div>
+<app-login class="fondo-user page" *ngIf="!isLogged && firebaseAuthStateReady"></app-login>
 
-<div class="footer fixed">
-    <app-footer></app-footer>
-</div>
+<app-footer></app-footer>

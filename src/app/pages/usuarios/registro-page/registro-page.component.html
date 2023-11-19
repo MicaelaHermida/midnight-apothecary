@@ -1,5 +1,3 @@
-<div class="page-user">
-    <app-registro *ngIf="!isLogged && firebaseAuthStateReady" class="page"></app-registro>
-</div>
+<app-registro class="fondo-user page" *ngIf="!isLogged && firebaseAuthStateReady"></app-registro>
 
 <app-footer></app-footer>
