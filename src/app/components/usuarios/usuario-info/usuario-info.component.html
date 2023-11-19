@@ -84,14 +84,13 @@
                         <span class="form-error" *ngIf="validate('dni','pattern') && editMode">Formato invalido</span>
                     </div>
 
-                    <div class="container-buttons">
-                        <button class="boton-claro" *ngIf="editMode" (click)="cancelarCambios()">Cancelar</button>
-                        <button class="boton-claro" *ngIf="editMode" type="submit">Guardar</button>
-                        <button class="boton-claro" type="button" *ngIf="!editMode"
-                            (click)="activarEditMode()">Editar</button>
-                    </div>
                 </div>
-
+                <div class="container-buttons">
+                    <button class="boton-claro" *ngIf="editMode" (click)="cancelarCambios()">Cancelar</button>
+                    <button class="boton-claro" *ngIf="editMode" type="submit">Guardar</button>
+                    <button class="boton-claro" type="button" *ngIf="!editMode"
+                        (click)="activarEditMode()">Editar</button>
+                </div>
             </form>
 
         </div>

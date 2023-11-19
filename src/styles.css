@@ -8,17 +8,19 @@
     --titulo-font: 'Reenie Beanie', cursive;
 
     /*Size*/
-    --font-small: 1.6rem;
-    --font-medium: 1.8rem;
-    --font-large: 2rem;
-    --font-extra: 2.8rem;
+    --font-size-16: 1.6rem;
+    --font-size-17: 1.7rem;
+    --font-size-18: 1.8rem;
+    --font-size-19: 1.9rem;
+    --font-size-20: 2rem;
+    --font-size-28: 2.8rem;
 
     /*Color*/
-    --text-dark: #2a2030;
-    --text-light: #e8d5eb;
-    --back-light: #b39fb6;
+    --color-extra-light: #e8d5eb;
+    --color-light: #b39fb6;
+    --color-dark: #2a2030;
+    --color-extra-dark: #1b151f;
     --back-medium: #876a89;
-    --back-dark: #1b151f;
     --back-trans: #00000000;
     --back-light-trans: #b39fb6d8;
     --back-dark-trans: #2a2030d3;
@@ -59,7 +61,7 @@ body {
 }
 
 hr {
-    border: .15rem solid #b39fb6;
+    border: .15rem solid var(--color-light);
     margin: 0;
 }
 
@@ -72,7 +74,7 @@ h1 {
 
 h2 {
     font-family: var(--subtitulo-font);
-    font-size: var(--font-extra);
+    font-size: var(--font-size-28);
     font-weight: 400;
     text-align: center;
     text-decoration: underline;
@@ -83,7 +85,7 @@ h2 {
 
 h3 {
     font-family: var(--subtitulo-font);
-    font-size: var(--font-large);
+    font-size: var(--font-size-20);
     font-weight: 400;
     line-height: 2rem;
     text-align: center;
@@ -95,8 +97,8 @@ h3 {
 
 button {
     font-family: var(--subtitulo-font);
-    font-size: var(--font-medium);
-    font-weight: 400;
+    font-size: var(--font-size-18);
+    font-weight: 500;
     border: none;
     margin: 1rem;
     padding: .5rem;
@@ -109,29 +111,29 @@ a {
 
 label{
     font-family: var(--subtitulo-font);
-    font-size: var(--font-large);
+    font-size: var(--font-size-20);
 }
 
 input{
     background-color: var(--back-trans);
     font-family: var(--base-font);
-    font-size: var(--font-medium);
+    font-size: var(--font-size-18);
     border: none;
-    border-bottom: 1px solid #2a2030;
+    border-bottom: 1px solid var(--color-dark);
     outline: none;
 }
 
 textarea {
     font-family: var(--base-font);
-    font-size: var(--font-small);
+    font-size: var(--font-size-18);
     line-height: 1.8rem;
     background-color: var(--back-trans);
-    border: .1rem solid;
+    border: .1rem solid var(--color-dark);
     border-radius: 1rem;
 }
 
 textarea:focus {
-    outline: .2px solid;
+    outline: .2px solid var(--color-dark);
 }
 
 
@@ -144,6 +146,13 @@ textarea:focus {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.page-contenedor{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .fondo-user {
@@ -185,14 +194,13 @@ textarea:focus {
 /*CONTENEDORES Y GRALES*/
 .contenedor {
     width: 55%;
-    height: 70%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: .5rem;
     align-items: center;
     justify-content: center;
     border-radius: 5rem;
-    margin: 2rem auto;
+    margin: 2rem 0;
 }
 
 .contenedor div {
@@ -200,17 +208,17 @@ textarea:focus {
 }
 
 .contenedor label {
-    font-size: var(--font-medium);
+    font-size: var(--font-size-18);
     font-weight: 400;
-    color: var(--text-dark);
+    color: var(--color-extra-dark);
     padding: .5rem;
 }
 
 .contenedor p {
     font-family: var(--base-font);
-    font-size: var(--font-large);
+    font-size: var(--font-size-18);
     font-weight: 400;
-    color: var(--text-dark);
+    color: var(--color-dark);
     line-height: 1.8rem;
     text-align: justify;
     margin: 0;
@@ -219,6 +227,7 @@ textarea:focus {
 
 /*DATOS*/
 .contenedor .imagen {
+    width: 100%;
     height: 100%;
     background-color: var(--back-dark-trans);
     display: flex;
@@ -235,13 +244,15 @@ textarea:focus {
 }
 
 .contenedor .info {
-    min-width: 46.5vh;
     height: 100%;
     background-color: var(--back-light-trans);
     display: flex;
     flex-direction: column;
-    justify-content: center;
     box-sizing:content-box;
+}
+
+.info h2{
+    margin-top: 1rem;
 }
 
 .contenedor .datos{
@@ -260,6 +271,7 @@ textarea:focus {
 
  .datos div input {
     width: 20rem;
+    font-size: var(--font-size-17);
     background-color: var(--back-trans);
     text-align: end;
     margin: 0;
@@ -268,12 +280,12 @@ textarea:focus {
 } 
 
 .datos textarea {
-    font-size: var(--font-large);
+    font-size: var(--font-size-17);
     width: 100%;
     min-height: 6rem;
-    margin: .5rem;
-    margin-top: 1rem;
-    border-color: var(--text-dark);
+    margin: 0;
+    margin-top: .7rem;
+    border-color: var(--color-dark);
     outline: none;
 }
 
@@ -328,7 +340,7 @@ textarea:focus {
 /*BOTONES*/
 
 .container-buttons {
-    margin: 1rem auto;
+    margin: 2rem auto;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -337,50 +349,46 @@ textarea:focus {
 }
 
 .boton-claro {
-    width: 30%;
-    min-height: 2.5rem;
     background-color: var(--back-trans);
     color: var(--back-dark);
     border-radius: 5rem;
-    border: .1rem solid var(--back-dark);
-    margin: 2% auto;
-    padding: .5rem;
+    border: .1rem solid var(--color-dark);
+    width: 30%;
+    min-height: 2.5rem;
+    margin: auto;
+    padding: 1rem;
 }
 
 .boton-claro:hover {
-    font-weight: bold;
-    background-color: var(--back-light);
+    background-color: var(--color-light);
+    font-weight: 600;
 }
 
 .boton-transp {
-    font-family: 'Quicksand', sans-serif;
-    font-size: 1.8rem;
-    font-weight: 400;
-    color: #b39fb6;
-    width: 30%;
-    margin: 2% auto;
+    background-color: var(--back-trans);
+    color: var(--color-extra-light);
     border-radius: 5rem;
+    border: .1rem solid var(--color-light);
+    width: 30%;
+    min-height: 2.5rem;
+    margin: auto;    
     padding: 1rem;
-    background-color: #2a203000;
-    border: .1rem solid #b39fb6;
 }
 
 .boton-transp:hover {
-    background-color: #2a2030;
-    color: #b39fb6;
-    font-weight: bold;
+    background-color: var(--color-dark);
+    font-weight: 600;
 }
 
 .boton-oscuro {
-    font-family: 'Quicksand', sans-serif;
-    font-size: 1.6rem;
-    color: #b39fb6;
+    background-color: var(--back-dark-trans);
+    color: var(--color-extra-light);
+    font-size: var(--font-size-17);
+    border-radius: 5rem;
+    border: .1rem solid var(--color-light);
     width: 30%;
     margin: 2% auto;
-    border-radius: 5rem;
     padding: 1rem;
-    background-color: #2a2030d3;
-    border: 1px solid #b39fb6;
 }
 
 .boton-oscuro:hover {

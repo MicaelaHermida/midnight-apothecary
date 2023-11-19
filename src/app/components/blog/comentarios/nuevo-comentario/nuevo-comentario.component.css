@@ -12,21 +12,23 @@
     max-width: 50vh;
     width: 50%;
     height: 13rem;
-    color: var(--text-light);
+    font-weight: 200;
+    line-height: 1.8rem;
+    color: var(--color-light);
     background-color: var(--back-trans);
-    border-color: var(--text-light);
+    border-color: var(--color-light);
 }
 
 .nuevo-comentario textarea::placeholder{
     padding: .5rem;
-    font-family: 'Merriweater', serif;
-    font-size: 1.8rem;
-    color: #b39fb6;
+    font-weight: 200;
+    color: var(--color-light);
 }
 
 .nuevo-comentario textarea:focus{
     border: .2rem solid #b39fb6;
-    color: #b39fb6;
+    color: var(--color-extra-light);
+    padding: .5rem;
 }
 
 .nuevo-comentario h3{
@@ -36,7 +38,7 @@
     font-family: 'Quicksand', sans-serif;
     font-size: 2.5rem;
     font-weight: 300;    
-    color: #b39fb6;
+    color: var(--color-extra-light);
 }
 
 #boton-comentario{
