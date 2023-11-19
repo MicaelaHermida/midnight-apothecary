@@ -5,64 +5,71 @@
 
     <div class="info">
         <h2>Biografía</h2>
-        <form class="datos" [formGroup]="formulario" (ngSubmit)="actualizarBruja()">
-            <div>
-                <label>Nombre:</label>
-                <p *ngIf="!editMode">{{bruja.nombre}}</p>
-                <input *ngIf="editMode" formControlName="editNombre">
+        <form [formGroup]="formulario">
+            <div class="datos">
+                <div>
+                    <label>Nombre:</label>
+                    <p *ngIf="!editMode">{{bruja.nombre}}</p>
+                    <input *ngIf="editMode" formControlName="editNombre">
+                </div>
+
+                <div>
+                    <label>Apellido:</label>
+                    <p *ngIf="!editMode">{{bruja.apellido}}</p>
+                    <input *ngIf="editMode" formControlName="editApellido">
+                </div>
+
+                <div>
+                    <label>Nacimiento:</label>
+                    <p *ngIf="!editMode">{{bruja.fecha_nacimiento}}</p>
+                    <input *ngIf="editMode" formControlName="editFechaNac">
+                </div>
+
+                <div>
+                    <label>Defunción:</label>
+                    <p *ngIf="!editMode">{{bruja.fecha_defuncion}}</p>
+                    <input *ngIf="editMode" formControlName="editFechaDef">
+                </div>
+
+                <div>
+                    <label>Lugar de Nacimiento:</label>
+                    <p *ngIf="!editMode">{{bruja.lugar_de_nacimiento}}</p>
+                    <input *ngIf="editMode" formControlName="editLugarNac">
+                </div>
+
+                <div>
+                    <label>Lugar de Ejecución:</label>
+                    <p *ngIf="!editMode">{{bruja.lugar_de_ejecucion}}</p>
+                    <input *ngIf="editMode" formControlName="editLugarEjec">
+                </div>
+
+                <div>
+                    <label>Tipo de Muerte:</label>
+                    <p *ngIf="!editMode">{{bruja.tipo_de_muerte}}</p>
+                    <input *ngIf="editMode" formControlName="editTipoMuerte">
+                </div>
+            </div>
+    
+            <div class="datos">
+                <div>
+                    <label>Historia:</label>
+                </div>
+                
+                <div>
+                    <p *ngIf="!editMode">{{bruja.historia}}</p>
+                    <textarea *ngIf="editMode" formControlName="editHistoria">{{bruja.historia}}</textarea>
+                </div>
             </div>
 
-            <div>
-                <label>Apellido:</label>
-                <p *ngIf="!editMode">{{bruja.apellido}}</p>
-                <input *ngIf="editMode" formControlName="editApellido">
-            </div>
-
-            <div>
-                <label>Nacimiento:</label>
-                <p *ngIf="!editMode">{{bruja.fecha_nacimiento}}</p>
-                <input *ngIf="editMode" formControlName="editFechaNac">
-            </div>
-
-            <div>
-                <label>Defunción:</label>
-                <p *ngIf="!editMode">{{bruja.fecha_defuncion}}</p>
-                <input *ngIf="editMode" formControlName="editFechaDef">
-            </div>
-
-            <div>
-                <label>Lugar de Nacimiento:</label>
-                <p *ngIf="!editMode">{{bruja.lugar_de_nacimiento}}</p>
-                <input *ngIf="editMode" formControlName="editLugarNac">
-            </div>
-
-            <div>
-                <label>Lugar de Ejecución:</label>
-                <p *ngIf="!editMode">{{bruja.lugar_de_ejecucion}}</p>
-                <input *ngIf="editMode" formControlName="editLugarEjec">
-            </div>
-
-            <div>
-                <label>Tipo de Muerte:</label>
-                <p *ngIf="!editMode">{{bruja.tipo_de_muerte}}</p>
-                <input *ngIf="editMode" formControlName="editTipoMuerte">
-            </div>
         </form>
 
-        <div>
-            <label>Historia:</label>
-
-            <div>
-                <p *ngIf="!editMode">{{bruja.historia}}</p>
-                <textarea id="historia" required *ngIf="editMode" formControlName="editHistoria"></textarea>
-            </div>
-        </div>
-
         <div class="container-buttons">
-            <button class="boton-claro" *ngIf="editMode && isAdminRole"
-                (click)="cancelarCambios()">Cancelar</button>
-            <button class="boton-claro" *ngIf="editMode && isAdminRole" type="submit">Guardar</button>
+            <button class="boton-claro" *ngIf="editMode && isAdminRole" (click)="cancelarCambios()">Cancelar</button>
+            <button class="boton-claro" *ngIf="editMode && isAdminRole" (click)="actualizarBruja()">Guardar</button>
             <button class="boton-claro" type="button" *ngIf="!editMode && isAdminRole"
                 (click)="activarEditMode()">Editar</button>
         </div>
     </div>
+</div>
+
+

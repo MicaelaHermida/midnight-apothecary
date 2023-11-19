@@ -9,6 +9,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   styleUrls: ['./usuario-info.component.css']
 })
 export class UsuarioInfoComponent {
+
   editMode: boolean = false;
   userId!: string;
   isLogged: boolean = false;
@@ -29,7 +30,10 @@ export class UsuarioInfoComponent {
     dni: ''
   });
 
-  constructor(private fb: FormBuilder, private authService: AuthenticationService) {}
+  constructor(
+    private fb: FormBuilder, 
+    private authService: AuthenticationService
+  ) {}
 
   async ngOnInit(): Promise<void> {
     await this.authService.waitForFirebaseAuthentication();

@@ -21,15 +21,15 @@ export class BrujaInfoComponent implements OnInit {
   brujaCargada: boolean = false;
 
   formulario: FormGroup = this.formBuilder.group({
-    editNombre: ['', Validators.required],
-    editApellido: ['', Validators.required],
-    editFechaNac: ['', Validators.required],
-    editFechaDef: ['', Validators.required],
-    editTipoMuerte: ['', Validators.required],
-    editLugarNac: ['', Validators.required],
-    editLugarEjec: ['', Validators.required],
-    editImagen: ['', Validators.required],
-    editHistoria: ['', Validators.required]
+    editNombre: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern("[a-zA-Z' ]*")]],
+    editApellido: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern("[a-zA-Z' ]*")]],
+    editFechaNac: [''],
+    editFechaDef: [''],
+    editTipoMuerte: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern("[a-zA-Z' ]*")]],
+    editLugarNac: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern("[a-zA-Z' ]*")]],
+    editLugarEjec: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern("[a-zA-Z' ]*")]],
+    editImagen: ['', [Validators.required, Validators.pattern('https?://.+')]],
+    editHistoria: ['', [Validators.required, Validators.maxLength(500)]]
   })
 
   constructor(
@@ -38,7 +38,7 @@ export class BrujaInfoComponent implements OnInit {
     private comentariosService: ComentariosService,
     private formBuilder: FormBuilder,
     private authService: AuthenticationService
-  ) {  }
+  ) { }
 
   async ngOnInit(): Promise<void> {
     await this.authService.waitForFirebaseAuthentication();
@@ -46,78 +46,90 @@ export class BrujaInfoComponent implements OnInit {
     this.isAdminRole = await this.authService.getCurrentUserRole() === 'admin';
     await this.initBio();
     await this.initForm();
-    
+
   }
 
-  async initForm(){
-    this.route.params.subscribe(async params =>{
+  async initForm() {
+    this.route.params.subscribe(async params => {
       this.brujaId = params['key'];
       console.log(this.brujaId);
 
-      if(this.brujaId){
+      if (this.brujaId) {
         this.bruja = await this.brujasService.getBruja(this.brujaId);
         console.log(this.bruja.nombre);
-        
 
-        if(this.bruja){
+        if (this.bruja) {
           this.formulario = this.formBuilder.group({
-            editNombre: [this.bruja.nombre],
-            editApellido: [this.bruja.apellido], 
-            editFechaNac: [this.bruja.fecha_nacimiento],
-            editFechaDef: [this.bruja.fecha_defuncion],
-            editTipoMuerte: [this.bruja.tipo_de_muerte],
-            editLugarNac: [this.bruja.lugar_de_nacimiento],
-            editLugarEjec: [this.bruja.lugar_de_ejecucion],
-            editImagen: [this.bruja.imagen],
-            editHistoria: [this.bruja.historia]
+            editNombre: this.bruja.nombre,
+            editApellido: this.bruja.apellido,
+            editFechaNac: this.bruja.fecha_nacimiento,
+            editFechaDef: this.bruja.fecha_defuncion,
+            editTipoMuerte: this.bruja.tipo_de_muerte,
+            editLugarNac: this.bruja.lugar_de_nacimiento,
+            editLugarEjec: this.bruja.lugar_de_ejecucion,
+            editImagen: this.bruja.imagen,
+            editHistoria: this.bruja.historia
           });
         }
       }
-    
+
     });
   }
 
-  async initBio(){
-    this.route.params.subscribe(async params =>{
-      const brujaId= params['key'];
+  async initBio() {
+    this.route.params.subscribe(async params => {
+      const brujaId = params['key'];
       this.bruja = await this.brujasService.getBruja(brujaId);
 
-      if(this.bruja){
+      if (this.bruja) {
         this.comentariosService.brujaId = brujaId;
         this.brujaCargada = true;
         console.log(this.bruja);
-      }else{
+      } else {
         console.log("error al cargar el ID");
       }
 
     })
   }
 
-  async actualizarBruja(): Promise<void>{
+  async actualizarBruja(): Promise<void> {
     if (this.formulario.invalid) return;
 
-    const bruja: Bruja = {
-      nombre: this.formulario.controls['editNombre'].value,
-      apellido: this.formulario.controls['editApellido'].value,
-      fecha_nacimiento: this.formulario.controls['editFechaNac'].value,
-      fecha_defuncion: this.formulario.controls['editFechaDef'].value,
-      tipo_de_muerte: this.formulario.controls['editTipoMuerte'].value,
-      lugar_de_nacimiento: this.formulario.controls['editLugarNac'].value,
-      lugar_de_ejecucion: this.formulario.controls['editLugarEjec'].value,
-      imagen: this.formulario.controls['editImagen'].value, 
-      historia: this.formulario.controls['editHistoria'].value      
-    }
+    this.bruja.nombre = this.formulario.controls['editNombre'].value;
+    this.bruja.apellido = this.formulario.controls['editApellido'].value;
+    this.bruja.fecha_nacimiento = this.formulario.controls['editFechaNac'].value;
+    this.bruja.fecha_defuncion = this.formulario.controls['editFechaDef'].value;
+    this.bruja.tipo_de_muerte = this.formulario.controls['editTipoMuerte'].value;
+    this.bruja.lugar_de_nacimiento = this.formulario.controls['editLugarNac'].value;
+    this.bruja.lugar_de_ejecucion = this.formulario.controls['editLugarEjec'].value;
+    this.bruja.imagen = this.formulario.controls['editImagen'].value;
+    this.bruja.historia = this.formulario.controls['editHistoria'].value;
 
-    await this.brujasService.putBruja(this.brujaId, bruja);
+    /*  const bruja: Bruja = {
+       nombre: this.formulario.controls['editNombre'].value,
+       apellido: this.formulario.controls['editApellido'].value,
+       fecha_nacimiento: this.formulario.controls['editFechaNac'].value,
+       fecha_defuncion: this.formulario.controls['editFechaDef'].value,
+       tipo_de_muerte: this.formulario.controls['editTipoMuerte'].value,
+       lugar_de_nacimiento: this.formulario.controls['editLugarNac'].value,
+       lugar_de_ejecucion: this.formulario.controls['editLugarEjec'].value,
+       imagen: this.formulario.controls['editImagen'].value, 
+       historia: this.formulario.controls['editHistoria'].value      
+     } */
+
+    await this.brujasService.putBruja(this.brujaId, this.bruja);
     this.editMode = false;
-    await this.initBio();
+    //reload page
+    this.initBio();
+    this.initForm();
+
   }
 
-  activarEditMode(){
+  activarEditMode() {
     this.editMode = true;
   }
 
-  cancelarCambios(){
+  cancelarCambios() {
     this.editMode = false;
     return;
   }
