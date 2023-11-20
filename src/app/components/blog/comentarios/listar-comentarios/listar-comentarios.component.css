@@ -10,7 +10,7 @@
 
  .contenedor-comentarios hr{
     width: 100%;
-    border: .1rem solid #2a2030;
+    border: .1rem solid var(--color-dark);
  }
 
  .contenedor-comentarios h2{
@@ -23,6 +23,7 @@
  }
  
 .comentario{
+    background-color: var(--back-light-trans);
     width: 50rem;
     margin: auto;
     padding: .5rem;
@@ -30,12 +31,11 @@
     flex-direction: column;
     align-items: center;
     border-radius: 1rem;
-    background-color: #b39fb6af;
 }
 
 .contenedor-comentarios .comentario hr{
     width: 100%;
-    border: .1rem solid #2a2030;
+    border: .1rem solid var(--color-dark);
 }
 
 .comentario-encabezado {
@@ -48,7 +48,7 @@
 
 .comentario-encabezado p{
     font-family: 'Quicksand', serif;
-    font-size: 1.8rem;
+    font-size: var(--font-size-18);
     padding: .5rem;
 }
 
@@ -65,7 +65,7 @@
     padding: 1rem;
     border: none;
     border-radius: 1rem;
-    border: 1px solid #2a2030;
+    border: 1px solid var(--color-dark);
     outline: none;
 }
 

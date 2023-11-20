@@ -9,36 +9,37 @@
 }
 
 .nuevo-comentario textarea{   
+    background-color: var(--back-trans);
+    color: var(--color-light);
     max-width: 50vh;
     width: 50%;
     height: 13rem;
+    padding: .5rem;
     font-weight: 200;
-    line-height: 1.8rem;
-    color: var(--color-light);
-    background-color: var(--back-trans);
+    line-height: 1.8rem;    
     border-color: var(--color-light);
 }
 
 .nuevo-comentario textarea::placeholder{
-    padding: .5rem;
-    font-weight: 200;
     color: var(--color-light);
+    font-weight: 200;
+    padding: .5rem;
 }
 
 .nuevo-comentario textarea:focus{
-    border: .2rem solid #b39fb6;
     color: var(--color-extra-light);
+    border: .2rem solid var(--color-light);
     padding: .5rem;
 }
 
 .nuevo-comentario h3{
-    margin-top: 1rem;
-    margin-bottom: 2rem;
-    padding: 0;
+    color: var(--color-extra-light);
     font-family: 'Quicksand', sans-serif;
     font-size: 2.5rem;
     font-weight: 300;    
-    color: var(--color-extra-light);
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    padding: 0;
 }
 
 #boton-comentario{

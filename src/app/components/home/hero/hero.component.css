@@ -26,14 +26,15 @@ img{
     transform: translateX(-50%);
     display: flex;
     align-items: center;
-    color: #b39fb6;
+    color: var(--color-light);
 }
 
 .carousel-navigation button{
     margin: 0 .5rem;
     padding: 1rem;
-    background-color: #2a2030d3;
-    border-radius: 100%;
+    background-color: var(--back-dark-trans);
+    color: var(--color-extra-light);
+    border-radius: 50%;
     cursor: pointer;
 }
 
