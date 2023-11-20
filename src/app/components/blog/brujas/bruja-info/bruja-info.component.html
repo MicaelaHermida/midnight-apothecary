@@ -14,9 +14,9 @@
                         [class.invalid]="validate('editNombre','required') || validate('editNombre','minlength') || validate('editNombre','maxlength') || validate('editNombre', 'pattern')">
                     
                     <span class="form-error" *ngIf="validate('editNombre','required')">Campo requerido</span>
-                    <span class="form-error" *ngIf="validate('editNombre','minlength') && !validate('editNombre', 'pattern')">Min 3 caracteres</span>
-                    <span class="form-error" *ngIf="validate('editNombre','maxlength') && !validate('editNombre', 'pattern')">Max 30 caracteres</span>
-                    <span class="form-error" *ngIf="validate('editNombre', 'pattern')">Formato invalido</span>
+                    <span class="form-error" *ngIf="validate('editNombre','minlength') && !validate('editNombre', 'pattern')">Min 3 carácteres</span>
+                    <span class="form-error" *ngIf="validate('editNombre','maxlength') && !validate('editNombre', 'pattern')">Max 30 carácteres</span>
+                    <span class="form-error" *ngIf="validate('editNombre', 'pattern')">Formato inválido</span>
                 </div>
 
                 <div>
@@ -26,9 +26,9 @@
                         [class.invalid]="validate('editApellido','required') || validate('editApellido','minlength') || validate('editApellido','maxlength') || validate('editApellido', 'pattern')">
 
                     <span class="form-error" *ngIf="validate('editApellido','required')">Campo requerido</span>
-                    <span class="form-error" *ngIf="validate('editApellido','minlength') && !validate('editApellido', 'pattern')">Min 3 caracteres</span>
-                    <span class="form-error" *ngIf="validate('editApellido','maxlength') && !validate('editApellido', 'pattern')">Max 30 caracteres</span>
-                    <span class="form-error" *ngIf="validate('editApellido', 'pattern')">Formato invalido</span>
+                    <span class="form-error" *ngIf="validate('editApellido','minlength') && !validate('editApellido', 'pattern')">Min 3 carácteres</span>
+                    <span class="form-error" *ngIf="validate('editApellido','maxlength') && !validate('editApellido', 'pattern')">Max 30 carácteres</span>
+                    <span class="form-error" *ngIf="validate('editApellido', 'pattern')">Formato inválido</span>
                 </div>
 
                 <div>
@@ -38,8 +38,8 @@
                         [class.invalid]="validate('editFechaNac','required') || validate('editFechaNac','maxlength') || validate('editFechaNac', 'pattern')">
 
                     <span class="form-error" *ngIf="validate('editFechaNac','required')">Campo requerido</span>
-                    <span class="form-error" *ngIf="validate('editFechaNac','maxlength') && !validate('editFechaNac', 'pattern')">Max 10 caracteres</span>
-                    <span class="form-error" *ngIf="validate('editFechaNac', 'pattern')">Formato invalido</span>
+                    <span class="form-error" *ngIf="validate('editFechaNac','maxlength') && !validate('editFechaNac', 'pattern')">Max 10 carácteres</span>
+                    <span class="form-error" *ngIf="validate('editFechaNac', 'pattern')">Formato inválido</span>
                 </div>
 
                 <div>
@@ -49,8 +49,8 @@
                         [class.invalid]="validate('editFechaDef','required') || validate('editFechaDef','maxlength') || validate('editFechaDef', 'pattern')">
 
                     <span class="form-error" *ngIf="validate('editFechaDef','required')">Campo requerido</span>
-                    <span class="form-error" *ngIf="validate('editFechaDef','maxlength') && !validate('editFechaDef', 'pattern')">Max 10 caracteres</span>
-                    <span class="form-error" *ngIf="validate('editFechaDef', 'pattern')">Formato invalido</span>
+                    <span class="form-error" *ngIf="validate('editFechaDef','maxlength') && !validate('editFechaDef', 'pattern')">Max 10 carácteres</span>
+                    <span class="form-error" *ngIf="validate('editFechaDef', 'pattern')">Formato inválido</span>
                 </div>
 
                 <div>
@@ -60,9 +60,9 @@
                         [class.invalid]="validate('editLugarNac','required') || validate('editLugarNac','minlength') || validate('editLugarNac','maxlength') || validate('editLugarNac', 'pattern')">
 
                     <span class="form-error" *ngIf="validate('editLugarNac','required')">Campo requerido</span>
-                    <span class="form-error" *ngIf="validate('editLugarNac','minlength') && !validate('editLugarNac', 'pattern')">Min 3 caracteres</span>
-                    <span class="form-error" *ngIf="validate('editLugarNac','maxlength') && !validate('editLugarNac', 'pattern')">Max 30 caracteres</span>
-                    <span class="form-error" *ngIf="validate('editLugarNac', 'pattern')">Formato invalido</span>
+                    <span class="form-error" *ngIf="validate('editLugarNac','minlength') && !validate('editLugarNac', 'pattern')">Min 3 carácteres</span>
+                    <span class="form-error" *ngIf="validate('editLugarNac','maxlength') && !validate('editLugarNac', 'pattern')">Max 30 carácteres</span>
+                    <span class="form-error" *ngIf="validate('editLugarNac', 'pattern')">Formato inválido</span>
                 
                 </div>
 
@@ -73,9 +73,9 @@
                         [class.invalid]="validate('editLugarEjec','required') || validate('editLugarEjec','minlength') || validate('editLugarEjec','maxlength') || validate('editLugarEjec', 'pattern')">
 
                     <span class="form-error" *ngIf="validate('editLugarEjec','required')">Campo requerido</span>
-                    <span class="form-error" *ngIf="validate('editLugarEjec','minlength') && !validate('editLugarEjec', 'pattern')">Min 3 caracteres</span>
-                    <span class="form-error" *ngIf="validate('editLugarEjec','maxlength') && !validate('editLugarEjec', 'pattern')">Max 30 caracteres</span>
-                    <span class="form-error" *ngIf="validate('editLugarEjec', 'pattern')">Formato invalido</span>
+                    <span class="form-error" *ngIf="validate('editLugarEjec','minlength') && !validate('editLugarEjec', 'pattern')">Min 3 carácteres</span>
+                    <span class="form-error" *ngIf="validate('editLugarEjec','maxlength') && !validate('editLugarEjec', 'pattern')">Max 30 carácteres</span>
+                    <span class="form-error" *ngIf="validate('editLugarEjec', 'pattern')">Formato inválido</span>
                 </div>
 
                 <div>
@@ -85,9 +85,9 @@
                         [class.invalid]="validate('editTipoMuerte','required') || validate('editTipoMuerte','minlength') || validate('editTipoMuerte','maxlength') || validate('editTipoMuerte', 'pattern')">
 
                     <span class="form-error" *ngIf="validate('editTipoMuerte','required')">Campo requerido</span>
-                    <span class="form-error" *ngIf="validate('editTipoMuerte','minlength') && !validate('editTipoMuerte', 'pattern')">Min 3 caracteres</span>
-                    <span class="form-error" *ngIf="validate('editTipoMuerte','maxlength') && !validate('editTipoMuerte', 'pattern')">Max 30 caracteres</span>
-                    <span class="form-error" *ngIf="validate('editTipoMuerte', 'pattern')">Formato invalido</span>
+                    <span class="form-error" *ngIf="validate('editTipoMuerte','minlength') && !validate('editTipoMuerte', 'pattern')">Min 3 carácteres</span>
+                    <span class="form-error" *ngIf="validate('editTipoMuerte','maxlength') && !validate('editTipoMuerte', 'pattern')">Max 30 carácteres</span>
+                    <span class="form-error" *ngIf="validate('editTipoMuerte', 'pattern')">Formato inválido</span>
                 </div>
             </div>
     
@@ -100,10 +100,23 @@
                     <p *ngIf="!editMode">{{bruja.historia}}</p>
                     <textarea *ngIf="editMode" formControlName="editHistoria" 
                         [class.invalid]="validate('editHistoria','minlength') || validate('editHistoria','maxlength')">{{bruja.historia}}</textarea>
-                        
-                    <span class="form-error" *ngIf="validate('editHistoria','minlength')">Min 10 caracteres</span>
-                    <span class="form-error" *ngIf="validate('editHistoria','maxlength')">Max 500 caracteres</span>
+
+                    <span class="form-error" *ngIf="validate('editHistoria','minlength')">Min 10 carácteres</span>
+                    <span class="form-error" *ngIf="validate('editHistoria','maxlength')">Max 500 carácteres</span>
                 </div>
+            </div>
+
+            <div class="datos" *ngIf="editMode">
+                <div>
+                    <label>Imagen (url):</label>
+                    <input type="url" formControlName="editImagen"
+                        [class.invalid]="validate('editImagen', 'required') || validate('editImagen', 'pattern')">
+
+                        <span class="form-error" *ngIf="validate('editImagen', 'required')">Campo requerido</span>
+                        <span class="form-error" *ngIf="validate('editImagen', 'pattern')">Formato inválido</span>
+
+                </div>
+
             </div>
 
         </form>

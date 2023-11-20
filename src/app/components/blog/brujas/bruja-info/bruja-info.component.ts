@@ -64,11 +64,11 @@ export class BrujaInfoComponent implements OnInit {
           this.formulario = this.formBuilder.group({
             editNombre: [this.bruja.nombre, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern("[a-zA-Z' ]*")]],
             editApellido: [this.bruja.apellido, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern("[a-zA-Z' ]*")]],
-            editFechaNac: [this.bruja.fecha_nacimiento, Validators.pattern('[0-9/]*')],
-            editFechaDef: [this.bruja.fecha_defuncion, Validators.pattern('[0-9/]*')],
-            editTipoMuerte: [this.bruja.tipo_de_muerte, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*')]],
-            editLugarNac: [this.bruja.lugar_de_nacimiento, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern('[a-zA-Z,.\s]*')]],
-            editLugarEjec: [this.bruja.lugar_de_ejecucion, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern('[a-zA-Z,.\s]*')]],
+            editFechaNac: [this.bruja.fecha_nacimiento, Validators.pattern('[0-9/a-zA-Z]*')],
+            editFechaDef: [this.bruja.fecha_defuncion, Validators.pattern('[0-9/a-zA-Z]*')],
+            editTipoMuerte: [this.bruja.tipo_de_muerte, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern('[a-zA-Z. ]*')]],
+            editLugarNac: [this.bruja.lugar_de_nacimiento, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern('[a-zA-Z,. ]*')]],
+            editLugarEjec: [this.bruja.lugar_de_ejecucion, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern('[a-zA-Z,. ]*')]],
             editImagen: [this.bruja.imagen, [Validators.required, Validators.pattern('https?://.+')]],
             editHistoria: [this.bruja.historia, [Validators.minLength(10), Validators.maxLength(500)]]
           });
@@ -96,6 +96,7 @@ export class BrujaInfoComponent implements OnInit {
 
   async actualizarBruja(): Promise<void> {
     console.log(this.formulario.valid);
+    console.log(this.formulario);
     if (this.formulario.invalid) return;
 
     this.bruja.nombre = this.formulario.controls['editNombre'].value;
@@ -107,6 +108,7 @@ export class BrujaInfoComponent implements OnInit {
     this.bruja.lugar_de_ejecucion = this.formulario.controls['editLugarEjec'].value;
     this.bruja.imagen = this.formulario.controls['editImagen'].value;
     this.bruja.historia = this.formulario.controls['editHistoria'].value;
+
     await this.brujasService.putBruja(this.brujaId, this.bruja);
     this.editMode = false;
     //reload page

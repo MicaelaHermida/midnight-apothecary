@@ -9,7 +9,7 @@
             <div>
                 <p><span class="subtitulo">Precio:</span> ${{producto.precio}}</p>
                 <p><span class="subtitulo">Stock:</span> {{producto.stock}}</p>
-                <p><span class="subtitulo">Nombre cientifico:</span> {{plantaInfo.scientific_name}}</p>
+                <p><span class="subtitulo">Nombre científico:</span> {{plantaInfo.scientific_name}}</p>
                 <p><span class="subtitulo">Ciclo:</span> {{plantaInfo.cycle}}</p>
                 <p><span class="subtitulo">Riego:</span> {{plantaInfo.watering}}</p>
                 <p><span class="subtitulo">Luz:</span> {{plantaInfo.sunlight}}</p>
@@ -52,7 +52,7 @@
         </div>
 
         <div>
-            <p><span class="subtitulo">Descripcion:</span> {{plantaInfo.description}}</p>
+            <p><span class="subtitulo">Descripción:</span> {{plantaInfo.description}}</p>
         </div>
 
         <div class="container-buttons" *ngIf="!isAdminRole && isLogged">
@@ -66,40 +66,3 @@
 
     </div>
 </div>
-
-<!-- 
-<div class="contenedor" *ngIf="firebaseAuthenticationReady">
-    <div class="imagen-titulo">
-        <h1>{{producto!.nombre}}</h1>
-        <img src="{{producto.imagen}}" class="img-producto">
-    </div>
-    <div class="detalles-producto">
-        <div>
-            <p><b>Precio:</b> ${{producto.precio}}</p>
-            <p><b>Stock:</b> {{producto.stock}}</p>
-            <p><b>Nombre cientifico:</b> {{plantaInfo.scientific_name}}</p>
-            <p><b>Ciclo:</b> {{plantaInfo.cycle}}</p>
-            <p><b>Riego:</b> {{plantaInfo.watering}}</p>
-            <p><b>Requiere luz:</b> {{plantaInfo.sunlight}}</p>
-            <p><b>Tipo:</b> {{plantaInfo.type}}</p>
-        </div>
-        <div>
-            <p><b>Flores:</b> {{plantaInfo.flowers}}</p>
-            <p><b>Frutos:</b> {{plantaInfo.fruits}}</p>
-            <p><b>Medicinal:</b> {{plantaInfo.medicinal}}</p>
-            <p><b>Venenoso para humanos:</b> {{plantaInfo.poisonous_to_humans}}</p>
-            <p><b>Venenoso para mascotas:</b> {{plantaInfo.poisonous_to_pets}}</p>
-            <p><b>Indoor:</b> {{plantaInfo.indoor}}</p>
-            <p><b>Nivel de cuidado:</b> {{plantaInfo.care_level}}</p>
-        </div>
-        <p><b>Descripcion:</b> {{plantaInfo.description}}</p>
-        <div class="contenedor-buttons" *ngIf="!isAdminRole && isLogged">
-            <div class="cantidad-producto">
-                <button (click)="disminuir()">-</button>
-                <input type="number" [(ngModel)]="cantidadItems">
-                <button (click)="aumentar()">+</button>
-            </div>
-            <button (click)="agregarAlCarrito()" class="agregar-carr-button">Agregar al carrito</button>
-        </div>
-    </div>
-</div> -->
