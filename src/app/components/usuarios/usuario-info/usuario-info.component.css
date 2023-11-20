@@ -17,3 +17,7 @@ form{
     position: absolute;
     left: 57%;
 }
+
+.contenedor div{
+    max-height: 50vh;
+}

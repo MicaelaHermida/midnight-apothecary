@@ -1,6 +1,6 @@
 
 .nuevo-comentario{
-    background-color: #2a2030d3;
+    background-color: var(--back-dark-trans);
     display: flex;
     flex-direction: column;
     justify-content: space-around;

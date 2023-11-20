@@ -143,7 +143,7 @@ textarea:focus {
 .page {
     width: 100%;
     min-height: 55vh;
-    padding: 2rem auto;
+    margin: 2rem auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -338,7 +338,7 @@ textarea:focus {
 }
 
 
-/*BOTONES*/
+/* ------------------------[ BOTONES ]------------------------*/
 
 .container-buttons {
     margin: 2rem auto;
@@ -396,21 +396,19 @@ textarea:focus {
     font-weight: bold;
 }
 
+/* ------------------------[ ICONOS ]------------------------*/
 
-
-/*ICONOS*/
 .busqueda-icon i {
-    color: #b39fb6af;
+    color: var(--color-light);
     font-size: 2rem;
     margin: 0 1rem;
 }
 
 .busqueda-icon i:hover {
-    color: #c7b7ca;
+    color: var(--color-extra-light);
 }
 
-/*SPANS!*/
-
+/* ------------------------[ SPANS! ]------------------------*/
 
 .formulario input.invalid {
     border-bottom: 2px solid #a10202;

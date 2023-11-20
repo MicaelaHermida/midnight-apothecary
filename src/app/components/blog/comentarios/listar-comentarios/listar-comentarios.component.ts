@@ -104,12 +104,6 @@ export class ListarComentariosComponent implements OnInit {
     this.cerrarTextAreaComentario();
     this.editModeMap.set(id, true);
     this.initForm(this.listadoComentarios.get(id)!);
-
-    
-    /* this.currentMapEditIndex = id;
-    const currentEditMode = this.editModeMap.get(id);
-    this.editModeMap.set(id, !currentEditMode);
-    this.initForm(this.listadoComentarios.get(id)!); */
   }
 
   async guardarComentario(id: string): Promise<void> {

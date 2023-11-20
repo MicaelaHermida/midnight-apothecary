@@ -4,22 +4,22 @@
 
 
 .tabla-brujas th{
-    font-size: 2rem;
+    background-color: var(--back-dark-trans);
+    color: var(--color-light);
+    font-family: var(--subtitulo-font);
+    font-size: var(--font-size-20);
     font-weight: 400;
-    font-family: 'Quicksand', sans-serif;
-    color: #b39fb6;
     padding: 1rem;
-    background-color: #2a2030d3;
     border-radius: .5rem;
 }
 
 .tabla-brujas td{
-    font-size: 1.8rem;
+    background-color: var(--back-light-trans);
+    color: var(--color-dark);
+    font-family: var(--base-font);
+    font-size: var(--font-size-18);
     font-weight: 300;
-    font-family: 'Merriweather', serif;
     text-align: center;
-    color: #2a2030;
-    background-color: #b39fb6af;
     border-radius: .5rem;
     padding: 0;
 }
@@ -29,21 +29,21 @@
 }
 
 .boton-blog{
-    text-decoration: none;
-    font-family: 'Quicksand', medium;
-    font-size: 1.8rem;
+    background-color: var(--back-dark-trans);
+    color: var(--color-light);
+    font-family: var(--subtitulo-font);
+    font-size: var(--font-size-18);
     font-weight: 400;
-    color: #b39fb6;
-    background-color: #2a2030d3;
+    text-decoration: none;
     border-radius: .5rem;
     align-items: center;
     padding: .5rem;
 }
 
 .boton-blog:hover{
+    background-color: var(--back-light-trans);
+    color: var(--color-dark);
     font-weight: bold;
-    color: #2a2030d3;
-    background-color: #b39fb6af;
 }
 
 #agregar{
