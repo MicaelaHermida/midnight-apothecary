@@ -50,44 +50,48 @@
                 </div>
             </div>
             <!--////////////////OPCIONES USUARIO-CLIENTE///////////////////-->
-            <div class="opciones-compra">
-                <!-- <button *ngIf="!isAdminRole && isLogged && firebaseAuthenticationReady"
-                    (click)="disminuirCantidad(producto.id_planta)">-</button> -->
-                <!-- <input *ngIf="!isAdminRole && isLogged && firebaseAuthenticationReady" type="number"
-                    value="0"> -->
-                <!-- <button *ngIf="!isAdminRole && isLogged && firebaseAuthenticationReady"
-                    (click)="aumentarCantidad(producto.id_planta)">+</button> -->
+            <div class="container-buttons">
                 <button *ngIf="!isAdminRole && isLogged && firebaseAuthenticationReady"
-                    (click)="verDetalleProducto(producto.id_planta)" class="button-compra">Comprar</button>
+                    (click)="verDetalleProducto(producto.id_planta)" class="boton-claro">Comprar</button>
             </div>
             <!--////////////////MODO EDICION - ADMIN///////////////////-->
             <div *ngIf="editModeMap.get(producto.id_planta)" class="edit-mode">
                 <div>
-                    <input formControlName="nombre" placeholder="{{producto.nombre}}" type="text">
-                    <span class="form-error" *ngIf="validate('nombre','required')">Campo requerido</span>
-                    <span class="form-error" *ngIf="validate('nombre','minlength')">+3 caracteres</span>
+                    <input formControlName="nombre" placeholder="{{producto.nombre}}" type="text"
+                        [class.invalid]="validate('nombre','required') || validate('nombre','minlength') || nombreExiste">
+                    <!--
+                        <span class="form-error" *ngIf="validate('nombre','required')">Campo requerido</span>
+                        <span class="form-error" *ngIf="validate('nombre','minlength')">+3 caracteres</span>
+                    -->
+
                 </div>
                 <div>
-                    <input formControlName="precio" placeholder="{{producto.precio}}" type="number">
-                    <span class="form-error" *ngIf="validate('precio','required')">Campo requerido</span>
-                    <span class="form-error" *ngIf="validate('precio','min')">Minimo $1</span>
+                    <input formControlName="precio" placeholder="{{producto.precio}}" type="number"
+                    [class.invalid]="validate('precio', 'required') || validate('precio','min')">
+                    <!--
+                        <span class="form-error" *ngIf="validate('precio','required')">Campo requerido</span>
+                        <span class="form-error" *ngIf="validate('precio','min')">Minimo $1</span>
+                    -->
                 </div>
                 <div>
-                    <input formControlName="stock" placeholder="stock({{producto.stock}})" type="number">
-                    <span class="form-error" *ngIf="validate('stock','required')">Campo requerido</span>
-                    <span class="form-error" *ngIf="validate('stock','min')">Minimo 0</span>
+                    <input formControlName="stock" placeholder="stock({{producto.stock}})" type="number" 
+                    [class.invalid]="validate('stock','required') || validate('stock','min')">
+                    <!--
+                        <span class="form-error" *ngIf="validate('stock','required')">Campo requerido</span>
+                        <span class="form-error" *ngIf="validate('stock','min')">Minimo 0</span>
+                    -->
                 </div>
             </div>
             <!--////////////////BOTONES ADMIN///////////////////-->
-            <div class="botones-admin">
+            <div class="container-buttons">
                 <button *ngIf="isAdminRole && firebaseAuthenticationReady && !editModeMap.get(producto.id_planta)"
-                    (click)="editarProducto(producto.id_planta)">Editar</button>
+                    (click)="editarProducto(producto.id_planta)" class="boton-claro">Editar</button>
                 <button *ngIf="isAdminRole && firebaseAuthenticationReady && editModeMap.get(producto.id_planta)"
-                    (click)="cancelarEdicion()">Cancelar</button>
+                    (click)="cancelarEdicion()" class="boton-claro">Cancelar</button>
                 <button *ngIf="isAdminRole && firebaseAuthenticationReady && editModeMap.get(producto.id_planta)"
-                    type="submit">Guardar</button>
+                    type="submit" class="boton-claro">Guardar</button>
                 <button *ngIf="isAdminRole && firebaseAuthenticationReady && !editModeMap.get(producto.id_planta)"
-                    (click)="eliminarProducto(producto.id_planta)">Eliminar</button>
+                    (click)="eliminarProducto(producto.id_planta)" type="button" class="boton-claro">Eliminar</button>
             </div>
         </form>
     </div>

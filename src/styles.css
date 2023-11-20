@@ -314,6 +314,7 @@ textarea:focus {
 .formulario .campos div {
     display: flex;
     flex-direction: column;
+    min-height: 10rem;
 }
 
 .campos div label {
@@ -324,7 +325,6 @@ textarea:focus {
 
 .campos div input {
     width: 95%;
-    margin: auto;
     padding: 1%;
     margin-bottom: 1rem;
 }
@@ -413,6 +413,16 @@ textarea:focus {
 .formulario input.invalid {
     border-bottom: 2px solid #a10202;
     margin-bottom: 0;
+}
+
+input.invalid {
+    border: none;
+    border-bottom: 2px solid #a10202;
+}
+
+textarea.invalid{
+    border: 2px solid #a10202;
+
 }
 
 .formulario textarea.invalid {

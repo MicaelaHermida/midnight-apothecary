@@ -3,7 +3,9 @@
         <div class="campos">
             <div>
                 <label>Nombre:</label>
-                <input type="text" formControlName="nombre">
+                <input type="text" formControlName="nombre" 
+                [class.invalid]="validate('nombre','required') || nombreProductoExists || validate('nombre','minlength')
+                || validate('nombre', 'pattern')">
                 <span class="form-error" *ngIf="validate('nombre','required') ">Campo requerido</span>
                 <span class="form-error" *ngIf="nombreProductoExists">Ya existe el producto</span>
                 <span class="form-error" *ngIf="validate('nombre','minlength') && !validate('nombre', 'pattern') && !nombreProductoExists">Minimo 3 caracteres</span>
@@ -11,27 +13,31 @@
             </div>
             <div>
                 <label>Imagen:</label>
-                <input type="text" formControlName="imagen">
+                <input type="text" formControlName="imagen" 
+                [class.invalid]="validate('imagen','required') || validate('imagen', 'pattern')">
                 <span class="form-error" *ngIf="validate('imagen','required')">Campo requerido</span>
                 <span class="form-error" *ngIf="validate('imagen', 'pattern')">Formato invalido</span>
             </div>
             <div>
                 <label>Precio:</label>
-                <input type="text" formControlName="precio">
+                <input type="text" formControlName="precio"
+                [class.invalid]="validate('precio','required') || validate('precio', 'min') || validate('precio', 'pattern')">
                 <span class="form-error" *ngIf="validate('precio','required')">Campo requerido</span>
                 <span class="form-error" *ngIf="validate('precio', 'min')">Minimo $1</span>
                 <span class="form-error" *ngIf="validate('precio', 'pattern')">Formato invalido</span>
             </div>
             <div>
                 <label>Stock:</label>
-                <input type="text" formControlName="stock">
+                <input type="text" formControlName="stock"
+                [class.invalid]="validate('stock','required') || validate('stock', 'min') || validate('stock', 'pattern')">
                 <span class="form-error" *ngIf="validate('stock','required')">Campo requerido</span>
                 <span class="form-error" *ngIf="validate('stock', 'min')">Minimo 0</span>
                 <span class="form-error" *ngIf="validate('stock', 'pattern')">Formato invalido</span>
             </div>
             <div>
                 <label>Id Planta:</label>
-                <input type="number" formControlName="id_planta">
+                <input type="number" formControlName="id_planta"
+                [class.invalid]="validate('id_planta','required') || idPlantaExists">
                 <span class="form-error" *ngIf="validate('id_planta','required')">Campo requerido</span>
                 <span class="form-error" *ngIf="idPlantaExists">Id en uso</span>
             </div>

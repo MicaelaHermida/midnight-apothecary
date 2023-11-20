@@ -222,14 +222,13 @@ export class ProductosService {
     try{
       const db = this.firestore;
       const productsCollection = collection(db, 'products');
-      const q = query(productsCollection, where('nombre', '==', nombre));
-      const productsSnapshot = await getDocs(q);
+      const productsSnapshot = await getDocs(productsCollection);
       for(let doc of productsSnapshot.docs){
-        console.log(doc.data());
-      }
-      if(productsSnapshot.docs.length > 0){
-        console.log(productsSnapshot.docs.length);
-        return true;
+        const producto = doc.data() as Producto;
+        const productoNombre = producto.nombre.toLowerCase();
+        if(productoNombre === nombre.toLowerCase()){
+          return true;
+        }
       }
     }catch(error){
       console.error(error);

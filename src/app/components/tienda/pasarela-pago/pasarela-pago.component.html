@@ -6,7 +6,8 @@
                 <div>
                     <label>Nombre/s:</label>
                     <p *ngIf="!editMode">{{usuarioLogueado.nombre}}</p>
-                    <input *ngIf="editMode" formControlName="nombre" value="{{usuarioLogueado.nombre}}">
+                    <input *ngIf="editMode" formControlName="nombre" value="{{usuarioLogueado.nombre}}" 
+                    [class.invalid]="validateUsuario('nombre','required') || validateUsuario('nombre','minlength') || validateUsuario('nombre','maxlength') || validateUsuario('nombre','pattern')">
                     <span class="form-error" *ngIf="validateUsuario('nombre','required') && editMode">Campo requerido</span>
                     <span class="form-error" *ngIf="validateUsuario('nombre','minlength') && !validateUsuario('nombre','pattern') && editMode">Min 3 caracteres</span>
                     <span class="form-error" *ngIf="validateUsuario('nombre','maxlength') && !validateUsuario('nombre','pattern') && editMode">Max 30 caracteres</span>
@@ -15,7 +16,8 @@
                 <div>
                     <label>Apellido/s:</label>
                     <p *ngIf="!editMode">{{usuarioLogueado.apellido}}</p>
-                    <input *ngIf="editMode" formControlName="apellido" value="{{usuarioLogueado.apellido}}">
+                    <input *ngIf="editMode" formControlName="apellido" value="{{usuarioLogueado.apellido}}"
+                    [class.invalid]="validateUsuario('apellido','required') || validateUsuario('apellido','minlength') || validateUsuario('apellido','maxlength') || validateUsuario('apellido','pattern')">
                     <span class="form-error" *ngIf="validateUsuario('apellido','required') && editMode">Campo requerido</span>
                     <span class="form-error" *ngIf="validateUsuario('apellido','minlength') && !validateUsuario('apellido','pattern') && editMode">Min 3 caracteres</span>
                     <span class="form-error" *ngIf="validateUsuario('apellido','maxlength') && !validateUsuario('apellido','pattern') && editMode">Max 30 caracteres</span>
@@ -24,7 +26,8 @@
                 <div>
                     <label>Telefono:</label>
                     <p *ngIf="!editMode">{{usuarioLogueado.telefono}}</p>
-                    <input *ngIf="editMode" formControlName="telefono" value="{{usuarioLogueado.telefono}}">
+                    <input *ngIf="editMode" formControlName="telefono" value="{{usuarioLogueado.telefono}}"
+                    [class.invalid]="validateUsuario('telefono','required') || validateUsuario('telefono','minlength') || validateUsuario('telefono','maxlength') || validateUsuario('telefono','pattern')">
                     <span class="form-error" *ngIf="validateUsuario('telefono','required')">Campo requerido</span>
                     <span class="form-error" *ngIf="validateUsuario('telefono','minlength') && !validateUsuario('telefono','pattern') && editMode">Min 8 caracteres</span>
                     <span class="form-error" *ngIf="validateUsuario('telefono','maxlength') && !validateUsuario('telefono','pattern') && editMode">Max 15 caracteres</span>
@@ -33,7 +36,8 @@
                 <div>
                     <label>Provincia:</label>
                     <p *ngIf="!editMode">{{usuarioLogueado.provincia}}</p>
-                    <input *ngIf="editMode" formControlName="provincia" value="{{usuarioLogueado.provincia}}">
+                    <input *ngIf="editMode" formControlName="provincia" value="{{usuarioLogueado.provincia}}"
+                    [class.invalid]="validateUsuario('provincia','required') || validateUsuario('provincia','minlength') || validateUsuario('provincia','maxlength') || validateUsuario('provincia','pattern')">
                     <span class="form-error" *ngIf="validateUsuario('provincia','required') && editMode">Campo requerido</span>
                     <span class="form-error" *ngIf="validateUsuario('provincia','minlength') && !validateUsuario('provincia','pattern') && editMode">Min 3 caracteres</span>
                     <span class="form-error" *ngIf="validateUsuario('provincia','maxlength') && !validateUsuario('provincia','pattern') && editMode">Max 30 caracteres</span>
@@ -42,7 +46,9 @@
                 <div>
                     <label>Ciudad:</label>
                     <p *ngIf="!editMode">{{usuarioLogueado.ciudad}}</p>
-                    <input *ngIf="editMode" formControlName="ciudad" value="{{usuarioLogueado.ciudad}}">
+                    <input *ngIf="editMode" formControlName="ciudad" value="{{usuarioLogueado.ciudad}}"
+                    [class.invalid]="validateUsuario('ciudad','required') || validateUsuario('ciudad','minlength')
+                    || validateUsuario('ciudad','maxlength') || validateUsuario('ciudad','pattern')">
                     <span class="form-error" *ngIf="validateUsuario('ciudad','required') && editMode">Campo requerido</span>
                     <span class="form-error" *ngIf="validateUsuario('ciudad','minlength') && !validateUsuario('ciudad','pattern') && editMode">Min 3 caracteres</span>
                     <span class="form-error" *ngIf="validateUsuario('ciudad','maxlength') && !validateUsuario('ciudad','pattern') && editMode">Max 30 caracteres</span>
@@ -51,7 +57,8 @@
                 <div>
                     <label>Direccion:</label>
                     <p *ngIf="!editMode">{{usuarioLogueado.direccion}}</p>
-                    <input *ngIf="editMode" formControlName="direccion" value="{{usuarioLogueado.direccion}}">
+                    <input *ngIf="editMode" formControlName="direccion" value="{{usuarioLogueado.direccion}}"
+                    [class.invalid]="validateUsuario('direccion','required') || validateUsuario('direccion','minlength') || validateUsuario('direccion','maxlength')">
                     <span class="form-error" *ngIf="validateUsuario('direccion','required') && editMode">Campo requerido</span>
                     <span class="form-error" *ngIf="validateUsuario('direccion','minlength') && editMode">Min 5 caracteres</span>
                     <span class="form-error" *ngIf="validateUsuario('direccion','maxlength') && editMode">Max 30 caracteres</span>
@@ -64,14 +71,17 @@
                 <div>
                     <label>Codigo Postal:</label>
                     <p *ngIf="!editMode">{{usuarioLogueado.codigoPostal}}</p>
-                    <input *ngIf="editMode" formControlName="codigoPostal" value="{{usuarioLogueado.codigoPostal}}">
+                    <input *ngIf="editMode" formControlName="codigoPostal" value="{{usuarioLogueado.codigoPostal}}"
+                    [class.invalid]="validateUsuario('codigoPostal','required') || validateUsuario('codigoPostal','minlength')">
                     <span class="form-error" *ngIf="validateUsuario('codigoPostal','required') && editMode">Campo requerido</span>
                     <span class="form-error" *ngIf="validateUsuario('codigoPostal','minlength') && editMode">Min 4 caracteres</span>
                 </div>
                 <div>
                     <label>DNI:</label>
                     <p *ngIf="!editMode">{{usuarioLogueado.dni}}</p>
-                    <input *ngIf="editMode" formControlName="dni" value="{{usuarioLogueado.dni}}">
+                    <input *ngIf="editMode" formControlName="dni" value="{{usuarioLogueado.dni}}"
+                    [class.invalid]="validateUsuario('dni','required') || validateUsuario('dni','minlength') ||
+                    validateUsuario('dni','maxlength') || validateUsuario('dni','pattern')">
                     <span class="form-error" *ngIf="validateUsuario('dni','required') && editMode">Campo requerido</span>
                     <span class="form-error" *ngIf="(validateUsuario('dni','minlength') || validateUsuario('dni','maxlength')) && !validateUsuario('dni','pattern') && editMode">8 caracteres</span>
                     <span class="form-error" *ngIf="validateUsuario('dni','pattern') && editMode">Formato invalido</span>
@@ -91,7 +101,9 @@
             <div>
                 <div>
                     <label>Nombre del titular</label>
-                    <input type="text" formControlName="titular">
+                    <input type="text" formControlName="titular" 
+                    [class.invalid]="validatePago('titular', 'required') || validatePago('titular', 'minlength')
+                    || validatePago('titular', 'maxlength') || validatePago('titular', 'pattern')">
                     <span class="form-error" *ngIf="validatePago('titular', 'required')">Campo requerido</span>
                     <span class="form-error"
                         *ngIf="validatePago('titular', 'minlength') && !validatePago('titular', 'pattern')">Minimo 6
@@ -101,21 +113,27 @@
                 </div>
                 <div>
                     <label>Numero de tarjeta</label>
-                    <input type="text" formControlName="numeroTarjeta">
+                    <input type="text" formControlName="numeroTarjeta"
+                    [class.invalid]="validatePago('numeroTarjeta', 'required') || validatePago('numeroTarjeta', 'minlength') 
+                    || validatePago('numeroTarjeta', 'maxlength') || validatePago('numeroTarjeta', 'pattern')">
                     <span class="form-error" *ngIf="validatePago('numeroTarjeta', 'required')">Campo requerido</span>
                     <span class="form-error" *ngIf="!validatePago('numeroTarjeta', 'pattern') && (validatePago('numeroTarjeta', 'minlength') || validatePago('numeroTarjeta', 'maxlength'))">16 caracteres</span>
                     <span class="form-error" *ngIf="validatePago('numeroTarjeta', 'pattern')">Caracteres invalidos</span>
                 </div>
                 <div>
                     <label>Fecha de caducidad (mm/aa)</label>
-                    <input type="text" formControlName="fechaCaducidad">
+                    <input type="text" formControlName="fechaCaducidad"
+                    [class.invalid]="validatePago('fechaCaducidad', 'required') || validatePago('fechaCaducidad', 'minlength') 
+                    || validatePago('fechaCaducidad', 'maxlength') || validatePago('fechaCaducidad', 'pattern')">
                     <span class="form-error" *ngIf="validatePago('fechaCaducidad', 'required')">Campo requerido</span>
                     <span class="form-error" *ngIf="!validatePago('fechaCaducidad', 'pattern') && (validatePago('fechaCaducidad', 'minlength') || validatePago('fechaCaducidad', 'maxlength'))">Fecha invalida</span>
                     <span class="form-error" *ngIf="validatePago('fechaCaducidad', 'pattern')">Formato invalido</span>
                 </div>
                 <div>
                     <label>Codigo de seguridad</label>
-                    <input type="text" formControlName="cvv">
+                    <input type="text" formControlName="cvv" 
+                    [class.invalid]="validatePago('cvv','required') || validatePago('cvv','minlength')
+                    || validatePago('cvv','maxlength') || validatePago('cvv','pattern')">
                     <span class="form-error" *ngIf="validatePago('cvv','required')">Campo requerido</span>
                     <span class="form-error" *ngIf="validatePago('cvv','minlength') && !validatePago('cvv','pattern')">Minimo 3 caracteres</span>
                     <span class="form-error" *ngIf="validatePago('cvv','maxlength') && !validatePago('cvv','pattern')">Maximo 4 caracteres</span>
@@ -123,7 +141,9 @@
                 </div>
                 <div>
                     <label>DNI del pagador</label>
-                    <input type="text" formControlName="dniTitular">
+                    <input type="text" formControlName="dniTitular"
+                    [class.invalid]="validatePago('dniTitular','required') || validatePago('dniTitular','pattern')
+                    || validatePago('dniTitular','minlength') || validatePago('dniTitular','maxlength')">
                     <span class="form-error" *ngIf="validatePago('dniTitular','required')">Campo requerido</span>
                     <span class="form-error" *ngIf="!validatePago('dniTitular', 'pattern') && (validatePago('dniTitular','minlength') || validatePago('dniTitular','maxlength'))">9 caracteres</span>
                     <span class="form-error" *ngIf="validatePago('dniTitular','pattern')">Formato invalido</span>

@@ -36,6 +36,7 @@ export class ListarProductosComponent implements OnInit {
   editModeMap: Map<number, boolean> = new Map();
   lastEditKey: number = -1;
 
+  nombreExiste: boolean = false;
   ////cliente
   carritoProductos: Carrito[] = [];
   itemCarrito: Carrito = {
@@ -214,6 +215,11 @@ export class ListarProductosComponent implements OnInit {
   }
 
   async guardarProducto(producto: Producto):Promise<void> {
+    this.nombreExiste = await this.productosService.productoNombreExists(producto.nombre);
+    if (this.nombreExiste) {
+      alert("Ya existe un producto con ese nombre");
+      return;
+    }
     ///quiero asegurarme de que el modo editar este activado
     const id_producto = this.verificarIdProducto(producto.id_planta);
     const currentEditMode = this.editModeMap.get(producto.id_planta);
