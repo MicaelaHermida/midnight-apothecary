@@ -151,6 +151,11 @@ export class ListarProductosComponent implements OnInit {
     this.allProducts = new Map();
     this.allProducts = await this.productosService.getProductosPorNombre(this.busqueda);
     console.log(this.allProducts);
+    for(let entry of this.allProducts.entries()){
+      if(entry[1].stock <= 0 && !this.isAdminRole){
+        this.allProducts.delete(entry[0]);
+      }
+    }
     this.ordenarArrayProductos();
     this.actualizarPaginas();
     this.mostrarArrayProductos();

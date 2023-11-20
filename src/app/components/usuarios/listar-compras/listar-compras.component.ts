@@ -19,6 +19,8 @@ export class ListarComprasComponent implements OnInit{
   isAdminRole: boolean = false;
   firebaseAuthenticationReady: boolean = false;
 
+  existeUsuario: boolean = true;
+  tieneCompras: boolean = true;
   emailBuscado: string = "";
 
   constructor(private compraService: ComprasService, private authService: AuthenticationService){}
@@ -63,6 +65,25 @@ export class ListarComprasComponent implements OnInit{
       return;
     }
     this.compras = await this.compraService.getComprasPorEmail(this.emailBuscado);
+    await this.validarUsuario();
+    await this.validarCompras();
     this.ordenarComprasPorFecha();
   };
+
+  async validarUsuario():Promise<void>{
+    const id_user = await this.authService.getUserIdByEmail(this.emailBuscado);
+    if(id_user === ""){
+      this.existeUsuario = false;
+    }else{
+      this.existeUsuario =  true;
+    }
+  }
+
+  async validarCompras():Promise<void>{
+    if(this.compras.length === 0){
+      this.tieneCompras = false;
+    }else{
+      this.tieneCompras = true;
+    }
+  }
 }

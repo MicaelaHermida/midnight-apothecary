@@ -10,7 +10,12 @@
     </div>
 </div>
 <div *ngIf="firebaseAuthenticationReady && isLogged" class="contenedor-listado">
-
+    <div *ngIf="!existeUsuario">
+        <p class="error-resultado-busqueda">No se encontro al usuario</p>
+    </div>
+    <div *ngIf="!tieneCompras">
+        <p class="error-resultado-busqueda">El usuario no ha realizado compras</p>
+    </div>
     <div>
         <div *ngFor="let compra of compras" class="compra">
             <div class="info-compra">

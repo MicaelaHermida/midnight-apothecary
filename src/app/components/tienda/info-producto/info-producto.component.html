@@ -12,18 +12,42 @@
                 <p><span class="subtitulo">Nombre cientifico:</span> {{plantaInfo.scientific_name}}</p>
                 <p><span class="subtitulo">Ciclo:</span> {{plantaInfo.cycle}}</p>
                 <p><span class="subtitulo">Riego:</span> {{plantaInfo.watering}}</p>
-                <p><span class="subtitulo">Requiere luz:</span> {{plantaInfo.sunlight}}</p>
+                <p><span class="subtitulo">Luz:</span> {{plantaInfo.sunlight}}</p>
                 <p><span class="subtitulo">Tipo:</span> {{plantaInfo.type}}</p>
             </div>
 
             <div>
-                <p><span class="subtitulo">Flores:</span> {{plantaInfo.flowers}}</p>
-                <p><span class="subtitulo">Frutos:</span> {{plantaInfo.fruits}}</p>
-                <p><span class="subtitulo">Medicinal:</span> {{plantaInfo.medicinal}}</p>
-                <p><span class="subtitulo">Venenoso para humanos:</span> {{plantaInfo.poisonous_to_humans}}</p>
-                <p><span class="subtitulo">Venenoso para mascotas:</span> {{plantaInfo.poisonous_to_pets}}</p>
-                <p><span class="subtitulo">Indoor:</span> {{plantaInfo.indoor}}</p>
-                <p><span class="subtitulo">Nivel de cuidado:</span> {{plantaInfo.care_level}}</p>
+                <p>
+                    <span class="subtitulo">Flores: </span>
+                    <span *ngIf="plantaInfo.flowers">Yes</span>
+                    <span *ngIf="!plantaInfo.flowers">No</span>
+                </p>
+                <p>
+                    <span class="subtitulo">Frutos: </span>
+                    <span *ngIf="plantaInfo.fruits">Yes</span>
+                    <span *ngIf="!plantaInfo.fruits">No</span>
+                </p>
+                <p>
+                    <span class="subtitulo">Medicinal: </span>
+                    <span *ngIf="plantaInfo.medicinal">Yes</span>
+                    <span *ngIf="!plantaInfo.medicinal">No</span>
+                </p>
+                <p>
+                    <span class="subtitulo">Venenoso para humanos: </span>
+                    <span *ngIf="plantaInfo.poisonous_to_humans">Yes</span>
+                    <span *ngIf="!plantaInfo.poisonous_to_humans">No</span>
+                </p>
+                <p>
+                    <span class="subtitulo">Venenoso para mascotas: </span>
+                    <span *ngIf="plantaInfo.poisonous_to_pets">Yes</span>
+                    <span *ngIf="!plantaInfo.poisonous_to_pets">No</span>
+                    </p>
+                <p>
+                    <span class="subtitulo">Indoor: </span>
+                    <span *ngIf="plantaInfo.indoor">Yes</span>
+                    <span *ngIf="!plantaInfo.indoor">No</span>
+                </p>
+                <p><span class="subtitulo">Nivel de cuidado: </span> {{plantaInfo.care_level}}</p>
             </div>
         </div>
 
