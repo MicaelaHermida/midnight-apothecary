@@ -2,7 +2,7 @@
     <div class="busqueda">
         <p>Buscar usuario por email:</p>
         <div>
-            <input type="email" [(ngModel)]="emailBuscado" placeholder="ejemplo@gmail.com">
+            <input type="email" [(ngModel)]="emailBuscado" placeholder="ejemplo@gmail.com" (keydown.enter)="buscarPorEmail()">
             <a class="busqueda-icon" (click)="buscarPorEmail()">
                 <i class="fi fi-rs-search"></i>
             </a>
