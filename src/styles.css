@@ -382,7 +382,7 @@ textarea:focus {
 
 .boton-oscuro {
     background-color: var(--back-dark-trans);
-    color: var(--color-extra-light);
+    color: var(--color-light);
     font-size: var(--font-size-17);
     border-radius: 5rem;
     border: .1rem solid var(--color-light);
@@ -392,7 +392,8 @@ textarea:focus {
 }
 
 .boton-oscuro:hover {
-    font-weight: bold;
+    background-color: var(--color-dark);
+    color: var(--color-extra-light);
 }
 
 /* ------------------------[ ICONOS ]------------------------*/

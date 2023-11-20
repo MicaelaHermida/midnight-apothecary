@@ -5,6 +5,92 @@
 
     <div class="info">
         <h2>{{producto!.nombre}}</h2>
+        <div class="datos">
+            <div>
+                <p><span class="subtitulo">Precio:</span></p>
+                <p>${{producto.precio}}</p>
+
+                <p><span class="subtitulo">Stock:</span></p>
+                <p>{{producto.stock}}</p>
+
+                <p><span class="subtitulo">Nombre científico:</span></p>
+                <p>{{plantaInfo.scientific_name}}</p>
+
+                <p><span class="subtitulo">Ciclo:</span></p>
+                <p>{{plantaInfo.cycle}}</p>
+
+                <p><span class="subtitulo">Riego:</span></p>
+                <p>{{plantaInfo.watering}}</p>
+
+                <p><span class="subtitulo">Luz:</span></p>
+                <p>{{plantaInfo.sunlight}}</p>
+
+                <p><span class="subtitulo">Tipo:</span></p>
+                <p>{{plantaInfo.type}}</p>
+            </div>
+
+            <div>
+                <p>
+                    <span class="subtitulo">Flores: </span>
+                    <span *ngIf="plantaInfo.flowers">Yes</span>
+                    <span *ngIf="!plantaInfo.flowers">No</span>
+                </p>
+                <p>
+                    <span class="subtitulo">Frutos: </span>
+                    <span *ngIf="plantaInfo.fruits">Yes</span>
+                    <span *ngIf="!plantaInfo.fruits">No</span>
+                </p>
+                <p>
+                    <span class="subtitulo">Medicinal: </span>
+                    <span *ngIf="plantaInfo.medicinal">Yes</span>
+                    <span *ngIf="!plantaInfo.medicinal">No</span>
+                </p>
+                <p>
+                    <span class="subtitulo">Venenoso para humanos: </span>
+                    <span *ngIf="plantaInfo.poisonous_to_humans">Yes</span>
+                    <span *ngIf="!plantaInfo.poisonous_to_humans">No</span>
+                </p>
+                <p>
+                    <span class="subtitulo">Venenoso para mascotas: </span>
+                    <span *ngIf="plantaInfo.poisonous_to_pets">Yes</span>
+                    <span *ngIf="!plantaInfo.poisonous_to_pets">No</span>
+                    </p>
+                <p>
+                    <span class="subtitulo">Indoor: </span>
+                    <span *ngIf="plantaInfo.indoor">Yes</span>
+                    <span *ngIf="!plantaInfo.indoor">No</span>
+                </p>
+                <p><span class="subtitulo">Nivel de cuidado: </span></p>
+                <p>{{plantaInfo.care_level}}</p>
+            </div>
+        </div>
+
+        <div class="datos">
+            <p><span class="subtitulo">Descripción:</span></p>
+            <p>{{plantaInfo.description}}</p>
+        </div>
+
+        <div class="container-buttons" *ngIf="!isAdminRole && isLogged">
+            <div class="cantidad-producto">
+                <button class="botoncito" (click)="disminuir()">-</button>
+                <input type="number" [(ngModel)]="cantidadItems">
+                <button class="botoncito" (click)="aumentar()">+</button>
+            </div>
+            <button (click)="agregarAlCarrito()" class="boton-claro" id="agregar-carr-button">Agregar al carrito</button>
+        </div>
+
+    </div>
+</div>
+
+
+
+<!-- <div class="contenedor" *ngIf="firebaseAuthenticationReady">
+    <div class="imagen">
+        <img src="{{producto.imagen}}" class="img-producto">
+    </div>
+
+    <div class="info">
+        <h2>{{producto!.nombre}}</h2>
         <div class="detalles-producto">
             <div>
                 <p><span class="subtitulo">Precio:</span> ${{producto.precio}}</p>
@@ -66,3 +152,4 @@
 
     </div>
 </div>
+ -->

@@ -1,8 +1,11 @@
-.img-producto{
+/* .img-producto{
     width: 80%;
     border-radius: 9px;
 }
 
+.info{
+    min-width: 60vh;
+}
 .detalles-producto{
     display: flex;
     flex-direction: row;
@@ -12,16 +15,14 @@
 
 .detalles-producto div{
     width: 50%;
+    justify-content: left;
+} */
+
+.datos{
+    display: grid;
+    
 }
 
-.detalles-producto .contenedor-buttons{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: end;
-    align-items: baseline;
-    margin-top: 1rem;
-}
 .contenedor-buttons .cantidad-producto{
     width: 25%;
     display: flex;
