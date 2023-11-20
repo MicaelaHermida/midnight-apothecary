@@ -1,7 +1,7 @@
 <div *ngIf="isLogged && firebaseAuthenticationReady" class="info-usuario">
     <div class="form-pago">
         <form [formGroup]="formularioUsuario" (ngSubmit)="actualizarDatosUsuario()" class="formulario">
-            <h2>Datos de facturacion:</h2>
+            <h2>Datos de facturacion</h2>
             <div class="informacion">
                 <div>
                     <label>Nombre/s:</label>
@@ -97,7 +97,7 @@
     </div>
     <div class="form-pago">
         <form [formGroup]="formularioPago" (ngSubmit)="realizarCompra()" class="formulario campos">
-            <h2>Datos de pago:</h2>
+            <h2>Datos de pago</h2>
             <div>
                 <div>
                     <label>Nombre del titular</label>

@@ -1,6 +1,6 @@
 <div class="page" [class.compra-page]="isCompraPage">
+    <h2>Carrito</h2>
     <div *ngIf="isLogged && firebaseAuthenticationReady && hasProductos" class="contenedor-carrito">
-        <h2>PRODUCTOS:</h2>
         <table *ngIf="isLogged && firebaseAuthenticationReady">
             <thead>
                 <tr>

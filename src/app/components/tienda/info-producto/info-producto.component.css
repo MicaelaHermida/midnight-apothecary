@@ -1,8 +1,11 @@
-.img-producto{
+/* .img-producto{
     width: 80%;
     border-radius: 9px;
 }
 
+.info{
+    min-width: 60vh;
+}
 .detalles-producto{
     display: flex;
     flex-direction: row;
@@ -12,16 +15,21 @@
 
 .detalles-producto div{
     width: 50%;
-}
+    justify-content: left;
+} */
 
-.detalles-producto .contenedor-buttons{
-    width: 100%;
+.info .datos{
     display: flex;
     flex-direction: row;
-    justify-content: end;
-    align-items: baseline;
-    margin-top: 1rem;
+    /*que el flex se divida en dos row*/
+    
+
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+
 }
+
 .contenedor-buttons .cantidad-producto{
     width: 25%;
     display: flex;
