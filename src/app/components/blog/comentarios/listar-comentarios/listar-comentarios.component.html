@@ -1,4 +1,44 @@
-<div class="contenedor-comentarios">
+<div class="contenedor-listado">
+    <h2 *ngIf="isFull">Comentarios</h2>
+    <h2 *ngIf="isEmpty">Aún no hay comentarios en este post...</h2>
+    
+
+    <form *ngFor="let comentario of comentariosOrdenados" [formGroup]="formulario">
+        <div class="caja">
+
+            <div class="caja-encabezado">
+                <p>{{comentario.nombreUsuario}}</p>
+                <p>{{comentario.fecha}}</p>
+            </div>
+            <hr>
+            <div class="caja-cuerpo">
+                <p *ngIf="!editModeMap.get(comentario.id)">{{comentario.comentario}}</p>
+                <textarea *ngIf="editModeMap.get(comentario.id)"
+                    formControlName="editComentario">{{comentario.comentario}}</textarea>
+            </div>
+
+            <div class="container-buttons">
+                <button type="button" class="boton-claro"
+                    *ngIf="esUsuario(comentario.userId) && firebaseAuthenticationReady && !editModeMap.get(comentario.id)"
+                    (click)="editarComentario(comentario.id)">Editar</button>
+
+                <button type="button" class="boton-claro"
+                    *ngIf="(isAdmin || esUsuario(comentario.userId)) && firebaseAuthenticationReady && !editModeMap.get(comentario.id)"
+                    (click)="eliminarComentario(comentario.id)">Eliminar</button>
+
+                <button *ngIf="editModeMap.get(comentario.id)" class="boton-claro" (click)="guardarComentario(comentario.id)">Guardar</button>
+
+                <button *ngIf="editModeMap.get(comentario.id)" class="boton-claro" (click)="cancelarCambios(comentario.id)">Cancelar</button>
+            </div>
+
+        </div>
+
+    </form>
+</div>
+
+
+
+<!-- <div class="contenedor-comentarios">
     <h2 *ngIf="isFull">Comentarios</h2>
     <h2 *ngIf="isEmpty">Aún no hay comentarios en este post...</h2>
     
@@ -29,43 +69,6 @@
                 <button *ngIf="editModeMap.get(comentario.id)" class="boton-claro" (click)="guardarComentario(comentario.id)">Guardar</button>
 
                 <button *ngIf="editModeMap.get(comentario.id)" class="boton-claro" (click)="cancelarCambios(comentario.id)">Cancelar</button>
-            </div>
-
-        </div>
-
-    </form>
-</div>
-
-
-<!-- <div class="contenedor-comentarios">
-    <h2>Comentarios</h2>
-
-    <form *ngFor="let comentario of listadoComentarios | keyvalue" [formGroup]="formulario">
-        <div class="comentario">
-
-            <div class="comentario-encabezado">
-                <p>{{comentario.value.nombreUsuario}}</p>
-                <p>{{comentario.value.fecha}}</p>
-            </div>
-            <hr>
-            <div class="comentario-cuerpo">
-                <p *ngIf="!editModeMap.get(comentario.key)">{{comentario.value.comentario}}</p>
-                <textarea *ngIf="editModeMap.get(comentario.key)"
-                    formControlName="editComentario">{{comentario.value.comentario}}</textarea>
-            </div>
-
-            <div class="container-buttons">
-                <button type="button" class="boton-claro"
-                    *ngIf="esUsuario(comentario.value.userId) && firebaseAuthenticationReady && !editModeMap.get(comentario.key)"
-                    (click)="editarComentario(comentario.key)">Editar</button>
-
-                <button type="button" class="boton-claro"
-                    *ngIf="(isAdmin || esUsuario(comentario.value.userId)) && firebaseAuthenticationReady && !editModeMap.get(comentario.key)"
-                    (click)="eliminarComentario(comentario.key)">Eliminar</button>
-
-                <button *ngIf="editModeMap.get(comentario.key)" class="boton-claro" (click)="guardarComentario(comentario.key)">Guardar</button>
-
-                <button *ngIf="editModeMap.get(comentario.key)" class="boton-claro" (click)="cancelarCambios(comentario.key)">Cancelar</button>
             </div>
 
         </div>

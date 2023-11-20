@@ -15,7 +15,7 @@ export class NuevoComentarioComponent implements OnInit {
   formulario: FormGroup = this.formBuilder.group({
     comentario: ['', Validators.required]
   })
-  
+
   constructor(
     private authenticationService: AuthenticationService,
     private comentariosService: ComentariosService,
@@ -27,24 +27,18 @@ export class NuevoComentarioComponent implements OnInit {
     await this.authenticationService.waitForFirebaseAuthentication();
   }
 
-  async guardarComentario(){
+  async guardarComentario() {
     const userId = this.authenticationService.getCurrentUserId();//obtiene el id del usuario
 
     const comentario = this.formulario.controls['comentario'].value;//obtiene el comentario
+    if (comentario == "") {
+      alert("No se puede enviar un comentario vacio");
+      return;
+    }
+
     await this.comentariosService.postComentario(comentario, userId);//guarda el comentario en la base de datos
     console.log('comentario guardado');
     location.reload();
   }
-
-
-
-  /*  async verificarAdmin(){
-    const rol = await this.authenticationService.getCurrentUserRole();
-    if( rol === "admin"){
-      return true;
-    }else{
-      return false;
-    }
-  } */
 
 }

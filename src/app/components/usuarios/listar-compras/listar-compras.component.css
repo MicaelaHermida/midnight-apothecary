@@ -1,35 +1,17 @@
-.contenedor-listado{
-    width: 30%;
-    margin: auto;
-    margin-top: 3rem;
-}
+/*LISTADO COMPRAS*/
 
-.contenedor-listado h1{
-    text-align: center;
-}
-
-.contenedor-listado .compra{
-    width: 100%;
-    background-color: #b39fb6af;
-    margin: auto;
-    padding: 1rem;
-    margin-bottom: .5rem;
-    border-radius: 9px;
-}
-
-.info-compra{
+.caja-cuerpo{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin: 0 2rem;
 }
 
-.items{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 80%;
-    margin: auto;
+.caja-cuerpo p{
+    margin: 0; 
+    padding: .5rem;
 }
+
 
 .cantidad{
     display: flex;
@@ -52,7 +34,9 @@
 .total{
     font-size: large;
     font-weight: 300;
-}
+} 
+
+/*BUSCADOR*/
 
 .fondo-filtrado{
     background-image: url(../../../../assets/img/guarda-tienda.jpg);
@@ -61,10 +45,9 @@
 }
 
 .busqueda{
+    background-color: var(--back-dark-trans);
     width: 25%;
     margin-left: 15%;
-    background-color: #2a2030d3;
-    opacity: 0.9;
     margin-top: 1rem;
     margin-bottom: 1rem;
     padding: .5rem;
@@ -72,30 +55,36 @@
 }
 
 .busqueda p{
+    color: var(--color-light);
+    font-family: var(--subtitulo-font);
+    font-size: var(--font-size-20);
     padding: 0;
     margin: 0;
     margin-bottom: 2%;
-    color: #b39fb6;
-    font-family: 'Quicksand', sans-serif;
-    font-size: 2rem;
 }
 
 .busqueda input{
+    background-color: var(--back-trans);
+    color: var(--color-light);
+    border: 1px solid var(--color-light);
+    border-radius: 1rem;
     outline: none;
     cursor: pointer;
     width: 60%;
-    background-color: #b39fb600;
-    border-radius: 10px;
     height: 3rem;
-    color: #b39fb6;
-    border: 1px solid #b39fb6af;
     margin-top: .5rem;
     margin-bottom: .5rem;
     padding: .5rem;
 }
 
+.busqueda input:focus{
+    color: var(--color-light);
+    border: .2rem solid var(--color-light);
+    padding: .5rem;
+}
+
 .busqueda input::placeholder{
-    color: #b39fb669;
+    color: var(--color-light);
 }
 
 .busqueda input::content{
@@ -103,28 +92,19 @@
 }
 
 .busqueda input:focus::placeholder{
-    color: #b39fb600;
+    color: var(--back-trans);
 }
 
 .busqueda input:hover{
-   border: 1.5px solid #b39fb6;
+   border: 1.5px solid var(--color-light);
    box-shadow: #fffeff71 0px 0px 1.5px 0px;
 }
 
-.contenedor-admin-button{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-.finalizar-button{
-    width: 30%;
-}
-
 .error-resultado-busqueda{
-    color: #2a2030;
-    font-family: 'Quicksand', sans-serif;
-    font-size: 2rem;
+    background-color: var(--back-light-trans);
+    color: var(--color-dark);
     text-align: center;
     margin-top: 1rem;
+    padding: .5rem;
+    border-radius: 1rem;
 }
