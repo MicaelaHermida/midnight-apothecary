@@ -15,6 +15,8 @@ export class ListarComentariosComponent implements OnInit {
   listadoComentarios: Map<string, Comentario> = new Map();
   comentariosOrdenados: Comentario[] = [];
 
+  isEmpty: boolean = false;
+  isFull: boolean = false;
   isAdmin: boolean = false;
   isLogged: boolean = false;
   firebaseAuthenticationReady: boolean = false;
@@ -47,6 +49,8 @@ export class ListarComentariosComponent implements OnInit {
 
   async mostrarComentarios(): Promise<void> {
     this.listadoComentarios = await this.comentariosService.getComentariosBruja();
+    if(this.listadoComentarios.size === 0) this.isEmpty = true;
+    if(this.listadoComentarios.size > 0) this.isFull = true;
     this.ordenarComentarios();
 
     for (let comentario of this.comentariosOrdenados) {

@@ -1,5 +1,7 @@
 <div class="contenedor-comentarios">
-    <h2>Comentarios</h2>
+    <h2 *ngIf="isFull">Comentarios</h2>
+    <h2 *ngIf="isEmpty">Aún no hay comentarios en este post...</h2>
+    
 
     <form *ngFor="let comentario of comentariosOrdenados" [formGroup]="formulario">
         <div class="comentario">

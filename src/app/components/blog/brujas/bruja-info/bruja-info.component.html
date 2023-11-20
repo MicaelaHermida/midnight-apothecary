@@ -64,10 +64,12 @@
         </form>
 
         <div class="container-buttons">
-            <button class="boton-claro" *ngIf="editMode && isAdminRole" (click)="cancelarCambios()">Cancelar</button>
-            <button class="boton-claro" *ngIf="editMode && isAdminRole" (click)="actualizarBruja()">Guardar</button>
             <button class="boton-claro" type="button" *ngIf="!editMode && isAdminRole"
                 (click)="activarEditMode()">Editar</button>
+
+            <button class="boton-claro" *ngIf="editMode && isAdminRole" (click)="actualizarBruja()">Guardar</button>
+
+            <button class="boton-claro" *ngIf="editMode && isAdminRole" (click)="cancelarCambios()">Cancelar</button>
         </div>
     </div>
 </div>
