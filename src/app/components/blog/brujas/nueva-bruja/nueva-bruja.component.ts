@@ -24,18 +24,17 @@ export class NuevaBrujaComponent implements OnInit {
    
   }
 
-
   initForm() {
     this.formulario = this.formBuilder.group({
-      nombre: ['', [Validators.required, Validators.maxLength(30)]],
-      apellido: ['', [Validators.required, Validators.maxLength(30)]],
-      fecha_nacimiento: [''],
-      fecha_defuncion: [''],
-      tipo_de_muerte: ['', [Validators.required, Validators.maxLength(30)]],
-      lugar_de_nacimiento: ['', [Validators.required, Validators.maxLength(30)]],
-      lugar_de_ejecucion: ['', [Validators.required, Validators.maxLength(30)]],
-      imagen: [''],
-      historia: ['']
+      nombre: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern("[a-zA-Z' ]*")]],
+      apellido: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern("[a-zA-Z' ]*")]],
+      fecha_nacimiento: ['', Validators.pattern('[0-9/]*')],
+      fecha_defuncion: ['', Validators.pattern('[0-9/]*')],
+      tipo_de_muerte: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*')]],
+      lugar_de_nacimiento: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern('[a-zA-Z,. ]*')]],
+      lugar_de_ejecucion: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern('[a-zA-Z,. ]*')]],
+      imagen: ['', [Validators.required, Validators.pattern('https?://.+')]],
+      historia: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(500)]]
     });
   }
 

@@ -67,8 +67,8 @@ export class BrujaInfoComponent implements OnInit {
             editFechaNac: [this.bruja.fecha_nacimiento, Validators.pattern('[0-9/]*')],
             editFechaDef: [this.bruja.fecha_defuncion, Validators.pattern('[0-9/]*')],
             editTipoMuerte: [this.bruja.tipo_de_muerte, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*')]],
-            editLugarNac: [this.bruja.lugar_de_nacimiento, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*')]],
-            editLugarEjec: [this.bruja.lugar_de_ejecucion, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*')]],
+            editLugarNac: [this.bruja.lugar_de_nacimiento, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern('[a-zA-Z,.\s]*')]],
+            editLugarEjec: [this.bruja.lugar_de_ejecucion, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern('[a-zA-Z,.\s]*')]],
             editImagen: [this.bruja.imagen, [Validators.required, Validators.pattern('https?://.+')]],
             editHistoria: [this.bruja.historia, [Validators.minLength(10), Validators.maxLength(500)]]
           });
