@@ -43,6 +43,11 @@ export class NuevaBrujaComponent implements OnInit {
     if (this.formulario.invalid) return;
     this.fechaPorDefecto();
 
+    if (this.formulario.invalid){
+      alert('Debe completar los campos requeridos');
+      this.formulario.markAllAsTouched();
+      return;
+    }
     await this.brujasService.postBruja(this.formulario.value);
 
     alert('Bruja agregada con éxito');

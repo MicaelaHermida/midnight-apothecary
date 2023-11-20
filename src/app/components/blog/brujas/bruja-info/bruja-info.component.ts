@@ -70,7 +70,7 @@ export class BrujaInfoComponent implements OnInit {
             editLugarNac: [this.bruja.lugar_de_nacimiento, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*')]],
             editLugarEjec: [this.bruja.lugar_de_ejecucion, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*')]],
             editImagen: [this.bruja.imagen, [Validators.required, Validators.pattern('https?://.+')]],
-            editHistoria: [this.bruja.historia, [Validators.required, Validators.minLength(10), Validators.maxLength(500)]]
+            editHistoria: [this.bruja.historia, [Validators.minLength(10), Validators.maxLength(500)]]
           });
         }
       }

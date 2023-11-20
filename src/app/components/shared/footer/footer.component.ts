@@ -11,7 +11,7 @@ import { SuscripcionService } from 'src/app/services/suscripcion.service';
 export class FooterComponent {
 
   formulario: FormGroup = this.formBuilder.group({
-    email: ['', Validators.email]
+    email: ['', [Validators.required, Validators.email]]
   });
 
   constructor(

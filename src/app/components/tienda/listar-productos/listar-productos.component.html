@@ -20,7 +20,7 @@
             <div class="contenedor-busqueda">
                 <p>BUSCAR:</p>
                 <div>
-                    <input type="text" [(ngModel)]="busqueda" class="busqueda" placeholder="Producto...">
+                    <input type="text" [(ngModel)]="busqueda" class="busqueda" placeholder="Producto..." (keydown.enter)="buscarProductoPorNombre()">
                     <a class="busqueda-icon" (click)="buscarProductoPorNombre()">
                         <i class="fi fi-rs-search"></i>
                     </a>
@@ -37,7 +37,7 @@
             [disabled]="paginaActual === obtenerCantidadPaginas()">Siguiente</button>
     </div>
     <div class="contenedor-productos">
-        <p *ngIf="allProducts.size <1 && busquedaFinalizada">Ups... no se ha encontrado el producto</p>
+        <p *ngIf="allProducts.size <1 && busquedaFinalizada" class="no-encontrado">Ups... no se ha encontrado el producto</p>
         <!--////////////////LISTADO PRODUCTOS///////////////////-->
         <form *ngFor="let producto of productosPagina" (ngSubmit)="guardarProducto(producto)" [formGroup]="form"
             class="card">

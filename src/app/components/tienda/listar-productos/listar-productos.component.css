@@ -264,3 +264,13 @@ input[type="number"]::-webkit-outer-spin-button {
 .boton-claro{
     width: 40%;
 }
+
+.no-encontrado{
+    margin: auto;
+    width: 50%;
+    text-align: center;
+    color: #2a2030;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}

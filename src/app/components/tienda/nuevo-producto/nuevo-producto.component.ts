@@ -63,6 +63,7 @@ export class NuevoProductoComponent implements OnInit{
     }
     else{
       alert("Complete los campos correctamente");
+      this.form.markAllAsTouched();
       return;
     }
   }

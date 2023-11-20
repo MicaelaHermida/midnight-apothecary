@@ -25,7 +25,11 @@ export class ContactoComponent {
   }
 
   enviarContacto() {
-    if (this.formulario.invalid) return;
+    if (this.formulario.invalid){
+      alert('Debe completar los campos requeridos');
+      this.formulario.markAllAsTouched();
+      return;
+    }
 
     const contacto = this.formulario.value;
 
