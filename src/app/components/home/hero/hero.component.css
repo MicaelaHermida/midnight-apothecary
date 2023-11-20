@@ -20,33 +20,38 @@ img{
 }
 
 .carousel-navigation{
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
+    color: var(--color-light);
     transform: translateX(-50%);
     display: flex;
     align-items: center;
-    color: var(--color-light);
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
 }
 
 .carousel-navigation button{
+    background-color: var(--back-dark-trans);
+    border-radius: 50%;
     margin: 0 .5rem;
     padding: 1rem;
-    background-color: var(--back-dark-trans);
-    color: var(--color-extra-light);
-    border-radius: 50%;
-    cursor: pointer;
 }
 
 .carousel-navigation button:hover{
-    background-color: #b39fb6af;
-    color: #2a2030;
-    cursor: pointer;
+    background-color: var(--back-light-trans);
+    color: var(--color-dark);
     transform: scale(1.1);
 }
 
+.carousel-navigation .next-prev{
+    color: var(--color-light);
+    font-size: var(--font-size-20);
+    width: 5rem;
+    height: 5rem;
+    
+}
+
 .carousel-navigation button:disabled{
-    background-color: #b39fb6af;
+    background-color: var(--back-light-trans);
     cursor: not-allowed;
 }
 

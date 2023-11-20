@@ -4,13 +4,13 @@
     </div>
 
     <div class="carousel-navigation">
-        <button class="prev" (click)="prevSlide()">&#9665;</button>
+        <button class="next-prev" (click)="prevSlide()">&#9665;</button>
 
         <div class="indicator">
             <button *ngFor="let dot of dots; let i = index" (click)="goToSlide(i)"
                 [disabled]="i === currentSlide"></button>
         </div>
 
-        <button class="next" (click)="nextSlide()">&#9655;</button>
+        <button class="next-prev" (click)="nextSlide()">&#9655;</button>
     </div>
 </div>
