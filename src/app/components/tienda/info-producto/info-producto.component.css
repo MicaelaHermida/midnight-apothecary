@@ -18,16 +18,23 @@
     justify-content: left;
 } */
 
-.info .datos{
+.contenedor .datos{
     display: flex;
     flex-direction: row;
-    /*que el flex se divida en dos row*/
-    
-
-    justify-content: space-between;
-    flex-wrap: wrap;
+/*     flex-wrap: wrap; */
     align-items: center;
+}
 
+.contenedor .datos div{
+    align-items: start;
+}
+
+.contenedor .datos .columna{
+    flex: 1;
+    margin: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .contenedor-buttons .cantidad-producto{
