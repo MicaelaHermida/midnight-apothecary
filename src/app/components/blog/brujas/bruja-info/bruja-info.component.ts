@@ -104,25 +104,11 @@ export class BrujaInfoComponent implements OnInit {
     this.bruja.lugar_de_ejecucion = this.formulario.controls['editLugarEjec'].value;
     this.bruja.imagen = this.formulario.controls['editImagen'].value;
     this.bruja.historia = this.formulario.controls['editHistoria'].value;
-
-    /*  const bruja: Bruja = {
-       nombre: this.formulario.controls['editNombre'].value,
-       apellido: this.formulario.controls['editApellido'].value,
-       fecha_nacimiento: this.formulario.controls['editFechaNac'].value,
-       fecha_defuncion: this.formulario.controls['editFechaDef'].value,
-       tipo_de_muerte: this.formulario.controls['editTipoMuerte'].value,
-       lugar_de_nacimiento: this.formulario.controls['editLugarNac'].value,
-       lugar_de_ejecucion: this.formulario.controls['editLugarEjec'].value,
-       imagen: this.formulario.controls['editImagen'].value, 
-       historia: this.formulario.controls['editHistoria'].value      
-     } */
-
     await this.brujasService.putBruja(this.brujaId, this.bruja);
     this.editMode = false;
     //reload page
     this.initBio();
     this.initForm();
-
   }
 
   activarEditMode() {
