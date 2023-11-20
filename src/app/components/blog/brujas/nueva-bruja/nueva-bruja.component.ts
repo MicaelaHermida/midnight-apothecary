@@ -21,6 +21,7 @@ export class NuevaBrujaComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
+   
   }
 
 
@@ -40,6 +41,7 @@ export class NuevaBrujaComponent implements OnInit {
 
   async guardarBruja(){
     if (this.formulario.invalid) return;
+    this.fechaPorDefecto();
 
     await this.brujasService.postBruja(this.formulario.value);
 
@@ -52,6 +54,15 @@ export class NuevaBrujaComponent implements OnInit {
       (this.formulario.controls[field].touched || this.formulario.controls[field].dirty);
 
     return isInvalid;
+  }
+
+  fechaPorDefecto(){ 
+    if(this.formulario.value.fecha_nacimiento == ""){
+      this.formulario.value.fecha_nacimiento = "n/a";
+    }
+    if(this.formulario.value.fecha_defuncion == ""){
+      this.formulario.value.fecha_defuncion = "n/a";
+    }
   }
 
 }

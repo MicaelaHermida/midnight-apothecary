@@ -63,11 +63,11 @@ export class BrujaInfoComponent implements OnInit {
         if (this.bruja) {
           this.formulario = this.formBuilder.group({
             editNombre: [this.bruja.nombre, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern("[a-zA-Z' ]*")]],
-            editApellido: [this.bruja.apellido, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern("[a-zA-Z' ]*")]] ,
-            editFechaNac: [this.bruja.fecha_nacimiento, [Validators.required, Validators.maxLength(10), Validators.pattern('[0-9/]*')]] ,
-            editFechaDef: [this.bruja.fecha_defuncion, [Validators.required, Validators.maxLength(10), Validators.pattern('[0-9/]*')]] ,
-            editTipoMuerte: [this.bruja.tipo_de_muerte, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*')]] ,
-            editLugarNac: [this.bruja.lugar_de_nacimiento, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*')]] ,
+            editApellido: [this.bruja.apellido, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern("[a-zA-Z' ]*")]],
+            editFechaNac: [this.bruja.fecha_nacimiento, Validators.pattern('[0-9/]*')],
+            editFechaDef: [this.bruja.fecha_defuncion, Validators.pattern('[0-9/]*')],
+            editTipoMuerte: [this.bruja.tipo_de_muerte, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*')]],
+            editLugarNac: [this.bruja.lugar_de_nacimiento, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*')]],
             editLugarEjec: [this.bruja.lugar_de_ejecucion, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*')]],
             editImagen: [this.bruja.imagen, [Validators.required, Validators.pattern('https?://.+')]],
             editHistoria: [this.bruja.historia, [Validators.required, Validators.minLength(10), Validators.maxLength(500)]]
@@ -130,6 +130,7 @@ export class BrujaInfoComponent implements OnInit {
 
     return isInvalid;
   }
+
 
 }
 
