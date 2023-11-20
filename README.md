@@ -36,6 +36,12 @@ You can log in as regular user or admin using the following credentials:
 - User: Email - user@mail.com, Password - `usuario123`
 - Or you can register a new user!
 
+
+## Environment Configuration
+
+- Rename `environment.example.ts` to `environment.ts`
+- Replace the API_KEY value with your key from [Perenual](https://perenual.com/docs/api) api.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
@@ -93,6 +99,11 @@ Puedes iniciar sesion como un usuario regular o como administrador utilizando la
 
 - User: Email - user@mail.com, Contraseña - `usuario123`
 - O puedes registrar un nuevo usuario!
+
+## Configuracion Entornos
+
+- Renombra `environment.example.ts` a `environment.ts`.
+- Reemplaza el valor de API_KEY con tu clave de la api [Perenual](https://perenual.com/docs/api).
 
 ## Servidor de Desarrollo
 
