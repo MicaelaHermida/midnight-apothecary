@@ -18,9 +18,16 @@
     justify-content: left;
 } */
 
-.datos{
-    display: grid;
+.info .datos{
+    display: flex;
+    flex-direction: row;
+    /*que el flex se divida en dos row*/
     
+
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+
 }
 
 .contenedor-buttons .cantidad-producto{

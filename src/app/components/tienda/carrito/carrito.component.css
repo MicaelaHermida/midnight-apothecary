@@ -1,8 +1,8 @@
 .page{
     background-color: #b39fb6af;
     width: 40%;
-    margin: auto;
-    padding: 2rem;
+    min-height: 0;
+    margin: 2rem auto;
     border-radius: 1rem;
 }
 
