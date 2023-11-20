@@ -58,7 +58,7 @@
             <div *ngIf="editModeMap.get(producto.id_planta)" class="edit-mode">
                 <div>
                     <input formControlName="nombre" placeholder="{{producto.nombre}}" type="text"
-                        [class.invalid]="validate('nombre','required') || validate('nombre','minlength') ">
+                        [class.invalid]="validate('nombre','required') || validate('nombre','minlength') || nombreExiste">
                     <!--
                         <span class="form-error" *ngIf="validate('nombre','required')">Campo requerido</span>
                         <span class="form-error" *ngIf="validate('nombre','minlength')">+3 caracteres</span>
@@ -91,7 +91,7 @@
                 <button *ngIf="isAdminRole && firebaseAuthenticationReady && editModeMap.get(producto.id_planta)"
                     type="submit" class="boton-claro">Guardar</button>
                 <button *ngIf="isAdminRole && firebaseAuthenticationReady && !editModeMap.get(producto.id_planta)"
-                    (click)="eliminarProducto(producto.id_planta)" class="boton-claro">Eliminar</button>
+                    (click)="eliminarProducto(producto.id_planta)" type="button" class="boton-claro">Eliminar</button>
             </div>
         </form>
     </div>
