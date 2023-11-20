@@ -412,19 +412,21 @@ textarea:focus {
 
 .formulario input.invalid {
     border-bottom: 2px solid #a10202;
+    margin-bottom: 0;
 }
 
 .formulario textarea.invalid {
     border: 2px solid #a10202;
+    margin-bottom: 0;
 }
 
 .form-error {
     margin-top: 0;
     margin-left: 2%;
-    font-family: 'Merriweather', serif;
-    font-size: 1.2rem;
+    font-family: var(--base-font);
+    font-size: 1.3rem;
     color: #a10202;
-    padding: 1%;
+    padding: .1rem;
 }
 
 /* ------------------------[ LISTADOS (COMENTARIOS Y COMPRAS) ]------------------------*/

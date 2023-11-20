@@ -2,7 +2,7 @@
     <div class="contenedor-footer">
 
         <div class="seccion-footer">
-            <h3>NAVEGACIÓN</h3>
+            <h2>NAVEGACIÓN</h2>
             <ul>
                 <li><a (click)="onLinkClick('home')">Home</a></li>
                 <li><a (click)="onLinkClick('tienda')">Tienda</a></li>
@@ -11,13 +11,13 @@
         </div>
 
         <div class="seccion-footer">
-            <h3>CONTACTANOS</h3>
+            <h2>CONTACTANOS</h2>
             <p>binary@sisters.com</p>
         </div>
 
         <div class="seccion-footer">
-            <h3>REDES SOCIALES</h3>
-            <ul>
+            <h2>REDES SOCIALES</h2>
+            <ul class="redes">
                 <a class="footer-icon" href="https://www.instagram.com/tincanforest/?hl=es-la" target="_blank">
                     <i class="fi fi-brands-instagram"></i>
                 </a>
@@ -34,9 +34,9 @@
         </div>
 
         <div class="seccion-footer">
-            <h3>SUSCRIBETE</h3>
-            <h2>A NUESTRAS</h2>
-            <h2>NOVEDADES ♥</h2>
+            <h2>SUSCRIBETE</h2>
+            <h3>A NUESTRAS</h3>
+            <h3>NOVEDADES ♥</h3>
 
             <form class="suscribirse" [formGroup]="formulario">
                 <input type="email" placeholder="Email" formControlName="email">

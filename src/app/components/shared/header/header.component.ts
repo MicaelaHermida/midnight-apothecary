@@ -25,7 +25,11 @@ export class HeaderComponent implements OnInit {
   isCompras: boolean = false;
 
   brujaId: string = "";
+  inicialNombre: string = "";
+  restoNombre: string = "";
   brujaNombre: String = "";
+  inicialApellido: string = "";
+  restoApellido: string = ""; 
   brujaApellido: String = "";
 
   ngOnInit(): void {
@@ -63,6 +67,7 @@ export class HeaderComponent implements OnInit {
         else if(this.router.url.includes("info-bruja")){
           this.isBruja = true;
           this.traerBruja(this.brujaId);
+          this.desglosarBruja();
         }
       }
     });
@@ -79,33 +84,13 @@ export class HeaderComponent implements OnInit {
       console.log(`Nombre: ${this.brujaNombre} Apellido: ${this.brujaApellido}`);
   }
 
-
-
-/* 
-  verificarRuta() {
-    this.router.events.subscribe((val) => {
-      if (val instanceof NavigationStart) {
-        console.log(val.url);
-        this.falsearPaginas();
-
-        if(val.url.includes("home")) this.isHome = true;
-        else if (val.url.includes("tienda")) this.isTienda = true;
-        else if (val.url.includes("carrito")) this.isCarrito = true;
-        else if(val.url.includes("compra")) this.isCompra = true;
-        else if(val.url.includes("blog")) this.isBlog = true;
-        else if(val.url.includes("nueva-bruja")) this.isNuevaBruja = true;
-        else if(val.url.includes("editar-bruja")) this.isEditarBruja = false;
-        else if(val.url.includes("info-bruja")){ //ademas de cambiarlos... traer a una variable el id de la bruja para despues poder buscar el nombre y apellido
-          this.isBruja = true;
-
-          this.brujaId = this.route.snapshot.paramMap.get('key')!;
-          console.log(this.brujaId);
-          this.brujaNombre = this.route.snapshot.paramMap.get('nombre')!;
-          this.brujaApellido = this.route.snapshot.paramMap.get('apellido')!;
-        }else if(val.url.includes("perfil")) this.isPerfil = true;
-      }
-    });
-  } */
+  desglosarBruja(){
+    this.inicialNombre = this.brujaNombre.slice(0,1);
+    this.restoNombre = this.brujaNombre.slice(1, this.brujaNombre.length);
+    this.inicialApellido = this.brujaApellido.slice(0,1);
+    this.restoApellido = this.brujaApellido.slice(1, this.brujaApellido.length);
+    console.log(`Nombre: ${this.inicialNombre} ${this.restoNombre} Apellido: ${this.inicialApellido} ${this.restoApellido}`)
+  }
 
   falsearPaginas(){
     this.isHome = false;
