@@ -96,6 +96,7 @@ h3 {
 }
 
 button {
+    background-color: var(--back-trans);
     font-family: var(--subtitulo-font);
     font-size: var(--font-size-18);
     font-weight: 500;

@@ -13,6 +13,7 @@ import { ComentariosService } from 'src/app/services/comentarios.service';
 export class ListarComentariosComponent implements OnInit {
 
   listadoComentarios: Map<string, Comentario> = new Map();
+  comentariosOrdenados: Comentario[] = [];
 
   isAdmin: boolean = false;
   isLogged: boolean = false;
@@ -24,7 +25,6 @@ export class ListarComentariosComponent implements OnInit {
   });
 
   editModeMap: Map<string, boolean> = new Map();
-
   constructor(
     private comentariosService: ComentariosService,
     private authenticationService: AuthenticationService,
@@ -47,11 +47,32 @@ export class ListarComentariosComponent implements OnInit {
 
   async mostrarComentarios(): Promise<void> {
     this.listadoComentarios = await this.comentariosService.getComentariosBruja();
-    for (let entry of this.listadoComentarios.entries()) {
-      entry[1].nombreUsuario = await this.authenticationService.getUserNameById(entry[1].userId);
-      this.editModeMap.set(entry[0], false);
+    this.ordenarComentarios();
+
+    for (let comentario of this.comentariosOrdenados) {
+      comentario.nombreUsuario = await this.authenticationService.getUserNameById(comentario.userId);
+      this.editModeMap.set(comentario.id, false);
     }
   }
+
+  ordenarComentarios(): void{
+    this.comentariosOrdenados = [];
+    for(let comentario of this.listadoComentarios.entries()){
+      const coment = comentario[1];
+      coment.id = comentario[0];
+      this.comentariosOrdenados.push(coment);
+    }
+    console.log(this.comentariosOrdenados);
+
+    this.comentariosOrdenados.sort((a, b) =>{
+      const fechaA = new Date(a.fecha).getTime();
+      const fechaB = new Date(b.fecha).getTime();
+      return fechaA - fechaB;
+    });
+
+    console.log(this.comentariosOrdenados);
+  }
+
 
   esUsuario(id: string): boolean {
     if (this.authenticationService.getCurrentUserId() === id) {
@@ -74,9 +95,13 @@ export class ListarComentariosComponent implements OnInit {
 
   //USER DEL COMENTARIO
   editarComentario(id: string): void {
+    this.editModeMap.set(this.currentMapEditIndex, false);
+    this.currentMapEditIndex = id;
     this.cerrarTextAreaComentario();
     this.editModeMap.set(id, true);
     this.initForm(this.listadoComentarios.get(id)!);
+
+    
     /* this.currentMapEditIndex = id;
     const currentEditMode = this.editModeMap.get(id);
     this.editModeMap.set(id, !currentEditMode);

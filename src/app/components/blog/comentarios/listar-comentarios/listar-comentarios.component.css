@@ -59,18 +59,15 @@
 }
 
 .comentario-cuerpo textarea{
-    width: 95%;
+    width: 100%;
     height: 6rem;
     margin: 2rem auto;
     margin-bottom: 1rem;
-    padding: .5rem;
+    padding: 1rem;
     border: none;
     border-radius: 1rem;
     border: 1px solid #2a2030;
     outline: none;
-    background-color: #c7b7ca00;
-    font-family: 'Merriweather', serif;
-    font-size: 1.6rem;
 }
 
 .comentario-cuerpo p{

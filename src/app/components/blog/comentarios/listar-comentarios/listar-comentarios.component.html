@@ -1,12 +1,49 @@
 <div class="contenedor-comentarios">
     <h2>Comentarios</h2>
 
+    <form *ngFor="let comentario of comentariosOrdenados" [formGroup]="formulario">
+        <div class="comentario">
+
+            <div class="comentario-encabezado">
+                <p>{{comentario.nombreUsuario}}</p>
+                <p>{{comentario.fecha}}</p>
+            </div>
+            <hr>
+            <div class="comentario-cuerpo">
+                <p *ngIf="!editModeMap.get(comentario.id)">{{comentario.comentario}}</p>
+                <textarea *ngIf="editModeMap.get(comentario.id)"
+                    formControlName="editComentario">{{comentario.comentario}}</textarea>
+            </div>
+
+            <div class="container-buttons">
+                <button type="button" class="boton-claro"
+                    *ngIf="esUsuario(comentario.userId) && firebaseAuthenticationReady && !editModeMap.get(comentario.id)"
+                    (click)="editarComentario(comentario.id)">Editar</button>
+
+                <button type="button" class="boton-claro"
+                    *ngIf="(isAdmin || esUsuario(comentario.userId)) && firebaseAuthenticationReady && !editModeMap.get(comentario.id)"
+                    (click)="eliminarComentario(comentario.id)">Eliminar</button>
+
+                <button *ngIf="editModeMap.get(comentario.id)" class="boton-claro" (click)="guardarComentario(comentario.id)">Guardar</button>
+
+                <button *ngIf="editModeMap.get(comentario.id)" class="boton-claro" (click)="cancelarCambios(comentario.id)">Cancelar</button>
+            </div>
+
+        </div>
+
+    </form>
+</div>
+
+
+<!-- <div class="contenedor-comentarios">
+    <h2>Comentarios</h2>
+
     <form *ngFor="let comentario of listadoComentarios | keyvalue" [formGroup]="formulario">
         <div class="comentario">
 
             <div class="comentario-encabezado">
                 <p>{{comentario.value.nombreUsuario}}</p>
-                <p>{{comentario.value['fecha']}}</p>
+                <p>{{comentario.value.fecha}}</p>
             </div>
             <hr>
             <div class="comentario-cuerpo">
@@ -23,50 +60,15 @@
                 <button type="button" class="boton-claro"
                     *ngIf="(isAdmin || esUsuario(comentario.value.userId)) && firebaseAuthenticationReady && !editModeMap.get(comentario.key)"
                     (click)="eliminarComentario(comentario.key)">Eliminar</button>
+
+                <button *ngIf="editModeMap.get(comentario.key)" class="boton-claro" (click)="guardarComentario(comentario.key)">Guardar</button>
+
+                <button *ngIf="editModeMap.get(comentario.key)" class="boton-claro" (click)="cancelarCambios(comentario.key)">Cancelar</button>
             </div>
 
-            <div class="container-buttons" *ngIf="editModeMap.get(comentario.key)">
-                <button class="boton-claro" (click)="guardarComentario(comentario.key)">Guardar</button>
-                <button class="boton-claro" (click)="cancelarCambios(comentario.key)">Cancelar</button>
-            </div>
-
-        </div>
-
-    </form>
-</div>
-
-<!-- <div class="contenedor-comentarios">
-    <h2>Comentarios</h2>
-
-    <form *ngFor="let comentario of listadoComentarios | keyvalue">
-        <div *ngIf="!editModeMap.get(comentario.key)" class="comentario">
-
-            <div class="comentario-encabezado">
-                <p>{{comentario.value.nombreUsuario}}</p>
-                <p>{{comentario.value['fecha']}}</p>
-            </div>
-            <hr>
-            <div class="comentario-cuerpo">
-                <p>{{comentario.value.comentario}}</p>
-            </div>
-
-            <div class="container-buttons">
-                <button type="button" class="boton-claro"
-                    *ngIf="esUsuario(comentario.value.userId) && firebaseAuthenticationReady"
-                    (click)="editarComentario(comentario.key)">Modificar</button>
-                <button type="button" class="boton-claro"
-                    *ngIf="(isAdmin || esUsuario(comentario.value.userId)) && firebaseAuthenticationReady"
-                    (click)="eliminarComentario(comentario.key)">Eliminar</button>
-            </div>
-
-        </div>
-
-        <div [formGroup]="formulario" *ngIf="editModeMap.get(comentario.key)">
-            <textarea cols="30" rows="10" formControlName="editComentario"
-                placeholder="{{comentario.value.comentario}}"></textarea>
-            <button class="boton-claro" (click)="guardarComentario(comentario.key)">Guardar</button>
-            <button class="boton-claro" (click)="cancelarCambios()">Cancelar</button>
         </div>
 
     </form>
 </div> -->
+
+
