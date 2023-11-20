@@ -4,61 +4,96 @@
             <div>
                 <label for="nombre">Nombre:</label>
                 <input type="text" id="nombre" formControlName="nombre"
-                    [class.invalid]="validate('nombre', 'required') || validate('nombre', 'maxLength')">
-                <span class="form-error" *ngIf="validate('nombre', 'required')">Campo obligatorio.</span>
-                <span class="form-error" *ngIf="validate('nombre', 'maxLength')">Máximo 30 carácteres.</span>
+                    [class.invalid]="validate('nombre','required') || validate('nombre','minlength') || validate('nombre','maxlength') || validate('nombre', 'pattern')">
+
+                    <span class="form-error" *ngIf="validate('nombre','required')">Campo requerido</span>
+                    <span class="form-error" *ngIf="validate('nombre','minlength') && !validate('nombre', 'pattern')">Min 3 carácteres</span>
+                    <span class="form-error" *ngIf="validate('nombre','maxlength') && !validate('nombre', 'pattern')">Max 30 carácteres</span>
+                    <span class="form-error" *ngIf="validate('nombre', 'pattern')">Formato inválido</span>
             </div>
 
             <div>
                 <label for="apellido">Apellido:</label>
                 <input type="text" id="apellido" formControlName="apellido"
-                    [class.invalid]="validate('apellido', 'required') || validate('apellido', 'maxLength')">
-                <span class="form-error" *ngIf="validate('apellido', 'required')">Campo obligatorio.</span>
-                <span class="form-error" *ngIf="validate('apellido', 'maxLength')">Máximo 30 carácteres.</span>
+                    [class.invalid]="validate('apellido','required') || validate('apellido','minlength') || validate('apellido','maxlength') || validate('apellido', 'pattern')">
+
+                    <span class="form-error" *ngIf="validate('apellido','required')">Campo requerido</span>
+                    <span class="form-error" *ngIf="validate('apellido','minlength') && !validate('apellido', 'pattern')">Min 3 carácteres</span>
+                    <span class="form-error" *ngIf="validate('apellido','maxlength') && !validate('apellido', 'pattern')">Max 30 carácteres</span>
+                    <span class="form-error" *ngIf="validate('apellido', 'pattern')">Formato inválido</span>
             </div>
 
             <div>
                 <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
-                <input type="text" id="fecha_nacimiento" formControlName="fecha_nacimiento">
+                <input type="text" id="fecha_nacimiento" formControlName="fecha_nacimiento"
+                    [class.invalid]="validate('fecha_nacimiento','required') || validate('fecha_nacimiento','maxlength') || validate('fecha_nacimiento', 'pattern')">
+
+                    <span class="form-error" *ngIf="validate('fecha_nacimiento','required')">Campo requerido</span>
+                    <span class="form-error" *ngIf="validate('fecha_nacimiento','maxlength') && !validate('fecha_nacimiento', 'pattern')">Max 10 carácteres</span>
+                    <span class="form-error" *ngIf="validate('fecha_nacimiento', 'pattern')">Formato inválido</span>
             </div>
 
             <div>
                 <label for="fecha_defuncion">Fecha de Defunción:</label>
-                <input type="text" id="fecha_defuncion" formControlName="fecha_defuncion">
+                <input type="text" id="fecha_defuncion" formControlName="fecha_defuncion"
+                    [class.invalid]="validate('fecha_defuncion','required') || validate('fecha_defuncion','maxlength') || validate('fecha_defuncion', 'pattern')">
+
+                    <span class="form-error" *ngIf="validate('fecha_defuncion','required')">Campo requerido</span>
+                    <span class="form-error" *ngIf="validate('fecha_defuncion','maxlength') && !validate('fecha_defuncion', 'pattern')">Max 10 carácteres</span>
+                    <span class="form-error" *ngIf="validate('fecha_defuncion', 'pattern')">Formato inválido</span>
             </div>
 
             <div>
                 <label for="tipo_de_muerte">Tipo de Muerte:</label>
                 <input type="text" id="tipo_de_muerte" formControlName="tipo_de_muerte"
-                    [class.invalid]="validate('tipo_de_muerte', 'required') || validate('tipo_de_muerte', 'maxLength')">
-                <span class="form-error" *ngIf="validate('tipo_de_muerte', 'required')">Campo obligatorio.</span>
-                <span class="form-error" *ngIf="validate('nombre', 'maxLength')">Máximo 30 carácteres.</span>
+                    [class.invalid]="validate('tipo_de_muerte','required') || validate('tipo_de_muerte','minlength') || validate('tipo_de_muerte','maxlength') || validate('tipo_de_muerte', 'pattern')">
+                
+                    <span class="form-error" *ngIf="validate('tipo_de_muerte','required')">Campo requerido</span>
+                    <span class="form-error" *ngIf="validate('tipo_de_muerte','minlength') && !validate('tipo_de_muerte', 'pattern')">Min 3 carácteres</span>
+                    <span class="form-error" *ngIf="validate('tipo_de_muerte','maxlength') && !validate('tipo_de_muerte', 'pattern')">Max 30 carácteres</span>
+                    <span class="form-error" *ngIf="validate('tipo_de_muerte', 'pattern')">Formato inválido</span>
             </div>
 
             <div>
                 <label for="lugar_de_nacimiento">Lugar de Nacimiento:</label>
                 <input type="text" id="lugar_de_nacimiento" formControlName="lugar_de_nacimiento"
-                    [class.invalid]="validate('lugar_de_nacimiento', 'required') || validate('lugar_de_nacimiento', 'maxLength')">
-                <span class="form-error" *ngIf="validate('lugar_de_nacimiento', 'required')">Campo obligatorio.</span>
-                <span class="form-error" *ngIf="validate('lugar_de_nacimiento', 'maxLength')">Máximo 30 carácteres.</span>
+                    [class.invalid]="validate('lugar_de_nacimiento','required') || validate('lugar_de_nacimiento','minlength') || validate('lugar_de_nacimiento','maxlength') || validate('lugar_de_nacimiento', 'pattern')">
+                
+                    <span class="form-error" *ngIf="validate('lugar_de_nacimiento','required')">Campo requerido</span>
+                    <span class="form-error" *ngIf="validate('lugar_de_nacimiento','minlength') && !validate('lugar_de_nacimiento', 'pattern')">Min 3 carácteres</span>
+                    <span class="form-error" *ngIf="validate('lugar_de_nacimiento','maxlength') && !validate('lugar_de_nacimiento', 'pattern')">Max 30 carácteres</span>
+                    <span class="form-error" *ngIf="validate('lugar_de_nacimiento', 'pattern')">Formato inválido</span>
             </div>
 
             <div>
                 <label for="lugar_de_ejecucion">Lugar de Ejecución:</label>
                 <input type="text" id="lugar_de_ejecucion" formControlName="lugar_de_ejecucion"
-                    [class.invalid]="validate('lugar_de_ejecucion', 'required') || validate('lugar_de_ejecucion', 'maxLength')">
-                <span class="form-error" *ngIf="validate('lugar_de_ejecucion', 'required')">Campo obligatorio.</span>
-                <span class="form-error" *ngIf="validate('lugar_de_ejecucion', 'maxLength')">Máximo 30carácteres.</span>
+                    [class.invalid]="validate('lugar_de_ejecucion','required') || validate('lugar_de_ejecucion','minlength') || validate('lugar_de_ejecucion','maxlength') || validate('lugar_de_ejecucion', 'pattern')">
+                
+                    <span class="form-error" *ngIf="validate('lugar_de_ejecucion','required')">Campo requerido</span>
+                    <span class="form-error" *ngIf="validate('lugar_de_ejecucion','minlength') && !validate('lugar_de_ejecucion', 'pattern')">Min 3 carácteres</span>
+                    <span class="form-error" *ngIf="validate('lugar_de_ejecucion','maxlength') && !validate('lugar_de_ejecucion', 'pattern')">Max 30 carácteres</span>
+                    <span class="form-error" *ngIf="validate('lugar_de_ejecucion', 'pattern')">Formato inválido</span>
+
             </div>
 
             <div>
                 <label for="imagen">Imagen (url):</label>
-                <input type="url" id="imagen" formControlName="imagen">
+                <input type="url" id="imagen" formControlName="imagen"
+                    [class.invalid]="validate('imagen', 'required') || validate('imagen', 'pattern')">
+
+                    <span class="form-error" *ngIf="validate('imagen', 'required')">Campo requerido</span>
+                    <span class="form-error" *ngIf="validate('imagen', 'pattern')">Formato inválido</span>
             </div>
 
             <div>
                 <label for="historia">Historia:</label>
-                <textarea id="historia" formControlName="historia"></textarea>
+                <textarea id="historia" formControlName="historia"
+                    [class.invalid]="validate('historia','required') || validate('historia','minlength') || validate('historia','maxlength')"></textarea>
+
+                    <span class="form-error" *ngIf="validate('historia', 'required')">Campo requerido</span>
+                    <span class="form-error" *ngIf="validate('historia','minlength')">Min 10 carácteres</span>
+                    <span class="form-error" *ngIf="validate('historia','maxlength')">Max 500 carácteres</span>
             </div>
         </div>
 

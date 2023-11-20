@@ -21,24 +21,27 @@ export class NuevaBrujaComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
+   
   }
-
 
   initForm() {
     this.formulario = this.formBuilder.group({
-      nombre: ['', [Validators.required, Validators.maxLength(30)]],
-      apellido: ['', [Validators.required, Validators.maxLength(30)]],
-      fecha_nacimiento: [''],
-      fecha_defuncion: [''],
-      tipo_de_muerte: ['', [Validators.required, Validators.maxLength(30)]],
-      lugar_de_nacimiento: ['', [Validators.required, Validators.maxLength(30)]],
-      lugar_de_ejecucion: ['', [Validators.required, Validators.maxLength(30)]],
-      imagen: [''],
-      historia: ['']
+      nombre: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern("[a-zA-Z' ]*")]],
+      apellido: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern("[a-zA-Z' ]*")]],
+      fecha_nacimiento: ['', Validators.pattern('[0-9/a-zA-Z]*')],
+      fecha_defuncion: ['', Validators.pattern('[0-9/a-zA-Z]*')],
+      tipo_de_muerte: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern('[a-zA-Z. ]*')]],
+      lugar_de_nacimiento: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern('[a-zA-Z,. ]*')]],
+      lugar_de_ejecucion: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern('[a-zA-Z,. ]*')]],
+      imagen: ['', [Validators.required, Validators.pattern('https?://.+')]],
+      historia: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(500)]]
     });
   }
 
   async guardarBruja(){
+    if (this.formulario.invalid) return;
+    this.fechaPorDefecto();
+
     if (this.formulario.invalid){
       alert('Debe completar los campos requeridos');
       this.formulario.markAllAsTouched();
@@ -57,21 +60,13 @@ export class NuevaBrujaComponent implements OnInit {
     return isInvalid;
   }
 
-}
-
-
-/*   guardarBruja() {
-    if (this.formulario.invalid) return;
-
-    this.brujasService.postBruja(this.formulario.value)
-    .subscribe({
-      next: (bruja) => {
-        alert(`${bruja.nombre} ${bruja.apellido} se agregó con éxito.`);
-        this.router.navigate(['/blog']);
-      },
-      error: (e) => {
-        console.log(e);
-      }
-    })
+  fechaPorDefecto(){ 
+    if(this.formulario.value.fecha_nacimiento == ""){
+      this.formulario.value.fecha_nacimiento = "n/a";
+    }
+    if(this.formulario.value.fecha_defuncion == ""){
+      this.formulario.value.fecha_defuncion = "n/a";
+    }
   }
- */
+
+}

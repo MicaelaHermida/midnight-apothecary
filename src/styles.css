@@ -143,7 +143,7 @@ textarea:focus {
 .page {
     width: 100%;
     min-height: 55vh;
-    margin: 2rem auto;
+    padding: 2rem 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -318,7 +318,6 @@ textarea:focus {
 }
 
 .campos div label {
-    margin-left: 2%;
     font-weight: 500;
     padding: 1%;
 }

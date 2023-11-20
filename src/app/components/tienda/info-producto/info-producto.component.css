@@ -32,16 +32,13 @@
 }
 
 .cantidad-producto input{
+    color: var(--color-dark);
     width: 30%;
-    background-color: #2a203000;
     border: none;
+    border-bottom: .1rem solid var(--color-dark);
+    padding: .5rem;
     outline: none;
-    color: black;
     text-align: center;
-}
-
-.cantidad-producto:hover{
-    border-color: white;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
@@ -50,14 +47,11 @@ input[type="number"]::-webkit-outer-spin-button {
   appearance: none;
 }
 
-button{
-    border-radius: 30px;
-    padding: 1rem;
-}
-
 .botoncito{
-    width: 5rem;
-    height: 5rem;
+    background-color: var(--back-dark-trans);
+    color: var(--color-light);
+    width: 3rem;
+    height: 3rem;
     border-radius: 5rem;
     padding: .5rem;
 }
