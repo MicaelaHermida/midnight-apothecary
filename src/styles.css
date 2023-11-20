@@ -414,6 +414,16 @@ textarea:focus {
     border-bottom: 2px solid #a10202;
 }
 
+input.invalid {
+    border: none;
+    border-bottom: 2px solid #a10202;
+}
+
+textarea.invalid{
+    border: 2px solid #a10202;
+
+}
+
 .formulario textarea.invalid {
     border: 2px solid #a10202;
 }

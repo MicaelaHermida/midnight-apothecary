@@ -77,3 +77,18 @@ button{
     position: absolute;
     left: 60%;
 }
+
+.formulario .informacion div input.invalid{
+    border-bottom: 2px solid #a10202;
+}
+
+
+.info-usuario {
+    margin: 2rem 0;
+    
+}
+
+form{
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}

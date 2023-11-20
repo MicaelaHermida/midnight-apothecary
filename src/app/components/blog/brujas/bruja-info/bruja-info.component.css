@@ -1,3 +1,14 @@
 .contenedor .info {
     min-height: 55vh;
 }
+
+.form-error{
+    position: absolute;
+    left: 60%;
+}
+
+.historia-bruja .form-error{
+    position: absolute;
+    top: 62.5%;
+    left: 48%;
+}

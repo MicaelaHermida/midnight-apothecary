@@ -20,17 +20,7 @@ export class BrujaInfoComponent implements OnInit {
   brujaId: string = "";
   brujaCargada: boolean = false;
 
-  formulario: FormGroup = this.formBuilder.group({
-    editNombre: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern("[a-zA-Z' ]*")]],
-    editApellido: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern("[a-zA-Z' ]*")]],
-    editFechaNac: [''],
-    editFechaDef: [''],
-    editTipoMuerte: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern("[a-zA-Z' ]*")]],
-    editLugarNac: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern("[a-zA-Z' ]*")]],
-    editLugarEjec: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern("[a-zA-Z' ]*")]],
-    editImagen: ['', [Validators.required, Validators.pattern('https?://.+')]],
-    editHistoria: ['', [Validators.required, Validators.maxLength(500)]]
-  })
+  formulario: FormGroup;
 
   constructor(
     private route: ActivatedRoute,
@@ -38,7 +28,19 @@ export class BrujaInfoComponent implements OnInit {
     private comentariosService: ComentariosService,
     private formBuilder: FormBuilder,
     private authService: AuthenticationService
-  ) { }
+  ) { 
+    this.formulario= this.formBuilder.group({
+      editNombre: [''],
+      editApellido: [''],
+      editFechaNac: [''],
+      editFechaDef: [''],
+      editTipoMuerte: [''],
+      editLugarNac: [''],
+      editLugarEjec: [''],
+      editImagen: [''],
+      editHistoria: ['']
+    });
+  }
 
   async ngOnInit(): Promise<void> {
     await this.authService.waitForFirebaseAuthentication();
@@ -60,15 +62,15 @@ export class BrujaInfoComponent implements OnInit {
 
         if (this.bruja) {
           this.formulario = this.formBuilder.group({
-            editNombre: this.bruja.nombre,
-            editApellido: this.bruja.apellido,
-            editFechaNac: this.bruja.fecha_nacimiento,
-            editFechaDef: this.bruja.fecha_defuncion,
-            editTipoMuerte: this.bruja.tipo_de_muerte,
-            editLugarNac: this.bruja.lugar_de_nacimiento,
-            editLugarEjec: this.bruja.lugar_de_ejecucion,
-            editImagen: this.bruja.imagen,
-            editHistoria: this.bruja.historia
+            editNombre: [this.bruja.nombre, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern("[a-zA-Z' ]*")]],
+            editApellido: [this.bruja.apellido, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern("[a-zA-Z' ]*")]] ,
+            editFechaNac: [this.bruja.fecha_nacimiento, [Validators.required, Validators.maxLength(10), Validators.pattern('[0-9/]*')]] ,
+            editFechaDef: [this.bruja.fecha_defuncion, [Validators.required, Validators.maxLength(10), Validators.pattern('[0-9/]*')]] ,
+            editTipoMuerte: [this.bruja.tipo_de_muerte, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*')]] ,
+            editLugarNac: [this.bruja.lugar_de_nacimiento, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*')]] ,
+            editLugarEjec: [this.bruja.lugar_de_ejecucion, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*')]],
+            editImagen: [this.bruja.imagen, [Validators.required, Validators.pattern('https?://.+')]],
+            editHistoria: [this.bruja.historia, [Validators.required, Validators.minLength(10), Validators.maxLength(500)]]
           });
         }
       }
@@ -93,6 +95,7 @@ export class BrujaInfoComponent implements OnInit {
   }
 
   async actualizarBruja(): Promise<void> {
+    console.log(this.formulario.valid);
     if (this.formulario.invalid) return;
 
     this.bruja.nombre = this.formulario.controls['editNombre'].value;
@@ -130,10 +133,17 @@ export class BrujaInfoComponent implements OnInit {
   }
 
   cancelarCambios() {
+    this.initForm();
     this.editMode = false;
     return;
   }
 
+  validate(field: string, error: string): boolean {
+    const isInvalid = this.formulario.controls[field].hasError(error) &&
+      (this.formulario.controls[field].touched || this.formulario.controls[field].dirty);
+
+    return isInvalid;
+  }
 
 }
 
