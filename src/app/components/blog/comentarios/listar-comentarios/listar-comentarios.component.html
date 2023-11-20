@@ -1,17 +1,17 @@
-<div class="contenedor-comentarios">
+<div class="contenedor-listado">
     <h2 *ngIf="isFull">Comentarios</h2>
     <h2 *ngIf="isEmpty">Aún no hay comentarios en este post...</h2>
     
 
     <form *ngFor="let comentario of comentariosOrdenados" [formGroup]="formulario">
-        <div class="comentario">
+        <div class="caja">
 
-            <div class="comentario-encabezado">
+            <div class="caja-encabezado">
                 <p>{{comentario.nombreUsuario}}</p>
                 <p>{{comentario.fecha}}</p>
             </div>
             <hr>
-            <div class="comentario-cuerpo">
+            <div class="caja-cuerpo">
                 <p *ngIf="!editModeMap.get(comentario.id)">{{comentario.comentario}}</p>
                 <textarea *ngIf="editModeMap.get(comentario.id)"
                     formControlName="editComentario">{{comentario.comentario}}</textarea>
@@ -35,42 +35,4 @@
 
     </form>
 </div>
-
-
-<!-- <div class="contenedor-comentarios">
-    <h2>Comentarios</h2>
-
-    <form *ngFor="let comentario of listadoComentarios | keyvalue" [formGroup]="formulario">
-        <div class="comentario">
-
-            <div class="comentario-encabezado">
-                <p>{{comentario.value.nombreUsuario}}</p>
-                <p>{{comentario.value.fecha}}</p>
-            </div>
-            <hr>
-            <div class="comentario-cuerpo">
-                <p *ngIf="!editModeMap.get(comentario.key)">{{comentario.value.comentario}}</p>
-                <textarea *ngIf="editModeMap.get(comentario.key)"
-                    formControlName="editComentario">{{comentario.value.comentario}}</textarea>
-            </div>
-
-            <div class="container-buttons">
-                <button type="button" class="boton-claro"
-                    *ngIf="esUsuario(comentario.value.userId) && firebaseAuthenticationReady && !editModeMap.get(comentario.key)"
-                    (click)="editarComentario(comentario.key)">Editar</button>
-
-                <button type="button" class="boton-claro"
-                    *ngIf="(isAdmin || esUsuario(comentario.value.userId)) && firebaseAuthenticationReady && !editModeMap.get(comentario.key)"
-                    (click)="eliminarComentario(comentario.key)">Eliminar</button>
-
-                <button *ngIf="editModeMap.get(comentario.key)" class="boton-claro" (click)="guardarComentario(comentario.key)">Guardar</button>
-
-                <button *ngIf="editModeMap.get(comentario.key)" class="boton-claro" (click)="cancelarCambios(comentario.key)">Cancelar</button>
-            </div>
-
-        </div>
-
-    </form>
-</div> -->
-
 

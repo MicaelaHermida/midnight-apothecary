@@ -14,7 +14,6 @@
 }
 
 .tabla-brujas td{
-    background-color: var(--back-light-trans);
     color: var(--color-dark);
     font-family: var(--base-font);
     font-size: var(--font-size-18);
@@ -25,6 +24,7 @@
 }
 
 .tabla-brujas .texto{
+    background-color: var(--back-light-trans);
     padding: .5rem;
 }
 
@@ -32,32 +32,36 @@
     background-color: var(--back-dark-trans);
     color: var(--color-light);
     font-family: var(--subtitulo-font);
-    font-size: var(--font-size-18);
+    font-size: var(--font-size-17);
     font-weight: 400;
     text-decoration: none;
     border-radius: .5rem;
     align-items: center;
     padding: .5rem;
-}
+} 
 
 .boton-blog:hover{
     background-color: var(--back-light-trans);
     color: var(--color-dark);
     font-weight: bold;
-}
+} 
 
-#agregar{
-    margin-top: 2rem;
+#agregar{    
     font-size: 2.5rem;
     font-weight: 400;
+    text-decoration: none;
+    border-radius: .5rem; 
     width: 10%;
     height: 5%;
+    margin-top: 1rem;
+    padding: .5rem;
     position: absolute;
     text-align: center;
+    align-items: center;
 }
 
 #agregar:hover{
     font-weight: bold;
-    color: #2a2030d3;
-    background-color: #b39fb6af;
+    color: var(--color-dark);
+    background-color: var(--back-light-trans);
 }

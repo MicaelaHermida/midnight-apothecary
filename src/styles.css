@@ -412,6 +412,7 @@ textarea:focus {
 
 .formulario input.invalid {
     border-bottom: 2px solid #a10202;
+    margin-bottom: 0;
 }
 
 input.invalid {
@@ -426,13 +427,93 @@ textarea.invalid{
 
 .formulario textarea.invalid {
     border: 2px solid #a10202;
+    margin-bottom: 0;
 }
 
 .form-error {
     margin-top: 0;
     margin-left: 2%;
-    font-family: 'Merriweather', serif;
-    font-size: 1.2rem;
+    font-family: var(--base-font);
+    font-size: 1.3rem;
     color: #a10202;
-    padding: 1%;
+    padding: .1rem;
 }
+
+/* ------------------------[ LISTADOS (COMENTARIOS Y COMPRAS) ]------------------------*/
+.contenedor-listado{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem auto;
+}
+
+.contenedor-listado hr{
+    width: 100%;
+    border: .1rem solid var(--color-dark);
+}
+
+.contenedor-listado h2{
+    font-size: var(--font-size-28);
+    font-weight: 500;
+    line-height: 2rem;
+    top: 0;
+    margin: 1rem;
+    padding: .5rem;
+}
+
+.contenedor-listado .caja{
+    background-color: var(--back-light-trans);
+    width: 50rem;
+    margin: auto;
+    padding: .5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 1rem;
+}
+
+.caja hr{
+    width: 100%;
+    border: .1rem solid var(--color-dark);
+    margin: .5rem;
+}
+
+.caja-encabezado {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.caja-encabezado p{
+    font-family: var(--subtitulo-font);
+    font-size: var(--font-size-18);
+    padding: .5rem;
+}
+
+.caja-cuerpo{
+    width: 100%;
+    overflow: hidden;
+}
+
+.caja-cuerpo textarea{
+    width: 100%;
+    height: 8rem;
+    margin: 2rem auto;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: none;
+    border-radius: 1rem;
+    border: 1px solid var(--color-dark);
+    outline: none;
+}
+
+.caja-cuerpo p{
+    font-size: var(--font-size-17);
+    padding: 1rem;
+}
+

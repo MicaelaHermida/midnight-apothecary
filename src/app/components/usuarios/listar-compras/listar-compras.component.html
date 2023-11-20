@@ -11,32 +11,34 @@
 </div>
 <div *ngIf="firebaseAuthenticationReady && isLogged" class="contenedor-listado">
     <div *ngIf="!existeUsuario">
-        <p class="error-resultado-busqueda">No se encontro al usuario</p>
+        <h2 class="error-resultado-busqueda">No se encontro al usuario</h2>
     </div>
-    <div *ngIf="!tieneCompras">
-        <p class="error-resultado-busqueda">El usuario no ha realizado compras</p>
+    <div *ngIf="!tieneCompras && existeUsuario">
+        <h2 class="error-resultado-busqueda">El usuario no ha realizado compras</h2>
     </div>
-    <div>
-        <div *ngFor="let compra of compras" class="compra">
-            <div class="info-compra">
-                <p>{{compra.fecha}}</p>
-                <p>compra: {{compra.idDoc}}</p>
+
+    <div *ngFor="let compra of compras" class="caja">
+        <div class="caja-encabezado">
+            <p>{{compra.fecha}}</p>
+            <p>compra: {{compra.idDoc}}</p>
+        </div>
+        <hr>
+        <div class="caja-cuerpo" *ngFor="let producto of compra.items">
+            <p>{{producto.nombre}}</p>
+            <div class="cantidad">
+                <p> x </p>
+                <p>{{producto.cantidad}}</p>
             </div>
-            <div class="items" *ngFor="let producto of compra.items">
-                <p>{{producto.nombre}}</p>
-                <div class="cantidad">
-                    <p> x </p>
-                    <p>{{producto.cantidad}}</p>
-                </div>
-            </div>
-            <div class="pie-compra">
-                <p>Total: <b class="total">${{compra.total}}</b></p>
-                <p>Estado: {{compra.estado}}</p>
-            </div>
-            <div *ngIf="isAdminRole" class="contenedor-admin-button">
-                <button class="finalizar-button" (click)="finalizarEstadoCompra(compra.idDoc!)"
-                    *ngIf="compra.estado !== 'finalizada'">Finalizar</button>
-            </div>
+        </div>
+        <hr>
+        <div class="pie-compra">
+            <p>Total: <b class="total">${{compra.total}}</b></p>
+            <p>Estado: {{compra.estado}}</p>
+        </div>
+        <div *ngIf="isAdminRole" class="container-buttons">
+            <button class="boton-claro" (click)="finalizarEstadoCompra(compra.idDoc!)"
+                *ngIf="compra.estado !== 'finalizada'">Finalizar</button>
         </div>
     </div>
 </div>
+
