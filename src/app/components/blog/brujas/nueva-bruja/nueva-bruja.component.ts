@@ -39,8 +39,11 @@ export class NuevaBrujaComponent implements OnInit {
   }
 
   async guardarBruja(){
-    if (this.formulario.invalid) return;
-
+    if (this.formulario.invalid){
+      alert('Debe completar los campos requeridos');
+      this.formulario.markAllAsTouched();
+      return;
+    }
     await this.brujasService.postBruja(this.formulario.value);
 
     alert('Bruja agregada con éxito');

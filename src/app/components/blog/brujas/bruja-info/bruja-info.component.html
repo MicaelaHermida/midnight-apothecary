@@ -84,8 +84,7 @@
                 
                 <div class="historia-bruja">
                     <p *ngIf="!editMode">{{bruja.historia}}</p>
-                    <textarea *ngIf="editMode" formControlName="editHistoria" [class.invalid]="validate('editHistoria','required') || validate('editHistoria','minlength') || validate('editHistoria','maxlength')">{{bruja.historia}}</textarea>
-                    <span class="form-error" *ngIf="validate('editHistoria','required')">Campo requerido</span>
+                    <textarea *ngIf="editMode" formControlName="editHistoria" [class.invalid]="validate('editHistoria','minlength') || validate('editHistoria','maxlength')">{{bruja.historia}}</textarea>
                     <span class="form-error" *ngIf="validate('editHistoria','minlength')">Min 10 caracteres</span>
                     <span class="form-error" *ngIf="validate('editHistoria','maxlength')">Max 500 caracteres</span>
                 </div>
