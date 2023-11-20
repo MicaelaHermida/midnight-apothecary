@@ -70,7 +70,9 @@ export class BrujasService {
   }
 
   //EDITAR - A
-  async getBruja(id: string): Promise<Bruja> {
+
+
+   async getBruja(id: string): Promise<Bruja> {
     try {
       const brujaDoc = doc(this.brujasCollection, id);
       const brujaSnapshot = await getDoc(brujaDoc);
@@ -86,7 +88,7 @@ export class BrujasService {
       console.log(error);
       return null as unknown as Bruja;
     }
-  }
+  } 
 
   //EDITAR - B
   async putBruja(id: string, bruja: Bruja): Promise<void> {
@@ -115,59 +117,5 @@ export class BrujasService {
     }
   }
 
+
 }
-
-
-  /*  postBruja(bruja: Bruja): Observable<Bruja> {
-     return this.http.post<Bruja>(
-       this.url,
-       bruja,
-       { headers: { 'Content-type': 'application/json' } }
-     ).pipe(
-       catchError((error: any) => {
-         console.error;
-         return throwError(() => error);
-       })
-     )
-   } 
-   
-     getBrujas(): Observable<Bruja[]> {
-      return this.http.get<Bruja[]>(this.url)
-        .pipe(
-          catchError((error: any) => {
-            console.error;
-            return throwError(() => error);
-          })
-        )
-    }
-
-     deleteBruja(id: number): Observable<Bruja> {
-      return this.http.delete<Bruja>(`${this.url}/${id}`)
-        .pipe(
-          catchError((error: any) => {
-            console.error;
-            return throwError(() => error);
-          })
-        )
-    } 
-
-    getBruja(id: number): Observable<Bruja> {
-      return this.http.get<Bruja>(`${this.url}/${id}`)
-        .pipe(
-          catchError((error: any) => {
-            console.error;
-            return throwError(() => error);
-          })
-        )
-    }
-
-    putBruja(bruja: Bruja): Observable<Bruja> {
-      return this.http.put<Bruja>(
-        `${this.url}/${bruja.id}`,
-        bruja,
-        { headers: { 'Content-type': 'application/json' } }
-      )
-    } 
-
-*/
-
