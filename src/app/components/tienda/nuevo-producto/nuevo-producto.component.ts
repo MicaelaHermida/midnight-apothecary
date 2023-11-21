@@ -83,7 +83,7 @@ export class NuevoProductoComponent implements OnInit{
   }
 
   async verificarNombre(){
-    this.nombreProductoExists = await this.productoService.productoNombreExists(this.form.controls['nombre'].value);
+    this.nombreProductoExists = await this.productoService.productoNombreExists(this.form.controls['nombre'].value, -1);
   }
 
   async verificarIdPlanta(){

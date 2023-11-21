@@ -41,9 +41,8 @@
 } 
 
 .boton-blog:hover{
-    background-color: var(--back-light-trans);
-    color: var(--color-dark);
-    font-weight: bold;
+    color: var(--color-extra-light);
+    background-color: var(--color-dark);
 } 
 
 #agregar{    
@@ -61,7 +60,6 @@
 }
 
 #agregar:hover{
-    font-weight: bold;
-    color: var(--color-dark);
-    background-color: var(--back-light-trans);
+    color: var(--color-extra-light);
+    background-color: var(--color-dark);
 }

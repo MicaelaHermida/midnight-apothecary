@@ -1,27 +1,17 @@
-/* .img-producto{
-    width: 80%;
-    border-radius: 9px;
+/*GENERALES*/
+
+.contenedor{
+    width: 65%;
 }
 
-.info{
-    min-width: 60vh;
-}
-.detalles-producto{
-    display: flex;
-    flex-direction: row;
-    margin-left: 1rem;
-    flex-wrap: wrap;
+.contenedor .imagen img{
+    min-height: 100%;
 }
 
-.detalles-producto div{
-    width: 50%;
-    justify-content: left;
-} */
-
+/*DATOS*/
 .contenedor .datos{
     display: flex;
     flex-direction: row;
-/*     flex-wrap: wrap; */
     align-items: center;
 }
 
@@ -29,21 +19,48 @@
     align-items: start;
 }
 
+/*COLUMNAS*/
+
 .contenedor .datos .columna{
-    flex: 1;
-    margin: 0 1rem;
+    width: 100%;
+    margin: 0;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 }
 
-.contenedor-buttons .cantidad-producto{
-    width: 25%;
+.contenedor .datos .columna div{
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.columna div p{
+    text-align: end;
+}
+
+/*DESCRIPCION*/
+
+.contenedor .descripcion label{
+    margin-left: 1rem;
+    margin-top: 1rem;
+    padding: .5rem;
+}
+
+.contenedor .descripcion p{
+    margin: 1rem;
+    padding: .5rem;
+}
+
+/*BOTONES*/
+
+.container-buttons .cantidad-producto{
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    border: .5px solid #2a2030d3;
-    border-radius: 30px;
+    align-items: center;
 }
 
 .cantidad-producto input{
@@ -71,13 +88,13 @@ input[type="number"]::-webkit-outer-spin-button {
     padding: .5rem;
 }
 
+.botoncito:hover{
+    background-color: var(--color-dark);
+    color: var(--color-extra-light);
+}
+
 #agregar-carr-button{
     width: 60%;
     line-height: 1.5rem;
     margin: 0 2rem;
-}
-
-.subtitulo{
-    font-family: 'Quicksand', sans-serif;
-    font-size: 1.8rem;
 }

@@ -218,7 +218,7 @@ export class ProductosService {
     }
   }
 
-  async productoNombreExists(nombre: string): Promise<boolean>{
+  async productoNombreExists(nombre: string, id_planta : number): Promise<boolean>{
     try{
       const db = this.firestore;
       const productsCollection = collection(db, 'products');
@@ -227,7 +227,11 @@ export class ProductosService {
         const producto = doc.data() as Producto;
         const productoNombre = producto.nombre.toLowerCase();
         if(productoNombre === nombre.toLowerCase()){
-          return true;
+          if(producto.id_planta  !== id_planta){
+            return true;
+          }else{
+            return false;
+          }
         }
       }
     }catch(error){

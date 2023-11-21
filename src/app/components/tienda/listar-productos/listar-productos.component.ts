@@ -215,7 +215,7 @@ export class ListarProductosComponent implements OnInit {
   }
 
   async guardarProducto(producto: Producto):Promise<void> {
-    this.nombreExiste = await this.productosService.productoNombreExists(producto.nombre);
+    this.nombreExiste = await this.productosService.productoNombreExists(this.form.controls['nombre'].value, producto.id_planta);  
     if (this.nombreExiste) {
       alert("Ya existe un producto con ese nombre");
       return;
