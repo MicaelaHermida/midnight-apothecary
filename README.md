@@ -36,7 +36,7 @@ You can log in as regular user or admin using the following credentials:
 - User: Email - user@mail.com, Password - `usuario123`
 - Or you can register a new user!
 
-## Funcionalities
+## User Features
 
 ### Admin
 
@@ -127,7 +127,7 @@ Puedes iniciar sesion como un usuario regular o como administrador utilizando la
 - User: Email - user@mail.com, Contraseña - `usuario123`
 - O puedes registrar un nuevo usuario!
 
-## Funcionalidades
+## Caracteristicas de usuario
 
 ### Admin
 
