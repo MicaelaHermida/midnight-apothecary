@@ -9,6 +9,7 @@
     text-transform: uppercase;
 }
 
+/*ENLACES*/
 .navbar-links {
     display: flex;
     flex-direction: row;

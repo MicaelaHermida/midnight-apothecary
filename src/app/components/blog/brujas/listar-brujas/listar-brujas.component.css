@@ -1,3 +1,5 @@
+/*TABLA*/
+
 .tabla-brujas{ 
     margin: 0;
 }
@@ -27,6 +29,8 @@
     background-color: var(--back-light-trans);
     padding: .5rem;
 }
+
+/*BOTONES*/
 
 .boton-blog{
     background-color: var(--back-dark-trans);

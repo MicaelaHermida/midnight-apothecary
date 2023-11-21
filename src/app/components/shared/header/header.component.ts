@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, NavigationStart, Router, UrlSegment } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { BrujasService } from 'src/app/services/brujas.service';
 
 @Component({

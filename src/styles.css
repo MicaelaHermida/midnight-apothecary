@@ -396,6 +396,19 @@ textarea:focus {
     color: var(--color-extra-light);
 }
 
+
+.botoncito{
+    background-color: var(--back-trans);
+    color: var(--color-dark);
+    font-size: var(--font-size-17);
+    width: 3rem;
+    height: 3rem;
+    border-radius: 5rem;
+    padding: .5rem;
+}
+
+
+
 /* ------------------------[ ICONOS ]------------------------*/
 
 .busqueda-icon i {

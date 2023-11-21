@@ -5,6 +5,7 @@
     max-height: 77rem;
 }
 
+/*IMAGENES*/
 .slide{
     display: none;
     transition: transform 1s ease-in-out;
@@ -19,6 +20,8 @@ img{
     display: block;
 }
 
+/*NAVEGACION */
+
 .carousel-navigation{
     color: var(--color-light);
     transform: translateX(-50%);
@@ -29,18 +32,7 @@ img{
     left: 50%;
 }
 
-.carousel-navigation button{
-    background-color: var(--back-dark-trans);
-    border-radius: 50%;
-    margin: 0 .5rem;
-    padding: 1rem;
-}
-
-.carousel-navigation button:hover{
-    background-color: var(--back-light-trans);
-    color: var(--color-dark);
-    transform: scale(1.1);
-}
+/*BOTONES Y DOTS*/
 
 .carousel-navigation .next-prev{
     color: var(--color-light);
@@ -50,9 +42,22 @@ img{
     
 }
 
+.carousel-navigation button{
+    background-color: var(--back-dark-trans);
+    border-radius: 50%;
+    margin: 0 .5rem;
+    padding: 1rem;
+}
+
 .carousel-navigation button:disabled{
     background-color: var(--back-light-trans);
     cursor: not-allowed;
+}
+
+.carousel-navigation button:hover{
+    background-color: var(--color-dark);
+    color: var(--color-extra-light);
+    transform: scale(1.1);
 }
 
 .indicator{

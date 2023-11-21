@@ -1,3 +1,4 @@
+/*COMENTARIO*/
 
 .nuevo-comentario{
     background-color: var(--back-dark-trans);
@@ -7,6 +8,18 @@
     margin: 0 2rem;
     align-items: center;
 }
+
+.nuevo-comentario h3{
+    color: var(--color-extra-light);
+    font-family: 'Quicksand', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 300;    
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    padding: 0;
+}
+
+/*CONTENIDO*/
 
 .nuevo-comentario textarea{   
     background-color: var(--back-trans);
@@ -32,15 +45,7 @@
     padding: .5rem;
 }
 
-.nuevo-comentario h3{
-    color: var(--color-extra-light);
-    font-family: 'Quicksand', sans-serif;
-    font-size: 2.5rem;
-    font-weight: 300;    
-    margin-top: 1rem;
-    margin-bottom: 2rem;
-    padding: 0;
-}
+/*BOTON*/
 
 #boton-comentario{
     width: 20%;

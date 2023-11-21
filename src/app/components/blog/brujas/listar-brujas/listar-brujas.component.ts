@@ -73,29 +73,3 @@ export class ListarBrujasComponent implements OnInit {
 
 }
 
-  /* mostrarBrujas(){
-  this.brujasService.getBrujas()
-  .subscribe({
-    next: (brujas) =>{
-      this.listadoBrujas = brujas;
-    }, 
-    error:(e)=>{
-      console.log(e);
-    }
-  })
-} 
-   eliminarBruja(id: number) {
-      const ok = window.confirm(`¿Realmente querés eliminar la bruja de id: ${id}`);
-      if (!ok) return;
-  
-      this.brujasService.deleteBruja(id).subscribe({
-        next: (bruja) => {
-          alert(`Se eliminó a: ${bruja.nombre}/${bruja.apellido}`);
-        },
-        error: (e) => {
-          console.log(e);
-        }
-      })
-    }
-   */
-

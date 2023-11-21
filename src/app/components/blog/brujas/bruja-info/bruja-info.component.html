@@ -114,11 +114,8 @@
 
                         <span class="form-error" *ngIf="validate('editImagen', 'required')">Campo requerido</span>
                         <span class="form-error" *ngIf="validate('editImagen', 'pattern')">Formato inválido</span>
-
                 </div>
-
             </div>
-
         </form>
 
         <div class="container-buttons">
@@ -127,7 +124,6 @@
 
             <button class="boton-claro" *ngIf="editMode && isAdminRole" (click)="cancelarCambios()">Cancelar</button>
             <button class="boton-claro" *ngIf="editMode && isAdminRole" (click)="actualizarBruja()">Guardar</button>
-
         </div>
     </div>
 </div>

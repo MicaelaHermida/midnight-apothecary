@@ -1,5 +1,7 @@
+/*CARRITO*/
+
 .page{
-    background-color: #b39fb6af;
+    background-color: var(--back-light-trans);
     width: 40%;
     min-height: 0;
     margin: 2rem auto;
@@ -15,6 +17,7 @@
     border-radius: 10px;
 }
 
+/*TABLA*/
 
 .contenedor-carrito table{
     width: 95%;
@@ -58,22 +61,20 @@
     padding-right: 1rem;
 }
 
-td button{
-    border-radius: 100%;
-    background-color: #2a203000;
-    border: 1px solid #2a2030;
-    font-family: 'Quicksand', sans-serif;
-    font-size: 2rem;
-    text-align: center;
-    color: #2a2030;
-    width: 20px;
-    height: 20px;
-    padding: 0;
-}
+/*BOTONES*/
 
 td button:hover{
     box-shadow: #2a2030 0px 0px 1.5px 0px;
     font-weight: bold;
+}
+
+.botoncito{
+    border: .1rem solid var(--color-dark);
+}
+
+.botoncito:hover{
+    background-color: var(--color-light);
+    color: var(--color-dark);
 }
 
 .button-comprar{
@@ -84,7 +85,8 @@ td button:hover{
 }
 
 .button-comprar:hover{
-    border: 1px solid #2a2030;
+    background-color: var(--color-light);
+    border: 1px solid var(--color-dark);
     border-top: none;
     font-weight: bold;
 }

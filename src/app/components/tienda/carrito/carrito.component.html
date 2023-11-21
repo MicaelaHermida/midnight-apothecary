@@ -1,5 +1,6 @@
 <div class="page" [class.compra-page]="isCompraPage">
-    <h2>Carrito</h2>
+    <h2 *ngIf="hasProductos">Productos</h2>
+
     <div *ngIf="isLogged && firebaseAuthenticationReady && hasProductos" class="contenedor-carrito">
         <table *ngIf="isLogged && firebaseAuthenticationReady">
             <thead>
@@ -11,6 +12,7 @@
                     <th *ngIf="!isCompraPage">Añadir</th>
                 </tr>
             </thead>
+            
             <tbody>
                 <tr *ngFor="let producto of productos">
                     <td>{{producto.nombre}}</td>
@@ -18,16 +20,18 @@
                     <td>{{producto.cantidad}}</td>
                     <td>${{producto.subtotal}}</td>
                     <td *ngIf="!isCompraPage">
-                        <button  (click)="eliminarProducto(producto.id_producto)">-</button>
-                        <button  (click)="agregarProducto(producto.id_producto)">+</button>
+                        <button class="botoncito" (click)="eliminarProducto(producto.id_producto)">-</button>
+                        <button class="botoncito" (click)="agregarProducto(producto.id_producto)">+</button>
                     </td>
                 </tr>
             </tbody>
         </table>
+        
         <div class="foot-table">
             <p>TOTAL:</p>
             <p class="total"><b>$ {{totalCarrito}}</b></p>
         </div>
+        
         <button *ngIf="!isCompraPage" [routerLink]="['/compra']" class="button-comprar">REALIZAR COMPRA</button>
         <button *ngIf="isCompraPage" [routerLink]="['/tienda']" class="button-comprar">VOLVER A LA TIENDA</button>
     </div>
@@ -35,6 +39,6 @@
     <div *ngIf="isLogged && firebaseAuthenticationReady && !hasProductos" class="sin-carrito">
         <h2>No tienes productos en el carrito</h2>
         <p>Ve a la tienda para seleccionar los productos!</p>
-        <button [routerLink]="['/tienda']">Ir a la tienda</button>
+        <button class="boton-claro" [routerLink]="['/tienda']">Ir a la tienda</button>
     </div>
 </div>

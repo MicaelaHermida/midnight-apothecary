@@ -111,7 +111,6 @@ export class BrujaInfoComponent implements OnInit {
 
     await this.brujasService.putBruja(this.brujaId, this.bruja);
     this.editMode = false;
-    //reload page
     this.initBio();
     this.initForm();
   }

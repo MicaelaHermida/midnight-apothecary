@@ -2,15 +2,15 @@
     <h2 *ngIf="isFull">Comentarios</h2>
     <h2 *ngIf="isEmpty">Aún no hay comentarios en este post...</h2>
     
-
     <form *ngFor="let comentario of comentariosOrdenados" [formGroup]="formulario">
         <div class="caja">
-
             <div class="caja-encabezado">
                 <p>{{comentario.nombreUsuario}}</p>
                 <p>{{comentario.fecha}}</p>
             </div>
+
             <hr>
+            
             <div class="caja-cuerpo">
                 <p *ngIf="!editModeMap.get(comentario.id)">{{comentario.comentario}}</p>
                 <textarea *ngIf="editModeMap.get(comentario.id)"
@@ -30,9 +30,7 @@
 
                 <button *ngIf="editModeMap.get(comentario.id)" class="boton-claro" (click)="cancelarCambios(comentario.id)">Cancelar</button>
             </div>
-
         </div>
-
     </form>
 </div>
 

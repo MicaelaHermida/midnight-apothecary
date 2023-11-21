@@ -82,10 +82,6 @@ input[type="number"]::-webkit-outer-spin-button {
 .botoncito{
     background-color: var(--back-dark-trans);
     color: var(--color-light);
-    width: 3rem;
-    height: 3rem;
-    border-radius: 5rem;
-    padding: .5rem;
 }
 
 .botoncito:hover{

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { ComentariosService } from 'src/app/services/comentarios.service';
 
@@ -20,7 +19,6 @@ export class NuevoComentarioComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private comentariosService: ComentariosService,
     private formBuilder: FormBuilder,
-    private router: Router
   ) { }
 
   async ngOnInit(): Promise<void> {
@@ -28,15 +26,15 @@ export class NuevoComentarioComponent implements OnInit {
   }
 
   async guardarComentario() {
-    const userId = this.authenticationService.getCurrentUserId();//obtiene el id del usuario
+    const userId = this.authenticationService.getCurrentUserId();
 
-    const comentario = this.formulario.controls['comentario'].value;//obtiene el comentario
+    const comentario = this.formulario.controls['comentario'].value;
     if (comentario == "") {
       alert("No se puede enviar un comentario vacio");
       return;
     }
 
-    await this.comentariosService.postComentario(comentario, userId);//guarda el comentario en la base de datos
+    await this.comentariosService.postComentario(comentario, userId);
     console.log('comentario guardado');
     location.reload();
   }
