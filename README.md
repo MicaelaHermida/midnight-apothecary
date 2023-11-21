@@ -36,6 +36,33 @@ You can log in as regular user or admin using the following credentials:
 - User: Email - user@mail.com, Password - `usuario123`
 - Or you can register a new user!
 
+## Funcionalities
+
+### Admin
+
+- Create new products
+- Update and delete existing products
+- Create new witch blogs
+- Update and delete existing witch blogs
+- Delete users comments
+- View user purchases by email
+- Finalize the status of a purchase
+
+
+### User
+
+- Add items to their cart
+- Purchase products
+- View purchases history
+- Comment on a witch-blog
+- Edit and delete their comments
+
+### All users
+
+- Navigate the store and blogs
+- View detailed information about a product
+- Subscribe to news
+- Contact us
 
 ## Environment Configuration
 
@@ -99,6 +126,38 @@ Puedes iniciar sesion como un usuario regular o como administrador utilizando la
 
 - User: Email - user@mail.com, Contraseña - `usuario123`
 - O puedes registrar un nuevo usuario!
+
+## Funcionalidades
+
+### Admin
+
+- Crear nuevos productos
+- Editar y eliminar productos existentes
+- Crear nuevos blogs de brujas
+- Editar y eliminar blogs de brujas
+- Eliminar comentarios de cualquier usuario
+- Ver las compras de un usuario por su email
+- Finalizar el estado de una compra
+- Ver y editar su informacion de perfil
+
+
+### Usuario
+
+- Agregar productos al carrito
+- Comprar productos
+- Ver historial de compras
+- Comentar en el blog de una bruja
+- Editar y eliminar sus comentarios
+- Ver y editar su informacion de perfil
+
+
+### Todos los usuarios
+
+- Navegar por la tienda y el blog
+- Ver la informacion detallada de un producto
+- Suscribirse a novedades
+- Contactarse
+
 
 ## Configuracion Entornos
 
