@@ -101,7 +101,6 @@ export class PasarelaPagoComponent implements OnInit{
     }
   }
 
-
   activarEditMode(){
     this.editMode = true;
   }

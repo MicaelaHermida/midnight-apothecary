@@ -68,6 +68,8 @@ td button:hover{
     font-weight: bold;
 }
 
+/* + - */
+
 .botoncito{
     border: .1rem solid var(--color-dark);
 }
@@ -77,6 +79,7 @@ td button:hover{
     color: var(--color-dark);
 }
 
+/*cuadrados*/
 .button-comprar{
     width: 95%;
     margin: auto;
@@ -91,6 +94,8 @@ td button:hover{
     font-weight: bold;
 }
 
+
+/*ALTERNATIVO*/
 .sin-carrito{
     font-family: 'Quicksand', sans-serif;
     font-size: 2rem;

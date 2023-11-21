@@ -39,6 +39,7 @@
     <div *ngIf="isLogged && firebaseAuthenticationReady && !hasProductos" class="sin-carrito">
         <h2>No tienes productos en el carrito</h2>
         <p>Ve a la tienda para seleccionar los productos!</p>
+        
         <button class="boton-claro" [routerLink]="['/tienda']">Ir a la tienda</button>
     </div>
 </div>

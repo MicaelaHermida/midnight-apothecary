@@ -2,6 +2,7 @@
     <div class="form-pago">
         <form [formGroup]="formularioUsuario" (ngSubmit)="actualizarDatosUsuario()" class="formulario">
             <h2>Datos de facturacion</h2>
+            
             <div class="informacion">
                 <div>
                     <label>Nombre/s:</label>
@@ -92,7 +93,6 @@
                 </div>
                 <button type="button" *ngIf="!editMode" (click)="activarEditMode()" class="boton-oscuro">Editar</button>
             </div>
-
         </form>
     </div>
     <div class="form-pago">

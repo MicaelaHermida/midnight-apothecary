@@ -86,7 +86,6 @@ export class CarritoComponent implements OnInit {
 
   async eliminarProducto(id: string) {
     await this.carritoService.deleteProductoCarrito(id, 1);
-    //si el producto queda en cantidad 0, lo elimino del array
     const index = this.productos.findIndex((item) => item.id_producto === id);
     if (this.productos[index].cantidad === 0) {
       this.productos.splice(index, 1);

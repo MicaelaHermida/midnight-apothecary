@@ -1,16 +1,17 @@
 <div class="contenedor-principal" *ngIf="filtradoReady">
+    <!--////////////////PANEL BUSQUEDA///////////////////-->
     <div class="fondo-filtrado">
         <div class="filtro">
             <!--////////////////FILTRADO///////////////////-->
             <div class="opciones-filtrado">
                 <div *ngIf="firebaseAuthenticationReady">
-                    <p>ORDENAR:</p>
+                    <p>ORDENAR</p>
                     <select [(ngModel)]="ordenSeleccionado" (change)="onOrderChangeEvent()">
                         <option *ngFor="let orden of arrayOrdenamiento" [value]="orden">{{orden}}</option>
                     </select>
                 </div>
                 <div *ngIf="firebaseAuthenticationReady">
-                    <p>FILTRAR POR PRECIO:</p>
+                    <p>FILTRAR POR PRECIO</p>
                     <select [(ngModel)]="filtroSeleccionado" (change)="onFilterChangeEvent()">
                         <option *ngFor="let filtro of arrayFiltrado" [value]="filtro">{{filtro}}</option>
                     </select>
@@ -18,7 +19,7 @@
             </div>
             <!--////////////////BUSQUEDA///////////////////-->
             <div class="contenedor-busqueda">
-                <p>BUSCAR:</p>
+                <p>BUSCAR</p>
                 <div>
                     <input type="text" [(ngModel)]="busqueda" class="busqueda" placeholder="Producto..." (keydown.enter)="buscarProductoPorNombre()">
                     <a class="busqueda-icon" (click)="buscarProductoPorNombre()">
@@ -28,6 +29,7 @@
             </div>
         </div>
     </div>
+    
     <!--////////////////PAGINACION///////////////////-->
     <div class="pagination">
         <button (click)="cambiarPagina(paginaActual - 1)" [disabled]="paginaActual === 1">Anterior</button>
@@ -36,11 +38,12 @@
         <button (click)="cambiarPagina(paginaActual + 1)"
             [disabled]="paginaActual === obtenerCantidadPaginas()">Siguiente</button>
     </div>
+
+    <!--////////////////LISTADO PRODUCTOS///////////////////-->
     <div class="contenedor-productos">
         <p *ngIf="allProducts.size <1 && busquedaFinalizada" class="no-encontrado">Ups... no se ha encontrado el producto</p>
-        <!--////////////////LISTADO PRODUCTOS///////////////////-->
-        <form *ngFor="let producto of productosPagina" (ngSubmit)="guardarProducto(producto)" [formGroup]="form"
-            class="card">
+        <form *ngFor="let producto of productosPagina" (ngSubmit)="guardarProducto(producto)" [formGroup]="form" class="card">
+
             <div (click)="verDetalleProducto(producto.id_planta)" class="info-producto">
                 <img src="{{producto.imagen}}" class="img-producto">
                 <div *ngIf="!editModeMap.get(producto.id_planta) && firebaseAuthenticationReady">
@@ -59,27 +62,14 @@
                 <div>
                     <input formControlName="nombre" placeholder="{{producto.nombre}}" type="text"
                         [class.invalid]="validate('nombre','required') || validate('nombre','minlength') || nombreExiste">
-                    <!--
-                        <span class="form-error" *ngIf="validate('nombre','required')">Campo requerido</span>
-                        <span class="form-error" *ngIf="validate('nombre','minlength')">+3 caracteres</span>
-                    -->
-
                 </div>
                 <div>
                     <input formControlName="precio" placeholder="{{producto.precio}}" type="number"
-                    [class.invalid]="validate('precio', 'required') || validate('precio','min')">
-                    <!--
-                        <span class="form-error" *ngIf="validate('precio','required')">Campo requerido</span>
-                        <span class="form-error" *ngIf="validate('precio','min')">Minimo $1</span>
-                    -->
+                        [class.invalid]="validate('precio', 'required') || validate('precio','min')">
                 </div>
                 <div>
                     <input formControlName="stock" placeholder="stock({{producto.stock}})" type="number" 
-                    [class.invalid]="validate('stock','required') || validate('stock','min')">
-                    <!--
-                        <span class="form-error" *ngIf="validate('stock','required')">Campo requerido</span>
-                        <span class="form-error" *ngIf="validate('stock','min')">Minimo 0</span>
-                    -->
+                        [class.invalid]="validate('stock','required') || validate('stock','min')">
                 </div>
             </div>
             <!--////////////////BOTONES ADMIN///////////////////-->
@@ -95,6 +85,4 @@
             </div>
         </form>
     </div>
-
-
 </div>

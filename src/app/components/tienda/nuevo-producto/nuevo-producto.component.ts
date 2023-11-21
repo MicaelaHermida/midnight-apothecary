@@ -73,8 +73,6 @@ export class NuevoProductoComponent implements OnInit{
     this.router.navigate(['/admin/listar-productos']);
   }
 
-  ///val
-
   validate(field: string, error: string): boolean {
     const isInvalid = this.form.controls[field].hasError(error) &&
       (this.form.controls[field].touched || this.form.controls[field].dirty);

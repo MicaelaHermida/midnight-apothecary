@@ -1,3 +1,4 @@
+/*GENERAL*/
 .form-pago{
     margin-right: 2rem;
 }
@@ -9,6 +10,8 @@
     background-color: #b39fb6af;
     padding: 2rem;
 }
+
+/*INFORMACION*/
 
 .informacion{
     width: 60%;
@@ -38,6 +41,7 @@
     text-align: end;
 }
 
+/*BOTONES*/
 .edit-buttons{
     display: flex;
     flex-direction: row;
@@ -50,6 +54,8 @@
     width: 30%;
     margin-top: 1rem;
 }
+
+/*ERROR*/
 
 .form-error{
     margin: -15%;
