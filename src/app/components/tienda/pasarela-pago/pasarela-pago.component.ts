@@ -149,13 +149,12 @@ export class PasarelaPagoComponent implements OnInit{
         total: this.obtenerTotal(),
         estado: "pendiente"
       }
-      await this.compraService.postCompra(compra);
-      for(let producto of this.productos){
-        await this.productoService.updateStock(producto.id_producto, producto.cantidad);
+      const compraRealizada = await this.compraService.postCompra(compra);
+      if(compraRealizada){
+        await this.carritoService.deleteCarrito();
+        alert("Compra realizada con éxito");
+        this.router.navigate(['/home']);
       }
-      alert("Compra realizada con éxito!");
-      await this.carritoService.deleteCarrito();
-      this.router.navigate(['/home']);
     }
   }; 
 

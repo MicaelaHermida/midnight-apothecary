@@ -2,16 +2,27 @@ import { Injectable } from '@angular/core';
 import { Firestore, addDoc, collection, doc, getDoc, getDocs, setDoc } from '@angular/fire/firestore';
 import { Compra } from '../interfaces/compra.interface';
 import { AuthenticationService } from './authentication.service';
+import { ProductosService } from './productos.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ComprasService {
 
-  constructor(private firestore: Firestore, private authService: AuthenticationService) { }
+  constructor(private firestore: Firestore, 
+    private authService: AuthenticationService,
+    private productoService: ProductosService) { }
 
-  async postCompra(compra: Compra): Promise<void> {
+  async postCompra(compra: Compra): Promise<boolean> {
     try {
+      for(let item of compra.items){
+        console.log(item.cantidad);
+        const hayStock = await this.productoService.verificarStock(item.id_producto, item.cantidad);
+        if(!hayStock){
+          alert('No hay suficiente stock de ' + item.nombre + ' para realizar la compra');
+          return false;
+        }
+      }
       const now = new Date();
       const year = now.getFullYear();
       const month = String(now.getMonth() + 1).padStart(2, '0'); // +1 porque los meses empiezan en 0
@@ -26,9 +37,11 @@ export class ComprasService {
         estado: compra.estado
       }
       await addDoc(comprasCollection, data);
+      return true;
     } catch (error) {
       console.error(error);
     }
+    return false;
   }
 
   async getComprasPorUsuario(userId: string): Promise<Compra[]> {

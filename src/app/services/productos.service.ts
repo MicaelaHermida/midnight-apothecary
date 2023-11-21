@@ -257,4 +257,29 @@ export class ProductosService {
     }
     return false;
   }
+
+  async verificarStock(idProducto: string, cantidad : number) : Promise<boolean>{
+    try{
+      const db = this.firestore;
+      const productsCollection = collection(db, 'products');
+      const productoDoc = doc(productsCollection, idProducto);
+      const productoSnapshot = await getDoc(productoDoc);
+      if(!productoSnapshot){
+        console.error('No existe el producto');
+        return false;
+      }
+      const docData = productoSnapshot.data();
+      if(docData){
+        const stock : number= docData['stock'];
+        console.log(stock);
+        if(stock >= cantidad){
+          console.log(stock);
+          return true;
+        }
+      }
+    }catch(error){
+      console.error(error);
+    }
+    return false;
+  }
 }
