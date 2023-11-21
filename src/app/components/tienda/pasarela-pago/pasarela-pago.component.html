@@ -145,7 +145,7 @@
                     [class.invalid]="validatePago('dniTitular','required') || validatePago('dniTitular','pattern')
                     || validatePago('dniTitular','minlength') || validatePago('dniTitular','maxlength')">
                     <span class="form-error" *ngIf="validatePago('dniTitular','required')">Campo requerido</span>
-                    <span class="form-error" *ngIf="!validatePago('dniTitular', 'pattern') && (validatePago('dniTitular','minlength') || validatePago('dniTitular','maxlength'))">9 caracteres</span>
+                    <span class="form-error" *ngIf="!validatePago('dniTitular', 'pattern') && (validatePago('dniTitular','minlength') || validatePago('dniTitular','maxlength'))">8 caracteres</span>
                     <span class="form-error" *ngIf="validatePago('dniTitular','pattern')">Formato invalido</span>
                 </div>
             </div>

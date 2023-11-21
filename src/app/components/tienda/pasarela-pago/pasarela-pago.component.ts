@@ -150,6 +150,9 @@ export class PasarelaPagoComponent implements OnInit{
       }
       const compraRealizada = await this.compraService.postCompra(compra);
       if(compraRealizada){
+        for(let item of this.productos){
+          await this.productoService.updateStock(item.id_producto, item.cantidad);
+        }
         await this.carritoService.deleteCarrito();
         alert("Compra realizada con éxito");
         this.router.navigate(['/home']);
