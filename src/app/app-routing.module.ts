@@ -15,6 +15,7 @@ import { ListarComprasPageComponent } from './pages/usuarios/listar-compras-page
 import { NuevoProductoPageComponent } from './pages/tienda/nuevo-producto-page/nuevo-producto-page.component';
 
 const routes: Routes = [
+  {path: 'test', component: BlogPageComponent},
   {path: 'blog', component: BlogPageComponent},
   {path: 'info-bruja/:key', component: InfoBrujaPageComponent},
   {path: 'nueva-bruja', component: NuevaBrujaPageComponent},
