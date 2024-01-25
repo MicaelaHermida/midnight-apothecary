@@ -4,6 +4,7 @@ import { FooterModule } from 'src/app/components/shared/footer/footer.module';
 import { ListarComprasPageComponent } from './listar-compras-page.component';
 import { ListarComprasComponent } from 'src/app/components/usuarios/listar-compras/listar-compras.component';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -12,7 +13,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     FooterModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forChild([{ path: '', component: ListarComprasPageComponent }])
   ]
 })
 export class ListarComprasPageModule { }

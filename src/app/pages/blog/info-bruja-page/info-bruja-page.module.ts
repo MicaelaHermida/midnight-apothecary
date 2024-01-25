@@ -6,6 +6,7 @@ import { BrujaInfoComponent } from 'src/app/components/blog/brujas/bruja-info/br
 import { NuevoComentarioComponent } from 'src/app/components/blog/comentarios/nuevo-comentario/nuevo-comentario.component';
 import { ListarComentariosComponent } from 'src/app/components/blog/comentarios/listar-comentarios/listar-comentarios.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -14,7 +15,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     FooterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forChild([{ path: '', component: InfoBrujaPageComponent }])
   ]
 })
 export class InfoBrujaPageModule { }

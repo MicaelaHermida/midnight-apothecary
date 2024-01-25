@@ -15,20 +15,19 @@ import { ListarComprasPageComponent } from './pages/usuarios/listar-compras-page
 import { NuevoProductoPageComponent } from './pages/tienda/nuevo-producto-page/nuevo-producto-page.component';
 
 const routes: Routes = [
-  {path: 'test', component: BlogPageComponent},
-  {path: 'blog', component: BlogPageComponent},
-  {path: 'info-bruja/:key', component: InfoBrujaPageComponent},
-  {path: 'nueva-bruja', component: NuevaBrujaPageComponent},
-  {path: 'home', component: HomePageComponent},
-  {path: 'login', component: LoginPageComponent},
-  {path: 'register', component: RegistroPageComponent},
-  {path: 'tienda', component: TiendaPageComponent},
-  {path: 'producto/:key', component: ProductoInfoPageComponent},
-  {path: 'carrito', component: CarritoPageComponent},
-  {path: 'compra', component: CompraPageComponent},
-  {path: 'usuario', component: UsuarioInfoPageComponent},
-  {path: 'compras', component: ListarComprasPageComponent},
-  {path: 'nuevo-producto', component: NuevoProductoPageComponent},
+  {path: 'blog', loadChildren: () => import('./pages/blog/blog-page/blog-page.module').then(m => m.BlogPageModule)},
+  {path: 'info-bruja/:key', loadChildren: () => import('./pages/blog/info-bruja-page/info-bruja-page.module').then(m => m.InfoBrujaPageModule)},
+  {path: 'nueva-bruja', loadChildren: () => import('./pages/blog/nueva-bruja-page/nueva-bruja-page.module').then(m => m.NuevaBrujaPageModule)},
+  {path: 'home', loadChildren: () => import('./pages/home-page/home-page.module').then(m => m.HomePageModule)},
+  {path: 'login', loadChildren: () => import('./pages/usuarios/login-page/login-page.module').then(m => m.LoginPageModule)},
+  {path: 'register', loadChildren: () => import('./pages/usuarios/registro-page/registro-page.module').then(m => m.RegistroPageModule)},
+  {path: 'tienda', loadChildren: () => import('./pages/tienda/tienda-page/tienda-page.module').then(m => m.TiendaPageModule)},
+  {path: 'producto/:key', loadChildren: () => import('./pages/tienda/producto-info-page/producto-info-page.module').then(m => m.ProductoInfoPageModule)},
+  {path: 'carrito', loadChildren: () => import('./pages/tienda/carrito-page/carrito-page.module').then(m => m.CarritoPageModule)},
+  {path: 'compra', loadChildren: () => import('./pages/tienda/compra-page/compra-page.module').then(m => m.CompraPageModule)},
+  {path: 'usuario', loadChildren: () => import('./pages/usuarios/usuario-info-page/usuario-info-page.module').then(m => m.UsuarioInfoPageModule)},
+  {path: 'compras', loadChildren: () => import('./pages/usuarios/listar-compras-page/listar-compras-page.module').then(m => m.ListarComprasPageModule)},
+  {path: 'nuevo-producto', loadChildren: () => import('./pages/tienda/nuevo-producto-page/nuevo-producto-page.module').then(m => m.NuevoProductoPageModule)},
   {path: "**", redirectTo: 'home'}
 ];
 

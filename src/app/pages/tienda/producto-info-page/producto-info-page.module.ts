@@ -4,6 +4,7 @@ import { FooterModule } from 'src/app/components/shared/footer/footer.module';
 import { ProductoInfoPageComponent } from './producto-info-page.component';
 import { InfoProductoComponent } from 'src/app/components/tienda/info-producto/info-producto.component';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -12,7 +13,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     FooterModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forChild([{ path: '', component: ProductoInfoPageComponent }])
   ]
 })
 export class ProductoInfoPageModule { }

@@ -14,7 +14,7 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     FooterModule,
     ReactiveFormsModule,
-    RouterModule,
+    RouterModule.forChild([{ path: '', component: NuevaBrujaPageComponent }])
   ]
 })
 export class NuevaBrujaPageModule { }

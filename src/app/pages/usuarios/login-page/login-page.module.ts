@@ -4,6 +4,7 @@ import { FooterModule } from 'src/app/components/shared/footer/footer.module';
 import { LoginPageComponent } from './login-page.component';
 import { LoginComponent } from 'src/app/components/usuarios/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -12,7 +13,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     FooterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forChild([{ path: '', component: LoginPageComponent }])
   ]
 })
 export class LoginPageModule { }

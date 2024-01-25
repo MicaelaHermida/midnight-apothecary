@@ -6,6 +6,7 @@ import { NosotrasComponent } from 'src/app/components/home/nosotras/nosotras.com
 import { ContactoComponent } from 'src/app/components/home/contacto/contacto.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FooterModule } from 'src/app/components/shared/footer/footer.module';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -14,7 +15,8 @@ import { FooterModule } from 'src/app/components/shared/footer/footer.module';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    FooterModule
+    FooterModule,
+    RouterModule.forChild([{ path: '', component: HomePageComponent }])
   ]
 })
 export class HomePageModule { }

@@ -5,6 +5,7 @@ import { FooterModule } from 'src/app/components/shared/footer/footer.module';
 import { PasarelaPagoComponent } from 'src/app/components/tienda/pasarela-pago/pasarela-pago.component';
 import { CarritoModule } from 'src/app/components/tienda/carrito/carrito.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -14,7 +15,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     FooterModule,
     CarritoModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forChild([{ path: '', component: CompraPageComponent }])
   ]
 })
 export class CompraPageModule { }

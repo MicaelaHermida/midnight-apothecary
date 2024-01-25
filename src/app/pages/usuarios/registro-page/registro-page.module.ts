@@ -4,6 +4,7 @@ import { FooterModule } from 'src/app/components/shared/footer/footer.module';
 import { RegistroPageComponent } from './registro-page.component';
 import { RegistroComponent } from 'src/app/components/usuarios/registro/registro.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -12,7 +13,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     FooterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forChild([{ path: '', component: RegistroPageComponent }])
   ]
 })
 export class RegistroPageModule { }
