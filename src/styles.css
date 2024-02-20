@@ -24,8 +24,6 @@
     --back-trans: #00000000;
     --back-light-trans: #b39fb6d8;
     --back-dark-trans: #2a2030d3;
-
-
 }
 
 
@@ -314,7 +312,7 @@ textarea:focus {
 .formulario .campos div {
     display: flex;
     flex-direction: column;
-    min-height: 10rem;
+    min-height: 1rem;
 }
 
 .campos div label {

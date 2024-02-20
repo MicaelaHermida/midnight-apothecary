@@ -1,3 +1,7 @@
 .campos textarea{
     margin-bottom: .5rem;
 }
+
+.container-buttons{
+    margin: 1rem auto;
+}
