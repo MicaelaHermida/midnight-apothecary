@@ -1,12 +1,15 @@
 <hr>
 <div class="navbar">
+    <div class="titulo">
+        <h2><span class="mayus">M</span>idnight <span class="mayus">A</span>pothecary</h2>
+    </div>
     <div class="navbar-links">
         <a [routerLink]="['/home']">Home</a>
         <a [routerLink]="['/tienda']">Tienda</a>
         <a [routerLink]="['/blog']">Blog</a>
         <a *ngIf="isLogged && firebaseAuthenticationReady && !isAdminRole" [routerLink]="['/carrito']">Carrito</a>
 
-        <div class="dropdown">
+        <!-- <div class="dropdown">
             <button class="dropbtn"><i class="fi fi-sr-hat-witch"></i></button>
             <div class="dropdown-content">
                 <a *ngIf="!isLogged && firebaseAuthenticationReady" [routerLink]="['/login']">Ingresar</a>
@@ -19,7 +22,12 @@
                 <a *ngIf="isLogged && firebaseAuthenticationReady" (click)="cerrarSesion()">Cerrar Sesion</a>
 
             </div>
-        </div>
+        </div> -->
+
+    
+    </div>
+    <div class="dropbtn-carrito">
+        <button class="dropbtn"><i class="fi fi-sr-shopping-basket"></i></button>
 
     </div>
 

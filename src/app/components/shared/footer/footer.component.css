@@ -1,3 +1,4 @@
+
 /*GENERALES*/
 
 .footer {
@@ -71,6 +72,7 @@
 
 .seccion-footer a:hover {
     font-weight: bold;
+    color: var(--color-extra-light);
 }
 
 /*SUSCRIPCION*/
