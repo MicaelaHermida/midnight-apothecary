@@ -1,10 +1,32 @@
 header{
-    background-image: url(../../../../assets/img/header.jpg);
-    background-size: cover;
+    /* background-image: url(../../../../assets/img/header.jpg); */
+    background-color: black;
     background-position: center;
-    height: 2rem;
-    margin: auto;
-    text-align: center;
+    height: 3rem;
+}
+
+.user{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    margin-right: 1rem;
+    padding: 0;
+
+}
+
+.user a{
+    color: var(--color-extra-light);
+    font-size: 1.5rem;
+    font-family: var(--subtitulo-font);
+    text-transform: uppercase;
+    font-weight: 200;
+    text-decoration: none;
+    padding: 0.5rem;
+    cursor: pointer;   
+}
+
+.user a:hover {
+    font-weight: 500;
 }
 
 .mayus{

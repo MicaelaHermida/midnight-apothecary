@@ -12,7 +12,8 @@ export class NavbarComponent implements OnInit{
   isLogged: boolean = false;
   isAdminRole: boolean = false;
   firebaseAuthenticationReady : boolean = false;
-  constructor(private authenticationService: AuthenticationService, private router: Router) { }
+  constructor(private authenticationService: AuthenticationService,
+     private router: Router) { }
 
   async ngOnInit(): Promise<void> {
     await this.authenticationService.waitForFirebaseAuthentication();
