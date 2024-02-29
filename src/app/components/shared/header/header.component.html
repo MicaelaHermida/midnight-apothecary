@@ -15,10 +15,10 @@
 </header> -->
 
 <header>
-    <div class="user">
-        <a *ngIf="!isLogged && firebaseAuthenticationReady" [routerLink]="['/login']">Iniciar sesión</a>
-        <a *ngIf="!isLogged && firebaseAuthenticationReady" [routerLink]="['/register']">Crear cuenta</a>
-        <a *ngIf="isLogged && firebaseAuthenticationReady" (click)="cerrarSesion()">Cerrar sesión</a>
-    </div>
-
+        <div class="user">
+            <a *ngIf="!isLogged && firebaseAuthenticationReady" [routerLink]="['/login']">Iniciar sesión</a>
+            <a *ngIf="!isLogged && firebaseAuthenticationReady" [routerLink]="['/register']">Crear cuenta</a>
+            <a *ngIf="isLogged && firebaseAuthenticationReady" (click)="cerrarSesion()">Cerrar sesión</a>
+        </div>
 </header>
+<hr>

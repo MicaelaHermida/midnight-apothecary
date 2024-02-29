@@ -1,6 +1,6 @@
 .navbar {
     width: 100%;
-    height: 15rem;
+    height: 14rem;
     background-image: url(../../../../assets/img/navbar.jpg);
     background-size: cover;
     padding: .5px;
@@ -17,15 +17,15 @@
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-    width: 30%;
-    margin: auto;
+    width: 40%;
+    margin-left: 15rem;
     padding: 0;
 }
 
 
 .navbar-links a {
     color: var(--color-light);
-    font-size: 2rem;
+    font-size: 2.2rem;
     font-family: 'Quicksand', sans-serif;
     text-transform: uppercase;
     text-decoration: none;
@@ -37,27 +37,14 @@
     color: var(--color-extra-light);
 }
 
-/*TITULO PAGINA*/
-/* .titulo h2{
-    color: var(--color-extra-light);
-    font-size: 5rem;
-    font-family: var(--titulo-font);
-    text-decoration: none;
-    margin-left: 2rem;
-}
-
-.mayus{
-    font-size: 6rem;
-} */
-
 img{
     width: auto;
     height: 15rem;
+    margin: 1rem 2rem;
 }
 
 .imagotipo{
     content: url("../../../../assets/img/imagotipo.png");
-    
 }
 
 
@@ -116,7 +103,7 @@ img{
 /*CARRITO*/
 .dropbtn-carrito {
     cursor: pointer;
-    margin: 0 3rem;
+    margin-left: 15rem;
 }
 
 .dropbtn-carrito i {

@@ -1,9 +1,10 @@
 header{
-    /* background-image: url(../../../../assets/img/header.jpg); */
     background-color: black;
     background-position: center;
     height: 3rem;
+    align-items: center;
 }
+
 
 .user{
     display: flex;
@@ -11,15 +12,14 @@ header{
     justify-content: end;
     margin-right: 1rem;
     padding: 0;
-
 }
 
 .user a{
     color: var(--color-extra-light);
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-family: var(--subtitulo-font);
-    text-transform: uppercase;
-    font-weight: 200;
+
+    font-weight: 400;
     text-decoration: none;
     padding: 0.5rem;
     cursor: pointer;   

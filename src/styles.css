@@ -49,18 +49,17 @@ html {
 body {
     font-size: 1.6rem;
     margin: 0;
-    background-color: var(--back-medium);
+    background-color: var(--color-light);
     background-image: url(../src/assets/img/fondo.jpg);
     background-blend-mode: multiply;
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: repeat-y;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
 hr {
-    border: .15rem solid var(--color-light);
+    border: .15rem solid var(--color-extra-light);
     margin: 0;
 }
 
@@ -156,19 +155,19 @@ textarea:focus {
 }
 
 .fondo-user {
-    background-color: var(--back-medium);
+    background-color: var(--color-light);
     background-image: url(../src/assets/img/dibujos-user.jpg);
     background-blend-mode: multiply;
 }
 
 .fondo-tienda {
-    background-color: var(--back-medium);
+    background-color: var(--color-light);
     background-image: url(../src/assets/img/dibujos-tienda.jpg);
     background-blend-mode: multiply;
 }
 
 .fondo-blog {
-    background-color: var(--back-medium);
+    background-color: var(--color-light);
     background-image: url(../src/assets/img/dibujos-blog.jpg);
     background-blend-mode: multiply;
 }
@@ -245,7 +244,7 @@ textarea:focus {
 
 .contenedor .info {
     height: 100%;
-    background-color: var(--back-light-trans);
+    background-color: var(--color-extra-light-trans);
     display: flex;
     flex-direction: column;
     box-sizing:content-box;

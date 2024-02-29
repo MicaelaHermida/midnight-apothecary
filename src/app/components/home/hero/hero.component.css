@@ -1,8 +1,11 @@
 .hero-carousel{
     position: relative;
     overflow: hidden;
-    width: 100%;
-    max-height: 76.4rem;
+    width: 70%;
+    height: auto;
+    background-color: var(--back-dark-trans);
+    padding: .5rem;
+    margin: 1rem auto;
 }
 
 /*IMAGENES*/
