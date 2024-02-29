@@ -47,6 +47,10 @@ img{
     content: url("../../../../assets/img/imagotipo.png");
 }
 
+.imagotipo:hover {
+    cursor: pointer;
+}
+
 
 
 /*MENU DESPLEGABLE*/
