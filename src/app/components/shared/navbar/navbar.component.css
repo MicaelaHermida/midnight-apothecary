@@ -51,7 +51,20 @@ img{
     cursor: pointer;
 }
 
+/*CARRITO*/
+.dropbtn-carrito {
+    cursor: pointer;
+    margin-left: 15rem;
+}
 
+.dropbtn-carrito i {
+    color:var(--color-light);
+    font-size: 3rem;
+}
+
+.dropbtn-carrito i:hover {
+    color: var(--color-extra-light);
+}
 
 /*MENU DESPLEGABLE*/
 /* .dropdown {
@@ -103,19 +116,3 @@ img{
 .dropdown:hover .dropdown-content {
     display: block;
 } */
-
-/*CARRITO*/
-.dropbtn-carrito {
-    cursor: pointer;
-    margin-left: 15rem;
-}
-
-.dropbtn-carrito i {
-    color:var(--color-light);
-    font-size: 3rem;
-}
-
-.dropbtn-carrito i:hover {
-    color: var(--color-extra-light);
-}
-

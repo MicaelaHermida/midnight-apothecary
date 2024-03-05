@@ -41,6 +41,8 @@ import { ListarComprasPageComponent } from './pages/usuarios/listar-compras-page
 import { HeroComponent } from './components/home/hero/hero.component';
 import { NuevoProductoComponent } from './components/tienda/nuevo-producto/nuevo-producto.component';
 import { NuevoProductoPageComponent } from './pages/tienda/nuevo-producto-page/nuevo-producto-page.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +79,9 @@ import { NuevoProductoPageComponent } from './pages/tienda/nuevo-producto-page/n
     ListarComprasPageComponent,
     HeroComponent,
     NuevoProductoComponent,
-    NuevoProductoPageComponent
+    NuevoProductoPageComponent,
+    AdminComponent,
+    AdminPageComponent
   ],
   imports: [
     BrowserModule,

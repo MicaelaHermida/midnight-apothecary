@@ -13,8 +13,10 @@ import { CarritoPageComponent } from './pages/tienda/carrito-page/carrito-page.c
 import { UsuarioInfoPageComponent } from './pages/usuarios/usuario-info-page/usuario-info-page.component';
 import { ListarComprasPageComponent } from './pages/usuarios/listar-compras-page/listar-compras-page.component';
 import { NuevoProductoPageComponent } from './pages/tienda/nuevo-producto-page/nuevo-producto-page.component';
+import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 
 const routes: Routes = [
+  {path: 'admin', component: AdminPageComponent},
   {path: 'blog', component: BlogPageComponent},
   {path: 'info-bruja/:key', component: InfoBrujaPageComponent},
   {path: 'nueva-bruja', component: NuevaBrujaPageComponent},

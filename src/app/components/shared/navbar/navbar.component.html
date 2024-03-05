@@ -1,11 +1,8 @@
 
 <div class="navbar">
+    <div class="navbar-container">
 
-    <!-- <div class="titulo">
-        <h2><a [routerLink]="['/home']"><span class="mayus">M</span>idnight <span class="mayus">A</span>pothecary</a></h2>
-    </div> -->
-
-
+    </div>
     <img class="imagotipo" alt="Midnight Apothecary" [routerLink]="['/home']">
 
 
@@ -15,13 +12,21 @@
         <a [routerLink]="['/blog']">Blog</a>
         <a *ngIf="isLogged && firebaseAuthenticationReady && isAdminRole" [routerLink]="['/admin']">Admin</a>
         <a *ngIf="isLogged && firebaseAuthenticationReady && !isAdminRole" [routerLink]="['/usuario']">Mi Perfil</a>
-        <!-- <a *ngIf="isLogged && firebaseAuthenticationReady && !isAdminRole" [routerLink]="['/carrito']">Carrito</a> -->
+        <a *ngIf="isLogged && firebaseAuthenticationReady && !isAdminRole" [routerLink]="['/compras']">Mis Compras</a>
+  
+    </div>
 
-        <!-- <div class="dropdown">
+    <div class="dropbtn-carrito" *ngIf="isLogged && firebaseAuthenticationReady && !isAdminRole">
+        <button class="dropbtn" [routerLink]="['/carrito']"><i class="fi fi-sr-shopping-basket"></i></button>
+    </div>
+
+</div>
+<hr>
+
+
+<!-- <div class="dropdown">
             <button class="dropbtn"><i class="fi fi-sr-hat-witch"></i></button>
             <div class="dropdown-content">
-                <a *ngIf="!isLogged && firebaseAuthenticationReady" [routerLink]="['/login']">Ingresar</a>
-                <a *ngIf="!isLogged && firebaseAuthenticationReady" [routerLink]="['/register']">Registrarse</a>
                 <a *ngIf="isLogged && firebaseAuthenticationReady" [routerLink]="['/usuario']">Mi Perfil</a>
                 <a *ngIf="(isLogged && firebaseAuthenticationReady) && !isAdminRole" [routerLink]="['/compras']">Mis Compras</a>
                 <a *ngIf="isAdminRole && firebaseAuthenticationReady" [routerLink]="['/compras']">Ver Compras</a>
@@ -31,13 +36,3 @@
 
             </div>
         </div> -->
-
-    
-    </div>
-
-    <div class="dropbtn-carrito" *ngIf="isLogged && firebaseAuthenticationReady && !isAdminRole">
-        <button class="dropbtn"><i class="fi fi-sr-shopping-basket"></i></button>
-    </div>
-
-</div>
-<hr>

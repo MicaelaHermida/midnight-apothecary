@@ -23,7 +23,7 @@
     --back-medium: #876a89;
     --back-trans: #00000000;
     --back-light-trans: #b39fb6d8;
-    --color-extra-light-trans: #e8d5ebea;
+    --back-extra-light-trans: #e8d5ebbe;
     --back-dark-trans: #2a2030d3;
 }
 
@@ -244,7 +244,7 @@ textarea:focus {
 
 .contenedor .info {
     height: 100%;
-    background-color: var(--color-extra-light-trans);
+    background-color: var(--back-extra-light-trans);
     display: flex;
     flex-direction: column;
     box-sizing:content-box;
@@ -290,7 +290,7 @@ textarea:focus {
 
 /* ------------------------[ FORMULARIOS ]------------------------*/
 .contenedor-formulario {
-    background-color: var(--back-light-trans);
+    background-color: var(--back-extra-light-trans);
     width: 50%;
     margin: 2rem auto;
     border-radius: 1rem;
@@ -358,7 +358,7 @@ textarea:focus {
 }
 
 .boton-claro:hover {
-    background-color: var(--color-light);
+    background-color: var(--color-extra-light);
     font-weight: 600;
 }
 
@@ -476,7 +476,7 @@ textarea.invalid{
 }
 
 .contenedor-listado .caja{
-    background-color: var(--back-light-trans);
+    background-color: var(--back-extra-light-trans);
     width: 50rem;
     margin: auto;
     padding: .5rem;

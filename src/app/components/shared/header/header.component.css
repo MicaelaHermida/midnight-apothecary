@@ -1,8 +1,8 @@
 header{
-    background-color: black;
+    background-color: var(--back-light-trans);
     background-position: center;
-    height: 3rem;
     align-items: center;
+    margin: .5rem;
 }
 
 
@@ -11,22 +11,20 @@ header{
     flex-direction: row;
     justify-content: end;
     margin-right: 1rem;
-    padding: 0;
 }
 
 .user a{
-    color: var(--color-extra-light);
-    font-size: 1.8rem;
-    font-family: var(--subtitulo-font);
-
-    font-weight: 400;
+    color: black;
+    font-size: var(--font-size-16);
+    font-family: var(--base-font);
+    font-weight: 200;
     text-decoration: none;
-    padding: 0.5rem;
     cursor: pointer;   
+    margin: 0 1rem;
 }
 
 .user a:hover {
-    font-weight: 500;
+    font-weight: bold;
 }
 
 .mayus{
