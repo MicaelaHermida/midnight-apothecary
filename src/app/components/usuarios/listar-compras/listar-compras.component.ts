@@ -29,7 +29,10 @@ export class ListarComprasComponent implements OnInit{
   nroCompraBuscada: string = "";
 
 
-  constructor(private compraService: ComprasService, private authService: AuthenticationService){}
+  constructor(
+    private compraService: ComprasService,
+     private authService: AuthenticationService
+     ){}
 
   async ngOnInit(): Promise<void> {
     await this.authService.waitForFirebaseAuthentication();
