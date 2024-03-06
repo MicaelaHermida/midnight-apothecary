@@ -5,7 +5,7 @@
     /*Family*/
     --base-font: 'Merriweater', serif;
     --subtitulo-font: 'Quicksand', sans-serif;
-    --titulo-font: 'Reenie Beanie', cursive;
+    --titulo-font: 'Yomogi', cursive;
 
     /*Size*/
     --font-size-16: 1.6rem;
@@ -29,7 +29,9 @@
 
 
 /* ------------------------[ GENERALES ]------------------------*/
-@import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Merriweather&family=Philosopher&family=Quicksand:wght@300;400;500&family=Raleway:wght@200&family=Reenie+Beanie&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Merriweather&family=Philosopher&family=Quicksand:wght@300;400;500&family=Raleway:wght@200&family=Reenie+Beanie&display=swap');
+ */
+@import url("https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Merriweather&family=Philosopher&family=Quicksand:wght@300;400;500&family=Raleway:wght@200&family=Reenie+Beanie&family=Yomogi&display=swap");
 @import url('https://cdn-uicons.flaticon.com/2.0.0/uicons-brands/css/uicons-brands.css');
 @import url('https://cdn-uicons.flaticon.com/2.0.0/uicons-regular-straight/css/uicons-regular-straight.css');
 @import url('https://cdn-uicons.flaticon.com/2.0.0/uicons-solid-rounded/css/uicons-solid-rounded.css');

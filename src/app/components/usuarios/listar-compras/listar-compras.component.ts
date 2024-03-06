@@ -21,7 +21,13 @@ export class ListarComprasComponent implements OnInit{
 
   existeUsuario: boolean = true;
   tieneCompras: boolean = true;
+  
+  opcionSeleccionada: string = "";
   emailBuscado: string = "";
+  dniBuscado: string = "";
+  fechaBuscada: string = "";
+  nroCompraBuscada: string = "";
+
 
   constructor(private compraService: ComprasService, private authService: AuthenticationService){}
 
@@ -69,6 +75,19 @@ export class ListarComprasComponent implements OnInit{
     await this.validarCompras();
     this.ordenarComprasPorFecha();
   };
+
+
+  async buscarPorDni():Promise<void>{
+    if(this.dniBuscado === ""){
+      alert("Ingrese un DNI");
+      return;
+    }
+    
+  }
+
+
+
+
 
   async validarUsuario():Promise<void>{
     const id_user = await this.authService.getUserIdByEmail(this.emailBuscado);
