@@ -94,7 +94,50 @@ export class ComprasService {
     return [] as Compra[];
   }
 
+  //nuevos!!
+
+  async getComprasPorFecha(fecha: string): Promise<Compra[]>{
+    try{
+      const comprasCollection = collection(this.firestore, "compras");
+      const comprasSnapshot = await getDocs(comprasCollection);
+      const compras: Compra[] = [];
+      comprasSnapshot.forEach(doc => {
+        const compra = doc.data();
+        compra['idDoc'] = doc.id;
+        console.log(compra['fecha']);
+        if(compra['fecha'] === fecha){
+          console.log(compra);
+          compras.push(compra as Compra);
+        }
+      });
+      return compras;
+    }
+    catch(error){
+      console.error(error);
+      return [] as Compra[];
+    }
+ 
+}
   
+/* async getComprasPorUsuario(userId: string): Promise<Compra[]> {
+  try {
+    const comprasCollection = collection(this.firestore, "compras");
+    const comprasSnapshot = await getDocs(comprasCollection);
+    const compras: Compra[] = [];
+    comprasSnapshot.forEach(doc => {
+      const compra = doc.data();
+      compra['idDoc'] = doc.id;
+      if (compra['userId'] === userId) {
+        compras.push(compra as Compra);
+      }
+    });
+    return compras;
+  } catch (error) {
+    console.error(error);
+    return [] as Compra[];
+  }
+}
+ */
 
 
 

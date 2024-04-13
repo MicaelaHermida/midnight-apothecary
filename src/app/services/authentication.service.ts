@@ -183,4 +183,36 @@ export class AuthenticationService {
     }
     return nombreCompleto;
   }
-}
+
+  //nuevosssss
+
+  async getUserIdByDni(dni: string): Promise<string>{
+    let id = "";
+    try{
+      const userCollection = collection(this.firestore, "users");
+      const usuarios = await getDocs(userCollection);
+
+      usuarios.forEach(doc =>{
+        const usuario = doc.data();
+        console.log(usuario['dni']);
+        if(usuario['dni'] === dni){
+          console.log("match")
+          id = doc.id;
+          console.log(id);
+        }
+      });
+    }catch(error){
+      console.log(error);
+    }
+    return id;
+  }
+
+    
+
+
+
+  }
+
+
+
+

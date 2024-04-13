@@ -1,3 +1,4 @@
+import { compileDeclareDirectiveFromMetadata } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { reload } from 'firebase/auth';
 import { Compra } from 'src/app/interfaces/compra.interface';
@@ -79,19 +80,6 @@ export class ListarComprasComponent implements OnInit{
     this.ordenarComprasPorFecha();
   };
 
-
-  async buscarPorDni():Promise<void>{
-    if(this.dniBuscado === ""){
-      alert("Ingrese un DNI");
-      return;
-    }
-    
-  }
-
-
-
-
-
   async validarUsuario():Promise<void>{
     const id_user = await this.authService.getUserIdByEmail(this.emailBuscado);
     if(id_user === ""){
@@ -108,4 +96,51 @@ export class ListarComprasComponent implements OnInit{
       this.tieneCompras = true;
     }
   }
+//nuevas!!!
+
+  async buscarPorDni(): Promise<void>{
+    if(this.dniBuscado === ""){
+      alert("Ingrese un DNI");
+      return;
+    }
+    const id_user = await this.authService.getUserIdByDni(this.dniBuscado);
+    if(id_user === ""){
+      this.existeUsuario = false;
+    }
+    this.compras = await this.compraService.getComprasPorUsuario(id_user);
+    await this.validarCompras();
+    this.ordenarComprasPorFecha();
+  }
+
+
+  async buscarPorFecha(): Promise<void>{
+    const fecha = this.corregirFecha(this.fechaBuscada);
+    console.log(fecha);
+    if(fecha === ""){
+      alert("Ingrese una fecha");
+      return;
+    }
+    this.compras = await this.compraService.getComprasPorFecha(fecha);
+    console.log(this.compras);
+    
+    await this.validarCompras();
+    this.ordenarComprasPorFecha();
+  }
+
+  corregirFecha(fecha: string): string{
+    //reemplaza todos los guiones de la fecha por barras
+    let fechaCorregida = fecha.replace(/-/g, "/");
+    return fechaCorregida;
+  }
+
+
+
+
+
+
+
+
 }
+
+
+

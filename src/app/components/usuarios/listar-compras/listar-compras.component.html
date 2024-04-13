@@ -28,18 +28,12 @@
     </a>
 </div>
 
-<!-- <div *ngIf="opcionSeleccionada === 'dni'">
+ <div *ngIf="opcionSeleccionada === 'dni'">
     <label for="dni">Buscar compras por dni de cliente:</label>
     <input type="dni" [(ngModel)]="dniBuscado" placeholder="12345678" (keydown)="buscarPorDni()">
     <a class="busqueda-icon" (click)="buscarPorDni()">
         <i class="fi fi-rs-search"></i>
-</div>
-
-<div *ngIf="opcionSeleccionada === 'nro-compra'">
-    <label for="nro-compra">Buscar compra por código:</label>
-    <input type="text" [(ngModel)]="nroCompraBuscado" placeholder="1234" (keydown)="buscarPorNroCompra()">
-    <a class="busqueda-icon" (click)="buscarPorNroCompra()">
-        <i class="fi fi-rs-search"></i>
+    </a>
 </div>
 
 <div *ngIf="opcionSeleccionada === 'fecha'">
@@ -47,11 +41,19 @@
     <input type="date" [(ngModel)]="fechaBuscada" (keydown.enter)="buscarPorFecha()">
     <a class="busqueda-icon" (click)="buscarPorFecha()">
         <i class="fi fi-rs-search"></i>
-</div> -->
+    </a>
+</div> 
 
 
+<!-- <div *ngIf="opcionSeleccionada === 'nro-compra'">
+    <label for="nro-compra">Buscar compra por código:</label>
+    <input type="text" [(ngModel)]="nroCompraBuscado" placeholder="1234" (keydown)="buscarPorNroCompra()">
+    <a class="busqueda-icon" (click)="buscarPorNroCompra()">
+        <i class="fi fi-rs-search"></i>
+</div>
+ -->
 
-<!--LO DE ARRIBA PASARLO A NUEVO COMPONENTE "BUSCAR-COMPRAS"-->
+
 
 <div *ngIf="firebaseAuthenticationReady && isLogged" class="contenedor-listado">
     <div *ngIf="!existeUsuario">
