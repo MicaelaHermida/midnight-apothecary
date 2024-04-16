@@ -10,48 +10,63 @@
     </div>
 </div> -->
 
-<div *ngIf="isAdminRole && firebaseAuthenticationReady" class="info">
-    <label for="opciones-busqueda">Seleccione el método de búsqueda</label>
-    <select name="opciones-busqueda" id="opciones-busqueda" [(ngModel)]="opcionSeleccionada">
-        <option value="email">Email</option>
-        <option value="dni">Dni</option>
-        <option value="nro-compra">N° compra</option>
-        <option value="fecha">Fecha</option>
-    </select>    
+<div class ="busqueda">
+    <div *ngIf="isAdminRole && firebaseAuthenticationReady" class="info">
+        <label for="opciones-busqueda">Seleccione el método de búsqueda</label>
+        <select name="opciones-busqueda" id="opciones-busqueda" [(ngModel)]="opcionSeleccionada" class="opciones-busqueda">
+            <option value="todas">Todas las compras</option>
+            <option value="email">Email</option>
+            <option value="dni">Dni</option>
+            <option value="nro-compra">N° compra</option>
+            <option value="fecha">Fecha</option>
+        </select>   
+
+        <div *ngIf="opcionSeleccionada === 'email'" class="datos">
+            <label for="email">Ingrese el email de cliente:</label>
+            <input type="email" [(ngModel)]="emailBuscado" placeholder="ejemplo@gmail.com" (keydown.enter)="buscarPorEmail()">
+        </div>
+        
+         <div *ngIf="opcionSeleccionada === 'dni'" class="datos">
+            <label for="dni">Ingrese el DNI de cliente:</label>
+            <input type="dni" [(ngModel)]="dniBuscado" placeholder="12345678" (keydown.enter)="buscarPorDni()">
+        </div>
+        
+        <div *ngIf="opcionSeleccionada === 'fecha'" class="datos">
+            <label for="fecha">Ingrese la fecha de la compra:</label>
+            <input type="date" [(ngModel)]="fechaBuscada" (keydown.enter)="buscarPorFecha()">
+        </div> 
+
+        <div *ngIf="opcionSeleccionada === 'nro-compra'" class="datos">
+            <label for="nro-compra">Buscar compra por código:</label>
+            <input type="text" [(ngModel)]="nroCompraBuscada" placeholder="1234" (keydown.enter)="buscarPorNroCompra()">
+        </div>
+    </div>
+
+    <div class="filtrado">
+        <h3>FILTRAR</h3>
+        <label for="opciones-estado">Estado de la compra:</label>
+        <select name="opciones-estado" id="opciones-estado" [(ngModel)]="filtroEstado">
+            <option value="pago-pendiente">Pendiente de pago</option>
+            <option value="pago-confirmado">Pago confirmado</option>
+            <option value="empaquetado">Empaquetado</option>
+            <option value="enviado">Enviado</option>
+            <option value="entregado">Entregado</option>
+            <option value="archivado">Archivado</option>
+        </select>
+
+        <label for="rango-fecha">Rango de fecha:</label>
+        <input type="date" [(ngModel)]="fechaDesde" (change)="filtrarPorFecha()">
+        <input type="date" [(ngModel)]="fechaHasta" (change)="filtrarPorFecha()">
+
+    </div>
+
+    <button *ngIf="opcionSeleccionada === 'todas'" (click)="buscarTodas()">Buscar</button>
+    <button *ngIf="opcionSeleccionada === 'email'" (click)="buscarPorEmail()">Buscar</button>
+    <button *ngIf="opcionSeleccionada === 'dni'" (click)="buscarPorDni()">Buscar</button>
+    <button *ngIf="opcionSeleccionada === 'fecha'" (click)="buscarPorFecha()">Buscar</button>
+    <button *ngIf="opcionSeleccionada === 'nro-compra'" (click)="buscarPorNroCompra()">Buscar</button>
+
 </div>
-
-<div *ngIf="opcionSeleccionada === 'email'">
-    <label for="email">Buscar compras por email de cliente:</label>
-    <input type="email" [(ngModel)]="emailBuscado" placeholder="ejemplo@gmail.com" (keydown.enter)="buscarPorEmail()">
-    <a class="busqueda-icon" (click)="buscarPorEmail()">
-        <i class="fi fi-rs-search"></i>
-    </a>
-</div>
-
- <div *ngIf="opcionSeleccionada === 'dni'">
-    <label for="dni">Buscar compras por dni de cliente:</label>
-    <input type="dni" [(ngModel)]="dniBuscado" placeholder="12345678" (keydown)="buscarPorDni()">
-    <a class="busqueda-icon" (click)="buscarPorDni()">
-        <i class="fi fi-rs-search"></i>
-    </a>
-</div>
-
-<div *ngIf="opcionSeleccionada === 'fecha'">
-    <label for="fecha">Buscar compras por fecha:</label>
-    <input type="date" [(ngModel)]="fechaBuscada" (keydown.enter)="buscarPorFecha()">
-    <a class="busqueda-icon" (click)="buscarPorFecha()">
-        <i class="fi fi-rs-search"></i>
-    </a>
-</div> 
-
-
-<!-- <div *ngIf="opcionSeleccionada === 'nro-compra'">
-    <label for="nro-compra">Buscar compra por código:</label>
-    <input type="text" [(ngModel)]="nroCompraBuscado" placeholder="1234" (keydown)="buscarPorNroCompra()">
-    <a class="busqueda-icon" (click)="buscarPorNroCompra()">
-        <i class="fi fi-rs-search"></i>
-</div>
- -->
 
 
 

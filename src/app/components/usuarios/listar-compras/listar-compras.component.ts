@@ -15,6 +15,7 @@ export class ListarComprasComponent implements OnInit{
 
   productos: ItemCarrito[] = [];
   compras: Compra[] = [];
+  compra: Compra = {} as Compra;
 
   isLogged: boolean = false;
   isAdminRole: boolean = false;
@@ -28,12 +29,15 @@ export class ListarComprasComponent implements OnInit{
   dniBuscado: string = "";
   fechaBuscada: string = "";
   nroCompraBuscada: string = "";
+  filtroEstado: string = "";
+  fechaDesde: string = "";
+  fechaHasta: string = "";
 
 
   constructor(
     private compraService: ComprasService,
-     private authService: AuthenticationService
-     ){}
+    private authService: AuthenticationService
+  ){}
 
   async ngOnInit(): Promise<void> {
     await this.authService.waitForFirebaseAuthentication();
@@ -45,40 +49,7 @@ export class ListarComprasComponent implements OnInit{
     }
   }
 
-  async listarCompras(id: string){
-    this.compras = await this.compraService.getComprasPorUsuario(id);
-    this.ordenarComprasPorFecha();
-  }
-
-  ordenarComprasPorFecha(){
-    this.compras.sort((a,b) => {
-      let dateA = new Date(a.fecha);
-      let dateB = new Date(b.fecha);
-      return dateB.getTime() - dateA.getTime();
-    });
-  }
-
-  async finalizarEstadoCompra(id:string){
-    const ok = confirm("¿Desea finalizar la compra?");
-    if(!ok){
-      return;
-    }
-    await this.compraService.cambiarEstadoCompra(id, "finalizada");
-    alert("Compra finalizada");
-    this.compras = await this.compraService.getComprasPorEmail(this.emailBuscado);
-  }
-
-
-  async buscarPorEmail():Promise<void>{
-    if(this.emailBuscado === ""){
-      alert("Ingrese un email");
-      return;
-    }
-    this.compras = await this.compraService.getComprasPorEmail(this.emailBuscado);
-    await this.validarUsuario();
-    await this.validarCompras();
-    this.ordenarComprasPorFecha();
-  };
+  //Métodos de validación.
 
   async validarUsuario():Promise<void>{
     const id_user = await this.authService.getUserIdByEmail(this.emailBuscado);
@@ -96,7 +67,46 @@ export class ListarComprasComponent implements OnInit{
       this.tieneCompras = true;
     }
   }
-//nuevas!!!
+
+  //Métodos de ordenación y corrección de datos.
+
+  async listarCompras(id: string){
+    this.compras = await this.compraService.getComprasPorUsuario(id);
+    this.ordenarComprasPorFecha();
+  }
+
+  ordenarComprasPorFecha(){
+    this.compras.sort((a,b) => {
+      let dateA = new Date(a.fecha);
+      let dateB = new Date(b.fecha);
+      return dateB.getTime() - dateA.getTime();
+    });
+  }
+
+  corregirFecha(fecha: string): string{
+    let fechaCorregida = fecha.replace(/-/g, "/");
+    return fechaCorregida;
+  }
+
+  //Métodos de búsqueda.
+
+  async buscarTodas(): Promise<void>{
+    this.compras = await this.compraService.getCompras();
+    this.aplicarFiltros();
+    this.ordenarComprasPorFecha();
+  }
+
+  async buscarPorEmail():Promise<void>{
+    if(this.emailBuscado === ""){
+      alert("Ingrese un email");
+      return;
+    }
+    this.compras = await this.compraService.getComprasPorEmail(this.emailBuscado);
+    await this.validarUsuario();
+    await this.validarCompras();
+    this.aplicarFiltros();
+    this.ordenarComprasPorFecha();
+  };
 
   async buscarPorDni(): Promise<void>{
     if(this.dniBuscado === ""){
@@ -109,9 +119,9 @@ export class ListarComprasComponent implements OnInit{
     }
     this.compras = await this.compraService.getComprasPorUsuario(id_user);
     await this.validarCompras();
+    this.aplicarFiltros();
     this.ordenarComprasPorFecha();
   }
-
 
   async buscarPorFecha(): Promise<void>{
     const fecha = this.corregirFecha(this.fechaBuscada);
@@ -123,16 +133,80 @@ export class ListarComprasComponent implements OnInit{
     this.compras = await this.compraService.getComprasPorFecha(fecha);
     console.log(this.compras);
     
+    this.aplicarFiltros();
     await this.validarCompras();
     this.ordenarComprasPorFecha();
   }
 
-  corregirFecha(fecha: string): string{
-    //reemplaza todos los guiones de la fecha por barras
-    let fechaCorregida = fecha.replace(/-/g, "/");
-    return fechaCorregida;
+  async buscarPorNroCompra(): Promise<void>{
+    if(this.nroCompraBuscada === ""){
+      alert("Ingrese un número de compra");
+      return;
+    }
+    this.compra = await this.compraService.getComprasPorNroCompra(this.nroCompraBuscada);
+    this.compras = [];
+    if(this.compra !== null){
+      this.compras.push(this.compra);
+    }
+    this.aplicarFiltros();
+    this.ordenarComprasPorFecha();
   }
 
+  //Métodos de filtrado. 
+  //Agregar filtros por estado de compra, rango de fecha, monto, etc. 
+
+  filtrarPorEstado(estado: string){
+    this.compras = this.compras.filter(compra => compra.estado === estado);
+  }
+
+  filtrarPorFecha(){
+    if(this.fechaDesde === "" && this.fechaHasta === ""){
+      alert("Ingrese un rango de fechas");
+      return;
+    }
+    let fechaDesde = this.corregirFecha(this.fechaDesde);
+    let fechaHasta = this.corregirFecha(this.fechaHasta);
+    
+    this.compras = this.compras.filter(compra => {
+      let fechaCompra = this.corregirFecha(compra.fecha);
+      
+      return fechaCompra >= fechaDesde && fechaCompra <= fechaHasta;
+    });
+}
+
+aplicarFiltros(){
+  if(this.filtroEstado !== ""){
+    this.filtrarPorEstado(this.filtroEstado);
+  }
+  if(this.fechaDesde !== "" && this.fechaHasta !== ""){
+    this.filtrarPorFecha();
+  }
+}
+
+
+
+  //Métodos de cambio de estado. 
+/*faltaría agregar estados:
+    -Pendiente de pago. 
+    -Pago confirmado. 
+    -Empaquetado.
+    -Notificar envío (mandar mail con enlace de seguimiento)
+    -Entregado/Retirado. 
+    -Archivar
+    -Cancelar. (devolver stock y dinero al usuario)
+    )*/
+  async finalizarEstadoCompra(id:string){
+    const ok = confirm("¿Desea finalizar la compra?");
+    if(!ok){
+      return;
+    }
+    await this.compraService.cambiarEstadoCompra(id, "finalizada");
+    alert("Compra finalizada");
+    this.compras = await this.compraService.getComprasPorEmail(this.emailBuscado);
+  }
+
+
+  
 
 
 
