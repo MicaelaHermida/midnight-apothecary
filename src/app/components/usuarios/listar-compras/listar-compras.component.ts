@@ -33,6 +33,7 @@ export class ListarComprasComponent implements OnInit{
   fechaDesde: string = "";
   fechaHasta: string = "";
 
+  datoBuscado: string = "";
 
   constructor(
     private compraService: ComprasService,
@@ -90,13 +91,7 @@ export class ListarComprasComponent implements OnInit{
 
   //Métodos de búsqueda.
 
-  async buscarTodas(): Promise<void>{
-    this.compras = await this.compraService.getCompras();
-    this.aplicarFiltros();
-    this.ordenarComprasPorFecha();
-  }
-
-  async buscarPorEmail():Promise<void>{
+  /* async buscarPorEmail():Promise<void>{
     if(this.emailBuscado === ""){
       alert("Ingrese un email");
       return;
@@ -106,9 +101,14 @@ export class ListarComprasComponent implements OnInit{
     await this.validarCompras();
     this.aplicarFiltros();
     this.ordenarComprasPorFecha();
-  };
+  }; */
 
-  async buscarPorDni(): Promise<void>{
+  async buscarPorEmail():Promise<void>{
+    this.compras = await this.compraService.getComprasPorEmail(this.emailBuscado);
+    await this.validarUsuario();
+  }
+
+/*   async buscarPorDni(): Promise<void>{
     if(this.dniBuscado === ""){
       alert("Ingrese un DNI");
       return;
@@ -121,9 +121,17 @@ export class ListarComprasComponent implements OnInit{
     await this.validarCompras();
     this.aplicarFiltros();
     this.ordenarComprasPorFecha();
+  } */
+
+  async buscarPorDni(): Promise<void>{
+    const id_user = await this.authService.getUserIdByDni(this.dniBuscado);
+    if(id_user === ""){
+      this.existeUsuario = false;
+    }
+    this.compras = await this.compraService.getComprasPorUsuario(id_user);
   }
 
-  async buscarPorFecha(): Promise<void>{
+/*   async buscarPorFecha(): Promise<void>{
     const fecha = this.corregirFecha(this.fechaBuscada);
     console.log(fecha);
     if(fecha === ""){
@@ -136,9 +144,14 @@ export class ListarComprasComponent implements OnInit{
     this.aplicarFiltros();
     await this.validarCompras();
     this.ordenarComprasPorFecha();
+  } */
+
+  async buscarPorFecha(): Promise<void>{
+    const fecha = this.corregirFecha(this.fechaBuscada);
+    this.compras = await this.compraService.getComprasPorFecha(fecha);
   }
 
-  async buscarPorNroCompra(): Promise<void>{
+/*   async buscarPorNroCompra(): Promise<void>{
     if(this.nroCompraBuscada === ""){
       alert("Ingrese un número de compra");
       return;
@@ -150,7 +163,39 @@ export class ListarComprasComponent implements OnInit{
     }
     this.aplicarFiltros();
     this.ordenarComprasPorFecha();
+  } */
+  async buscarPorNroCompra(): Promise<void>{
+    this.compra = await this.compraService.getComprasPorNroCompra(this.nroCompraBuscada);
+    this.compras = [];
+    if(this.compra !== null){
+      this.compras.push(this.compra);
+    }
   }
+
+//funcion busqueda optimizada. 
+//en lugar de select, se usa un input, se evalúa el valor ingresado. Sí coincide con un email, se busca por email, y así con los demás campos. 
+//si no coincide con ninguno, se muestra un mensaje de error. 
+  async buscarCompras (){
+    if(this.datoBuscado === ""){
+      this.compras = await this.compraService.getCompras();
+    }
+    if(this.datoBuscado.includes("@") && this.datoBuscado.includes(".")){
+      this.emailBuscado = this.datoBuscado;
+      this.buscarPorEmail();
+    }else if(!isNaN(Number(this.datoBuscado)) && this.datoBuscado.length === 8){
+      this.dniBuscado = this.datoBuscado;
+      this.buscarPorDni();
+    }else if(this.datoBuscado.includes("/") || this.datoBuscado.includes("-")){
+      this.fechaBuscada = this.datoBuscado;
+      this.buscarPorFecha();
+    }
+
+    await this.validarCompras();
+    this.aplicarFiltros();
+    this.ordenarComprasPorFecha(); 
+  }
+
+  ////////////////////////////////////////
 
   //Métodos de filtrado. 
   //Agregar filtros por estado de compra, rango de fecha, monto, etc. 
@@ -182,6 +227,7 @@ aplicarFiltros(){
     this.filtrarPorFecha();
   }
 }
+
 
 
 

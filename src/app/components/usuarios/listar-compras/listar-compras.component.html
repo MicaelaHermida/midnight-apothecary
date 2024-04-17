@@ -10,42 +10,15 @@
     </div>
 </div> -->
 
-<div class ="busqueda">
-    <div *ngIf="isAdminRole && firebaseAuthenticationReady" class="info">
-        <label for="opciones-busqueda">Seleccione el método de búsqueda</label>
-        <select name="opciones-busqueda" id="opciones-busqueda" [(ngModel)]="opcionSeleccionada" class="opciones-busqueda">
-            <option value="todas">Todas las compras</option>
-            <option value="email">Email</option>
-            <option value="dni">Dni</option>
-            <option value="nro-compra">N° compra</option>
-            <option value="fecha">Fecha</option>
-        </select>   
-
-        <div *ngIf="opcionSeleccionada === 'email'" class="datos">
-            <label for="email">Ingrese el email de cliente:</label>
-            <input type="email" [(ngModel)]="emailBuscado" placeholder="ejemplo@gmail.com" (keydown.enter)="buscarPorEmail()">
-        </div>
-        
-         <div *ngIf="opcionSeleccionada === 'dni'" class="datos">
-            <label for="dni">Ingrese el DNI de cliente:</label>
-            <input type="dni" [(ngModel)]="dniBuscado" placeholder="12345678" (keydown.enter)="buscarPorDni()">
-        </div>
-        
-        <div *ngIf="opcionSeleccionada === 'fecha'" class="datos">
-            <label for="fecha">Ingrese la fecha de la compra:</label>
-            <input type="date" [(ngModel)]="fechaBuscada" (keydown.enter)="buscarPorFecha()">
-        </div> 
-
-        <div *ngIf="opcionSeleccionada === 'nro-compra'" class="datos">
-            <label for="nro-compra">Buscar compra por código:</label>
-            <input type="text" [(ngModel)]="nroCompraBuscada" placeholder="1234" (keydown.enter)="buscarPorNroCompra()">
-        </div>
+<div class ="busqueda-compras" *ngIf="isAdminRole && firebaseAuthenticationReady">
+    <div  class="info">
+        <label for="dato-buscado">Buscar:</label>
+        <input type="dato-buscado" [(ngModel)]="datoBuscado" placeholder="Ingrese el numero de compra, dni o email del cliente" (keydown.enter)="buscarCompras()">
     </div>
 
-    <div class="filtrado">
-        <h3>FILTRAR</h3>
-        <label for="opciones-estado">Estado de la compra:</label>
-        <select name="opciones-estado" id="opciones-estado" [(ngModel)]="filtroEstado">
+    <div class="info">
+        <label for="opciones-estado">Filtrar:</label>
+        <select name="opciones-estado" id="opciones-estado" [(ngModel)]="filtroEstado" value="Estado de la compra">
             <option value="pago-pendiente">Pendiente de pago</option>
             <option value="pago-confirmado">Pago confirmado</option>
             <option value="empaquetado">Empaquetado</option>
@@ -60,14 +33,8 @@
 
     </div>
 
-    <button *ngIf="opcionSeleccionada === 'todas'" (click)="buscarTodas()">Buscar</button>
-    <button *ngIf="opcionSeleccionada === 'email'" (click)="buscarPorEmail()">Buscar</button>
-    <button *ngIf="opcionSeleccionada === 'dni'" (click)="buscarPorDni()">Buscar</button>
-    <button *ngIf="opcionSeleccionada === 'fecha'" (click)="buscarPorFecha()">Buscar</button>
-    <button *ngIf="opcionSeleccionada === 'nro-compra'" (click)="buscarPorNroCompra()">Buscar</button>
-
+    <button class="boton-claro" (click)="buscarCompras()">Buscar</button>
 </div>
-
 
 
 <div *ngIf="firebaseAuthenticationReady && isLogged" class="contenedor-listado">
