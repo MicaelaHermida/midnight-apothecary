@@ -40,7 +40,7 @@
             <thead>
                 <tr>
                     <th></th>
-                    <th>Nro Compra</th>
+                    <th>N° Compra</th>
                     <th>Fecha</th>
                     <th>Productos</th>
                     <th>Total</th>
@@ -92,12 +92,13 @@
         </table>
     </main>
 
-    <div class="selector-compras" *ngIf="hayComprasSeleccionadas()">
-        <label>Accionar</label>
+    <div class="selector-aside" *ngIf="hayComprasSeleccionadas()">
+        <label>Elija una opción</label>
         <select [(ngModel)]="accionSeleccionada">
             <option value="Cancelar">Cancelar</option>
             <option value="Archivar">Archivar</option>
         </select>
+        <button class="boton-claro">Aplicar</button>
     </div>
     
 </div>

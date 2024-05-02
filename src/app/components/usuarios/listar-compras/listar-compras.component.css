@@ -46,21 +46,21 @@ p{
 .compras-container{
     display: flex;
     flex-direction: row;
-    /*limitar flex a dos espacios*/
-    flex: 1 2;
     align-items: flex-start;
 }
+
+
+/*PANEL BUSQUEDA*/
 
 .busqueda-aside{
     background-color: var(--back-extra-light-trans2);
     background-image: url(../../../../assets/img/caja-trans-long.png);
-    background-blend-mode:soft-light; /*lighten*/
-    width: 17%;
+    background-blend-mode:soft-light;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 3rem;
-    margin: 2rem 0 2rem 2rem;
+    margin: 2rem;
     padding: 1rem;
     border-radius: .5rem;
 }
@@ -159,17 +159,15 @@ p{
 
 .listado-compras{
     width: 60%;
+    margin: 2rem;
 }
 
 /*TABLA COMPRAS*/
 
 .tabla-compras{
-    width: 100%;
-    margin: 2rem 4rem;
     border-collapse: collapse;
     background-color: var(--back-extra-light-trans2);
     background-image: url(../../../../assets/img/caja-trans-long.png);
-    
     background-blend-mode: overlay;
     border-radius: .5rem;
 }
@@ -192,6 +190,8 @@ p{
     padding: .5rem;
     text-align: center;
     border-bottom: .1rem solid var(--color-extra-light2);
+
+    vertical-align: top;
 }
 
 .tabla-compras td a{
@@ -210,42 +210,30 @@ p{
     justify-content: space-between;
 }
 
-
-
-/*VIEJO*/
-.caja-cuerpo{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 0 2rem;
-}
-
-.caja-cuerpo p{
-    margin: 0; 
-    padding: .5rem;
-}
-
-
 .cantidad{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.pie-compra{
-    width: 90%;
+
+/*SELECTOR*/
+
+.selector-aside{
+    background-color: var(--back-extra-light-trans2);
+    background-image: url(../../../../assets/img/caja-trans-long.png);
+    background-blend-mode: overlay;
+    width: 17%;
+
+    margin: 2rem 0 2rem 1rem;
+    padding: 1rem;
+    border-radius: .5rem;
+
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: column;
     justify-content: space-between;
-    margin: auto;
+    align-items: flex-start;
+
+    position: relative; /* Agregado */
+    z-index: 1;
 }
-
-.pie-compra p{
-    text-align: start;
-}
-
-.total{
-    font-size: large;
-    font-weight: 300;
-} 
-

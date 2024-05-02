@@ -234,8 +234,6 @@ aplicarFiltros(){
 
   
   actualizarComprasSeleccionadas(): void{
-    this.checkCompras = {};
-
     for(const compra of this.compras){
       if(this.checkCompras[compra.idDoc!]){
         this.checkCompras[compra.idDoc!] = true;
