@@ -14,9 +14,11 @@
     --font-size-19: 1.9rem;
     --font-size-20: 2rem;
     --font-size-28: 2.8rem;
+    --font-size-30: 3rem;
 
     /*Color*/
     --color-extra-light: #e8d5eb;
+    --color-extra-light2: #f5e9f7;
     --color-light: #b39fb6;
     --color-dark: #2a2030;
     --color-extra-dark: #1b151f;
@@ -24,6 +26,7 @@
     --back-trans: #00000000;
     --back-light-trans: #b39fb6d8;
     --back-extra-light-trans: #f3dff7be;
+    --back-extra-light-trans2: #faedfcbe;
     --back-dark-trans: #2a2030d3;
 }
 

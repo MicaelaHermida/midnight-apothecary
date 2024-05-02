@@ -17,23 +17,35 @@ export class ListarComprasComponent implements OnInit{
   compras: Compra[] = [];
   compra: Compra = {} as Compra;
 
+  arrayEstados: string[] = ['Pendiente de pago', 'Pago confirmado', 'Empaquetado', 'Enviado', 'Entregado', 'Archivado'];
+  filtradoReady: boolean = false;
+
   isLogged: boolean = false;
   isAdminRole: boolean = false;
   firebaseAuthenticationReady: boolean = false;
 
   existeUsuario: boolean = true;
   tieneCompras: boolean = true;
-  
-  opcionSeleccionada: string = "";
+  busqueda: boolean = false;
+
   emailBuscado: string = "";
   dniBuscado: string = "";
   fechaBuscada: string = "";
   nroCompraBuscada: string = "";
+
+
+  //filtros
   filtroEstado: string = "";
   fechaDesde: string = "";
   fechaHasta: string = "";
 
   datoBuscado: string = "";
+
+  clientes: Map<string, string> = new Map();
+  estadoAmpliacion: {[key: string]: boolean} = {};
+
+  checkCompras: {[key: string]: boolean} = {};
+  accionSeleccionada: string = "";
 
   constructor(
     private compraService: ComprasService,
@@ -47,6 +59,13 @@ export class ListarComprasComponent implements OnInit{
     this.isAdminRole = await this.authService.getCurrentUserRole() === 'admin';
     if(!this.isAdminRole){
       this.listarCompras(this.authService.getCurrentUserId());
+      await this.initializeEstadoAmpliacion();
+    }
+  }
+
+  async initializeEstadoAmpliacion(): Promise<void>{
+    for(const compra of this.compras){
+      this.estadoAmpliacion[compra.idDoc!] = false;
     }
   }
 
@@ -54,19 +73,11 @@ export class ListarComprasComponent implements OnInit{
 
   async validarUsuario():Promise<void>{
     const id_user = await this.authService.getUserIdByEmail(this.emailBuscado);
-    if(id_user === ""){
-      this.existeUsuario = false;
-    }else{
-      this.existeUsuario =  true;
-    }
+    this.existeUsuario = !!id_user;
   }
 
   async validarCompras():Promise<void>{
-    if(this.compras.length === 0){
-      this.tieneCompras = false;
-    }else{
-      this.tieneCompras = true;
-    }
+    this.tieneCompras = !!this.compras.length;
   }
 
   //Métodos de ordenación y corrección de datos.
@@ -82,46 +93,22 @@ export class ListarComprasComponent implements OnInit{
       let dateB = new Date(b.fecha);
       return dateB.getTime() - dateA.getTime();
     });
-  }
+  } 
+
+/*   ordenarComprasPorFecha(){
+    this.compras.sort((a,b) => new Date(b.fecha).getTime() - new Date(a.fecha).getTime());
+  } */
 
   corregirFecha(fecha: string): string{
-    let fechaCorregida = fecha.replace(/-/g, "/");
-    return fechaCorregida;
+    return fecha.replace(/-/g, "/");
   }
 
   //Métodos de búsqueda.
-
-  /* async buscarPorEmail():Promise<void>{
-    if(this.emailBuscado === ""){
-      alert("Ingrese un email");
-      return;
-    }
-    this.compras = await this.compraService.getComprasPorEmail(this.emailBuscado);
-    await this.validarUsuario();
-    await this.validarCompras();
-    this.aplicarFiltros();
-    this.ordenarComprasPorFecha();
-  }; */
 
   async buscarPorEmail():Promise<void>{
     this.compras = await this.compraService.getComprasPorEmail(this.emailBuscado);
     await this.validarUsuario();
   }
-
-/*   async buscarPorDni(): Promise<void>{
-    if(this.dniBuscado === ""){
-      alert("Ingrese un DNI");
-      return;
-    }
-    const id_user = await this.authService.getUserIdByDni(this.dniBuscado);
-    if(id_user === ""){
-      this.existeUsuario = false;
-    }
-    this.compras = await this.compraService.getComprasPorUsuario(id_user);
-    await this.validarCompras();
-    this.aplicarFiltros();
-    this.ordenarComprasPorFecha();
-  } */
 
   async buscarPorDni(): Promise<void>{
     const id_user = await this.authService.getUserIdByDni(this.dniBuscado);
@@ -131,77 +118,66 @@ export class ListarComprasComponent implements OnInit{
     this.compras = await this.compraService.getComprasPorUsuario(id_user);
   }
 
-/*   async buscarPorFecha(): Promise<void>{
-    const fecha = this.corregirFecha(this.fechaBuscada);
-    console.log(fecha);
-    if(fecha === ""){
-      alert("Ingrese una fecha");
-      return;
-    }
-    this.compras = await this.compraService.getComprasPorFecha(fecha);
-    console.log(this.compras);
-    
-    this.aplicarFiltros();
-    await this.validarCompras();
-    this.ordenarComprasPorFecha();
-  } */
-
   async buscarPorFecha(): Promise<void>{
     const fecha = this.corregirFecha(this.fechaBuscada);
     this.compras = await this.compraService.getComprasPorFecha(fecha);
   }
 
-/*   async buscarPorNroCompra(): Promise<void>{
-    if(this.nroCompraBuscada === ""){
-      alert("Ingrese un número de compra");
-      return;
-    }
-    this.compra = await this.compraService.getComprasPorNroCompra(this.nroCompraBuscada);
-    this.compras = [];
-    if(this.compra !== null){
-      this.compras.push(this.compra);
-    }
-    this.aplicarFiltros();
-    this.ordenarComprasPorFecha();
-  } */
   async buscarPorNroCompra(): Promise<void>{
     this.compra = await this.compraService.getComprasPorNroCompra(this.nroCompraBuscada);
-    this.compras = [];
-    if(this.compra !== null){
-      this.compras.push(this.compra);
-    }
+    this.compras = this.compra ? [this.compra] : [];
   }
 
 //funcion busqueda optimizada. 
 //en lugar de select, se usa un input, se evalúa el valor ingresado. Sí coincide con un email, se busca por email, y así con los demás campos. 
 //si no coincide con ninguno, se muestra un mensaje de error. 
-  async buscarCompras (){
+  async buscarCompras (): Promise<void>{
+    this.busqueda = true;
+
     if(this.datoBuscado === ""){
       this.compras = await this.compraService.getCompras();
-    }
-    if(this.datoBuscado.includes("@") && this.datoBuscado.includes(".")){
+    }else if(this.datoBuscado.includes("@") && this.datoBuscado.includes(".")){
       this.emailBuscado = this.datoBuscado;
-      this.buscarPorEmail();
+      await this.buscarPorEmail();
     }else if(!isNaN(Number(this.datoBuscado)) && this.datoBuscado.length === 8){
       this.dniBuscado = this.datoBuscado;
-      this.buscarPorDni();
+      await this.buscarPorDni();
     }else if(this.datoBuscado.includes("/") || this.datoBuscado.includes("-")){
       this.fechaBuscada = this.datoBuscado;
-      this.buscarPorFecha();
+      await this.buscarPorFecha();
+    }else{
+      this.nroCompraBuscada = this.datoBuscado;
+      await this.buscarPorNroCompra();
     }
 
-    await this.validarCompras();
+    this.validarCompras();
     this.aplicarFiltros();
-    this.ordenarComprasPorFecha(); 
+    this.getClientesPorCompra();
+    this.ordenarComprasPorFecha();
+
+    await this.initializeEstadoAmpliacion();
+
   }
 
-  ////////////////////////////////////////
+  //buscar nombre de cliente. 
+
+    async getClientesPorCompra(){
+      for(let compra of this.compras){
+        const cliente = await this.authService.getUserNameById(compra.userId);
+        this.clientes.set(compra.userId, cliente);
+      } 
+    }
+  
+    ampliarCompra(idCompra: string | undefined): void{
+      console.log(idCompra);
+      this.estadoAmpliacion[idCompra!] = !this.estadoAmpliacion[idCompra!];
+    }
+
 
   //Métodos de filtrado. 
-  //Agregar filtros por estado de compra, rango de fecha, monto, etc. 
 
-  filtrarPorEstado(estado: string){
-    this.compras = this.compras.filter(compra => compra.estado === estado);
+  filtrarPorEstado(){
+    this.compras = this.compras.filter(compra => compra.estado === this.filtroEstado);
   }
 
   filtrarPorFecha(){
@@ -209,19 +185,18 @@ export class ListarComprasComponent implements OnInit{
       alert("Ingrese un rango de fechas");
       return;
     }
-    let fechaDesde = this.corregirFecha(this.fechaDesde);
-    let fechaHasta = this.corregirFecha(this.fechaHasta);
+    const fechaDesde = this.corregirFecha(this.fechaDesde);
+    const fechaHasta = this.corregirFecha(this.fechaHasta);
     
     this.compras = this.compras.filter(compra => {
-      let fechaCompra = this.corregirFecha(compra.fecha);
-      
+      const fechaCompra = this.corregirFecha(compra.fecha);
       return fechaCompra >= fechaDesde && fechaCompra <= fechaHasta;
     });
 }
 
 aplicarFiltros(){
   if(this.filtroEstado !== ""){
-    this.filtrarPorEstado(this.filtroEstado);
+    this.filtrarPorEstado();
   }
   if(this.fechaDesde !== "" && this.fechaHasta !== ""){
     this.filtrarPorFecha();
@@ -229,8 +204,7 @@ aplicarFiltros(){
 }
 
 
-
-
+///////////////////////////////////////
   //Métodos de cambio de estado. 
 /*faltaría agregar estados:
     -Pendiente de pago. 
@@ -241,7 +215,14 @@ aplicarFiltros(){
     -Archivar
     -Cancelar. (devolver stock y dinero al usuario)
     )*/
-  async finalizarEstadoCompra(id:string){
+
+
+  async cambiarEstadoCompra(id:string, estado:string){
+    await this.compraService.cambiarEstadoCompra(id, estado);
+    this.compras = await this.compraService.getCompras();
+  }
+
+  /* async finalizarEstadoCompra(id:string){
     const ok = confirm("¿Desea finalizar la compra?");
     if(!ok){
       return;
@@ -249,7 +230,57 @@ aplicarFiltros(){
     await this.compraService.cambiarEstadoCompra(id, "finalizada");
     alert("Compra finalizada");
     this.compras = await this.compraService.getComprasPorEmail(this.emailBuscado);
+  } */
+
+  
+  actualizarComprasSeleccionadas(): void{
+    this.checkCompras = {};
+
+    for(const compra of this.compras){
+      if(this.checkCompras[compra.idDoc!]){
+        this.checkCompras[compra.idDoc!] = true;
+      }else{
+        this.checkCompras[compra.idDoc!] = false;
+      }
+    }
   }
+
+  hayComprasSeleccionadas(): boolean{
+    return Object.values(this.checkCompras).some(seleccionada => seleccionada);
+  }
+
+  realizarAccion(): void{
+    if(this.accionSeleccionada === ""){
+      alert("Seleccione una acción");
+      return;
+    }
+
+    if(this.accionSeleccionada === "cancelar"){
+      this.cancelarCompras();
+    }else if(this.accionSeleccionada === "archivar"){
+      this.archivarCompras();
+    }
+
+    
+  }
+
+  async cancelarCompras(): Promise<void>{
+    for(const[id, seleccionada] of Object.entries(this.checkCompras)){
+      if(seleccionada){
+        await this.compraService.cambiarEstadoCompra(id, 'cancelada');
+      }
+    }
+  }
+
+  async archivarCompras(): Promise<void>{
+    for(const[id, seleccionada] of Object.entries(this.checkCompras)){
+      if(seleccionada){
+        await this.compraService.cambiarEstadoCompra(id, 'archivada');
+      }
+    }
+  }
+
+
 
 
   
