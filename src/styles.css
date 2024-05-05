@@ -22,14 +22,14 @@
     /*Color*/
    /*  --color-extra-light: #e8d5eb; */
     --color-extra-light: #f5e9f7;
-    --color-light: #b39fb6;
+    --color-light: #d2c2d4; /*b39fb6*/
     --color-dark: #2a2030;
     --color-extra-dark: #1b151f;
     --back-medium: #876a89;
     --back-trans: #00000000;
     --back-light-trans: #b39fb6d8;
-    --back-extra-light-trans: #f3dff7be;
-    --back-extra-light-trans2: #faedfcbe;
+/*     --back-extra-light-trans: #f3dff7be; */
+    --back-extra-light-trans: #faedfcbe;
     --back-dark-trans: #2a2030d3;
 }
 
@@ -73,7 +73,7 @@ hr {
 
 h1 {
     font-family: var(--titulo-font);
-    font-size: 7rem;
+    font-size: 6rem;
     color: black;
     margin: auto;
 }
@@ -164,7 +164,7 @@ textarea:focus {
 
 .fondo-user {
     background-color: var(--color-light);
-    background-image: url(../src/assets/img/dibujos-user.jpg);
+    background-image: url(../src/assets/img/dibujos-user2.jpg);
     background-blend-mode: multiply;
 }
 
@@ -188,6 +188,12 @@ textarea:focus {
     padding: 2rem;
     width: 100%;
     min-height: 20rem;
+}
+
+.fondo-caja-clara{
+    background-color: var(--back-extra-light-trans);
+    background-image: url(../src/assets/img/caja-trans-long.png);
+    background-blend-mode: overlay;
 }
 
 /* ------------------------[ FOOTER PARA PAGS CORTAS ]------------------------*/

@@ -6,10 +6,7 @@
 
     <aside class="busqueda-aside">
         <div class="busqueda-aside-box" *ngIf="isAdminRole && firebaseAuthenticationReady">
-            <p>BUSCAR</p>
-            <!-- <input class="input-pequeno" type="text" [(ngModel)]="datoBuscado"
-                placeholder="Ingrese el número de compra, dni o email del cliente..." (keydown.enter)="buscarCompras()"> -->
-            
+            <p>BUSCAR</p>  
              <div class="placeholder-container">
                 <span class="placeholder" *ngIf="!inputSeleccionado && !datoBuscado">Ingrese el número de compra, dni o email del cliente...</span>
                 <input class="input-pequeno" type="text" [(ngModel)]="datoBuscado" (click)="inputSeleccionado = true" (blur)="verificarInput()">

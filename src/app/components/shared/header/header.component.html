@@ -14,7 +14,7 @@
     <h1 *ngIf="isCompras"><span class="mayus">C</span>ompras</h1>
 </header> -->
 
-<header>
+<header class="fondo-caja-clara">
         <div class="user">
             <a *ngIf="!isLogged && firebaseAuthenticationReady" [routerLink]="['/login']">Iniciar sesión</a>
             <a *ngIf="!isLogged && firebaseAuthenticationReady" [routerLink]="['/register']">Crear cuenta</a>

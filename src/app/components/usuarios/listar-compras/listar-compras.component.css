@@ -1,14 +1,13 @@
 /*BUSQUEDA*/
 h2 {
     text-decoration: none;
-    text-align: center;
+    text-align: left;
     margin: 2rem 0 1rem 2rem;
     font-size: var(--font-size-50);
     font-family: var(--titulo-font);
 }
 
 .hr-subtitulo {
-    align-items: center;
     width: 30%;
     margin: 0 2rem;
     border: 1px solid var(--color-dark);
@@ -36,9 +35,9 @@ p {
 /*PANEL BUSQUEDA*/
 
 .busqueda-aside {
-    background-color: var(--back-extra-light-trans2);
+    background-color: var(--back-extra-light-trans);
     background-image: url(../../../../assets/img/caja-trans-long.png);
-    background-blend-mode: soft-light;
+    background-blend-mode: overlay;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -194,7 +193,7 @@ input[type="checkbox" i]:hover{
 /*TABLA COMPRAS*/
 .tabla-compras {
     border-collapse: collapse;
-    background-color: var(--back-extra-light-trans2);
+    background-color: var(--back-extra-light-trans);
     background-image: url(../../../../assets/img/caja-trans-long.png);
     background-blend-mode: overlay;
     border-radius: .5rem;
@@ -224,7 +223,7 @@ input[type="checkbox" i]:hover{
 
 .tabla-compras td a {
     color: var(--back-medium);
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 .tabla-compras td p {
@@ -248,7 +247,7 @@ input[type="checkbox" i]:hover{
 /*SELECTOR*/
 
 .selector-aside {
-    background-color: var(--back-extra-light-trans2);
+    background-color: var(--back-extra-light-trans);
     background-image: url(../../../../assets/img/caja-trans-long.png);
     background-blend-mode: overlay;
     width: 17%;

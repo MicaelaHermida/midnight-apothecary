@@ -1,7 +1,8 @@
 .fondo-opciones{
-    background-image: url(../../../assets/img/guarda-tienda.jpg);
+    background-image: url(../../../assets/img/guarda-long.jpg);
+    background-position: center;
     width: 100%;
-    height: 11rem;
+    height: 8rem;
 }
 
 .opciones-admin{
@@ -10,7 +11,7 @@
     display: inline-flex;
     flex-direction: row;
     justify-content: space-around;
-    padding: 2rem;
+    padding: 1rem;
 }
 
 .opciones-admin div{
@@ -26,7 +27,7 @@
 .opciones-admin a{
     text-decoration: none;
     color: var(--color-light);
-    font-size: 2rem;
+    font-size: var(--font-size-18);
     font-family: var(--subtitulo-font);
 }
 
