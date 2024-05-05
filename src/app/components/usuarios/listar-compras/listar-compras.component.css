@@ -1,37 +1,20 @@
-/* Estilo para el input */
-.busqueda-aside-box .input-pequeno {
-        width: 100%; /* Ancho deseado para el input */
-        overflow: hidden; /* Oculta el contenido que desborda */
-    }
-    
-    /* Estilo para el placeholder */
-.busqueda-aside-box .input-pequeno::placeholder {
-        animation: placeholder-slide 3s linear infinite; /* Animación para hacer deslizar el placeholder */
-    }
-    
-    /* Animación para deslizar el placeholder */
-    @keyframes placeholder-slide {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-100%); } /* Desplaza completamente el placeholder hacia la izquierda */
-    }
-  
-
-
 /*BUSQUEDA*/
-h2{
+h2 {
     text-decoration: none;
-    text-align: left;
+    text-align: center;
     margin: 2rem 0 1rem 2rem;
-    font-size: var(--font-size-30);
+    font-size: var(--font-size-50);
+    font-family: var(--titulo-font);
 }
 
-.hr-subtitulo{
+.hr-subtitulo {
+    align-items: center;
     width: 30%;
     margin: 0 2rem;
     border: 1px solid var(--color-dark);
 }
 
-p{
+p {
     color: var(--color-dark);
     font-family: var(--subtitulo-font);
     font-size: var(--font-size-19);
@@ -39,11 +22,11 @@ p{
     margin: 0;
 }
 
-.boton-claro{
+.boton-claro {
     width: 60%;
 }
 
-.compras-container{
+.compras-container {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -52,10 +35,10 @@ p{
 
 /*PANEL BUSQUEDA*/
 
-.busqueda-aside{
+.busqueda-aside {
     background-color: var(--back-extra-light-trans2);
     background-image: url(../../../../assets/img/caja-trans-long.png);
-    background-blend-mode:soft-light;
+    background-blend-mode: soft-light;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -65,25 +48,27 @@ p{
     border-radius: .5rem;
 }
 
-.busqueda-aside-box{
+.busqueda-aside-box {
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Modified */
+    align-items: flex-start;
+    /* Modified */
     gap: 2rem;
 }
 
-.busqueda-aside-box label{
+.busqueda-aside-box label {
     font-size: var(--font-size-18);
 }
 
 /*SELECT*/
 
-.busqueda-aside-box select{
+select {
     background-color: #00000000;
     font-size: var(--font-size-18);
     font-family: var(--base-font);
     color: var(--color-extra-dark);
+
     width: 100%;
     border: none;
     border-bottom: 1px solid var(--color-dark);
@@ -92,16 +77,13 @@ p{
     cursor: pointer;
 }
 
-.busqueda-aside-box select:hover{
+select:hover {
     border-bottom: 2px solid var(--color-dark);
 }
 
-.busqueda-aside-box select::selection{
-    color: var(--color-extra-dark);
-}
 
 
-.busqueda-aside-box select option{
+select option {
     font-size: var(--font-size-16);
     color: var(--back-medium);
     background-color: var(--back-extra-light-trans);
@@ -114,57 +96,103 @@ p{
     width: 100%;
 }
 
-.busqueda-aside-box input[type="date"]{
+
+.placeholder-container{
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+.input-pequeno{
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+.placeholder{
+    color: var(--color-dark);
+    font-size: var(--font-size-18);
+    font-family: var(--base-font);
+
+    position: absolute;
+    z-index: 1;
+
+    top: 0;
+    left: .5rem;
+    transform: translateY(-50%);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    animation: placeholder-slide 4s linear infinite;
+}
+
+@keyframes placeholder-slide {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-45%);
+    }
+}
+
+
+.busqueda-aside-box input[type="date"] {
     width: 45%;
 }
 
-.busqueda-aside-box input:hover{
+.busqueda-aside-box input[type="date"]:hover{
+    cursor: pointer;
+
+}
+
+
+.busqueda-aside-box input:hover {
     border-bottom: 2px solid var(--color-dark)
 }
 
-.busqueda-aside-box input:focus{
+.busqueda-aside-box input:focus {
     border-bottom: 2px solid var(--color-dark)
 }
 
 
-.busqueda-aside-box input::placeholder{
-    color: var(--back-medium);
-}
-
-.aside-fecha{
+.aside-fecha {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-/* 
-.busqueda-icon i{
-    color: var(--color-dark);
-}
+/*checkbox*/
+input[type="checkbox" i] {
+    appearance: none;
+    cursor: pointer;
 
-.busqueda-icon i:hover{
-    color: var(--back-medium);
-}
-
-.error-resultado-busqueda{
-    background-color: var(--back-light-trans);
-    color: var(--color-dark);
-    text-align: center;
-    margin-top: 1rem;
-    padding: .5rem;
+    width: 1.7rem;
+    height: 1.7rem;
+    margin: .3rem .3rem .3rem .4rem;
+    padding: initial;
     border-radius: 1rem;
-} */
+    border: .05rem solid var(--color-dark);
+    background-color: var(--color-extra-light);
+}
 
+input[type="checkbox" i]:checked {
+    background: var(--back-medium);
+    box-shadow: inset 0 0 .1rem .2rem var(--color-extra-light);
+}
+
+input[type="checkbox" i]:hover{
+    box-shadow: 0 0 .1rem .2rem var(--back-medium);
+}
 /*LISTADO COMPRAS*/
 
-.listado-compras{
+.listado-compras {
     width: 60%;
     margin: 2rem;
 }
 
 /*TABLA COMPRAS*/
-
-.tabla-compras{
+.tabla-compras {
     border-collapse: collapse;
     background-color: var(--back-extra-light-trans2);
     background-image: url(../../../../assets/img/caja-trans-long.png);
@@ -172,7 +200,7 @@ p{
     border-radius: .5rem;
 }
 
-.tabla-compras th{
+.tabla-compras th {
     color: var(--color-extra-dark);
     font-family: var(--subtitulo-font);
     font-size: var(--font-size-19);
@@ -182,35 +210,35 @@ p{
     border-bottom: .1rem solid var(--color-dark);
 }
 
-.tabla-compras td{
+.tabla-compras td {
     color: var(--color-dark);
     font-family: var(--base-font);
     font-size: var(--font-size-16);
     font-weight: 300;
     padding: .5rem;
     text-align: center;
-    border-bottom: .1rem solid var(--color-extra-light2);
+    border-bottom: .1rem solid var(--color-extra-light);
 
     vertical-align: top;
 }
 
-.tabla-compras td a{
+.tabla-compras td a {
     color: var(--back-medium);
     text-decoration: underline;
 }
 
-.tabla-compras td p{
+.tabla-compras td p {
     font-family: var(--base-font);
     font-size: var(--font-size-16);
 }
 
-.tabla-compras div .producto-cantidad{
+.tabla-compras div .producto-cantidad {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.cantidad{
+.cantidad {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -219,13 +247,13 @@ p{
 
 /*SELECTOR*/
 
-.selector-aside{
+.selector-aside {
     background-color: var(--back-extra-light-trans2);
     background-image: url(../../../../assets/img/caja-trans-long.png);
     background-blend-mode: overlay;
     width: 17%;
 
-    margin: 2rem 0 2rem 1rem;
+    margin: 2rem;
     padding: 1rem;
     border-radius: .5rem;
 
@@ -233,7 +261,9 @@ p{
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
+    gap: 2rem;
+}
 
-    position: relative; /* Agregado */
-    z-index: 1;
+.selector-aside div button {
+    margin: 0 1rem;
 }

@@ -15,10 +15,13 @@
     --font-size-20: 2rem;
     --font-size-28: 2.8rem;
     --font-size-30: 3rem;
+    --font-size-32: 3.2rem;
+    --font-size-40: 4rem;
+    --font-size-50: 5rem;
 
     /*Color*/
-    --color-extra-light: #e8d5eb;
-    --color-extra-light2: #f5e9f7;
+   /*  --color-extra-light: #e8d5eb; */
+    --color-extra-light: #f5e9f7;
     --color-light: #b39fb6;
     --color-dark: #2a2030;
     --color-extra-dark: #1b151f;
