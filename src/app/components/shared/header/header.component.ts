@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { BrujasService } from 'src/app/services/brujas.service';
 
 @Component({
@@ -9,6 +10,38 @@ import { BrujasService } from 'src/app/services/brujas.service';
 })
 export class HeaderComponent implements OnInit {
 
+  isLogged: boolean = false;
+  isAdminRole: boolean = false;
+  firebaseAuthenticationReady : boolean = false;
+  constructor(private authenticationService: AuthenticationService,
+     private router: Router) { }
+
+  async ngOnInit(): Promise<void> {
+    await this.authenticationService.waitForFirebaseAuthentication();
+    this.firebaseAuthenticationReady = true;
+    this.isLogged = this.authenticationService.isUserLoggedIn();
+    this.isAdminRole = await this.authenticationService.getCurrentUserRole() === "admin";
+    this.actualizarNavbar();
+  }
+
+  async cerrarSesion(){
+    await this.authenticationService.logout();
+    this.router.navigate(['/home']);
+    this.isLogged = false;
+  }
+
+  actualizarNavbar(){
+    this.router.events.subscribe(async (val) => {
+      if(val instanceof NavigationEnd){
+        this.isLogged = this.authenticationService.isUserLoggedIn();
+        this.isAdminRole = await this.authenticationService.getCurrentUserRole() === "admin";
+      }
+    });
+  }
+  
+
+
+/* 
   isHome: boolean = false;
   isLogin: boolean = false;
   isRegister: boolean = false;
@@ -107,6 +140,6 @@ export class HeaderComponent implements OnInit {
     this.isNuevaBruja = false;
     this.isEditarBruja = false;
     this.isPerfil = false;
-  }
+  } */
 
 }

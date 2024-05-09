@@ -1,0 +1,30 @@
+<div class="fondo-opciones">
+    <div class="opciones-admin">
+        <div>
+            <a [routerLink]="['/usuario']">PERFILES</a>
+            <a [routerLink]="['/compras']">VENTAS</a>
+        </div>
+        <div>
+            <a [routerLink]="['/nuevo-producto']">PRODUCTOS</a>
+            <a [routerLink]="['/nueva-bruja']">BRUJAS</a>
+        </div>
+    </div>
+</div>
+<hr>
+
+
+
+
+
+<!-- <div class="dropdown">
+            <button class="dropbtn"><i class="fi fi-sr-hat-witch"></i></button>
+            <div class="dropdown-content">
+                <a *ngIf="isLogged && firebaseAuthenticationReady" [routerLink]="['/usuario']">Mi Perfil</a>
+                <a *ngIf="(isLogged && firebaseAuthenticationReady) && !isAdminRole" [routerLink]="['/compras']">Mis Compras</a>
+                <a *ngIf="isAdminRole && firebaseAuthenticationReady" [routerLink]="['/compras']">Ver Compras</a>
+                <a *ngIf="isAdminRole && firebaseAuthenticationReady" [routerLink]="['/nuevo-producto']">Nuevo producto</a>
+                <hr>
+                <a *ngIf="isLogged && firebaseAuthenticationReady" (click)="cerrarSesion()">Cerrar Sesion</a>
+
+            </div>
+        </div> -->

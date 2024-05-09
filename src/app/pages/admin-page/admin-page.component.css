@@ -1,0 +1,13 @@
+h1{
+    margin: 2rem auto;
+}
+
+h2{
+    text-decoration: none;
+    font-size: 3.5rem;
+    padding: 2rem auto;
+}
+
+.page{
+    min-height: 50vh;
+}

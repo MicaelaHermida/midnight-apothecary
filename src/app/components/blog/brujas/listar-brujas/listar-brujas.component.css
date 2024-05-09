@@ -1,7 +1,7 @@
 /*TABLA*/
 
 .tabla-brujas{ 
-    margin: 0;
+    border-collapse: separate;
 }
 
 
@@ -12,7 +12,7 @@
     font-size: var(--font-size-20);
     font-weight: 400;
     padding: 1rem;
-    border-radius: .5rem;
+
 }
 
 .tabla-brujas td{
@@ -21,12 +21,12 @@
     font-size: var(--font-size-18);
     font-weight: 300;
     text-align: center;
-    border-radius: .5rem;
+
     padding: 0;
 }
 
 .tabla-brujas .texto{
-    background-color: var(--back-light-trans);
+    background-color: var(--back-extra-light-trans);
     padding: .5rem;
 }
 
@@ -39,7 +39,6 @@
     font-size: var(--font-size-17);
     font-weight: 400;
     text-decoration: none;
-    border-radius: .5rem;
     align-items: center;
     padding: .5rem;
 } 

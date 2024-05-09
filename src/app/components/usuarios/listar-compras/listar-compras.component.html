@@ -1,44 +1,113 @@
-<div *ngIf="isAdminRole && firebaseAuthenticationReady" class="fondo-filtrado">
-    <div class="busqueda">
-        <p>Buscar usuario por email:</p>
-        <div>
-            <input type="email" [(ngModel)]="emailBuscado" placeholder="ejemplo@gmail.com" (keydown.enter)="buscarPorEmail()">
-            <a class="busqueda-icon" (click)="buscarPorEmail()">
-                <i class="fi fi-rs-search"></i>
-            </a>
-        </div>
-    </div>
-</div>
-<div *ngIf="firebaseAuthenticationReady && isLogged" class="contenedor-listado">
-    <div *ngIf="!existeUsuario">
-        <h2 class="error-resultado-busqueda">No se encontro al usuario</h2>
-    </div>
-    <div *ngIf="!tieneCompras && existeUsuario">
-        <h2 class="error-resultado-busqueda">El usuario no ha realizado compras</h2>
-    </div>
+<h2 *ngIf="isAdminRole && firebaseAuthenticationReady">VENTAS</h2>
+<h2 *ngIf="!isAdminRole && firebaseAuthenticationReady">MIS COMPRAS</h2>
+<hr class="hr-subtitulo">
 
-    <div *ngFor="let compra of compras" class="caja">
-        <div class="caja-encabezado">
-            <p>{{compra.fecha}}</p>
-            <p>compra: {{compra.idDoc}}</p>
+<div class="compras-container">
+
+    <aside class="busqueda-aside">
+        <div class="busqueda-aside-box" *ngIf="isAdminRole && firebaseAuthenticationReady">
+            <p>BUSCAR</p>  
+             <div class="placeholder-container">
+                <span class="placeholder" *ngIf="!inputSeleccionado && !datoBuscado">Ingrese el número de compra, dni o email del cliente...</span>
+                <input class="input-pequeno" type="text" [(ngModel)]="datoBuscado" (click)="inputSeleccionado = true" (blur)="verificarInput()">
+             </div>
         </div>
-        <hr>
-        <div class="caja-cuerpo" *ngFor="let producto of compra.items">
-            <p>{{producto.nombre}}</p>
-            <div class="cantidad">
-                <p> x </p>
-                <p>{{producto.cantidad}}</p>
+
+        <div class="busqueda-aside-box">
+            <p>FILTRAR</p>
+            <select [(ngModel)]="filtroEstado" (change)="filtrarPorEstado()">
+                <option value="" hidden>Estado de la compra...</option>
+                <option value="Todas">Todas</option>
+                <option *ngFor="let estado of arrayEstados" [value]="estado">{{estado}}</option>
+            </select>
+        </div>
+
+        <div class="busqueda-aside-box">
+            <p>RANGO FECHA</p>
+            <div class="aside-fecha">
+                <input type="date" [(ngModel)]="fechaDesde" (change)="filtrarPorFecha()">
+                <input type="date" [(ngModel)]="fechaHasta" (change)="filtrarPorFecha()">
             </div>
         </div>
-        <hr>
-        <div class="pie-compra">
-            <p>Total: <b class="total">${{compra.total}}</b></p>
-            <p>Estado: {{compra.estado}}</p>
+
+        <button class="boton-claro" (click)="buscarCompras()">Buscar</button>
+    </aside>
+
+    <main class="listado-compras" *ngIf="firebaseAuthenticationReady && isLogged && busqueda">
+        <div *ngIf="!existeUsuario">
+            <h2 class="error-resultado-busqueda">No se encontro al usuario</h2>
         </div>
-        <div *ngIf="isAdminRole" class="container-buttons">
-            <button class="boton-claro" (click)="finalizarEstadoCompra(compra.idDoc!)"
-                *ngIf="compra.estado !== 'finalizada'">Finalizar</button>
+        <div *ngIf="!tieneCompras && existeUsuario">
+            <h2 class="error-resultado-busqueda">El usuario no ha realizado compras</h2>
+        </div>
+        <table class="tabla-compras">
+            <thead>
+                <tr>
+                    <th>
+                        <input type="checkbox" (change)="checkAll($event)">
+                    </th>
+                    <th>N° Compra</th>
+                    <th>Fecha</th>
+                    <th>Productos</th>
+                    <th>Total</th>
+                    <th>Cliente</th>
+                    <th>Estado</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let compra of compras">
+                    <td>
+                        <input type="checkbox" [(ngModel)]="checkCompras[compra.idDoc!]" (change)="actualizarComprasSeleccionadas()">
+                    </td>
+                    <td>{{compra.idDoc}}</td>
+                    <td>{{compra.fecha}}</td>
+
+                    <td>
+                        <a *ngIf="!estadoAmpliacion[compra.idDoc!]" (click)="ampliarCompra(compra.idDoc)">Ampliar</a>
+                        <a *ngIf="estadoAmpliacion && estadoAmpliacion[compra.idDoc!]"
+                            (click)="ampliarCompra(compra.idDoc)">Reducir</a>
+                        <div *ngIf="estadoAmpliacion && estadoAmpliacion[compra.idDoc!]">
+                            <div class="producto-cantidad" *ngFor="let producto of compra.items">
+                                <p>{{producto.nombre}}</p>
+                                <div class="cantidad">
+                                    <p> x </p>
+                                    <p>{{producto.cantidad}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>${{compra.total}}</td>
+                    <td>{{clientes.get(compra.userId)}}</td>
+                    <td>{{compra.estado}}</td>
+                    <td>
+                        <a *ngIf="compra.estado == 'Pendiente de pago'"
+                            (click)="cambiarEstado(compra.idDoc!, 'Pago confirmado')">Confirmar Pago</a>
+                        <a *ngIf="compra.estado == 'Pago confirmado'"
+                            (click)="cambiarEstado(compra.idDoc!, 'Pedido empaquetado')">Empaquetar
+                            pedido</a>
+                        <a *ngIf="compra.estado == 'Pedido empaquetado'"
+                            (click)="cambiarEstado(compra.idDoc!, 'Envío notificado')">Notificar envío</a>
+                        <a *ngIf="compra.estado == 'Envío notificado'"
+                            (click)="cambiarEstado(compra.idDoc!, 'Pedido entregado')">Entregar pedido</a>
+                        <a *ngIf="compra.estado == 'Pedido entregado'"
+                            (click)="cambiarEstado(compra.idDoc!, 'Archivado')">Archivar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+    <div class="selector-aside" *ngIf="hayComprasSeleccionadas()">
+        <p>CAMBIAR ESTADO</p>
+        <select [(ngModel)]="accionSeleccionada">
+            <option value="" hidden>Elija una opción...</option>
+            <option *ngFor="let estado of arrayEstados" [value]="estado">{{estado}}</option>
+        </select>
+        <div class="container-buttons">
+            <button class="boton-claro" (click)="cambiarEstados(accionSeleccionada)">Aplicar</button>
         </div>
     </div>
-</div>
 
+</div>

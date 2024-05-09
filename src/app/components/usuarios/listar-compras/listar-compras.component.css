@@ -1,110 +1,268 @@
-/*LISTADO COMPRAS*/
+/*BUSQUEDA*/
+h2 {
+    text-decoration: none;
+    text-align: left;
+    margin-left: 2rem;
+    font-size: var(--font-size-50);
+    font-family: var(--titulo-font);
+}
 
-.caja-cuerpo{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+.hr-subtitulo {
+    width: 20%;
     margin: 0 2rem;
+    border: 1px solid var(--color-dark);
 }
 
-.caja-cuerpo p{
-    margin: 0; 
-    padding: .5rem;
-}
-
-
-.cantidad{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.pie-compra{
-    width: 90%;
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-    margin: auto;
-}
-
-.pie-compra p{
-    text-align: start;
-}
-
-.total{
-    font-size: large;
-    font-weight: 300;
-} 
-
-/*BUSCADOR*/
-
-.fondo-filtrado{
-    background-image: url(../../../../assets/img/guarda-tienda.jpg);
-    width: 100%;
-    display: flex;
-}
-
-.busqueda{
-    background-color: var(--back-dark-trans);
-    width: 25%;
-    margin-left: 15%;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    padding: .5rem;
-    padding-left: 2rem;
-}
-
-.busqueda p{
-    color: var(--color-light);
+p {
+    color: var(--color-dark);
     font-family: var(--subtitulo-font);
-    font-size: var(--font-size-20);
+    font-size: var(--font-size-19);
     padding: 0;
     margin: 0;
-    margin-bottom: 2%;
 }
 
-.busqueda input{
-    background-color: var(--back-trans);
-    color: var(--color-light);
-    border: 1px solid var(--color-light);
-    border-radius: 1rem;
-    outline: none;
-    cursor: pointer;
+.boton-claro {
     width: 60%;
-    height: 3rem;
-    margin-top: .5rem;
-    margin-bottom: .5rem;
+}
+
+.compras-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+
+/*PANEL BUSQUEDA*/
+
+.busqueda-aside {
+    background-color: var(--back-extra-light-trans);
+    background-image: url(../../../../assets/img/caja-trans-long.png);
+    background-blend-mode: overlay;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3rem;
+    margin: 2rem;
+    padding: 1rem;
+    border-radius: .5rem;
+}
+
+.busqueda-aside-box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* Modified */
+    gap: 2rem;
+}
+
+.busqueda-aside-box label {
+    font-size: var(--font-size-18);
+}
+
+/*SELECT*/
+
+select {
+    background-color: #00000000;
+    font-size: var(--font-size-18);
+    font-family: var(--base-font);
+    color: var(--color-extra-dark);
+
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid var(--color-dark);
+    outline: none;
     padding: .5rem;
+    cursor: pointer;
 }
 
-.busqueda input:focus{
-    color: var(--color-light);
-    border: .2rem solid var(--color-light);
-    padding: .5rem;
+select:hover {
+    border-bottom: 2px solid var(--color-dark);
 }
 
-.busqueda input::placeholder{
-    color: var(--color-light);
+
+
+select option {
+    font-size: var(--font-size-16);
+    color: var(--back-medium);
+    background-color: var(--back-extra-light-trans);
 }
 
-.busqueda input::content{
-    font-size: medium;
+
+/*INPUT*/
+
+.busqueda-aside-box input{
+    width: 100%;
 }
 
-.busqueda input:focus::placeholder{
-    color: var(--back-trans);
+
+.placeholder-container{
+    position: relative;
+    overflow: hidden;
+    width: 100%;
 }
 
-.busqueda input:hover{
-   border: 1.5px solid var(--color-light);
-   box-shadow: #fffeff71 0px 0px 1.5px 0px;
+.input-pequeno{
+    width: 100%;
+    position: relative;
+    z-index: 2;
 }
 
-.error-resultado-busqueda{
-    background-color: var(--back-light-trans);
+.placeholder{
     color: var(--color-dark);
-    text-align: center;
-    margin-top: 1rem;
-    padding: .5rem;
+    font-size: var(--font-size-18);
+    font-family: var(--base-font);
+
+    position: absolute;
+    z-index: 1;
+
+    top: 0;
+    left: .5rem;
+    transform: translateY(-50%);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    animation: placeholder-slide 4s linear infinite;
+}
+
+@keyframes placeholder-slide {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-45%);
+    }
+}
+
+
+.busqueda-aside-box input[type="date"] {
+    width: 45%;
+}
+
+.busqueda-aside-box input[type="date"]:hover{
+    cursor: pointer;
+
+}
+
+
+.busqueda-aside-box input:hover {
+    border-bottom: 2px solid var(--color-dark)
+}
+
+.busqueda-aside-box input:focus {
+    border-bottom: 2px solid var(--color-dark)
+}
+
+
+.aside-fecha {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+/*checkbox*/
+input[type="checkbox" i] {
+    appearance: none;
+    cursor: pointer;
+
+    width: 1.7rem;
+    height: 1.7rem;
+    margin: .3rem .3rem .3rem .4rem;
+    padding: initial;
     border-radius: 1rem;
+    border: .05rem solid var(--color-dark);
+    background-color: var(--color-extra-light);
+}
+
+input[type="checkbox" i]:checked {
+    background: var(--back-medium);
+    box-shadow: inset 0 0 .1rem .2rem var(--color-extra-light);
+}
+
+input[type="checkbox" i]:hover{
+    box-shadow: 0 0 .1rem .2rem var(--back-medium);
+}
+/*LISTADO COMPRAS*/
+
+.listado-compras {
+    width: 60%;
+    margin: 2rem;
+}
+
+/*TABLA COMPRAS*/
+.tabla-compras {
+    border-collapse: collapse;
+    background-color: var(--back-extra-light-trans);
+    background-image: url(../../../../assets/img/caja-trans-long.png);
+    background-blend-mode: overlay;
+    border-radius: .5rem;
+}
+
+.tabla-compras th {
+    color: var(--color-extra-dark);
+    font-family: var(--subtitulo-font);
+    font-size: var(--font-size-19);
+    font-weight: 400;
+    padding: .5rem;
+    width: 0.7%;
+    border-bottom: .1rem solid var(--color-dark);
+}
+
+.tabla-compras td {
+    color: var(--color-dark);
+    font-family: var(--base-font);
+    font-size: var(--font-size-16);
+    font-weight: 300;
+    padding: .5rem;
+    text-align: center;
+    border-bottom: .1rem solid var(--color-extra-light);
+
+    vertical-align: top;
+}
+
+.tabla-compras td a {
+    color: var(--back-medium);
+    text-decoration: none;
+}
+
+.tabla-compras td p {
+    font-family: var(--base-font);
+    font-size: var(--font-size-16);
+}
+
+.tabla-compras div .producto-cantidad {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.cantidad {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+/*SELECTOR*/
+
+.selector-aside {
+    background-color: var(--back-extra-light-trans);
+    background-image: url(../../../../assets/img/caja-trans-long.png);
+    background-blend-mode: overlay;
+    width: 17%;
+
+    margin: 2rem;
+    padding: 1rem;
+    border-radius: .5rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.selector-aside div button {
+    margin: 0 1rem;
 }

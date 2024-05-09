@@ -1,0 +1,35 @@
+.fondo-opciones{
+    background-image: url(../../../assets/img/guarda-long.jpg);
+    background-position: center;
+    width: 100%;
+}
+
+.opciones-admin{
+    width: 100%;
+    margin: auto;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 1rem;
+}
+
+.opciones-admin div{
+    width: 25%;
+    padding: 1.5rem;
+    background-color: var(--back-dark-trans);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+
+.opciones-admin a{
+    text-decoration: none;
+    color: var(--color-light);
+    font-size: var(--font-size-18);
+    font-family: var(--subtitulo-font);
+}
+
+.opciones-admin a:hover{
+    color: var(--color-extra-light);
+}

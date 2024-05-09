@@ -5,7 +5,7 @@
     /*Family*/
     --base-font: 'Merriweater', serif;
     --subtitulo-font: 'Quicksand', sans-serif;
-    --titulo-font: 'Reenie Beanie', cursive;
+    --titulo-font: 'Yomogi', cursive;
 
     /*Size*/
     --font-size-16: 1.6rem;
@@ -14,23 +14,30 @@
     --font-size-19: 1.9rem;
     --font-size-20: 2rem;
     --font-size-28: 2.8rem;
+    --font-size-30: 3rem;
+    --font-size-32: 3.2rem;
+    --font-size-40: 4rem;
+    --font-size-50: 5rem;
 
     /*Color*/
-    --color-extra-light: #e8d5eb;
-    --color-light: #b39fb6;
+   /*  --color-extra-light: #e8d5eb; */
+    --color-extra-light: #f5e9f7;
+    --color-light: #d2c2d4; /*b39fb6*/
     --color-dark: #2a2030;
     --color-extra-dark: #1b151f;
     --back-medium: #876a89;
     --back-trans: #00000000;
     --back-light-trans: #b39fb6d8;
+/*     --back-extra-light-trans: #f3dff7be; */
+    --back-extra-light-trans: #faedfcbe;
     --back-dark-trans: #2a2030d3;
-
-
 }
 
 
 /* ------------------------[ GENERALES ]------------------------*/
-@import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Merriweather&family=Philosopher&family=Quicksand:wght@300;400;500&family=Raleway:wght@200&family=Reenie+Beanie&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Merriweather&family=Philosopher&family=Quicksand:wght@300;400;500&family=Raleway:wght@200&family=Reenie+Beanie&display=swap');
+ */
+@import url("https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Merriweather&family=Philosopher&family=Quicksand:wght@300;400;500&family=Raleway:wght@200&family=Reenie+Beanie&family=Yomogi&display=swap");
 @import url('https://cdn-uicons.flaticon.com/2.0.0/uicons-brands/css/uicons-brands.css');
 @import url('https://cdn-uicons.flaticon.com/2.0.0/uicons-regular-straight/css/uicons-regular-straight.css');
 @import url('https://cdn-uicons.flaticon.com/2.0.0/uicons-solid-rounded/css/uicons-solid-rounded.css');
@@ -50,24 +57,23 @@ html {
 body {
     font-size: 1.6rem;
     margin: 0;
-    background-color: var(--back-medium);
+    background-color: var(--color-light);
     background-image: url(../src/assets/img/fondo.jpg);
     background-blend-mode: multiply;
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: repeat-y;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
 hr {
-    border: .15rem solid var(--color-light);
+    border: .15rem solid var(--color-extra-light);
     margin: 0;
 }
 
 h1 {
     font-family: var(--titulo-font);
-    font-size: 7rem;
+    font-size: 6rem;
     color: black;
     margin: auto;
 }
@@ -157,19 +163,19 @@ textarea:focus {
 }
 
 .fondo-user {
-    background-color: var(--back-medium);
-    background-image: url(../src/assets/img/dibujos-user.jpg);
+    background-color: var(--color-light);
+    background-image: url(../src/assets/img/dibujos-user2.jpg);
     background-blend-mode: multiply;
 }
 
 .fondo-tienda {
-    background-color: var(--back-medium);
+    background-color: var(--color-light);
     background-image: url(../src/assets/img/dibujos-tienda.jpg);
     background-blend-mode: multiply;
 }
 
 .fondo-blog {
-    background-color: var(--back-medium);
+    background-color: var(--color-light);
     background-image: url(../src/assets/img/dibujos-blog.jpg);
     background-blend-mode: multiply;
 }
@@ -182,6 +188,12 @@ textarea:focus {
     padding: 2rem;
     width: 100%;
     min-height: 20rem;
+}
+
+.fondo-caja-clara{
+    background-color: var(--back-extra-light-trans);
+    background-image: url(../src/assets/img/caja-trans-long.png);
+    background-blend-mode: overlay;
 }
 
 /* ------------------------[ FOOTER PARA PAGS CORTAS ]------------------------*/
@@ -246,7 +258,7 @@ textarea:focus {
 
 .contenedor .info {
     height: 100%;
-    background-color: var(--back-light-trans);
+    background-color: var(--back-extra-light-trans);
     display: flex;
     flex-direction: column;
     box-sizing:content-box;
@@ -292,7 +304,7 @@ textarea:focus {
 
 /* ------------------------[ FORMULARIOS ]------------------------*/
 .contenedor-formulario {
-    background-color: var(--back-light-trans);
+    background-color: var(--back-extra-light-trans);
     width: 50%;
     margin: 2rem auto;
     border-radius: 1rem;
@@ -314,7 +326,7 @@ textarea:focus {
 .formulario .campos div {
     display: flex;
     flex-direction: column;
-    min-height: 10rem;
+    min-height: 1rem;
 }
 
 .campos div label {
@@ -360,7 +372,7 @@ textarea:focus {
 }
 
 .boton-claro:hover {
-    background-color: var(--color-light);
+    background-color: var(--color-extra-light);
     font-weight: 600;
 }
 
@@ -478,7 +490,7 @@ textarea.invalid{
 }
 
 .contenedor-listado .caja{
-    background-color: var(--back-light-trans);
+    background-color: var(--back-extra-light-trans);
     width: 50rem;
     margin: auto;
     padding: .5rem;

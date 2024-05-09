@@ -1,4 +1,4 @@
-<header>
+<!-- <header>
     <h1 *ngIf="isHome"><span class="mayus">M</span>idnight <span class="mayus">A</span>pothecary</h1>
     <h1 *ngIf="isPerfil"><span class="mayus">M</span>i <span class="mayus">P</span>erfil</h1>
     <h1 *ngIf="isLogin"><span class="mayus">I</span>ngresar</h1>
@@ -12,4 +12,13 @@
     <h1 *ngIf="isCarrito"><span class="mayus">C</span>arrito</h1>
     <h1 *ngIf="isCompra"><span class="mayus">C</span>ompra</h1>
     <h1 *ngIf="isCompras"><span class="mayus">C</span>ompras</h1>
+</header> -->
+
+<header class="fondo-caja-clara">
+        <div class="user">
+            <a *ngIf="!isLogged && firebaseAuthenticationReady" [routerLink]="['/login']">Iniciar sesión</a>
+            <a *ngIf="!isLogged && firebaseAuthenticationReady" [routerLink]="['/register']">Crear cuenta</a>
+            <a *ngIf="isLogged && firebaseAuthenticationReady" (click)="cerrarSesion()">Cerrar sesión</a>
+        </div>
 </header>
+<hr>
