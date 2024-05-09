@@ -209,24 +209,10 @@ export class ListarComprasComponent implements OnInit {
     }
   }
 
-
-
-  ///////////////////////////////////////
   //Métodos de cambio de estado. 
-  /*faltaría agregar estados:
-      -Pendiente de pago. 
-      -Pago confirmado. 
-      -Empaquetado.
-      -Notificar envío (mandar mail con enlace de seguimiento)
-      -Entregado/Retirado. 
-      -Archivar
-      -Cancelar. (devolver stock y dinero al usuario)
-      )*/
-
 
   async cambiarEstado(id: string, estado: string) {
     await this.compraService.cambiarEstadoCompra(id, estado);
-    //this.compras = await this.compraService.getCompras();
     await this.buscarCompras();
   }
 
@@ -259,7 +245,6 @@ export class ListarComprasComponent implements OnInit {
 
     await this.buscarCompras();
   }
-
 
   checkAll(event: any) {
     const isChecked = event.target.checked;
