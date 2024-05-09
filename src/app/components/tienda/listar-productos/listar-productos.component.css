@@ -178,6 +178,8 @@
 .img-producto {
     width: 100%;
     border-radius: 9px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
     opacity: 0.9;
 }
 
@@ -193,17 +195,21 @@
     flex: 1 0 calc(25% - 1rem);
     margin: .5rem;
     border-radius: 9px;
-    background-color:  var(--color-extra-light);
 }
 
 .card p, h3{
     margin-left: 1.5rem;
     margin-top: 1.5rem;
+    font-family: var(--base-font);
+    padding: 0;
 }
 
 .card:hover{
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.243);
-    background-color: #b39fb6;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.243);
+}
+
+.container-buttons{
+    margin-bottom: 0px;
 }
 
 /*EDICIÓN*/
@@ -263,7 +269,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .boton-claro{
-    width: 40%;
+    width: 90%;
 }
 
 .no-encontrado{

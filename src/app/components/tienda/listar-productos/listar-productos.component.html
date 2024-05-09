@@ -42,7 +42,7 @@
     <!--////////////////LISTADO PRODUCTOS///////////////////-->
     <div class="contenedor-productos">
         <p *ngIf="allProducts.size <1 && busquedaFinalizada" class="no-encontrado">Ups... no se ha encontrado el producto</p>
-        <form *ngFor="let producto of productosPagina" (ngSubmit)="guardarProducto(producto)" [formGroup]="form" class="card">
+        <form *ngFor="let producto of productosPagina" (ngSubmit)="guardarProducto(producto)" [formGroup]="form" class="card fondo-caja-clara">
 
             <div (click)="verDetalleProducto(producto.id_planta)" class="info-producto">
                 <img src="{{producto.imagen}}" class="img-producto">
@@ -55,7 +55,7 @@
             <!--////////////////OPCIONES USUARIO-CLIENTE///////////////////-->
             <div class="container-buttons">
                 <button *ngIf="!isAdminRole && isLogged && firebaseAuthenticationReady"
-                    (click)="verDetalleProducto(producto.id_planta)" class="boton-claro">Comprar</button>
+                    (click)="verDetalleProducto(producto.id_planta)" class="boton-claro">Agregar</button>
             </div>
             <!--////////////////MODO EDICION - ADMIN///////////////////-->
             <div *ngIf="editModeMap.get(producto.id_planta)" class="edit-mode">

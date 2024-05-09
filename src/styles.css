@@ -363,7 +363,7 @@ textarea:focus {
 .boton-claro {
     background-color: var(--back-trans);
     color: var(--back-dark);
-    border-radius: 5rem;
+    border-radius: 1rem;
     border: .1rem solid var(--color-dark);
     width: 30%;
     min-height: 2.5rem;
@@ -379,7 +379,7 @@ textarea:focus {
 .boton-transp {
     background-color: var(--back-trans);
     color: var(--color-extra-light);
-    border-radius: 5rem;
+    border-radius: 1rem;
     border: .1rem solid var(--color-light);
     width: 30%;
     min-height: 2.5rem;
@@ -396,7 +396,7 @@ textarea:focus {
     background-color: var(--back-dark-trans);
     color: var(--color-light);
     font-size: var(--font-size-17);
-    border-radius: 5rem;
+    border-radius: 1rem;
     border: .1rem solid var(--color-light);
     width: 30%;
     margin: 2% auto;
