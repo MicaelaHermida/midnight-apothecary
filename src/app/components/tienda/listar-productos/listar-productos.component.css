@@ -52,18 +52,20 @@
     font-family: var(--base-font);
     background-color: var(--back-trans);
     color: var(--color-light);
-    border: 1px solid var(--color-light);
+    outline: none;
+    border: none;
+    border-bottom: 1px solid var(--color-light);
     width: 100%;
     height: 3rem;
     cursor: pointer;
 }
 
 .opciones-filtrado select:hover{
-   border: .2rem solid var(--color-light);
-   box-shadow: #fffeff71 0px 0px 1.5px 0px;
+   border-bottom: .2rem solid var(--color-light);
 }
 
 .opciones-filtrado select option{
+    cursor: pointer;
     font-size: var(--font-size-16);
     background-color: var(--color-dark);
 }
@@ -102,8 +104,9 @@
     color: var(--color-light);
     outline: none;
     cursor: pointer;
-    border-radius: 1rem;
-    border: .1rem solid var(--back-light-trans);
+    border: none;
+    outline: none;
+    border-bottom: .1rem solid var(--back-light-trans);
     width: 80%;
     height: 3rem;
     margin: 0;
@@ -123,8 +126,7 @@
 }
 
 .busqueda:hover{
-   border: .2rem solid var(--color-light);
-   box-shadow: #fffeff71 0px 0px 1.5px 0px;
+   border-bottom: .2rem solid var(--color-light);
 }
 
 .contenedor-busqueda div{
@@ -209,17 +211,17 @@
 }
 
 .container-buttons{
-    margin-bottom: 0px;
+    margin-bottom: 1rem;
 }
 
 /*EDICIÓN*/
-
+/*
 .edit-mode{
     display: flex;
     flex-direction: column;
     width: 90%;
     margin: auto;
-}
+}*/
 
 .info-producto{
     cursor: pointer;
@@ -237,6 +239,7 @@
     text-decoration: underline;
 }
 
+/*
 .contenedor-productos .edit-mode input{
     height: 2rem;
     background-color: var(--back-trans);
@@ -252,7 +255,7 @@
     margin-bottom: 1rem;
     margin-top: 1rem;
     outline: none;
-}
+}*/
 
 ::placeholder{
     color: #00000083;
@@ -264,9 +267,10 @@ input[type="number"]::-webkit-outer-spin-button {
   margin: 0;
 }
 
+/*
 .edit-mode div input.invalid{
     border-bottom: .2rem solid #a10202;
-}
+}*/
 
 .boton-claro{
     width: 90%;
@@ -280,4 +284,18 @@ input[type="number"]::-webkit-outer-spin-button {
     font-family: var(--subtitulo-font);
     font-size: var(--font-size-20);
     margin-bottom: 2rem;
+}
+
+h2 {
+    text-decoration: none;
+    text-align: left;
+    margin-left: 2rem;
+    font-size: var(--font-size-50);
+    font-family: var(--titulo-font);
+}
+
+.hr-subtitulo {
+    width: 20%;
+    margin: 0 2rem;
+    border: 1px solid var(--color-dark);
 }

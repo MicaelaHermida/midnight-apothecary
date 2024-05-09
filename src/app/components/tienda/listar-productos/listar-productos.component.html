@@ -12,7 +12,7 @@
                 </div>
                 <div *ngIf="firebaseAuthenticationReady">
                     <p>FILTRAR POR PRECIO</p>
-                    <select [(ngModel)]="filtroSeleccionado" (change)="onFilterChangeEvent()">
+                    <select [(ngModel)]="filtroSeleccionado" (change)="onOrderChangeEvent()">
                         <option *ngFor="let filtro of arrayFiltrado" [value]="filtro">{{filtro}}</option>
                     </select>
                 </div>
@@ -29,6 +29,9 @@
             </div>
         </div>
     </div>
+
+    <h2>TIENDA</h2>
+    <hr class="hr-subtitulo">
     
 
     <!--////////////////LISTADO PRODUCTOS///////////////////-->
@@ -78,13 +81,13 @@
             </div>
             -->
         </form>
-        <!--////////////////PAGINACION///////////////////-->
-        <div class="pagination">
+    </div>
+    <!--////////////////PAGINACION///////////////////-->
+    <div class="pagination">
         <button (click)="cambiarPagina(paginaActual - 1)" [disabled]="paginaActual === 1">Anterior</button>
         <button *ngFor="let pageNumber of arrayPaginas" (click)="cambiarPagina(pageNumber)"
             [disabled]="pageNumber === paginaActual">{{pageNumber}}</button>
         <button (click)="cambiarPagina(paginaActual + 1)"
             [disabled]="paginaActual === obtenerCantidadPaginas()">Siguiente</button>
         </div>
-    </div>
 </div>
