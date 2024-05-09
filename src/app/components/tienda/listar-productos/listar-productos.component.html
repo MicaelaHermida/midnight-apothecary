@@ -30,14 +30,6 @@
         </div>
     </div>
     
-    <!--////////////////PAGINACION///////////////////-->
-    <div class="pagination">
-        <button (click)="cambiarPagina(paginaActual - 1)" [disabled]="paginaActual === 1">Anterior</button>
-        <button *ngFor="let pageNumber of arrayPaginas" (click)="cambiarPagina(pageNumber)"
-            [disabled]="pageNumber === paginaActual">{{pageNumber}}</button>
-        <button (click)="cambiarPagina(paginaActual + 1)"
-            [disabled]="paginaActual === obtenerCantidadPaginas()">Siguiente</button>
-    </div>
 
     <!--////////////////LISTADO PRODUCTOS///////////////////-->
     <div class="contenedor-productos">
@@ -58,6 +50,7 @@
                     (click)="verDetalleProducto(producto.id_planta)" class="boton-claro">Agregar</button>
             </div>
             <!--////////////////MODO EDICION - ADMIN///////////////////-->
+            <!--
             <div *ngIf="editModeMap.get(producto.id_planta)" class="edit-mode">
                 <div>
                     <input formControlName="nombre" placeholder="{{producto.nombre}}" type="text"
@@ -72,7 +65,7 @@
                         [class.invalid]="validate('stock','required') || validate('stock','min')">
                 </div>
             </div>
-            <!--////////////////BOTONES ADMIN///////////////////-->
+            ////////////////BOTONES ADMIN///////////////////
             <div class="container-buttons">
                 <button *ngIf="isAdminRole && firebaseAuthenticationReady && !editModeMap.get(producto.id_planta)"
                     (click)="editarProducto(producto.id_planta)" class="boton-claro">Editar</button>
@@ -83,6 +76,15 @@
                 <button *ngIf="isAdminRole && firebaseAuthenticationReady && !editModeMap.get(producto.id_planta)"
                     (click)="eliminarProducto(producto.id_planta)" type="button" class="boton-claro">Eliminar</button>
             </div>
+            -->
         </form>
+        <!--////////////////PAGINACION///////////////////-->
+        <div class="pagination">
+        <button (click)="cambiarPagina(paginaActual - 1)" [disabled]="paginaActual === 1">Anterior</button>
+        <button *ngFor="let pageNumber of arrayPaginas" (click)="cambiarPagina(pageNumber)"
+            [disabled]="pageNumber === paginaActual">{{pageNumber}}</button>
+        <button (click)="cambiarPagina(paginaActual + 1)"
+            [disabled]="paginaActual === obtenerCantidadPaginas()">Siguiente</button>
+        </div>
     </div>
 </div>
