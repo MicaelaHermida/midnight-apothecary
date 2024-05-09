@@ -16,7 +16,7 @@ export class PlantasService {
   constructor(private http: HttpClient) { }
 
   getPlantDetails(id: number): Observable<PlantaInfo> {
-    return this.http.get<PlantaInfo>(this.urlDetails + id + "?" + environment.API_KEY)
+    return this.http.get<PlantaInfo>(this.urlDetails + id + "?" + "key=" + environment.API_KEY)
       .pipe(
         catchError((error: any) => {
           console.error(error);

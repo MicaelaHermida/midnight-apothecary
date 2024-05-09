@@ -43,6 +43,7 @@ import { NuevoProductoComponent } from './components/tienda/nuevo-producto/nuevo
 import { NuevoProductoPageComponent } from './pages/tienda/nuevo-producto-page/nuevo-producto-page.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
+import { environment } from './environment/environment';
 
 @NgModule({
   declarations: [
@@ -90,12 +91,12 @@ import { AdminPageComponent } from './pages/admin-page/admin-page.component';
     ReactiveFormsModule,
     HttpClientModule,
     provideFirebaseApp(() => initializeApp({
-      apiKey: "AIzaSyATu1q9xijreEeDRChL_u7mSDXibkuLHXc",
-      authDomain: "midnight-apothecary.firebaseapp.com",
-      projectId: "midnight-apothecary",
-      storageBucket: "midnight-apothecary.appspot.com",
-      messagingSenderId: "645627604949",
-      appId: "1:645627604949:web:2ed2e0e6a4522bf60c175c"
+      apiKey: environment.PROJECT_API_KEY,
+      authDomain: environment.AUTH_DOMAIN,
+      projectId: environment.PROJECT_ID,
+      storageBucket: environment.STORAGE_BUCKET,
+      messagingSenderId: environment.MESSAGING_SENDER_ID,
+      appId: environment.APP_ID
     })),
     provideFirestore(() => getFirestore()),
     provideAuth(() => getAuth())
