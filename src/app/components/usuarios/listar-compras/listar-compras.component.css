@@ -80,14 +80,26 @@ select:hover {
     border-bottom: 2px solid var(--color-dark);
 }
 
-
-
-select option {
+option {
     font-size: var(--font-size-16);
     color: var(--back-medium);
     background-color: var(--back-extra-light-trans);
 }
 
+option:hover {
+    background-color: var(--back-medium);
+    color: var(--color-extra-light)
+}
+
+select:focus > option:checked { 
+    background: var(--back-medium) !important;
+    
+}
+
+select option:hover {
+    background-color: var(--back-medium);
+    color: var(--color-extra-light);
+}
 
 /*INPUT*/
 

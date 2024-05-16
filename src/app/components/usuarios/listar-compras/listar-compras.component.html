@@ -15,7 +15,7 @@
 
         <div class="busqueda-aside-box">
             <p>FILTRAR</p>
-            <select [(ngModel)]="filtroEstado" (change)="filtrarPorEstado()">
+            <select [(ngModel)]="filtroEstado">
                 <option value="" hidden>Estado de la compra...</option>
                 <option value="Todas">Todas</option>
                 <option *ngFor="let estado of arrayEstados" [value]="estado">{{estado}}</option>
