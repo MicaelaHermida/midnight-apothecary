@@ -1,0 +1,109 @@
+
+<h2 *ngIf="isAdminRole && firebaseAuthenticationReady">VENTAS</h2>
+<hr class="hr-subtitulo">
+
+<div class="compras-container" *ngIf="isAdminRole && firebaseAuthenticationReady">
+
+    <aside class="busqueda-aside fondo-caja-clara">
+        <div class="busqueda-aside-box">
+            <p>BUSCAR</p>
+            <div class="placeholder-container">
+                <span class="placeholder" *ngIf="!inputSeleccionado && !datoBuscado">Ingrese el número de compra, dni o
+                    email del cliente...</span>
+                <input class="input-pequeno" type="text" [(ngModel)]="datoBuscado"
+                    (click)="inputSeleccionado = true" (blur)="verificarInput()" (keydown.enter)="buscarVentas()">
+            </div>
+        </div>
+
+        <div class="busqueda-aside-box">
+            <p>FILTRAR</p>
+            <select [(ngModel)]="filtroEstado">
+                <option value="" hidden>Estado de la compra...</option>
+                <option value="Todas">Todas</option>
+                <option *ngFor="let estado of arrayEstados" [value]="estado">{{estado}}</option>
+            </select>
+        </div>
+
+        <div class="busqueda-aside-box">
+            <p>RANGO FECHA</p>
+            <div class="aside-fecha">
+                <input type="date" [(ngModel)]="fechaDesde" (change)="filtrarPorFecha()">
+                <input type="date" [(ngModel)]="fechaHasta" (change)="filtrarPorFecha()">
+            </div>
+        </div>
+
+        <button class="boton-claro" (click)="buscarVentas()">Buscar</button>
+    </aside>
+
+    <main class="listado-ventas" *ngIf="busqueda">
+        <div class="not-found fondo-caja-clara" *ngIf="!hayVentas">
+            <h1>UPS!</h1>
+            <h2>NO SE ENCONTRARON COMPRAS.</h2>
+            <h3>Verifica el dato ingresado...</h3>
+        </div>
+        
+        <table class="tabla-ventas fondo-caja-clara" *ngIf="hayVentas">
+            <thead>
+                <tr>
+                    <th>
+                        <input type="checkbox" (change)="checkAll($event)">
+                    </th>
+                    <th>N° Venta</th>
+                    <th>Fecha</th>
+                    <th>Productos</th>
+                    <th>Total</th>
+                    <th>Cliente</th>
+                    <th>Estado</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let venta of ventas">
+                    <td>
+                        <input type="checkbox" [(ngModel)]="checkVentas[venta.idDoc!]"
+                            (change)="actualizarVentasSeleccionadas()">
+                    </td>
+                    <td>{{venta.idDoc}}</td>
+                    <td>{{venta.fecha}}</td>
+                    <td class="td-large">
+                        <a *ngIf="!estadoAmpliacion[venta.idDoc!]" (click)="ampliarVenta(venta.idDoc)">Ampliar</a>
+                        <a *ngIf="estadoAmpliacion && estadoAmpliacion[venta.idDoc!]"
+                            (click)="ampliarVenta(venta.idDoc)">Reducir</a>
+                        <div *ngIf="estadoAmpliacion && estadoAmpliacion[venta.idDoc!]">
+                            <div class="producto-cantidad" *ngFor="let producto of venta.items">
+                                <p>{{producto.nombre}}</p>
+                                <p>x {{producto.cantidad}}</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>${{venta.total}}</td>
+                    <td class="td-large">{{clientes.get(venta.userId)}}</td>
+                    <td>{{venta.estado}}</td>
+                    <td>
+                        <a *ngIf="venta.estado == 'Pendiente de pago'"
+                            (click)="cambiarEstado(venta.idDoc!, 'Pago confirmado')">Confirmar Pago</a>
+                        <a *ngIf="venta.estado == 'Pago confirmado'"
+                            (click)="cambiarEstado(venta.idDoc!, 'Pedido empaquetado')">Empaquetar pedido</a>
+                        <a *ngIf="venta.estado == 'Pedido empaquetado'"
+                            (click)="cambiarEstado(venta.idDoc!, 'Envío notificado')">Notificar envío</a>
+                        <a *ngIf="venta.estado == 'Envío notificado'"
+                            (click)="cambiarEstado(venta.idDoc!, 'Pedido entregado')">Entregar pedido</a>
+                        <a *ngIf="venta.estado == 'Pedido entregado'"
+                            (click)="cambiarEstado(venta.idDoc!, 'Archivado')">Archivar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+    <div class="selector-aside fondo-caja-clara" *ngIf="hayVentasSeleccionadas()">
+        <p>CAMBIAR ESTADO</p>
+        <select [(ngModel)]="accionSeleccionada">
+            <option value="" hidden>Elija una opción</option>
+            <option *ngFor="let estado of arrayEstados" [value]="estado">{{estado}}</option>
+        </select>
+        <button class="boton-claro" (click)="cambiarEstados(accionSeleccionada)">Aplicar cambios</button>
+    </div>
+
+</div>

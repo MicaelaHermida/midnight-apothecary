@@ -1,13 +1,26 @@
 h1{
-    margin: 2rem auto;
+    margin: 2rem;
+    padding-top: 2rem;
+    text-align: left;
+    font-weight:500;
 }
 
 h2{
     text-decoration: none;
-    font-size: 3.5rem;
-    padding: 2rem auto;
+    font-family: var(--titulo-font);
+    font-size: var(--font-size-46);
+    margin: 2rem;
+    padding: 0;
+    padding-bottom: 2rem;
+    text-align: end;
+    font-weight:600;
 }
 
 .page{
     min-height: 50vh;
+}
+
+.fondo-caja-clara{
+    width: 60rem;
+    margin: 4rem auto;
 }

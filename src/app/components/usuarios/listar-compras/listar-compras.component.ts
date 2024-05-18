@@ -13,20 +13,20 @@ import { ComprasService } from 'src/app/services/compras.service';
 })
 export class ListarComprasComponent implements OnInit {
 
-  productos: ItemCarrito[] = [];
-  compras: Compra[] = [];
-  compra: Compra = {} as Compra;
+  productos: ItemCarrito[] = []; //pasado a ventas
+  compras: Compra[] = [];   //pasado a ventas
+  compra: Compra = {} as Compra; //pasado a ventas
 
-  arrayEstados: string[] = ['Pendiente de pago', 'Pago confirmado', 'Pedido empaquetado', 'Envío notificado', 'Pedido entregado', 'Archivado', 'Cancelado'];
+  arrayEstados: string[] = ['Pendiente de pago', 'Pago confirmado', 'Pedido empaquetado', 'Envío notificado', 'Pedido entregado', 'Archivado', 'Cancelado']; //pasado a ventas
   filtradoReady: boolean = false;
 
-  isLogged: boolean = false;
-  isAdminRole: boolean = false;
-  firebaseAuthenticationReady: boolean = false;
+  isLogged: boolean = false; //pasado a ventas
+  isAdminRole: boolean = false; //pasado a ventas
+  firebaseAuthenticationReady: boolean = false; //pasado a ventas
 
-  existeUsuario: boolean = true;
-  tieneCompras: boolean = true;
-  busqueda: boolean = false;
+  existeUsuario: boolean = true; //pasado a ventas
+  tieneCompras: boolean = true; //pasado a ventas
+  busqueda: boolean = false; //pasado a ventas
 
   emailBuscado: string = "";
   dniBuscado: string = "";
@@ -35,26 +35,26 @@ export class ListarComprasComponent implements OnInit {
 
 
   //filtros
-  filtroEstado: string = "";
-  fechaDesde: string = "";
-  fechaHasta: string = "";
+  filtroEstado: string = ""; //pasado a ventas
+  fechaDesde: string = ""; //pasado a ventas
+  fechaHasta: string = "";  //pasado a ventas
 
-  datoBuscado: string = "";
+  datoBuscado: string = ""; //pasado a ventas
 
-  clientes: Map<string, string> = new Map();
-  estadoAmpliacion: { [key: string]: boolean } = {};
+  clientes: Map<string, string> = new Map(); //pasado a ventas
+  estadoAmpliacion: { [key: string]: boolean } = {}; //pasado a ventas
 
-  checkCompras: { [key: string]: boolean } = {};
-  accionSeleccionada: string = "";
+  checkCompras: { [key: string]: boolean } = {}; //pasado a ventas
+  accionSeleccionada: string = ""; //pasado a ventas
 
-  inputSeleccionado: boolean = false;
+  inputSeleccionado: boolean = false; //pasado a ventas
 
-  constructor(
+  constructor( //pasado a ventas
     private compraService: ComprasService,
     private authService: AuthenticationService
   ) { }
 
-  async ngOnInit(): Promise<void> {
+  async ngOnInit(): Promise<void> { //pasado a ventas
     await this.authService.waitForFirebaseAuthentication();
     this.firebaseAuthenticationReady = true;
     this.isLogged = this.authService.isUserLoggedIn();
@@ -65,7 +65,7 @@ export class ListarComprasComponent implements OnInit {
     }
   }
 
-  async initializeEstadoAmpliacion(): Promise<void> {
+  async initializeEstadoAmpliacion(): Promise<void> { //pasado a ventas
     for (const compra of this.compras) {
       this.estadoAmpliacion[compra.idDoc!] = false;
     }
@@ -73,7 +73,7 @@ export class ListarComprasComponent implements OnInit {
 
   //animacion input
 
-  verificarInput(): void {
+  verificarInput(): void { //pasado a ventas
     if (!this.datoBuscado) {
       this.inputSeleccionado = false;
     }
@@ -81,12 +81,12 @@ export class ListarComprasComponent implements OnInit {
 
   //Métodos de validación.
 
-  async validarUsuario(): Promise<void> {
+  async validarUsuario(): Promise<void> { //pasado a ventas
     const id_user = await this.authService.getUserIdByEmail(this.emailBuscado);
     this.existeUsuario = !!id_user;
   }
 
-  async validarCompras(): Promise<void> {
+  async validarCompras(): Promise<void> { //pasado a ventas
     this.tieneCompras = !!this.compras.length;
   }
 
@@ -97,7 +97,7 @@ export class ListarComprasComponent implements OnInit {
     this.ordenarComprasPorFecha();
   }
 
-  ordenarComprasPorFecha() {
+  ordenarComprasPorFecha() { //pasado a ventas
     this.compras.sort((a, b) => {
       let dateA = new Date(a.fecha);
       let dateB = new Date(b.fecha);
@@ -105,18 +105,18 @@ export class ListarComprasComponent implements OnInit {
     });
   }
 
-  corregirFecha(fecha: string): string {
+  corregirFecha(fecha: string): string { //pasado a ventas
     return fecha.replace(/-/g, "/");
   }
 
   //Métodos de búsqueda.
 
-  async buscarPorEmail(): Promise<void> {
+  async buscarPorEmail(): Promise<void> { //pasado a ventas
     this.compras = await this.compraService.getComprasPorEmail(this.emailBuscado);
     await this.validarUsuario();
   }
 
-  async buscarPorDni(): Promise<void> {
+  async buscarPorDni(): Promise<void> { //pasado a ventas
     const id_user = await this.authService.getUserIdByDni(this.dniBuscado);
     if (id_user === "") {
       this.existeUsuario = false;
@@ -129,7 +129,7 @@ export class ListarComprasComponent implements OnInit {
     this.compras = await this.compraService.getComprasPorFecha(fecha);
   }
 
-  async buscarPorNroCompra(): Promise<void> {
+  async buscarPorNroCompra(): Promise<void> { //pasado a ventas
     this.compra = await this.compraService.getComprasPorNroCompra(this.nroCompraBuscada);
     this.compras = this.compra ? [this.compra] : [];
   }
@@ -167,14 +167,14 @@ export class ListarComprasComponent implements OnInit {
   }
 
   //buscar nombre de cliente. 
-  async getClientesPorCompra() {
+  async getClientesPorCompra() { //pasado a ventas
     for (let compra of this.compras) {
       const cliente = await this.authService.getUserNameById(compra.userId);
       this.clientes.set(compra.userId, cliente);
     }
   }
 
-  ampliarCompra(idCompra: string | undefined): void {
+  ampliarCompra(idCompra: string | undefined): void { //pasado a ventas
     console.log(idCompra);
     this.estadoAmpliacion[idCompra!] = !this.estadoAmpliacion[idCompra!];
   }
@@ -182,11 +182,11 @@ export class ListarComprasComponent implements OnInit {
 
   //Métodos de filtrado. 
 
-  filtrarPorEstado() {
+  filtrarPorEstado() { //pasado a ventas
     this.compras = this.compras.filter(compra => compra.estado === this.filtroEstado);
   }
 
-  filtrarPorFecha() {
+  filtrarPorFecha() { //pasado a ventas
     if (this.fechaDesde === "" && this.fechaHasta === "") {
       alert("Ingrese un rango de fechas");
       return;
@@ -200,7 +200,7 @@ export class ListarComprasComponent implements OnInit {
     });
   }
 
-  aplicarFiltros() {
+  aplicarFiltros() { //pasado a ventas
     if (this.filtroEstado !== "" && this.filtroEstado !== "Todas") {
       this.filtrarPorEstado();
     }
@@ -211,12 +211,12 @@ export class ListarComprasComponent implements OnInit {
 
   //Métodos de cambio de estado. 
 
-  async cambiarEstado(id: string, estado: string) {
+  async cambiarEstado(id: string, estado: string) { //pasado a ventas
     await this.compraService.cambiarEstadoCompra(id, estado);
     await this.buscarCompras();
   }
 
-  actualizarComprasSeleccionadas(): void {
+  actualizarComprasSeleccionadas(): void { //pasado a ventas
     for (const compra of this.compras) {
       if (this.checkCompras[compra.idDoc!]) {
         this.checkCompras[compra.idDoc!] = true;
@@ -226,11 +226,11 @@ export class ListarComprasComponent implements OnInit {
     }
   }
 
-  hayComprasSeleccionadas(): boolean {
+  hayComprasSeleccionadas(): boolean { //pasado a ventas
     return Object.values(this.checkCompras).some(seleccionada => seleccionada);
   }
 
-  async cambiarEstados(estado: string): Promise<void> {
+  async cambiarEstados(estado: string): Promise<void> { //pasado a ventas
     if (this.accionSeleccionada === "") {
       alert("Seleccione una acción");
       return;
@@ -246,7 +246,7 @@ export class ListarComprasComponent implements OnInit {
     await this.buscarCompras();
   }
 
-  checkAll(event: any) {
+  checkAll(event: any) { //pasado a ventas
     const isChecked = event.target.checked;
     for (let compra of this.compras) {
       this.checkCompras[compra.idDoc!] = isChecked;
