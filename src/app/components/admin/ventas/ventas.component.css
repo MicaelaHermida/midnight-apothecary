@@ -3,6 +3,7 @@
 h2{
     text-decoration: none;
     text-align: left;
+    margin: 0;
     margin-left: 2rem;
     font-size: var(--font-size-50);
     font-family: var(--titulo-font);
@@ -27,6 +28,7 @@ p{
 }
 
 .compras-container{
+    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: flex-start;

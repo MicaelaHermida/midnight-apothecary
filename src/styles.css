@@ -16,7 +16,9 @@
     --font-size-28: 2.8rem;
     --font-size-30: 3rem;
     --font-size-32: 3.2rem;
+    --font-size-36: 3.6rem;
     --font-size-40: 4rem;
+    --font-size-46: 4.6rem;
     --font-size-50: 5rem;
 
     /*Color*/
@@ -73,7 +75,7 @@ hr {
 
 h1 {
     font-family: var(--titulo-font);
-    font-size: 6rem;
+    font-size: var(--font-size-50);
     color: black;
     margin: auto;
 }
@@ -227,7 +229,7 @@ button {
 .boton-claro {
     background-color: var(--back-trans);
     color: var(--back-dark);
-    border-radius: 5rem;
+    border-radius: 1rem;
     border: .1rem solid var(--color-dark);
     width: 30%;
     min-height: 2.5rem;
@@ -316,7 +318,7 @@ button {
 
 .fondo-blog {
     background-color: var(--color-light);
-    background-image: url(../src/assets/img/dibujos-blog.jpg);
+    background-image: url(../src/assets/img/dibujos-blog2.jpg);
     background-blend-mode: multiply;
 }
 
@@ -334,6 +336,7 @@ button {
     background-color: var(--back-extra-light-trans);
     background-image: url(../src/assets/img/caja-clara-long.png);
     background-blend-mode: overlay;
+    border-radius: 1rem;
 }
 
 /* ------------------------[ FOOTER PARA PAGS CORTAS ]------------------------*/
