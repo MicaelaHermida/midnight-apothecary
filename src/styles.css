@@ -239,7 +239,6 @@ button {
 
 .boton-claro:hover {
     background-color: var(--color-extra-light);
-    font-weight: 600;
 }
 
 .boton-transp {

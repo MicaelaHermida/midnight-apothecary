@@ -37,8 +37,9 @@
 
     <main class="listado-ventas" *ngIf="busqueda">
         <div class="not-found fondo-caja-clara" *ngIf="!hayVentas">
-            <h2>UPS!</h2>
+            <h1>UPS!</h1>
             <h2>NO SE ENCONTRARON COMPRAS.</h2>
+            <h3>Verifica el dato ingresado...</h3>
         </div>
         
         <table class="tabla-ventas fondo-caja-clara" *ngIf="hayVentas">
