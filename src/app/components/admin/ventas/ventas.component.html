@@ -3,12 +3,14 @@
 
 <div class="compras-container" *ngIf="isAdminRole && firebaseAuthenticationReady">
 
-    <aside class="busqueda-aside">
+    <aside class="busqueda-aside fondo-caja-clara">
         <div class="busqueda-aside-box">
             <p>BUSCAR</p>
             <div class="placeholder-container">
-                <span class="placeholder" *ngIf="!inputSeleccionado && !datoBuscado">Ingrese el número de compra, dni o email del cliente...</span>
-                <input class="input-pequeno" type="text" [(ngModel)]="datoBuscado" (click)="inputSeleccionado = true" (blur)="verificarInput()">
+                <span class="placeholder" *ngIf="!inputSeleccionado && !datoBuscado">Ingrese el número de compra, dni o
+                    email del cliente...</span>
+                <input class="input-pequeno" type="text" [(ngModel)]="datoBuscado"
+                    (click)="inputSeleccionado = true" (blur)="verificarInput()" (keydown.enter)="buscarVentas()">
             </div>
         </div>
 
@@ -33,10 +35,11 @@
     </aside>
 
     <main class="listado-ventas" *ngIf="busqueda">
-        <h2 *ngIf="!existeUsuario">Usuario no encontrado</h2>
-        <h2 *ngIf="existeUsuario && !hayVentas">El usuario no tiene compras</h2>
+        <div class="not-found fondo-caja-clara" *ngIf="!hayVentas">
+            <h2>NO SE ENCONTRARON COMPRAS.</h2>
+        </div>
         
-        <table class="tabla-ventas">
+        <table class="tabla-ventas fondo-caja-clara" *ngIf="hayVentas">
             <thead>
                 <tr>
                     <th>
@@ -55,13 +58,15 @@
             <tbody>
                 <tr *ngFor="let venta of ventas">
                     <td>
-                        <input type="checkbox" [(ngModel)]="checkVentas[venta.idDoc!]" (change)="actualizarVentasSeleccionadas()">
+                        <input type="checkbox" [(ngModel)]="checkVentas[venta.idDoc!]"
+                            (change)="actualizarVentasSeleccionadas()">
                     </td>
                     <td>{{venta.idDoc}}</td>
                     <td>{{venta.fecha}}</td>
                     <td>
                         <a *ngIf="!estadoAmpliacion[venta.idDoc!]" (click)="ampliarVenta(venta.idDoc)">Ampliar</a>
-                        <a *ngIf="estadoAmpliacion && estadoAmpliacion[venta.idDoc!]" (click)="ampliarVenta(venta.idDoc)">Reducir</a>
+                        <a *ngIf="estadoAmpliacion && estadoAmpliacion[venta.idDoc!]"
+                            (click)="ampliarVenta(venta.idDoc)">Reducir</a>
                         <div *ngIf="estadoAmpliacion && estadoAmpliacion[venta.idDoc!]">
                             <div class="producto-cantidad" *ngFor="let producto of venta.items">
                                 <p>{{producto.nombre}}</p>
@@ -90,16 +95,13 @@
         </table>
     </main>
 
-    <div class="selector-aside" *ngIf="hayVentasSeleccionadas()">
+    <div class="selector-aside fondo-caja-clara" *ngIf="hayVentasSeleccionadas()">
         <p>CAMBIAR ESTADO</p>
         <select [(ngModel)]="accionSeleccionada">
             <option value="" hidden>Elija una opción</option>
             <option *ngFor="let estado of arrayEstados" [value]="estado">{{estado}}</option>
         </select>
-        
-        <div class="container-buttons">
-            <button class="boton-claro" (click)="cambiarEstados(accionSeleccionada)">Aplicar cambios</button>
-        </div>
+        <button class="boton-claro" (click)="cambiarEstados(accionSeleccionada)">Aplicar cambios</button>
     </div>
 
 </div>

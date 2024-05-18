@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { reload } from 'firebase/auth';
 import { Compra } from 'src/app/interfaces/compra.interface';
 import { ItemCarrito } from 'src/app/interfaces/itemCarrito.interface';
 import { AuthenticationService } from 'src/app/services/authentication.service';
@@ -20,7 +22,7 @@ export class VentasComponent implements OnInit {
 
   //validación
   existeUsuario: boolean = true;
-  hayVentas: boolean = true;
+  hayVentas: boolean = false;
 
   //busqueda
   busqueda: boolean = false;
@@ -50,7 +52,8 @@ export class VentasComponent implements OnInit {
 
   constructor(
     private compraService: ComprasService,
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
+    private router: Router
   ) { }
 
   async ngOnInit(): Promise<void> {
@@ -66,10 +69,6 @@ export class VentasComponent implements OnInit {
   async validarUsuario(email: string): Promise<void> {
     const id_user = await this.authService.getUserIdByEmail(email);
     this.existeUsuario = !!id_user;
-  }
-
-  async validarVentas(): Promise<void> {
-    this.hayVentas = !!this.ventas.length;
   }
 
   corregirFecha(fecha: string): string {
@@ -88,9 +87,9 @@ export class VentasComponent implements OnInit {
 
 
   //Visualización y listar
-  verificarInput(): void{
-    if(!this.datoBuscado){
-      this.busqueda = false;
+  verificarInput(): void {
+    if (!this.datoBuscado) {
+      this.inputSeleccionado = false;
     }
   }
 
@@ -102,8 +101,10 @@ export class VentasComponent implements OnInit {
   }
 
   async inicializarAmpliacion(): Promise<void> {
-    for(const venta of this.ventas){
-      this.estadoAmpliacion[venta.idDoc!] = false;
+    if(this.ventas.length !== 0) {
+      for (const venta of this.ventas) {
+        this.estadoAmpliacion[venta.idDoc!] = false;
+      }
     }
   }
 
@@ -160,7 +161,9 @@ export class VentasComponent implements OnInit {
     this.ventas = this.venta ? [this.venta] : [];
   }
 
-  async buscarVentas(): Promise<void> {
+  async buscarVentas(): Promise<void> {   
+    this.ventas = [];
+    this.hayVentas = false;
     this.busqueda = true;
 
     if (this.datoBuscado === "") {
@@ -172,38 +175,43 @@ export class VentasComponent implements OnInit {
       await this.buscarPorEmail(this.datoBuscado);
     } else if (!isNaN(Number(this.datoBuscado)) && this.datoBuscado.length === 8) {
       await this.buscarPorDNI(this.datoBuscado);
-    } else {
+    } else if(this.datoBuscado.length === 20) {
       await this.buscarPorNro(this.datoBuscado);
     }
 
-    this.validarVentas();
-    this.aplicarFiltros();
-    this.verClientePorVenta();
-    this.ordenarVentasPorFecha();
+    if (!this.ventas.length) {
+      this.hayVentas = false;
+    } else {
+      this.hayVentas = true;
+      this.aplicarFiltros();
+      this.verClientePorVenta();
+      this.ordenarVentasPorFecha();
+    }
 
     await this.inicializarAmpliacion();
+    
   }
 
 
   //Seleccion de ventas
 
-  actualizarVentasSeleccionadas(): void{
-    for(const venta of this.ventas){
-      if(this.checkVentas[venta.idDoc!]){
+  actualizarVentasSeleccionadas(): void {
+    for (const venta of this.ventas) {
+      if (this.checkVentas[venta.idDoc!]) {
         this.checkVentas[venta.idDoc!] = true;
-      } else{
+      } else {
         this.checkVentas[venta.idDoc!] = false;
       }
     }
   }
 
-  hayVentasSeleccionadas(): boolean{
+  hayVentasSeleccionadas(): boolean {
     return Object.values(this.checkVentas).some(checked => checked);
   }
 
-  checkAll(event: any){
+  checkAll(event: any) {
     const isChecked = event.target.checked;
-    for(let venta of this.ventas){
+    for (let venta of this.ventas) {
       this.checkVentas[venta.idDoc!] = isChecked;
     }
   }
@@ -211,18 +219,18 @@ export class VentasComponent implements OnInit {
 
   //Cambio de estado. 
 
-  async cambiarEstado(id: string, estado: string): Promise<void>{
+  async cambiarEstado(id: string, estado: string): Promise<void> {
     await this.compraService.cambiarEstadoCompra(id, estado);
     await this.buscarVentas();
   }
 
-  async cambiarEstados(estado: string): Promise<void>{
-    if(this.accionSeleccionada === ""){
+  async cambiarEstados(estado: string): Promise<void> {
+    if (this.accionSeleccionada === "") {
       alert("Seleccione una acción");
       return;
     }
-    for(const [id, checked] of Object.entries(this.checkVentas)){
-      if(checked){
+    for (const [id, checked] of Object.entries(this.checkVentas)) {
+      if (checked) {
         await this.compraService.cambiarEstadoCompra(id, estado);
       }
     }

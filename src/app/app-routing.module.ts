@@ -14,6 +14,7 @@ import { UsuarioInfoPageComponent } from './pages/usuarios/usuario-info-page/usu
 import { ListarComprasPageComponent } from './pages/usuarios/listar-compras-page/listar-compras-page.component';
 import { NuevoProductoPageComponent } from './pages/tienda/nuevo-producto-page/nuevo-producto-page.component';
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
+import { VentasComponent } from './components/admin/ventas/ventas.component';
 
 const routes: Routes = [
   {path: 'admin', component: AdminPageComponent},
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path: 'compra', component: CompraPageComponent},
   {path: 'usuario', component: UsuarioInfoPageComponent},
   {path: 'compras', component: ListarComprasPageComponent},
+  {path: 'ventas', component: VentasComponent},
   {path: 'nuevo-producto', component: NuevoProductoPageComponent},
   {path: "**", redirectTo: 'home'}
 ];

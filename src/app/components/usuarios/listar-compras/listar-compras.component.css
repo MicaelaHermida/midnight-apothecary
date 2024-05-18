@@ -67,7 +67,6 @@ select {
     font-size: var(--font-size-18);
     font-family: var(--base-font);
     color: var(--color-extra-dark);
-
     width: 100%;
     border: none;
     border-bottom: 1px solid var(--color-dark);
@@ -91,14 +90,10 @@ option:hover {
     color: var(--color-extra-light)
 }
 
-select:focus > option:checked { 
+option:checked { 
     background: var(--back-medium) !important;
-    
-}
-
-select option:hover {
-    background-color: var(--back-medium);
     color: var(--color-extra-light);
+    
 }
 
 /*INPUT*/
@@ -157,7 +152,6 @@ select option:hover {
 
 }
 
-
 .busqueda-aside-box input:hover {
     border-bottom: 2px solid var(--color-dark)
 }
@@ -195,6 +189,8 @@ input[type="checkbox" i]:checked {
 input[type="checkbox" i]:hover{
     box-shadow: 0 0 .1rem .2rem var(--back-medium);
 }
+
+
 /*LISTADO COMPRAS*/
 
 .listado-compras {
