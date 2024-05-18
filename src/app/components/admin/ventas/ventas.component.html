@@ -36,6 +36,7 @@
 
     <main class="listado-ventas" *ngIf="busqueda">
         <div class="not-found fondo-caja-clara" *ngIf="!hayVentas">
+            <h2>UPS!</h2>
             <h2>NO SE ENCONTRARON COMPRAS.</h2>
         </div>
         
@@ -63,20 +64,19 @@
                     </td>
                     <td>{{venta.idDoc}}</td>
                     <td>{{venta.fecha}}</td>
-                    <td>
+                    <td class="td-large">
                         <a *ngIf="!estadoAmpliacion[venta.idDoc!]" (click)="ampliarVenta(venta.idDoc)">Ampliar</a>
                         <a *ngIf="estadoAmpliacion && estadoAmpliacion[venta.idDoc!]"
                             (click)="ampliarVenta(venta.idDoc)">Reducir</a>
                         <div *ngIf="estadoAmpliacion && estadoAmpliacion[venta.idDoc!]">
                             <div class="producto-cantidad" *ngFor="let producto of venta.items">
                                 <p>{{producto.nombre}}</p>
-                                <p> x </p>
-                                <p>{{producto.cantidad}}</p>
+                                <p>x {{producto.cantidad}}</p>
                             </div>
                         </div>
                     </td>
                     <td>${{venta.total}}</td>
-                    <td>{{clientes.get(venta.userId)}}</td>
+                    <td class="td-large">{{clientes.get(venta.userId)}}</td>
                     <td>{{venta.estado}}</td>
                     <td>
                         <a *ngIf="venta.estado == 'Pendiente de pago'"

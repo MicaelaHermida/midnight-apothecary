@@ -45,6 +45,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 import { environment } from './environment/environment';
 import { VentasComponent } from './components/admin/ventas/ventas.component';
+import { VentasPageComponent } from './pages/admin-page/ventas-page/ventas-page.component';
 
 @NgModule({
   declarations: [
@@ -84,7 +85,8 @@ import { VentasComponent } from './components/admin/ventas/ventas.component';
     NuevoProductoPageComponent,
     AdminComponent,
     AdminPageComponent,
-    VentasComponent
+    VentasComponent,
+    VentasPageComponent
   ],
   imports: [
     BrowserModule,

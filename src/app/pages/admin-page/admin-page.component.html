@@ -1,8 +1,10 @@
-<app-admin></app-admin>
+<app-admin *ngIf="isAdminRole && firebaseAuthenticationReady"></app-admin>
 
 <div class="page fondo-user">
-    <h1>¡{{horario}}, {{userName}}!</h1>
-    <h2>¿Qué deseas hacer?</h2>
+    <div class="fondo-caja-clara">
+        <h1>¡{{horario}}, {{userName}}!</h1>
+        <h2>¿Qué deseas hacer?</h2>
+    </div>
 </div>
 
 <app-footer class="footer-fixed"></app-footer>
