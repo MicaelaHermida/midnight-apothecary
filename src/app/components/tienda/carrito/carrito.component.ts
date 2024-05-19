@@ -12,6 +12,7 @@ import { ProductosService } from 'src/app/services/productos.service';
   styleUrls: ['./carrito.component.css']
 })
 export class CarritoComponent implements OnInit {
+  showCart: boolean = false;
 
   productos: ItemCarrito[] = [];
 
@@ -36,6 +37,15 @@ export class CarritoComponent implements OnInit {
     await this.mostrarCarrito();
     this.verificarUrl();
   }
+
+/*   toggleCart(){
+    this.showCart = !this.showCart;
+    if(this.showCart){
+      document.querySelector('.drop-carrito')?.classList.add('show');
+    }else{
+      document.querySelector('.drop-carrito')?.classList.remove('show');
+    }
+  } */
 
   async cargarProductos(): Promise<void> {
     for (let item of this.carritoService.getCarrito()) {

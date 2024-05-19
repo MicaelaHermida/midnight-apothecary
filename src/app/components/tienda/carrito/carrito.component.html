@@ -2,11 +2,13 @@
     <h2>CESTA DE COMPRAS</h2>
     <hr class="hr-subtitulo">
 
-    <div *ngIf="isLogged && firebaseAuthenticationReady && hasProductos" class="contenedor-carrito fondo-caja-clara">
-        <table>
+    <div *ngIf="isLogged && firebaseAuthenticationReady && hasProductos" class="contenedor-carrito">
+        <table class="tabla fondo-caja-clara">
             <thead>
                 <tr>
                     <th>Producto</th>
+                    <th></th>
+                    <th></th>
                     <th></th>
                     <th>Subtotal</th>
                     <th *ngIf="!isCompraPage">Añadir</th>

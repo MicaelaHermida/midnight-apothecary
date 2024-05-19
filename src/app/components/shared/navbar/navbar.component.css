@@ -66,7 +66,25 @@ img{
     color: var(--color-extra-light);
 }
 
-/*MENU DESPLEGABLE*/
+.dropbtn-carrito i:active {
+    color: var(--back-medium);
+}
+
+/*CARRITO DESPLEGABLE*/
+.drop-carrito{ /**/
+    display: block;
+    position: fixed;
+    flex-direction: column;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    background-color: var(--color-extra-light);
+    box-shadow: 0px 8px 16px 0px var(--color-dark);
+    border: 1px solid var(--color-light);
+    width: 40rem;
+}
+
+
 /* .dropdown {
     position: relative;
     display: inline-block;

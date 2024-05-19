@@ -13,11 +13,12 @@
         <a *ngIf="isLogged && firebaseAuthenticationReady && isAdminRole" [routerLink]="['/admin']">Admin</a>
         <a *ngIf="isLogged && firebaseAuthenticationReady && !isAdminRole" [routerLink]="['/usuario']">Mi Perfil</a>
         <a *ngIf="isLogged && firebaseAuthenticationReady && !isAdminRole" [routerLink]="['/compras']">Mis Compras</a>
-  
+        <button class="dropbtn-carrito" (click)="clickCarrito()" *ngIf="isLogged && firebaseAuthenticationReady && !isAdminRole"><i class="fi fi-sr-shopping-basket"></i></button>
     </div>
 
-    <div class="dropbtn-carrito" *ngIf="isLogged && firebaseAuthenticationReady && !isAdminRole">
-        <button class="dropbtn" [routerLink]="['/carrito']"><i class="fi fi-sr-shopping-basket"></i></button>
+    <div class="drop-carrito" *ngIf="carritoVisible">
+        <button class="botoncito" (click)="carritoVisible = false">x</button>
+        <app-carrito></app-carrito>
     </div>
 
 </div>

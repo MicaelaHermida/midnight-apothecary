@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { ViewChild } from '@angular/core';
+import { CarritoComponent } from '../../tienda/carrito/carrito.component';
 
 @Component({
   selector: 'app-navbar',
@@ -8,6 +10,9 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit{
+
+  @ViewChild(CarritoComponent) carritoComponent: CarritoComponent | undefined;
+  carritoVisible: boolean = false;
 
   isLogged: boolean = false;
   isAdminRole: boolean = false;
@@ -36,6 +41,14 @@ export class NavbarComponent implements OnInit{
         this.isAdminRole = await this.authenticationService.getCurrentUserRole() === "admin";
       }
     });
+  }
+
+  clickCarrito(){
+    if(this.carritoVisible){
+      this.carritoVisible = false;
+    }else{
+      this.carritoVisible = true;
+    }
   }
   
 }

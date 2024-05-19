@@ -44,7 +44,7 @@ img{
 }
 
 /*TABLA*/
-
+/* 
 .contenedor-carrito table{
     width: 95%;
     border-collapse: collapse;
@@ -86,7 +86,7 @@ img{
     text-align: end;
     padding-right: 1rem;
 }
-
+ */
 /*BOTONES*/
 
 td button:hover{

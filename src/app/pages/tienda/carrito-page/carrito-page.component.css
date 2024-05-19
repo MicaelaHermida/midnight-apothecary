@@ -1,3 +1,6 @@
-.page{
-    padding: 0;
+.page-desplegable{
+    display: flex;
+    position: absolute;
+    align-self: flex-end;
+    width: 40%;
 }
