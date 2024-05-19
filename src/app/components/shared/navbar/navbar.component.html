@@ -16,24 +16,10 @@
         <button class="dropbtn-carrito" (click)="clickCarrito()" *ngIf="isLogged && firebaseAuthenticationReady && !isAdminRole"><i class="fi fi-sr-shopping-basket"></i></button>
     </div>
 
-    <div class="drop-carrito" *ngIf="carritoVisible">
+    <div class="drop-carrito fondo-caja-clara" *ngIf="carritoVisible">
         <button class="botoncito" (click)="carritoVisible = false">x</button>
         <app-carrito></app-carrito>
     </div>
 
 </div>
 <hr>
-
-
-<!-- <div class="dropdown">
-            <button class="dropbtn"><i class="fi fi-sr-hat-witch"></i></button>
-            <div class="dropdown-content">
-                <a *ngIf="isLogged && firebaseAuthenticationReady" [routerLink]="['/usuario']">Mi Perfil</a>
-                <a *ngIf="(isLogged && firebaseAuthenticationReady) && !isAdminRole" [routerLink]="['/compras']">Mis Compras</a>
-                <a *ngIf="isAdminRole && firebaseAuthenticationReady" [routerLink]="['/compras']">Ver Compras</a>
-                <a *ngIf="isAdminRole && firebaseAuthenticationReady" [routerLink]="['/nuevo-producto']">Nuevo producto</a>
-                <hr>
-                <a *ngIf="isLogged && firebaseAuthenticationReady" (click)="cerrarSesion()">Cerrar Sesion</a>
-
-            </div>
-        </div> -->

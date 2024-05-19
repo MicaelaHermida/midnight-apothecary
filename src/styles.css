@@ -33,6 +33,7 @@
 /*     --back-extra-light-trans: #f3dff7be; */
     --back-extra-light-trans: #faedfcbe;
     --back-dark-trans: #2a2030d3;
+    --color-error: #a10202;
 }
 
 
@@ -247,6 +248,10 @@ button {
     background-color: var(--color-extra-light);
 }
 
+.boton-claro:active{
+    background-color: var(--color-light);
+}
+
 .boton-transp {
     background-color: var(--back-trans);
     color: var(--color-extra-light);
@@ -287,6 +292,7 @@ button {
     height: 3rem;
     border-radius: 5rem;
     padding: .5rem;
+    align-items: center;
 }
 
 
@@ -639,9 +645,10 @@ textarea.invalid{
     font-size: var(--font-size-16);
     font-weight: 400;
     text-align: center;
-    border-bottom: .1rem solid var(--color-extra-light);
+    border-bottom: .1rem solid white;
     vertical-align: top;
-    padding-top: .5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 .tabla td a{
