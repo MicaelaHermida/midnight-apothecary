@@ -166,10 +166,12 @@ export class PasarelaPagoComponent implements OnInit{
     for (let item of carrito) {
       const id_producto = item.id_producto;
       const cantidad = item.cantidad;
-      const precio = await this.productoService.getPrecioProducto(id_producto);
+      const imagen = await this.productoService.getImagenProducto(id_producto);
       const nombre = await this.productoService.getNombreProducto(id_producto);
+      const precio = await this.productoService.getPrecioProducto(id_producto);
+      
       const subtotal = cantidad * precio;
-      this.productos.push({ id_producto, nombre, precio, cantidad, subtotal });
+      this.productos.push({ id_producto, imagen, nombre, precio, cantidad, subtotal });
     }
   }
 

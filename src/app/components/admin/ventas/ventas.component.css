@@ -22,11 +22,6 @@ h3{
     margin-top: 4rem;
 }
 
-.hr-subtitulo{
-    width: 20%;
-    margin: 0 2rem;
-    border: 1px solid var(--color-dark);
-}
 
 p{
     color: var(--color-dark);

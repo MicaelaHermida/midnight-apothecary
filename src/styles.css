@@ -73,6 +73,12 @@ hr {
     margin: 0;
 }
 
+.hr-subtitulo{
+    width: 20%;
+    margin: 0 2rem;
+    border: .1rem solid var(--color-dark);
+}
+
 h1 {
     font-family: var(--titulo-font);
     font-size: var(--font-size-50);
@@ -85,9 +91,9 @@ h2 {
     font-size: var(--font-size-28);
     font-weight: 400;
     text-align: center;
-    text-decoration: underline;
+    text-decoration: none;
     top: 0;
-    margin: 1rem auto;
+    margin: 0 2rem 0 0;
     padding: .5rem;
 }
 

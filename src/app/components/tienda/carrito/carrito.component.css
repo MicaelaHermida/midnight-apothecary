@@ -1,12 +1,32 @@
-/*CARRITO*/
+h2{
+    font-family: var(--titulo-font);
+    font-size: var(--font-size-30);
+    text-align: left;
+    margin-left: 1rem;
+    margin-top: 1rem;
+    padding: 0;
 
+}
+
+.hr-subtitulo{
+    width: 80%;
+    margin-left: 1rem;
+}
+
+h3{
+    text-align: left;
+    margin: 1rem;
+}
+
+/*CARRITO*/
+/* 
 .page{
     background-color: var(--back-extra-light-trans);
     width: 40%;
     min-height: 0;
     margin: 2rem auto;
     border-radius: 1rem;
-}
+} */
 
 .contenedor-carrito{
     width: 95%;
@@ -14,7 +34,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border-radius: 10px;
+    background-color: var(--color-extra-light);
+    margin: 2rem auto;
 }
 
 /*TABLA*/

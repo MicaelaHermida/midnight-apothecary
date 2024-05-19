@@ -194,7 +194,26 @@ export class ProductosService {
       console.error(error);
     }
     return nombre;
+  }
 
+  async getImagenProducto(idProducto: string): Promise<string>{
+    let imagen = "";
+    try{
+      const db = this.firestore;
+      const productsCollection = collection(db, 'products');
+      const productoDoc = doc(productsCollection, idProducto);
+      const productoSnapshot = await getDoc(productoDoc);
+      if(!productoSnapshot){
+        console.error('No existe el producto');
+        return "";
+      }
+      const docData = productoSnapshot.data();
+      if(docData)
+        imagen = docData['imagen'];
+    }catch(error){
+      console.log(error);
+    }
+    return imagen;
   }
 
   async updateStock(idProducto: string, cantidad : number) : Promise <void>{
