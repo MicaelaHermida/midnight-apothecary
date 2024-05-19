@@ -42,7 +42,7 @@
             <h3>Verifica el dato ingresado...</h3>
         </div>
         
-        <table class="tabla-ventas fondo-caja-clara" *ngIf="hayVentas">
+        <table class="tabla fondo-caja-clara" *ngIf="hayVentas">
             <thead>
                 <tr>
                     <th>
@@ -79,8 +79,8 @@
                     </td>
                     <td>${{venta.total}}</td>
                     <td class="td-large">{{clientes.get(venta.userId)}}</td>
-                    <td>{{venta.estado}}</td>
-                    <td>
+                    <td class="td-large">{{venta.estado}}</td>
+                    <td class="td-large">
                         <a *ngIf="venta.estado == 'Pendiente de pago'"
                             (click)="cambiarEstado(venta.idDoc!, 'Pago confirmado')">Confirmar Pago</a>
                         <a *ngIf="venta.estado == 'Pago confirmado'"

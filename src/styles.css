@@ -616,3 +616,48 @@ textarea.invalid{
     padding: 1rem;
 }
 
+
+/* ------------------------[ TABLAS ]------------------------*/
+.tabla{
+    border-collapse: collapse;
+    border-radius: 1rem;
+}
+
+.tabla th{
+    color: var(--color-extra-dark);
+    font-family: var(--subtitulo-font);
+    font-size: var(--font-size-19);
+    font-weight: 400;
+    padding: .5rem;
+    width: 0.5%;
+    border-bottom: .1rem solid var(--color-dark);
+}
+
+.tabla td{
+    color: var(--color-dark);
+    font-family: var(--base-font);
+    font-size: var(--font-size-16);
+    font-weight: 400;
+    text-align: center;
+    border-bottom: .1rem solid var(--color-extra-light);
+    vertical-align: top;
+    padding-top: .5rem;
+}
+
+.tabla td a{
+    color: var(--back-medium);
+    text-decoration: none;
+}
+
+.tabla td a:hover{
+    cursor: pointer;
+}
+
+.tabla td p{
+    font-family: var(--base-font);
+    font-size: var(--font-size-16);
+}
+
+.td-large{
+    width: 1.3%;
+}
