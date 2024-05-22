@@ -8,11 +8,13 @@
     --titulo-font: 'Yomogi', cursive;
 
     /*Size*/
+    --font-size-14: 1.4rem;
     --font-size-16: 1.6rem;
     --font-size-17: 1.7rem;
     --font-size-18: 1.8rem;
     --font-size-19: 1.9rem;
     --font-size-20: 2rem;
+    --font-size-24: 2.4rem;
     --font-size-28: 2.8rem;
     --font-size-30: 3rem;
     --font-size-32: 3.2rem;
@@ -22,16 +24,16 @@
     --font-size-50: 5rem;
 
     /*Color*/
-   /*  --color-extra-light: #e8d5eb; */
-    --color-extra-light: #f5e9f7;
-    --color-light: #d2c2d4; /*b39fb6*/
+   /*  --color-extra-light: #e8d5eb; #f5e9f7*/
+    --color-extra-light: #f9f2fa;
+    --color-light: #e8d9eb; /*b39fb6 #d2c2d4*/
     --color-dark: #2a2030;
     --color-extra-dark: #1b151f;
     --back-medium: #876a89;
     --back-trans: #00000000;
     --back-light-trans: #b39fb6d8;
-/*     --back-extra-light-trans: #f3dff7be; */
-    --back-extra-light-trans: #faedfcbe;
+/*     --back-extra-light-trans: #f3dff7be; #faedfcbe*/
+    --back-extra-light-trans: #fef8ffc9;
     --back-dark-trans: #2a2030d3;
     --color-error: #a10202;
 }
@@ -45,6 +47,7 @@
 @import url('https://cdn-uicons.flaticon.com/2.0.0/uicons-regular-straight/css/uicons-regular-straight.css');
 @import url('https://cdn-uicons.flaticon.com/2.0.0/uicons-solid-rounded/css/uicons-solid-rounded.css');
 @import url('https://cdn-uicons.flaticon.com/2.0.0/uicons-regular-straight/css/uicons-regular-straight.css');
+
 
 html {
     box-sizing: border-box;
@@ -412,6 +415,8 @@ button {
 .contenedor .info {
     height: 100%;
     background-color: var(--back-extra-light-trans);
+    background-image: url(../src/assets/img/caja-clara-long.png);
+    background-blend-mode: overlay;
     display: flex;
     flex-direction: column;
     box-sizing:content-box;
@@ -634,8 +639,8 @@ textarea.invalid{
     font-family: var(--subtitulo-font);
     font-size: var(--font-size-19);
     font-weight: 400;
+    width: 30%;
     padding: .5rem;
-    width: 0.5%;
     border-bottom: .1rem solid var(--color-dark);
 }
 
@@ -647,8 +652,8 @@ textarea.invalid{
     text-align: center;
     border-bottom: .1rem solid white;
     vertical-align: top;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
 }
 
 .tabla td a{
@@ -668,3 +673,4 @@ textarea.invalid{
 .td-large{
     width: 1.3%;
 }
+

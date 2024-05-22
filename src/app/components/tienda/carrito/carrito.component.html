@@ -1,4 +1,4 @@
-<div [class.compra-page]="isCompraPage" *ngIf="isLogged && firebaseAuthenticationReady && hasProductos" class="contenedor-carrito fondo-caja-clara">
+<div [class.compra-page]="isCompraPage" *ngIf="isLogged && firebaseAuthenticationReady && hasProductos" class="contenedor-carrito">
     <div class="cabecera">
         <h2>CARRITO</h2>
     </div>
@@ -6,9 +6,10 @@
         <table class="tabla fondo-caja-clara">
             <thead>
                 <tr>
-                    <th>Producto</th>
+                    <th class="th-large">Producto</th>
                     <th></th>
-                    <th>Subtotal</th>
+                    <th class="th-large">Subtotal</th>
+                    <th class="th-short"></th>
                 </tr>
             </thead>
 
@@ -19,21 +20,47 @@
                         <div class="detalle-producto">
                             <p>{{producto.nombre}}</p>
                             <p>${{producto.precio}}</p>
-                            <div *ngIf="!isCompraPage" class="cantidad-botones">
+                            <div>
                                 <button class="botoncito" (click)="eliminarProducto(producto.id_producto)">-</button>
                                 <p>{{producto.cantidad}}</p>
                                 <button class="botoncito" (click)="agregarProducto(producto.id_producto)">+</button>
                             </div>
                         </div>
                     </td>                    
-                    <td><p>${{producto.subtotal}}</p></td>
+                    <td>
+                        <p class="subtotal">${{producto.subtotal}}</p>
+                    </td>
+                    <td>
+                        <a class="carrito-icon" (click)="eliminarProductos(producto.id_producto, producto.cantidad)">
+                            <i class="fi fi-sr-trash-xmark"></i>
+                        </a>
+                    </td>
                 </tr>
             </tbody>
         </table>
 
         <div class="foot-table">
-            <p>SUBTOTAL (sin envio):</p>
-            <p class="total"><b>$ {{totalCarrito}}</b></p>
+            <div>
+                <p>SUBTOTAL (sin envio):</p>
+                <p class="monto"><b>$ {{totalCarrito}}</b></p>
+            </div>
+
+            <div class="envio">
+                <img src="../../../../assets/img/camion-de-carga.png" alt="camion">
+                <p>Medios de envío:</p>
+            </div>
+                
+            <div class="cod-postal">
+                <input type="text" placeholder="Tu código postal">
+                <button class="boton-claro">CALCULAR</button>
+            </div>
+
+            <a href="https://www.correoargentino.com.ar/formularios/cpa" target="_blank">NO SÉ MI CÓDIGO POSTAL</a>
+            
+            <div class="total">
+                <p>TOTAL:</p>
+                <p class="monto"><b>$ {{totalCarrito}}</b></p>
+            </div>
         </div>
 
         <button *ngIf="!isCompraPage" [routerLink]="['/compra']" class="boton-claro">Iniciar compra</button>

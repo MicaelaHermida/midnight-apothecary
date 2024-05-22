@@ -103,6 +103,7 @@ export class CarritoComponent implements OnInit {
     }
     await this.mostrarCarrito();
   }
+  
   async agregarProducto(id: string) {
     const producto = await this.productosService.getProducto(id);
     const index = this.productos.findIndex((item) => item.id_producto === id);
@@ -113,6 +114,18 @@ export class CarritoComponent implements OnInit {
     await this.carritoService.actualizarCarrito({ id_producto: id, cantidad: 1 });
     await this.mostrarCarrito();
   };
+
+  async eliminarProductos(id: string, cant: number){
+    await this.carritoService.deleteProductoCarrito(id, cant);
+    const index = this.productos.findIndex((item) => item.id_producto === id);
+    if (this.productos[index].cantidad === 0) {
+      this.productos.splice(index, 1);
+    }
+    await this.mostrarCarrito();
+
+  }
+
+  
 
   verificarUrl() {
     const currentURL = window.location.href;

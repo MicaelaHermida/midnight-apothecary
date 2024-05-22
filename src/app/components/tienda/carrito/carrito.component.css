@@ -22,8 +22,8 @@ h3{
 }
 
 img{
-    width: 10rem;
-    height: 10rem;
+    width: 8rem;
+    height: 8rem;
 }
 
 .fondo-caja-clara{
@@ -47,44 +47,11 @@ img{
     background-color: var(--back-extra-light-trans);
 }
 
-.detalle-producto{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-}
-
-.detalle-producto p {
-    margin: 0;
-    padding: .5rem;
-    text-align: start;
-    color: var(--color-extra-dark)
-}
-
-.cantidad-botones{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin: 0;
-}
-
-.cantidad-botones p{
-    font-size: var(--font-size-18);
-    align-items: center;
-    border-bottom: .1rem solid var(--color-dark);
-    bottom: 0;
-    top: 0;
-}
-
-
-
-
-
-
-/*TABLA*/
+/* ------------------------[ TABLA ]------------------------*/
 
 .tabla{
     border-radius: 1rem;
+    width: 100%;
     border: .1rem solid var(--color-extra-light);
 }
 
@@ -94,37 +61,160 @@ img{
     border-top: .1rem solid white;
 }
 
-.tabla th{
-    /* border-bottom: .1rem solid white; */
+.tabla tr th{
     border: none;
     color: var(--color-extra-dark);
+}
+
+tr .th-large{
+    width: 25%;
+}
+
+tr .th-short{
+    width: 1.5%;
+}
+
+/*TD*/
+td p{
+    margin: 0;
+    padding: 0;
+    padding-top: .5rem;
+}
+
+.detalle-producto{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.detalle-producto p {
+    margin: 0;
+    padding: .2rem;
+    text-align: start;
+    color: var(--color-extra-dark)
+}
+
+.detalle-producto div{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 0;
+}
+
+.detalle-producto div p{
+    font-size: var(--font-size-18);
+    align-items: center;
+    border-bottom: .1rem solid var(--color-dark);
+    padding-bottom: .5rem;
+}
+
+.subtotal{
+    font-size: var(--font-size-17);
     font-weight: 500;
 }
 
+.carrito-icon{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: .5rem;
+}
 
-td button:hover{
-    font-weight: bold;
+.carrito-icon i{ 
+    color: var(--back-medium);
+    
+}
+
+.carrito-icon i:hover{
+    color: var(--color-dark);
+}
+
+.carrito-icon i:active{
+    color: var(--back-medium);
 }
 
 
+/* ------------------------[ FOOT-TABLE ]------------------------*/
+
 .foot-table{
-    margin: auto;
+    margin-top: 1rem;
+}
+
+.foot-table div{
+    margin: 0;
     border-top: 0;
-    width: 95%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding: .5rem 2rem;
+    margin-bottom: 2rem;
+}
+
+.foot-table div .monto{
+    text-align: end;
+}
+
+.foot-table input{
+    width: 60%;
+    margin-right: 2rem;
+}
+
+.foot-table .boton-claro{
+    width: 60%;
+    margin-left: 2rem;
 }
 
 .foot-table p{
-    padding: 1rem 2rem;
     font-size: var(--font-size-18);
+    margin: 0;
+}
+
+.foot-table .envio{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    margin: 0;
+    padding: 0;
+    padding-top: 1rem;
+    padding-left: 2rem;
+}
+
+.foot-table .envio img{
+    width: 3rem;
+    height: 3rem;
+}
+
+.foot-table .envio p{
+    padding-top: .5rem;
+    padding-left: 1rem;
+}
+
+.foot-table .cod-postal{
+    padding-top: 0;
+    padding-bottom: 1rem;
+    margin-bottom: 0;
+}
+
+.foot-table a{
+    text-decoration: none;
+    font-family: var(--subtitulo-font);
+    font-size: var(--font-size-14);
+    color: var(--color-dark);
+    padding-left: 2rem;
+    cursor: pointer;
 }
 
 .foot-table .total{
-    text-align: end;
+    margin-top: 2rem;
+    padding: 1rem 2rem;
 }
- 
+.foot-table .total p{
+    font-size: var(--font-size-24);
+    font-weight: 600;
+}
+
 /*BOTONES*/
 
 /* + - */
