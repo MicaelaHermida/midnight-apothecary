@@ -12,19 +12,19 @@ import { ProductosService } from 'src/app/services/productos.service';
   styleUrls: ['./carrito.component.css']
 })
 export class CarritoComponent implements OnInit {
-  showCart: boolean = false;
-
-  productos: ItemCarrito[] = [];
-
-  totalCarrito = 0;
-
+  //auth
   isLogged: boolean = false;
   firebaseAuthenticationReady: boolean = false;
 
+  isCompraPage: boolean = false;
+  showCart: boolean = false;
+
+  productos: ItemCarrito[] = [];
+  totalCarrito = 0;
   hasProductos: boolean = false;
 
-  isCompraPage: boolean = false;
-
+  codPostal = 0;
+  
 
   constructor(private carritoService: CarritoService, private productosService: ProductosService,
     private authService: AuthenticationService, private router: Router, private appRef: ApplicationRef) { }
@@ -37,15 +37,6 @@ export class CarritoComponent implements OnInit {
     await this.mostrarCarrito();
     this.verificarUrl();
   }
-
-/*   toggleCart(){
-    this.showCart = !this.showCart;
-    if(this.showCart){
-      document.querySelector('.drop-carrito')?.classList.add('show');
-    }else{
-      document.querySelector('.drop-carrito')?.classList.remove('show');
-    }
-  } */
 
   async cargarProductos(): Promise<void> {
     for (let item of this.carritoService.getCarrito()) {
@@ -124,8 +115,6 @@ export class CarritoComponent implements OnInit {
     await this.mostrarCarrito();
 
   }
-
-  
 
   verificarUrl() {
     const currentURL = window.location.href;

@@ -206,6 +206,10 @@ td p{
     cursor: pointer;
 }
 
+.foot-table a:hover{
+    text-decoration: underline;
+}
+
 .foot-table .total{
     margin-top: 2rem;
     padding: 1rem 2rem;

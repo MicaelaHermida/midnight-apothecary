@@ -325,7 +325,7 @@ button {
 
 .fondo-tienda {
     background-color: var(--color-light);
-    background-image: url(../src/assets/img/dibujos-tienda.jpg);
+    background-image: url(../src/assets/img/dibujos-tienda2.jpg);
     background-blend-mode: multiply;
 }
 
