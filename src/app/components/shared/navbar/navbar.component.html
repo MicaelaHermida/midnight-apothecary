@@ -1,8 +1,5 @@
 
 <div class="navbar">
-    <div class="navbar-container">
-
-    </div>
     <img class="imagotipo" alt="Midnight Apothecary" [routerLink]="['/home']">
 
 
@@ -13,13 +10,15 @@
         <a *ngIf="isLogged && firebaseAuthenticationReady && isAdminRole" [routerLink]="['/admin']">Admin</a>
         <a *ngIf="isLogged && firebaseAuthenticationReady && !isAdminRole" [routerLink]="['/usuario']">Mi Perfil</a>
         <a *ngIf="isLogged && firebaseAuthenticationReady && !isAdminRole" [routerLink]="['/compras']">Mis Compras</a>
-        <button class="dropbtn-carrito" (click)="clickCarrito()" *ngIf="isLogged && firebaseAuthenticationReady && !isAdminRole"><i class="fi fi-sr-shopping-basket"></i></button>
+        <button class="dropbtn-carrito" (click)="clickCarrito()" *ngIf="isLogged && firebaseAuthenticationReady && !isAdminRole && mostrarBotonCarrito && !isCompraPage"><i class="fi fi-sr-shopping-basket"></i></button>
     </div>
 
-    <div class="drop-carrito fondo-caja-clara" *ngIf="carritoVisible">
+    <div class="drop-carrito fondo-caja-clara" *ngIf="carritoVisible && !isCompraPage">
         <button class="botoncito" (click)="carritoVisible = false">x</button>
         <app-carrito></app-carrito>
     </div>
+
+
 
 </div>
 <hr>

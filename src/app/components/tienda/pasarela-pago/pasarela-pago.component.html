@@ -1,8 +1,7 @@
-<div *ngIf="isLogged && firebaseAuthenticationReady" class="info-usuario">
+<div *ngIf="isLogged && firebaseAuthenticationReady" class="pasarela">
     <div class="form-pago">
-        <form [formGroup]="formularioUsuario" (ngSubmit)="actualizarDatosUsuario()" class="formulario">
-            <h2>Datos de facturacion</h2>
-            
+        <h2>DATOS DE ENVÍO</h2>
+        <form [formGroup]="formularioUsuario" (ngSubmit)="actualizarDatosUsuario()" class="formulario fondo-caja-clara">
             <div class="informacion">
                 <div>
                     <label>Nombre/s:</label>
@@ -70,7 +69,7 @@
                     <input *ngIf="editMode" formControlName="depto" type="text" value="{{usuarioLogueado.depto}}">
                 </div>
                 <div>
-                    <label>Codigo Postal:</label>
+                    <label>Código Postal:</label>
                     <p *ngIf="!editMode">{{usuarioLogueado.codigoPostal}}</p>
                     <input *ngIf="editMode" formControlName="codigoPostal" value="{{usuarioLogueado.codigoPostal}}"
                     [class.invalid]="validateUsuario('codigoPostal','required') || validateUsuario('codigoPostal','minlength')">
@@ -96,8 +95,8 @@
         </form>
     </div>
     <div class="form-pago">
-        <form [formGroup]="formularioPago" (ngSubmit)="realizarCompra()" class="formulario campos">
-            <h2>Datos de pago</h2>
+        <h2>DATOS DE PAGO</h2>
+        <form [formGroup]="formularioPago" (ngSubmit)="realizarCompra()" class="formulario campos fondo-caja-clara">
             <div>
                 <div>
                     <label>Nombre del titular</label>
