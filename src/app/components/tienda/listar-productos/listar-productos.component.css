@@ -299,3 +299,9 @@ h2 {
     margin: 0 2rem;
     border: 1px solid var(--color-dark);
 }
+
+.div-productos{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}

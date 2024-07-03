@@ -35,52 +35,26 @@
     
 
     <!--////////////////LISTADO PRODUCTOS///////////////////-->
-    <div class="contenedor-productos">
-        <p *ngIf="allProducts.size <1 && busquedaFinalizada" class="no-encontrado">Ups... no se ha encontrado el producto</p>
-        <form *ngFor="let producto of productosPagina" (ngSubmit)="guardarProducto(producto)" [formGroup]="form" class="card fondo-caja-clara">
+    <div>
+        <p *ngIf="!busquedaExitosa" class="no-encontrado">Ups... no se ha encontrado el producto</p>
+        <div class="contenedor-productos" *ngIf="busquedaExitosa">
+            <form *ngFor="let producto of productosPagina" (ngSubmit)="guardarProducto(producto)" [formGroup]="form" class="card fondo-caja-clara">
 
-            <div (click)="verDetalleProducto(producto.id_planta)" class="info-producto">
-                <img src="{{producto.imagen}}" class="img-producto">
-                <div *ngIf="!editModeMap.get(producto.id_planta) && firebaseAuthenticationReady">
-                    <h3 class="nombre-producto">{{producto.nombre}}</h3>
-                    <p class="precio-producto">${{producto.precio}}</p>
-                    <p *ngIf="isAdminRole">stock: {{producto.stock}}</p>
+                <div (click)="verDetalleProducto(producto.id_planta)" class="info-producto">
+                    <img src="{{producto.imagen}}" class="img-producto">
+                    <div *ngIf="firebaseAuthenticationReady">
+                        <h3 class="nombre-producto">{{producto.nombre}}</h3>
+                        <p class="precio-producto">${{producto.precio}}</p>
+                        <p *ngIf="isAdminRole">stock: {{producto.stock}}</p>
+                    </div>
                 </div>
-            </div>
-            <!--////////////////OPCIONES USUARIO-CLIENTE///////////////////-->
-            <div class="container-buttons">
-                <button *ngIf="!isAdminRole && isLogged && firebaseAuthenticationReady"
-                    (click)="verDetalleProducto(producto.id_planta)" class="boton-claro">Agregar</button>
-            </div>
-            <!--////////////////MODO EDICION - ADMIN///////////////////-->
-            <!--
-            <div *ngIf="editModeMap.get(producto.id_planta)" class="edit-mode">
-                <div>
-                    <input formControlName="nombre" placeholder="{{producto.nombre}}" type="text"
-                        [class.invalid]="validate('nombre','required') || validate('nombre','minlength') || nombreExiste">
+                <!--////////////////OPCIONES USUARIO-CLIENTE///////////////////-->
+                <div class="container-buttons">
+                    <button *ngIf="!isAdminRole && isLogged && firebaseAuthenticationReady"
+                        (click)="verDetalleProducto(producto.id_planta)" class="boton-claro">Agregar</button>
                 </div>
-                <div>
-                    <input formControlName="precio" placeholder="{{producto.precio}}" type="number"
-                        [class.invalid]="validate('precio', 'required') || validate('precio','min')">
-                </div>
-                <div>
-                    <input formControlName="stock" placeholder="stock({{producto.stock}})" type="number" 
-                        [class.invalid]="validate('stock','required') || validate('stock','min')">
-                </div>
-            </div>
-            ////////////////BOTONES ADMIN///////////////////
-            <div class="container-buttons">
-                <button *ngIf="isAdminRole && firebaseAuthenticationReady && !editModeMap.get(producto.id_planta)"
-                    (click)="editarProducto(producto.id_planta)" class="boton-claro">Editar</button>
-                <button *ngIf="isAdminRole && firebaseAuthenticationReady && editModeMap.get(producto.id_planta)"
-                    (click)="cancelarEdicion()" class="boton-claro">Cancelar</button>
-                <button *ngIf="isAdminRole && firebaseAuthenticationReady && editModeMap.get(producto.id_planta)"
-                    type="submit" class="boton-claro">Guardar</button>
-                <button *ngIf="isAdminRole && firebaseAuthenticationReady && !editModeMap.get(producto.id_planta)"
-                    (click)="eliminarProducto(producto.id_planta)" type="button" class="boton-claro">Eliminar</button>
-            </div>
-            -->
-        </form>
+            </form>
+        </div>
     </div>
     <!--////////////////PAGINACION///////////////////-->
     <div class="pagination">

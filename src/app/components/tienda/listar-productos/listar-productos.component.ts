@@ -25,7 +25,7 @@ export class ListarProductosComponent implements OnInit {
   arrayFiltrado: string[] = ['Hasta $1000', '$1000-$3000', '$3000-$5000', '$5000-$7000', 'Más de $7000', 'Todos'];
   filtroSeleccionado: string = 'Todos';
   busqueda: string = '';
-  busquedaFinalizada: boolean = false;
+  busquedaExitosa: boolean = true;
   ////paginacion
   arrayPaginas: number[] = [];
   paginaActual: number = 1;
@@ -93,36 +93,6 @@ export class ListarProductosComponent implements OnInit {
     console.log(this.arrayProductos);
   }
 
-  /*onFilterChangeEvent() {
-    this.filtradoReady = false;
-    this.ordenarArrayProductos();
-    this.filtrarArrayProductos();
-    this.actualizarPaginas();
-    this.mostrarArrayProductos();
-  }*/
-
-  /*async filtrarProductos() {
-    this.allProducts = new Map();
-    if (this.filtroSeleccionado === 'hasta $1000') {
-      this.allProducts = await this.productosService.getProductosDentroDeRango(0, 1000);
-    }
-    else if (this.filtroSeleccionado === '$1000-$3000') {
-      this.allProducts = await this.productosService.getProductosDentroDeRango(1000, 3000);
-    }
-    else if (this.filtroSeleccionado === '$3000-$5000') {
-      this.allProducts = await this.productosService.getProductosDentroDeRango(3000, 5000);
-    }
-    else if (this.filtroSeleccionado === '$5000-$7000') {
-      this.allProducts = await this.productosService.getProductosDentroDeRango(5000, 7000);
-    }
-    else if (this.filtroSeleccionado === 'más de $7000') {
-      this.allProducts = await this.productosService.getProductosDentroDeRango(7000, 100000);
-    }
-    else {
-      this.allProducts = await this.productosService.getProductos();
-    }
-  }*/
-
   onOrderChangeEvent() {
     /*this.filtradoReady = false;*/
     console.log(this.ordenSeleccionado);
@@ -137,32 +107,27 @@ export class ListarProductosComponent implements OnInit {
   }
 
   filtrarArrayProductos(){
-    if(this.filtroSeleccionado === 'Hasta $1000'){
-      this.arrayFiltradoOrdenado = this.arrayOrdenado.filter(producto => producto.precio <= 1000);
+    if(this.filtroSeleccionado === 'Hasta $1000' && this.busquedaExitosa){
+      this.arrayFiltradoOrdenado = this.arrayOrdenado.filter(producto => producto.precio <= 1000 && producto.nombre.toLowerCase().includes(this.busqueda.toLowerCase()));
     }
     else if(this.filtroSeleccionado === '$1000-$3000'){
-      this.arrayFiltradoOrdenado = this.arrayOrdenado.filter(producto => producto.precio >= 1000 && producto.precio <= 3000);
+      this.arrayFiltradoOrdenado = this.arrayOrdenado.filter(producto => producto.precio >= 1000 && producto.precio <= 3000 && producto.nombre.toLowerCase().includes(this.busqueda.toLowerCase()));
     }
     else if(this.filtroSeleccionado === '$3000-$5000'){
-      this.arrayFiltradoOrdenado = this.arrayOrdenado.filter(producto => producto.precio >= 3000 && producto.precio <= 5000);
+      this.arrayFiltradoOrdenado = this.arrayOrdenado.filter(producto => producto.precio >= 3000 && producto.precio <= 5000 && producto.nombre.toLowerCase().includes(this.busqueda.toLowerCase()));
     }
     else if(this.filtroSeleccionado === '$5000-$7000'){
-      this.arrayFiltradoOrdenado = this.arrayOrdenado.filter(producto => producto.precio >= 5000 && producto.precio <= 7000);
+      this.arrayFiltradoOrdenado = this.arrayOrdenado.filter(producto => producto.precio >= 5000 && producto.precio <= 7000 && producto.nombre.toLowerCase().includes(this.busqueda.toLowerCase()));
     }
     else if(this.filtroSeleccionado === 'Más de $7000'){
-      this.arrayFiltradoOrdenado = this.arrayOrdenado.filter(producto => producto.precio >= 7000);
+      this.arrayFiltradoOrdenado = this.arrayOrdenado.filter(producto => producto.precio >= 7000 && producto.nombre.toLowerCase().includes(this.busqueda.toLowerCase()));
     }
     else{
-      this.arrayFiltradoOrdenado = this.arrayOrdenado;
+      this.arrayFiltradoOrdenado = this.arrayOrdenado.filter(producto => producto.nombre.toLowerCase().includes(this.busqueda.toLowerCase()));
     }
   }
   
   mostrarArrayProductos() {
-    /*for(let entry of this.allProducts.entries()){
-      if(entry[1].stock <= 0 && !this.isAdminRole){
-        this.allProducts.delete(entry[0]);
-      }
-    }*/
     const start = (this.paginaActual - 1) * this.productosPorPagina;
     const end = this.paginaActual * this.productosPorPagina;
     this.totalProductos = this.arrayFiltradoOrdenado.length;
@@ -182,19 +147,22 @@ export class ListarProductosComponent implements OnInit {
     }
   }
 
-  async buscarProductoPorNombre() : Promise<void> {
-    this.busquedaFinalizada = false;
-    this.allProducts = new Map();
-    this.allProducts = await this.productosService.getProductosPorNombre(this.busqueda);
-    for(let entry of this.allProducts.entries()){
-      if(entry[1].stock <= 0 && !this.isAdminRole){
-        this.allProducts.delete(entry[0]);
+  buscarProductoPorNombre(){
+    this.arrayFiltradoOrdenado = this.arrayOrdenado;
+    if(this.busqueda != ''){
+      const arrayBusqueda : Producto[] = this.arrayOrdenado.filter(product => product.nombre.toLowerCase().includes(this.busqueda.toLowerCase()));
+      if(arrayBusqueda.length === 0){
+        this.busquedaExitosa = false;
       }
+      else{
+        this.arrayFiltradoOrdenado = arrayBusqueda;
+        this.busquedaExitosa = true;
+      }
+    }else{
+      this.busquedaExitosa = true;
     }
-    this.ordenarArrayProductos();
     this.actualizarPaginas();
     this.mostrarArrayProductos();
-    this.busquedaFinalizada = true;
     
   }
   ////////////////////////PAGINADO///////////////////////
@@ -224,7 +192,6 @@ export class ListarProductosComponent implements OnInit {
 
   obtenerCantidadPaginas(): number {
     return Math.ceil(this.arrayFiltradoOrdenado.length / this.productosPorPagina);
-    /*return Math.ceil(this.allProducts.size / this.productosPorPagina);*/
   }
 
   /////////////////////ADMINISTRADOR////////////////////////
