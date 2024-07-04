@@ -16,7 +16,6 @@ import { ProductosService } from 'src/app/services/productos.service';
 })
 export class PasarelaPagoComponent implements OnInit{
   
-
   isLogged: boolean = false;
   firebaseAuthenticationReady: boolean = false;
   usuarioLogueado!: User;
@@ -25,7 +24,6 @@ export class PasarelaPagoComponent implements OnInit{
   userId!: string;
 
   productos : ItemCarrito [] = [];
-
 
   formularioUsuario : FormGroup = this.fb.group({
     nombre: '',
@@ -41,8 +39,8 @@ export class PasarelaPagoComponent implements OnInit{
 
   formularioPago: FormGroup = this.fb.group({
     titular: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(30), Validators.pattern("[a-zA-Z' ]*")]],
-    numeroTarjeta: ['', [Validators.required, Validators.minLength(16), Validators.maxLength(16), Validators.pattern('[0-9]*')]],
-    fechaCaducidad: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5), Validators.pattern('[0-9/]*')]],
+    numeroTarjeta: ['', [Validators.required, Validators.pattern('^[0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4}$')]],
+    fechaVencimiento: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5), Validators.pattern('[0-9/]*')]],
     cvv: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(4), Validators.pattern('[0-9]*')]],
     dniTitular: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(8), Validators.pattern('[0-9]*')]]
   });
@@ -66,11 +64,11 @@ export class PasarelaPagoComponent implements OnInit{
 
   initFormUsuario(){
     this.formularioUsuario = this.fb.group({
-      nombre: [this.usuarioLogueado.nombre, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern("[a-zA-Z' ]*")]],
-      apellido: [this.usuarioLogueado.apellido, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern("[a-zA-Z' ]*")]],
+      nombre: [this.usuarioLogueado.nombre, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern(/^[a-zA-ZñÑ\s']*$/)]],
+      apellido: [this.usuarioLogueado.apellido, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern(/^[a-zA-ZñÑ\s']*$/)]],
       telefono: [this.usuarioLogueado.telefono, [Validators.required, Validators.minLength(8), Validators.maxLength(15), Validators.pattern('[0-9]*')]],
-      provincia: [this.usuarioLogueado.provincia, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*')]],
-      ciudad: [this.usuarioLogueado.ciudad, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*')]],
+      provincia: [this.usuarioLogueado.provincia, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern(/^[a-zA-ZñÑ\s']*$/)]],
+      ciudad: [this.usuarioLogueado.ciudad, [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern(/^[a-zA-ZñÑ\s']*$/)]],
       direccion: [this.usuarioLogueado.direccion,[Validators.required, Validators.minLength(5), Validators.maxLength(30)]],
       depto: [this.usuarioLogueado.depto],
       codigoPostal: [this.usuarioLogueado.codigoPostal,[Validators.required, Validators.minLength(4)]],
@@ -141,12 +139,14 @@ export class PasarelaPagoComponent implements OnInit{
   async realizarCompra(): Promise<void>{
     const ok = confirm("¿Está seguro que desea realizar la compra?");
     if(this.comprobarDatosTarjeta() && ok){
+      let formValue = this.formularioPago.value;
+      formValue.numeroTarjeta = formValue.numeroTarjeta.replace(/\s/g, '');
       const compra : Compra = {
         userId: this.userId,
         fecha: '',
         items: this.productos,
         total: this.obtenerTotal(),
-        estado: "pendiente"
+        estado: "Pendiente de pago"
       }
       const compraRealizada = await this.compraService.postCompra(compra);
       if(compraRealizada){
@@ -187,6 +187,25 @@ export class PasarelaPagoComponent implements OnInit{
     this.editMode = false;
     this.initFormUsuario();
     return;
+  }
+
+  formatNumeroTarjeta(event: any): void {
+    const input = event.target;
+    if (input && typeof input.value === 'string') {
+      let valueWithoutSpaces = input.value.replace(/\s/g, '');
+      this.formularioPago.get('numeroTarjeta')?.setValue(valueWithoutSpaces.replace(/(.{4})/g, '$1 ').trim(), { emitEvent: false });
+    }
+  }
+
+  formatFechaVencimiento(event: any): void{
+    const input = event.target;
+    if(input && typeof input.value === 'string'){
+      let valueWithoutSlash = input.value.replace(/\//g, '');
+      if(valueWithoutSlash.length > 4){
+        valueWithoutSlash = valueWithoutSlash.slice(0, 4);
+      }
+      this.formularioPago.get('fechaVencimiento')?.setValue(valueWithoutSlash.replace(/^(.{2})/g, '$1/'), {emitEvent: false});
+    }
   }
   
 }

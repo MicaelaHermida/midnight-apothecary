@@ -24,7 +24,7 @@
     --font-size-50: 5rem;
 
     /*Color*/
-   /*  --color-extra-light: #e8d5eb; #f5e9f7*/
+    /*  --color-extra-light: #e8d5eb; #f5e9f7*/
     --color-extra-light: #f9f2fa;
     --color-light: #e8d9eb; /*b39fb6 #d2c2d4*/
     --color-dark: #2a2030;
@@ -34,6 +34,7 @@
     --back-light-trans: #b39fb6d8;
 /*     --back-extra-light-trans: #f3dff7be; #faedfcbe*/
     --back-extra-light-trans: #fef8ffc9;
+    --back-extra-light-trans2: #fef8ff59;
     --back-dark-trans: #2a2030d3;
     --color-error: #a10202;
 }

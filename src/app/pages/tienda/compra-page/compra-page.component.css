@@ -1,16 +1,26 @@
 .page-tienda {
     width: 100%;
+    margin-bottom: 2rem;
+}
+
+.page-tienda div{
+    margin: auto;
+    margin-top: 2rem;
+    width: 60%;
     display: flex;
     flex-direction: row-reverse;
-    justify-content: center;
 }
 
 .carrito {
-    width: 30%;
+    width: 45%;
     align-self: flex-start;
+    margin-left: 1rem;
+    box-shadow: 0px 2px 10px 0px var(--color-dark);
+    background-color: var(--back-extra-light-trans2);
 }
 
 .info-pago {
-    width: 40%;
+    width: 55%;
+    margin-right: 1rem;
+    
 }
-

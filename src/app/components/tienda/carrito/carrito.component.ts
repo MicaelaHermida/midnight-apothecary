@@ -23,7 +23,7 @@ export class CarritoComponent implements OnInit {
   totalCarrito = 0;
   hasProductos: boolean = false;
 
-  codPostal = 0;
+  codPostal = 'Tu código postal';
   
 
   constructor(private carritoService: CarritoService, private productosService: ProductosService,

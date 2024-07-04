@@ -1,20 +1,40 @@
 /*GENERAL*/
-.form-pago{
-    margin-right: 2rem;
-}
-
-.form-pago form{
+.pasarela{
     display: flex;
     flex-direction: column;
     width: 100%;
-    background-color: #b39fb6af;
-    padding: 2rem;
+    margin-bottom: 2rem;
+
+}
+h2{
+    font-family: var(--titulo-font);
+    font-size: var(--font-size-36);
+    text-align: left;
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+    padding: 0;
+}
+
+.form-pago{
+    box-shadow: 0px 2px 10px 0px var(--color-dark);
+    border: 1px solid var(--color-light);
+    background-color: var(--back-extra-light-trans2);
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+
+.form-pago form{
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: .1rem solid white;
 }
 
 /*INFORMACION*/
 
 .informacion{
-    width: 60%;
+    width: 100%;
     margin: auto;
     display: flex;
     flex-direction: column;
