@@ -43,9 +43,9 @@ import { NuevoProductoComponent } from './components/tienda/nuevo-producto/nuevo
 import { NuevoProductoPageComponent } from './pages/tienda/nuevo-producto-page/nuevo-producto-page.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
-import { environment } from './environment/environment';
 import { VentasComponent } from './components/admin/ventas/ventas.component';
 import { VentasPageComponent } from './pages/admin-page/ventas-page/ventas-page.component';
+import { environment } from './environment/environment';
 
 @NgModule({
   declarations: [
